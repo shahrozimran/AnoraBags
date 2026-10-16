@@ -1,0 +1,165 @@
+"use client"
+
+import React from "react"
+import Link from "next/link"
+import { BrandLogo } from "./brand-logo"
+
+export function Footer() {
+  return (
+    <footer className="bg-[#1A110B] text-[#ECE2D8] pt-20 pb-12 border-t border-[#3D291B]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top Assurance Ledger */}
+        <div className="pb-16 border-b border-[#3D291B]/80 grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="space-y-2">
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif italic text-xs text-[#ECE2D8]/60">01.</span>
+              <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-white">
+                7-Day Home Privilege
+              </h4>
+            </div>
+            <p className="text-xs text-[#ECE2D8]/70 font-light leading-relaxed pl-5">
+              Take 7 full days to try the silhouette with your wardrobe. If not delighted, we arrange doorstep pickup and refund your cash.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif italic text-xs text-[#ECE2D8]/60">02.</span>
+              <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-white">
+                100% Cash On Delivery
+              </h4>
+            </div>
+            <p className="text-xs text-[#ECE2D8]/70 font-light leading-relaxed pl-5">
+              Zero advance payment or cards required. Inspect your parcel condition at your doorstep and settle cash directly with the courier.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif italic text-xs text-[#ECE2D8]/60">03.</span>
+              <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-white">
+                Archival Presentation
+              </h4>
+            </div>
+            <p className="text-xs text-[#ECE2D8]/70 font-light leading-relaxed pl-5">
+              Every bag is hand-inspected and enclosed in a rigid keepsake box, protective microfiber dustbag, and inspection certificate.
+            </p>
+          </div>
+        </div>
+
+        {/* Main Footer Links */}
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+          {/* Brand Column */}
+          <div className="lg:col-span-2 space-y-5">
+            <Link href="/" className="inline-block group">
+              <BrandLogo size="md" showTagline={true} variant="light" />
+            </Link>
+
+            <p className="text-xs text-[#ECE2D8]/70 font-light max-w-sm leading-relaxed">
+              Bespoke luxury leather goods crafted with quiet geometry and architectural discipline. Available nationwide through our signature Cash on Delivery privilege.
+            </p>
+
+            <div className="pt-2 text-xs text-[#ECE2D8]/80 space-y-1 font-light">
+              <p>Maison Concierge: concierge@anorabags.com</p>
+              <p>Direct WhatsApp: +92 300 1234567</p>
+            </div>
+          </div>
+
+          {/* Collections */}
+          <div className="space-y-4">
+            <h5 className="text-[10px] font-semibold tracking-[0.25em] uppercase text-white">
+              Collections
+            </h5>
+            <ul className="space-y-2.5 text-xs text-[#ECE2D8]/70 font-light">
+              <li>
+                <Link href="/product/the-anora-bordeaux-flap-crossbody" className="hover-editorial-line hover:text-white transition">
+                  The Bordeaux Flap
+                </Link>
+              </li>
+              <li>
+                <Link href="/product/the-anora-dua-satchel" className="hover-editorial-line hover:text-white transition">
+                  The Dua Satchel
+                </Link>
+              </li>
+              <li>
+                <Link href="/product/the-anora-petit-ivory-handbag" className="hover-editorial-line hover:text-white transition">
+                  The Petit Ivory
+                </Link>
+              </li>
+              <li>
+                <Link href="/product/the-anora-noir-crossbody" className="hover-editorial-line hover:text-white transition">
+                  The Noir Flap
+                </Link>
+              </li>
+              <li>
+                <Link href="/#studio3d" className="hover-editorial-line text-[#ECE2D8] transition">
+                  3D Spatial Atelier
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Client Privileges */}
+          <div className="space-y-4">
+            <h5 className="text-[10px] font-semibold tracking-[0.25em] uppercase text-white">
+              Privileges
+            </h5>
+            <ul className="space-y-2.5 text-xs text-[#ECE2D8]/70 font-light">
+              <li>
+                <Link href="/refund-policy" className="hover-editorial-line hover:text-white transition">
+                  7-Day Return Privilege
+                </Link>
+              </li>
+              <li>
+                <Link href="/track-order" className="hover-editorial-line hover:text-white transition">
+                  Track Parcel (COD)
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover-editorial-line hover:text-white transition">
+                  The Maison Story
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover-editorial-line hover:text-white transition">
+                  Private Concierge
+                </Link>
+              </li>
+              <li>
+                <Link href="/refund-policy#faq" className="hover-editorial-line hover:text-white transition">
+                  Delivery & Inspection FAQ
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Terms & Guarantees */}
+          <div className="space-y-4">
+            <h5 className="text-[10px] font-semibold tracking-[0.25em] uppercase text-white">
+              Assurance
+            </h5>
+            <ul className="space-y-2.5 text-xs text-[#ECE2D8]/70 font-light">
+              <li>Payment: 100% Cash On Delivery</li>
+              <li>Shipping: Free Express Nationwide</li>
+              <li>Returns: 7-Day Doorstep Pickup</li>
+              <li>Hardware: 18k Brushed Gold Core</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Copyright */}
+        <div className="pt-8 border-t border-[#3D291B] text-[10px] font-sans tracking-[0.16em] uppercase text-[#ECE2D8]/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p>© {new Date().getFullYear()} Maison Anora Bags. All rights reserved.</p>
+          <div className="flex items-center gap-4 text-[#ECE2D8]/60">
+            <Link href="/refund-policy" className="hover:text-white transition">7-Day Privilege</Link>
+            <span>•</span>
+            <span>Cash On Delivery Nationwide</span>
+            <span>•</span>
+            <Link href="/contact" className="hover:text-white transition">Concierge</Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+

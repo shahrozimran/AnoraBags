@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EED9C4" />
+      <stop offset="50%" stop-color="#C5A059" />
+      <stop offset="100%" stop-color="#9C7A38" />
+    </linearGradient>
+  </defs>
+  <!-- Stylized Monogram A with Sparkle -->
+  <text x="160" y="44" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="36" font-weight="400" letter-spacing="6" fill="#1C1917">ANORA</text>
+  <!-- Sparkle at top right of A -->
+  <path d="M 235 22 Q 237 25 237 28 Q 237 25 240 22 Q 237 19 237 16 Q 237 19 235 22 Z" fill="url(#goldGradient)" />
+  <!-- Subtitle rule -->
+  <line x1="85" y1="58" x2="115" y2="58" stroke="#D6D1C7" stroke-width="1" />
+  <text x="160" y="62" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="8" font-weight="500" letter-spacing="4" fill="#78716C">BAGS FOR EVERY YOU</text>
+  <line x1="205" y1="58" x2="235" y2="58" stroke="#D6D1C7" stroke-width="1" />
+</svg>
