@@ -170,7 +170,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           {/* Pricing */}
           <div className="text-right">
             {product.originalPrice && (
-              <span className="text-xs sm:text-sm text-[#755944] line-through mr-1.5 font-light">
+              <span className="text-xs sm:text-sm text-[#462F1D]/60 line-through mr-1.5 font-normal">
                 Rs. {product.originalPrice.toLocaleString()}
               </span>
             )}

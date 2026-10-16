@@ -22,7 +22,7 @@ export function Header() {
   return (
     <>
       {/* Top Quiet Luxury Announcement Bar */}
-      <div className="bg-[#23170F] text-[#ECE2D8] text-[10px] sm:text-xs font-sans tracking-[0.08em] sm:tracking-[0.12em] uppercase py-2 px-3 sm:px-4 border-b border-[#3D291B]/60 select-none overflow-hidden">
+      <div className="bg-[#23170F] text-[#ECE2D8] text-xs font-sans tracking-[0.08em] sm:tracking-[0.12em] uppercase py-2 px-3 sm:px-4 border-b border-[#3D291B]/60 select-none overflow-hidden">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <span className="hidden md:inline-block opacity-85 font-normal">
             Maison Anora • Pure Full-Grain Calfskin

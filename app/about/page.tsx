@@ -69,16 +69,16 @@ export default function AboutPage() {
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-2">
             <span className="h-px w-6 bg-[#462F1D]/40" />
-            <span className="text-[10px] sm:text-[11px] font-sans tracking-[0.28em] uppercase font-semibold text-[#755944]">
+            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#462F1D]">
               The House of Anora • Atelier Édition
             </span>
             <span className="h-px w-6 bg-[#462F1D]/40" />
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl font-light text-[#23170F] leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-[#23170F] leading-tight">
             Sculpted Simplicity, <br />
             <span className="italic font-normal text-[#462F1D]">Modern You.</span>
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A4333] font-light max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#462F1D] font-light max-w-xl mx-auto leading-relaxed">
             Anora was born from a resolute desire: to craft handbags that elevate everyday living with architectural restraint, bespoke full-grain calfskin, and uncompromising integrity.
           </p>
         </div>
@@ -93,10 +93,10 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#23170F]/70 via-transparent to-transparent pointer-events-none" />
           <div className="absolute bottom-6 left-6 right-6 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <span className="font-serif italic text-lg sm:text-xl text-[#ECE2D8]">
+            <span className="font-serif italic text-lg sm:text-xl lg:text-2xl text-[#ECE2D8]">
               "Architectural form meets tactile softness."
             </span>
-            <span className="text-[10px] text-white/70 font-sans tracking-[0.22em] uppercase">
+            <span className="text-xs text-white/80 font-sans tracking-[0.16em] uppercase font-medium">
               Maison Anora Atelier
             </span>
           </div>
@@ -105,31 +105,31 @@ export default function AboutPage() {
         {/* Brand Pillars */}
         <div className="bg-white p-8 sm:p-12 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-8">
           <div className="space-y-3">
-            <h2 className="font-serif text-2xl font-light text-[#23170F]">
+            <h2 className="font-serif text-2xl sm:text-3xl font-light text-[#23170F]">
               The Architecture of Confidence
             </h2>
-            <p className="text-xs sm:text-sm text-[#5A4333] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#462F1D] font-light leading-relaxed">
               We reject the fast-fashion cycle of transient novelty. Every Anora silhouette is engineered to be an anchor in your capsule wardrobe. Whether stepping into a high-stakes presentation or enjoying a relaxed weekend brunch, your Anora bag holds your essentials with graceful poise.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-[#E5DCD2]">
             <div className="space-y-2">
-              <span className="font-serif italic text-xs text-[#462F1D]">01. Leather</span>
-              <h4 className="font-serif text-base font-normal text-[#23170F]">
+              <span className="font-serif italic text-sm text-[#462F1D]">01. Leather</span>
+              <h4 className="font-serif text-lg font-normal text-[#23170F]">
                 Full-Grain Drum-Dyed Calfskin
               </h4>
-              <p className="text-xs text-[#755944] font-light leading-relaxed">
+              <p className="text-sm text-[#462F1D] font-light leading-relaxed">
                 Tanned using traditional artisanal methods. Our leather resists daily abrasion while developing a rich, supple patina over years of companionship.
               </p>
             </div>
 
             <div className="space-y-2">
-              <span className="font-serif italic text-xs text-[#462F1D]">02. Privilege</span>
-              <h4 className="font-serif text-base font-normal text-[#23170F]">
+              <span className="font-serif italic text-sm text-[#462F1D]">02. Privilege</span>
+              <h4 className="font-serif text-lg font-normal text-[#23170F]">
                 7-Day Unconditional Privilege
               </h4>
-              <p className="text-xs text-[#755944] font-light leading-relaxed">
+              <p className="text-sm text-[#462F1D] font-light leading-relaxed">
                 We believe trust is earned at your doorstep. Inspect your bag in person. If it doesn't surpass your expectations, our concierge collects it for an instant refund.
               </p>
             </div>
@@ -140,10 +140,10 @@ export default function AboutPage() {
         <div className="text-center pt-2">
           <Link
             href="/#collection"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs font-sans tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-sm hover:shadow-md"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-medium transition-all duration-300 shadow-sm hover:shadow-md"
           >
             <span>Explore The Permanent Collection</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </main>

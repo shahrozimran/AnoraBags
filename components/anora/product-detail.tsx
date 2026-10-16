@@ -109,13 +109,13 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
           <div className="lg:col-span-7 space-y-4">
             {/* View Mode Toggle Pill */}
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="text-[11px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.16em] text-[#462F1D] font-semibold font-sans">
+              <span className="text-xs uppercase tracking-[0.14em] sm:tracking-[0.16em] text-[#462F1D] font-semibold font-sans">
                 {viewMode === "gallery" ? "Editorial Lookbook" : "3D Spatial Studio"}
               </span>
               <div className="inline-flex rounded-full bg-[#ECE2D8]/80 p-0.5 sm:p-1 text-xs font-medium text-[#462F1D]">
                 <button
                   onClick={() => setViewMode("gallery")}
-                  className={`px-2.5 sm:px-3.5 py-1 rounded-full transition-all duration-200 text-[11px] sm:text-xs font-medium ${
+                  className={`px-2.5 sm:px-3.5 py-1 rounded-full transition-all duration-200 text-xs font-medium ${
                     viewMode === "gallery" ? "bg-white text-[#23170F] shadow-xs" : "hover:text-[#23170F]"
                   }`}
                 >
@@ -123,12 +123,12 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 </button>
                 <button
                   onClick={() => setViewMode("3d")}
-                  className={`px-2.5 sm:px-3.5 py-1 rounded-full flex items-center gap-1 sm:gap-1.5 transition-all duration-200 text-[11px] sm:text-xs font-medium ${
+                  className={`px-2.5 sm:px-3.5 py-1 rounded-full flex items-center gap-1 sm:gap-1.5 transition-all duration-200 text-xs font-medium ${
                     viewMode === "3d" ? "bg-[#462F1D] text-white shadow-xs" : "hover:text-[#23170F]"
                   }`}
                 >
                   <span>Interactive 3D</span>
-                  <span className="text-[10px] sm:text-xs px-1.5 py-0.5 rounded-full bg-[#ECE2D8] text-[#462F1D] font-sans font-semibold">
+                  <span className="text-xs px-1.5 py-0.5 rounded-full bg-[#ECE2D8] text-[#462F1D] font-sans font-semibold">
                     360°
                   </span>
                 </button>
@@ -227,7 +227,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     {product.currency} {product.price.toLocaleString()}
                   </span>
                   {product.originalPrice && (
-                    <span className="text-sm sm:text-base text-[#755944] line-through font-light">
+                    <span className="text-sm sm:text-base text-[#462F1D]/60 line-through font-normal">
                       {product.currency} {product.originalPrice.toLocaleString()}
                     </span>
                   )}
@@ -277,7 +277,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               <div className="flex items-center border border-[#E5DCD2] rounded-full bg-white">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-2 text-[#755944] hover:text-[#23170F] transition font-medium"
+                  className="px-4 py-2 text-[#462F1D] hover:text-[#23170F] transition font-medium"
                   aria-label="Decrease quantity"
                 >
                   -
@@ -285,7 +285,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 <span className="px-3.5 text-sm font-semibold text-[#23170F]">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 py-2 text-[#755944] hover:text-[#23170F] transition font-medium"
+                  className="px-4 py-2 text-[#462F1D] hover:text-[#23170F] transition font-medium"
                   aria-label="Increase quantity"
                 >
                   +
@@ -352,7 +352,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               className={`pb-3.5 transition-colors border-b-2 whitespace-nowrap ${
                 activeTab === "specs"
                   ? "border-[#462F1D] text-[#462F1D] font-semibold"
-                  : "border-transparent text-[#755944] hover:text-[#23170F]"
+                  : "border-transparent text-[#462F1D]/75 hover:text-[#23170F]"
               }`}
             >
               Craft & Material
@@ -362,7 +362,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               className={`pb-3.5 transition-colors border-b-2 whitespace-nowrap ${
                 activeTab === "capacity"
                   ? "border-[#462F1D] text-[#462F1D] font-semibold"
-                  : "border-transparent text-[#755944] hover:text-[#23170F]"
+                  : "border-transparent text-[#462F1D]/75 hover:text-[#23170F]"
               }`}
             >
               Interior Storage & Fit
@@ -372,7 +372,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               className={`pb-3.5 transition-colors border-b-2 whitespace-nowrap ${
                 activeTab === "refund"
                   ? "border-[#462F1D] text-[#462F1D] font-semibold"
-                  : "border-transparent text-[#755944] hover:text-[#23170F]"
+                  : "border-transparent text-[#462F1D]/75 hover:text-[#23170F]"
               }`}
             >
               7-Day Home Privilege
@@ -382,7 +382,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               className={`pb-3.5 transition-colors border-b-2 whitespace-nowrap ${
                 activeTab === "reviews"
                   ? "border-[#462F1D] text-[#462F1D] font-semibold"
-                  : "border-transparent text-[#755944] hover:text-[#23170F]"
+                  : "border-transparent text-[#462F1D]/75 hover:text-[#23170F]"
               }`}
             >
               Patron Reviews ({reviews.length})
@@ -578,7 +578,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                   <span className="font-serif italic text-xs sm:text-sm text-[#462F1D]">I.</span>
                   <span>Craft & Technical Specs</span>
                 </span>
-                <ChevronDown className={`w-4 h-4 text-[#755944] transition-transform duration-200 ${mobileAccordionOpen === "specs" ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "specs" ? "rotate-180" : ""}`} />
               </button>
               {mobileAccordionOpen === "specs" && (
                 <div className="p-4 pt-0 border-t border-[#E5DCD2]/60 space-y-4 text-sm animate-in fade-in duration-200">
@@ -630,7 +630,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                   <span className="font-serif italic text-xs sm:text-sm text-[#462F1D]">II.</span>
                   <span>Interior Storage & Fit</span>
                 </span>
-                <ChevronDown className={`w-4 h-4 text-[#755944] transition-transform duration-200 ${mobileAccordionOpen === "capacity" ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "capacity" ? "rotate-180" : ""}`} />
               </button>
               {mobileAccordionOpen === "capacity" && (
                 <div className="p-4 pt-0 border-t border-[#E5DCD2]/60 space-y-3 text-sm animate-in fade-in duration-200">
@@ -672,7 +672,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                   <span className="font-serif italic text-xs sm:text-sm text-[#462F1D]">III.</span>
                   <span>7-Day Doorstep Privilege</span>
                 </span>
-                <ChevronDown className={`w-4 h-4 text-[#755944] transition-transform duration-200 ${mobileAccordionOpen === "refund" ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "refund" ? "rotate-180" : ""}`} />
               </button>
               {mobileAccordionOpen === "refund" && (
                 <div className="p-4 pt-0 border-t border-[#E5DCD2]/60 space-y-3 text-sm animate-in fade-in duration-200">
@@ -700,7 +700,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                   <span className="font-serif italic text-xs sm:text-sm text-[#462F1D]">IV.</span>
                   <span>Patron Reviews ({reviews.length})</span>
                 </span>
-                <ChevronDown className={`w-4 h-4 text-[#755944] transition-transform duration-200 ${mobileAccordionOpen === "reviews" ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "reviews" ? "rotate-180" : ""}`} />
               </button>
               {mobileAccordionOpen === "reviews" && (
                 <div className="p-4 pt-0 border-t border-[#E5DCD2]/60 space-y-3 text-sm animate-in fade-in duration-200">

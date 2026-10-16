@@ -425,16 +425,16 @@ export default function AdminPage() {
               <ShieldCheck className="w-8 h-8" />
             </div>
             <div className="space-y-1">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#462F1D]">Staff Portal</span>
-              <h1 className="font-serif text-2xl font-normal text-stone-900">Anora Admin Access</h1>
-              <p className="text-xs text-stone-500 font-light">
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#462F1D]">Staff Portal</span>
+              <h1 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">Anora Admin Access</h1>
+              <p className="text-sm text-stone-600 font-light">
                 Enter your security PIN to manage bag catalogs, dispatch orders, and inspect COD metrics.
               </p>
             </div>
 
             <form onSubmit={handleLogin} className="space-y-4 text-left">
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-stone-700">Security PIN / Access Key</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-stone-700">Security PIN / Access Key</label>
                 <input
                   type="password"
                   value={passcodeInput}
@@ -490,10 +490,10 @@ export default function AdminPage() {
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                <span className="text-[10px] sm:text-[11px] uppercase font-mono tracking-widest text-stone-500">
+                <span className="text-xs uppercase font-mono tracking-wider text-stone-600">
                   Maison Anora Command Center
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-[#462F1D]/10 text-[#462F1D] text-[10px] font-semibold">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#462F1D]/10 text-[#462F1D] text-xs font-semibold">
                   {dbStatus?.engine || "Universal DB"}
                 </span>
               </div>
@@ -600,33 +600,33 @@ export default function AdminPage() {
             {/* Top Stat Cards */}
             <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Total COD Volume</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Total COD Volume</span>
                 <p className="font-serif text-2xl font-semibold text-stone-900">{orders.length} Orders</p>
-                <p className="text-[11px] text-stone-500 font-light">Nationwide doorsteps</p>
+                <p className="text-xs text-stone-500 font-normal">Nationwide doorsteps</p>
               </div>
 
               <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Total Booked Value</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Total Booked Value</span>
                 <p className="font-serif text-2xl font-semibold text-[#462F1D]">
                   Rs. {analytics?.totalRevenue.toLocaleString() || 0}
                 </p>
-                <p className="text-[11px] text-stone-500 font-light">Cash receivable volume</p>
+                <p className="text-xs text-stone-500 font-normal">Cash receivable volume</p>
               </div>
 
               <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Delivered Cash Collected</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Delivered Cash Collected</span>
                 <p className="font-serif text-2xl font-semibold text-emerald-700">
                   Rs. {analytics?.deliveredCashCollected.toLocaleString() || 0}
                 </p>
-                <p className="text-[11px] text-emerald-600 font-light">{analytics?.deliveredOrders || 0} parcels completed</p>
+                <p className="text-xs text-emerald-700 font-medium">{analytics?.deliveredOrders || 0} parcels completed</p>
               </div>
 
               <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Average Order Value (AOV)</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Average Order Value (AOV)</span>
                 <p className="font-serif text-2xl font-semibold text-stone-900">
                   Rs. {analytics?.averageOrderValue.toLocaleString() || 0}
                 </p>
-                <p className="text-[11px] text-stone-500 font-light">Per customer cart</p>
+                <p className="text-xs text-stone-500 font-normal">Per customer cart</p>
               </div>
             </div>
 
@@ -751,7 +751,7 @@ export default function AdminPage() {
             {/* Table */}
             <div className="overflow-x-auto">
               <table className="w-full min-w-[700px] text-left text-xs text-stone-700">
-                <thead className="bg-stone-50 text-[11px] uppercase tracking-wider text-stone-500 border-b border-stone-200 font-semibold">
+                <thead className="bg-stone-50 text-xs uppercase tracking-wider text-stone-600 border-b border-stone-200 font-semibold">
                   <tr>
                     <th className="py-3 px-4">Order #</th>
                     <th className="py-3 px-4">Client</th>
@@ -779,7 +779,7 @@ export default function AdminPage() {
                           >
                             {ord.orderNumber}
                           </button>
-                          <p className="text-[10px] text-stone-400">
+                          <p className="text-xs text-stone-500">
                             {new Date(ord.createdAt).toLocaleDateString()}
                           </p>
                         </td>
@@ -805,7 +805,7 @@ export default function AdminPage() {
                         </td>
 
                         <td className="py-3.5 px-4">
-                          <span className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 font-medium text-[11px]">
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 font-medium text-xs">
                             {ord.items.length} bag(s)
                           </span>
                         </td>
@@ -814,14 +814,14 @@ export default function AdminPage() {
                           <span className="font-semibold text-stone-900">
                             Rs. {ord.totalAmount.toLocaleString()}
                           </span>
-                          <p className={`text-[10px] font-medium ${ord.orderStatus === "Delivered" ? "text-emerald-700" : "text-amber-700"}`}>
+                          <p className={`text-xs font-medium ${ord.orderStatus === "Delivered" ? "text-emerald-700" : "text-amber-700"}`}>
                             {ord.paymentStatus}
                           </p>
                         </td>
 
                         <td className="py-3.5 px-4">
                           <span
-                            className={`inline-block px-2.5 py-1 rounded-full text-[11px] font-semibold ${
+                            className={`inline-block px-2.5 py-1 rounded-full text-xs font-semibold ${
                               ord.orderStatus === "Delivered"
                                 ? "bg-emerald-100 text-emerald-800"
                                 : ord.orderStatus === "Dispatched"
@@ -842,7 +842,7 @@ export default function AdminPage() {
                             <select
                               value={ord.orderStatus}
                               onChange={(e) => handleStatusChange(ord.id, e.target.value as any)}
-                              className="text-[11px] rounded-lg border border-stone-300 py-1 px-2 bg-white text-stone-800 focus:outline-hidden"
+                              className="text-xs rounded-lg border border-stone-300 py-1 px-2 bg-white text-stone-800 focus:outline-hidden"
                             >
                               <option value="Confirmed">Confirmed</option>
                               <option value="Processing">Processing</option>
@@ -914,14 +914,14 @@ export default function AdminPage() {
                         className="object-cover"
                       />
                       {prod.badge && (
-                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#462F1D] text-white text-[10px] font-semibold uppercase tracking-wider shadow-sm">
+                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#462F1D] text-white text-xs font-semibold uppercase tracking-wider shadow-sm">
                           {prod.badge}
                         </div>
                       )}
                       <div className="absolute top-3 right-3 flex items-center gap-1.5">
                         <button
                           onClick={() => handleToggleStock(prod.id)}
-                          className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase transition shadow-sm ${
+                          className={`px-2.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase transition shadow-sm ${
                             prod.inStock
                               ? "bg-emerald-600 text-white"
                               : "bg-rose-600 text-white"
@@ -934,7 +934,7 @@ export default function AdminPage() {
 
                     <div className="p-5 space-y-3">
                       <div>
-                        <span className="text-[10px] uppercase font-mono tracking-widest text-[#462F1D]">
+                        <span className="text-xs uppercase font-mono tracking-widest text-[#462F1D]">
                           {prod.category}
                         </span>
                         <h4 className="font-serif text-lg font-normal text-stone-900 line-clamp-1">
@@ -951,19 +951,19 @@ export default function AdminPage() {
                             Rs. {prod.price.toLocaleString()}
                           </span>
                           {prod.originalPrice && (
-                            <span className="text-stone-400 line-through ml-2 text-[11px]">
+                            <span className="text-stone-400 line-through ml-2 text-xs">
                               Rs. {prod.originalPrice.toLocaleString()}
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-1 text-[11px] text-amber-700 font-medium">
+                        <div className="flex items-center gap-1 text-xs text-amber-700 font-medium">
                           <span>★ {prod.rating}</span>
                           <span className="text-stone-400">({prod.reviewCount})</span>
                         </div>
                       </div>
 
                       {/* Specs pills */}
-                      <div className="text-[11px] text-stone-600 bg-stone-50 p-2.5 rounded-xl border border-stone-200/60 space-y-0.5">
+                      <div className="text-xs text-stone-600 bg-stone-50 p-2.5 rounded-xl border border-stone-200/60 space-y-0.5">
                         <p><strong>Dimensions:</strong> {prod.specs.dimensions}</p>
                         <p><strong>Material:</strong> {prod.specs.material}</p>
                       </div>
@@ -1033,7 +1033,7 @@ export default function AdminPage() {
 
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[480px] text-left text-xs text-stone-700">
-                    <thead className="bg-stone-50 text-[10px] uppercase tracking-wider text-stone-500 border-b border-stone-200 font-semibold">
+                    <thead className="bg-stone-50 text-xs uppercase tracking-wider text-stone-600 border-b border-stone-200 font-semibold">
                       <tr>
                         <th className="py-2.5 px-3">Client</th>
                         <th className="py-2.5 px-3">City</th>
@@ -1046,7 +1046,7 @@ export default function AdminPage() {
                         <tr key={i} className="hover:bg-stone-50">
                           <td className="py-3 px-3">
                             <p className="font-semibold text-stone-900">{c.name}</p>
-                            <p className="text-[11px] text-stone-400">{c.phone}</p>
+                            <p className="text-xs text-stone-500">{c.phone}</p>
                           </td>
                           <td className="py-3 px-3 font-medium text-stone-800">{c.city}</td>
                           <td className="py-3 px-3 font-semibold text-stone-900">{c.orderCount}</td>
@@ -1078,7 +1078,7 @@ export default function AdminPage() {
 
                 <div className="overflow-x-auto max-h-96">
                   <table className="w-full min-w-[340px] text-left text-xs text-stone-700">
-                    <thead className="bg-stone-50 text-[10px] uppercase tracking-wider text-stone-500 border-b border-stone-200 font-semibold sticky top-0">
+                    <thead className="bg-stone-50 text-xs uppercase tracking-wider text-stone-600 border-b border-stone-200 font-semibold sticky top-0">
                       <tr>
                         <th className="py-2.5 px-3">Email</th>
                         <th className="py-2.5 px-3">Subscribed At</th>
@@ -1113,7 +1113,7 @@ export default function AdminPage() {
         {activeTab === "database" && (
           <div className="bg-white rounded-3xl border border-stone-200 shadow-xs p-8 space-y-6">
             <div className="space-y-1">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#462F1D]">Infrastructure</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#462F1D]">Infrastructure</span>
               <h2 className="font-serif text-2xl font-normal text-stone-900">Database Engine & Hosting Environment</h2>
               <p className="text-xs text-stone-500 font-light">
                 Designed for 100% zero-cost out of the box with 1-click serverless edge Postgres (Neon/Supabase) scalability.
@@ -1125,7 +1125,7 @@ export default function AdminPage() {
                 <h4 className="font-semibold text-stone-900 uppercase tracking-wider">Active Storage Adapter</h4>
                 <div className="space-y-1.5 text-stone-600">
                   <p><strong>Engine:</strong> <span className="font-mono text-stone-900">{dbStatus?.engine}</span></p>
-                  <p><strong>Location:</strong> <span className="font-mono text-[11px] text-stone-700">{dbStatus?.storagePath}</span></p>
+                  <p><strong>Location:</strong> <span className="font-mono text-xs text-stone-700">{dbStatus?.storagePath}</span></p>
                   <p><strong>Remote Connection:</strong> {dbStatus?.isRemote ? "Yes (Cloud Database)" : "No (Local Zero-Cost File Store)"}</p>
                   <p><strong>Writable:</strong> {dbStatus?.isWritable ? "Yes (Full Persistence Active)" : "No"}</p>
                 </div>
@@ -1145,7 +1145,7 @@ export default function AdminPage() {
             <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
               <div className="space-y-0.5">
                 <h4 className="text-xs font-semibold text-stone-900">Reset to Factory Seeds</h4>
-                <p className="text-[11px] text-stone-400">Restore the original 5 handcrafted bags and authentic customer testimonials.</p>
+                <p className="text-xs text-stone-500">Restore the original 5 handcrafted bags and authentic customer testimonials.</p>
               </div>
 
               <button
@@ -1473,7 +1473,7 @@ export default function AdminPage() {
             <div className="anora-printable-slip bg-white rounded-2xl sm:rounded-3xl border border-stone-200 max-w-xl w-full p-4 sm:p-8 space-y-4 sm:space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between border-b border-stone-100 pb-4">
                 <div>
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-[#462F1D]">COD Packing Slip</span>
+                  <span className="text-xs font-semibold uppercase font-mono tracking-widest text-[#462F1D]">COD Packing Slip</span>
                   <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
                     Order #{selectedOrder.orderNumber}
                   </h3>
@@ -1493,7 +1493,7 @@ export default function AdminPage() {
                     <MapPin className="w-3.5 h-3.5 text-[#462F1D]" />
                     <span>Shipping Destination</span>
                   </span>
-                  <span className="text-[11px] text-emerald-800 font-medium">Free Express COD</span>
+                  <span className="text-xs text-emerald-800 font-medium">Free Express COD</span>
                 </div>
                 <p className="font-medium text-stone-900 text-sm">{selectedOrder.customerName}</p>
                 <p className="text-stone-600">{selectedOrder.address}</p>
@@ -1505,7 +1505,7 @@ export default function AdminPage() {
                     href={`https://wa.me/${formatPakistaniWhatsAppNumber(selectedOrder.phone)}?text=Hi%20${encodeURIComponent(selectedOrder.customerName)},%20this%20is%20Anora%20Bags%20regarding%20order%20${selectedOrder.orderNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 font-medium text-[11px] transition no-print self-start sm:self-auto"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 font-medium text-xs transition no-print self-start sm:self-auto"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>WhatsApp Concierge</span>
@@ -1546,7 +1546,7 @@ export default function AdminPage() {
               {/* Total & Status Selector */}
               <div className="pt-2 border-t border-stone-100 flex items-center justify-between text-xs">
                 <div>
-                  <span className="text-stone-400 block text-[11px]">Total Cash Receivable</span>
+                  <span className="text-stone-500 block text-xs font-medium">Total Cash Receivable</span>
                   <span className="text-xl font-serif font-bold text-[#462F1D]">
                     Rs. {selectedOrder.totalAmount.toLocaleString()}
                   </span>

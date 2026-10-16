@@ -141,7 +141,7 @@ export default function TrackOrderPage() {
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                         order.orderStatus === "Processing" || order.orderStatus === "Dispatched" || order.orderStatus === "Out for Delivery" || order.orderStatus === "Delivered"
                           ? "bg-[#462F1D] text-[#FAF6F1]"
-                          : "bg-[#ECE2D8]/50 text-[#755944]"
+                          : "bg-[#ECE2D8]/50 text-[#462F1D]/70"
                       }`}>
                         <Package className="w-5 h-5" />
                       </div>
@@ -153,7 +153,7 @@ export default function TrackOrderPage() {
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                         order.orderStatus === "Dispatched" || order.orderStatus === "Out for Delivery" || order.orderStatus === "Delivered"
                           ? "bg-[#462F1D] text-[#FAF6F1]"
-                          : "bg-[#ECE2D8]/50 text-[#755944]"
+                          : "bg-[#ECE2D8]/50 text-[#462F1D]/70"
                       }`}>
                         <Truck className="w-5 h-5" />
                       </div>
@@ -165,7 +165,7 @@ export default function TrackOrderPage() {
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                         order.orderStatus === "Out for Delivery" || order.orderStatus === "Delivered"
                           ? "bg-[#462F1D] text-[#FAF6F1]"
-                          : "bg-[#ECE2D8]/50 text-[#755944]"
+                          : "bg-[#ECE2D8]/50 text-[#462F1D]/70"
                       }`}>
                         <Truck className="w-5 h-5" />
                       </div>
@@ -175,7 +175,7 @@ export default function TrackOrderPage() {
 
                     <div className="flex flex-col items-center gap-2">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        order.orderStatus === "Delivered" ? "bg-[#462F1D] text-[#FAF6F1]" : "bg-[#ECE2D8]/50 text-[#755944]"
+                        order.orderStatus === "Delivered" ? "bg-[#462F1D] text-[#FAF6F1]" : "bg-[#ECE2D8]/50 text-[#462F1D]/70"
                       }`}>
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
@@ -222,7 +222,7 @@ export default function TrackOrderPage() {
                       return (
                         <div key={idx} className="relative flex items-start gap-3">
                           <div className={`absolute -left-8 w-8 h-8 rounded-full flex items-center justify-center border-2 border-white shadow-xs ${
-                            step.active ? "bg-[#462F1D] text-[#FAF6F1]" : "bg-[#ECE2D8] text-[#755944]"
+                            step.active ? "bg-[#462F1D] text-[#FAF6F1]" : "bg-[#ECE2D8] text-[#462F1D]/70"
                           }`}>
                             <Icon className="w-4 h-4" />
                           </div>

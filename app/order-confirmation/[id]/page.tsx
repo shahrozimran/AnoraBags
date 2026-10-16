@@ -129,7 +129,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
                   className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#462F1D] hover-editorial-line uppercase tracking-wider"
                 >
                   <span>Review Privilege Terms</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>

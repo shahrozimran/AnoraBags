@@ -95,7 +95,7 @@ export function ProductGrid({ products }: ProductGridProps) {
                 className={`pb-3 relative transition-colors duration-200 whitespace-nowrap font-medium ${
                   isActive
                     ? "text-[#462F1D] font-semibold"
-                    : "text-[#755944] hover:text-[#23170F]"
+                    : "text-[#462F1D]/75 hover:text-[#23170F]"
                 }`}
               >
                 <span>{cat.label}</span>
