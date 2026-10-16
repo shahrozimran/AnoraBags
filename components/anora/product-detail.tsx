@@ -108,14 +108,14 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
           {/* Left Column: Visual Media (Gallery or 3D Canvas) */}
           <div className="lg:col-span-7 space-y-4">
             {/* View Mode Toggle Pill */}
-            <div className="flex items-center justify-between">
-              <span className="text-xs uppercase tracking-[0.16em] text-[#462F1D] font-semibold font-sans">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="text-[11px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.16em] text-[#462F1D] font-semibold font-sans">
                 {viewMode === "gallery" ? "Editorial Lookbook" : "3D Spatial Studio"}
               </span>
-              <div className="inline-flex rounded-full bg-[#ECE2D8]/80 p-1 text-xs font-medium text-[#462F1D]">
+              <div className="inline-flex rounded-full bg-[#ECE2D8]/80 p-0.5 sm:p-1 text-xs font-medium text-[#462F1D]">
                 <button
                   onClick={() => setViewMode("gallery")}
-                  className={`px-3.5 py-1 rounded-full transition-all duration-200 text-xs font-medium ${
+                  className={`px-2.5 sm:px-3.5 py-1 rounded-full transition-all duration-200 text-[11px] sm:text-xs font-medium ${
                     viewMode === "gallery" ? "bg-white text-[#23170F] shadow-xs" : "hover:text-[#23170F]"
                   }`}
                 >
@@ -123,12 +123,12 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 </button>
                 <button
                   onClick={() => setViewMode("3d")}
-                  className={`px-3.5 py-1 rounded-full flex items-center gap-1.5 transition-all duration-200 text-xs font-medium ${
+                  className={`px-2.5 sm:px-3.5 py-1 rounded-full flex items-center gap-1 sm:gap-1.5 transition-all duration-200 text-[11px] sm:text-xs font-medium ${
                     viewMode === "3d" ? "bg-[#462F1D] text-white shadow-xs" : "hover:text-[#23170F]"
                   }`}
                 >
                   <span>Interactive 3D</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#ECE2D8] text-[#462F1D] font-sans font-semibold">
+                  <span className="text-[10px] sm:text-xs px-1.5 py-0.5 rounded-full bg-[#ECE2D8] text-[#462F1D] font-sans font-semibold">
                     360°
                   </span>
                 </button>
@@ -346,7 +346,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
         {/* Detailed Tabs (Desktop) & Specs Accordion (Mobile) */}
         <div className="border-t border-[#E5DCD2] pt-12 sm:pt-16">
           {/* Desktop Tabs Navigation */}
-          <div className="hidden md:flex items-center gap-6 sm:gap-10 border-b border-[#E5DCD2] pb-px mb-10 text-xs sm:text-sm font-sans tracking-[0.14em] uppercase">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8 border-b border-[#E5DCD2] pb-px mb-10 text-xs font-sans tracking-[0.14em] uppercase overflow-x-auto scrollbar-none">
             <button
               onClick={() => setActiveTab("specs")}
               className={`pb-3.5 transition-colors border-b-2 whitespace-nowrap ${

@@ -22,15 +22,15 @@ export function Header() {
   return (
     <>
       {/* Top Quiet Luxury Announcement Bar */}
-      <div className="bg-[#23170F] text-[#ECE2D8] text-xs sm:text-sm font-sans tracking-[0.12em] uppercase py-2.5 px-4 border-b border-[#3D291B]/60 select-none">
+      <div className="bg-[#23170F] text-[#ECE2D8] text-[10px] sm:text-xs font-sans tracking-[0.08em] sm:tracking-[0.12em] uppercase py-2 px-3 sm:px-4 border-b border-[#3D291B]/60 select-none overflow-hidden">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <span className="hidden md:inline-block opacity-85 font-normal">
             Maison Anora • Pure Full-Grain Calfskin
           </span>
-          <div className="flex-1 text-center font-normal truncate px-1">
-            <span>Complimentary Cash On Delivery</span>
-            <span className="mx-2 opacity-50">•</span>
-            <span className="text-[#ECE2D8] font-medium">7-Day Home Privilege</span>
+          <div className="flex-1 text-center font-normal truncate px-1 min-w-0">
+            <span className="truncate inline-block max-w-full">
+              Complimentary Cash On Delivery <span className="opacity-50 mx-1.5">•</span> 7-Day Privilege
+            </span>
           </div>
           <div className="hidden md:flex items-center gap-4 opacity-85 hover:opacity-100 transition font-normal">
             <Link href="/track-order" className="hover-editorial-line">
