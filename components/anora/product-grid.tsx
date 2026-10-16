@@ -52,7 +52,7 @@ export function ProductGrid({ products }: ProductGridProps) {
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <span className="h-px w-6 bg-[#462F1D]/40" />
-              <span className="text-[10px] sm:text-[11px] font-sans tracking-[0.28em] uppercase font-semibold text-[#755944]">
+              <span className="text-xs sm:text-sm font-sans tracking-[0.18em] uppercase font-semibold text-[#462F1D]">
                 Catalogue Permanent
               </span>
             </div>
@@ -61,20 +61,20 @@ export function ProductGrid({ products }: ProductGridProps) {
               The Handcrafted <span className="italic font-normal text-[#462F1D]">Silhouettes</span>
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#755944] font-light max-w-lg leading-relaxed">
+            <p className="text-base sm:text-lg text-[#3D291B] font-light max-w-lg leading-relaxed">
               Meticulously sculpted from full-grain calfskin leather, hand-burnished edge paint, and bespoke brass hardware. 100% Cash On Delivery with doorstep inspection.
             </p>
           </div>
 
           {/* Minimalist Sort Dropdown */}
-          <div className="flex items-center gap-2 self-start md:self-end">
-            <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-[#755944]">
+          <div className="flex items-center gap-2.5 self-start md:self-end">
+            <span className="text-xs tracking-[0.14em] uppercase font-sans text-[#462F1D] font-semibold">
               Sort:
             </span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-transparent border-b border-[#462F1D]/30 py-1 px-1 text-xs text-[#23170F] font-medium tracking-wide focus:outline-hidden focus:border-[#462F1D] cursor-pointer"
+              className="bg-transparent border-b border-[#462F1D]/40 py-1.5 px-2 text-sm text-[#23170F] font-medium tracking-wide focus:outline-hidden focus:border-[#462F1D] cursor-pointer"
             >
               <option value="featured">Featured Curations</option>
               <option value="price-asc">Price: Low to High</option>
@@ -85,14 +85,14 @@ export function ProductGrid({ products }: ProductGridProps) {
         </div>
 
         {/* Minimalist Typographic Category Navigation */}
-        <div className="flex items-center gap-8 overflow-x-auto pb-4 mb-12 scrollbar-none border-b border-[#E5DCD2]/50 text-xs font-sans tracking-[0.22em] uppercase">
+        <div className="flex items-center gap-8 overflow-x-auto pb-4 mb-12 scrollbar-none border-b border-[#E5DCD2] text-xs sm:text-sm font-sans tracking-[0.16em] uppercase">
           {CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat.id
             return (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`pb-3 relative transition-colors duration-200 whitespace-nowrap ${
+                className={`pb-3 relative transition-colors duration-200 whitespace-nowrap font-medium ${
                   isActive
                     ? "text-[#462F1D] font-semibold"
                     : "text-[#755944] hover:text-[#23170F]"

@@ -10,7 +10,7 @@ const Bag3DCanvas = dynamic(
     loading: () => (
       <div className="w-full h-full min-h-[480px] flex flex-col items-center justify-center bg-[#23170F] rounded-2xl border border-[#3D291B] gap-3">
         <div className="w-6 h-6 border-2 border-[#ECE2D8] border-t-transparent rounded-full animate-spin" />
-        <span className="text-[10px] text-[#ECE2D8] font-sans tracking-[0.25em] uppercase">
+        <span className="text-xs font-semibold text-[#ECE2D8] font-sans tracking-[0.16em] uppercase">
           Initializing 3D Atelier...
         </span>
       </div>
@@ -71,7 +71,7 @@ export function Studio3DSection() {
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-3">
             <span className="h-px w-6 bg-[#ECE2D8]/40" />
-            <span className="text-[10px] sm:text-[11px] font-sans tracking-[0.3em] uppercase font-semibold text-[#ECE2D8]/80">
+            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#ECE2D8]">
               Atelier 3D Spatial Study
             </span>
             <span className="h-px w-6 bg-[#ECE2D8]/40" />
@@ -82,7 +82,7 @@ export function Studio3DSection() {
             <span className="italic font-normal text-[#ECE2D8]">In 360° Motion</span>
           </h2>
 
-          <p className="text-xs sm:text-sm text-[#ECE2D8]/70 font-light leading-relaxed max-w-lg mx-auto">
+          <p className="text-base sm:text-lg text-[#ECE2D8]/85 font-light leading-relaxed max-w-lg mx-auto">
             Rotate the model, test leather swatches, and inspect the structural engineering that defines our luxury leather goods.
           </p>
         </div>
@@ -90,7 +90,7 @@ export function Studio3DSection() {
         {/* Studio Workspace Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left: 3D Interactive WebGL Bag Canvas */}
-          <div className="lg:col-span-7 h-[480px] sm:h-[560px] rounded-2xl overflow-hidden border border-[#3D291B] bg-[#1A110B] shadow-2xl relative">
+          <div className="lg:col-span-7 h-[420px] xs:h-[480px] sm:h-[580px] rounded-2xl overflow-hidden border border-[#3D291B] bg-[#1A110B] shadow-2xl relative">
             <Bag3DCanvas
               initialColor="#462F1D"
               interactive={true}
@@ -103,11 +103,11 @@ export function Studio3DSection() {
           {/* Right: Craftsmanship Breakdown & Architectural Hotspots */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center justify-between border-b border-[#3D291B] pb-3 text-xs">
-              <span className="font-sans tracking-[0.25em] uppercase text-[#ECE2D8]/70 text-[10px]">
+              <span className="font-sans tracking-[0.16em] uppercase text-[#ECE2D8] font-medium text-xs">
                 Artisanal Components
               </span>
-              <span className="font-serif italic text-white/50 text-[11px]">
-                Click item to inspect
+              <span className="font-serif italic text-[#ECE2D8]/70 text-xs">
+                Select item to inspect
               </span>
             </div>
 
@@ -118,29 +118,29 @@ export function Studio3DSection() {
                   <button
                     key={item.title}
                     onClick={() => setSelectedFeature(idx)}
-                    className={`w-full text-left p-4 rounded-xl transition-all duration-300 border ${
+                    className={`w-full text-left p-4 sm:p-5 rounded-xl transition-all duration-300 border ${
                       isActive
-                        ? "bg-[#2E1E14] border-[#ECE2D8]/50 shadow-lg translate-x-1"
+                        ? "bg-[#2E1E14] border-[#ECE2D8]/60 shadow-lg translate-x-1"
                         : "bg-[#1F140D]/60 border-[#3D291B]/80 hover:bg-[#2A1B12]/80 hover:border-[#462F1D]"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[10px] font-sans tracking-[0.2em] uppercase font-semibold text-[#ECE2D8]/90">
+                      <span className="text-xs font-sans tracking-[0.12em] uppercase font-semibold text-[#ECE2D8]">
                         {item.tag}
                       </span>
-                      <span className="font-serif text-xs text-[#ECE2D8]/50">
+                      <span className="font-serif text-sm text-[#ECE2D8]/70">
                         {item.numeral}
                       </span>
                     </div>
 
-                    <h4 className="font-serif text-base font-normal text-white mb-1">
+                    <h4 className="font-serif text-base sm:text-lg font-normal text-white mb-1.5">
                       {item.title}
                     </h4>
 
                     {isActive && (
-                      <div className="mt-3 space-y-2 text-xs text-[#ECE2D8]/80 font-light animate-in fade-in duration-300">
+                      <div className="mt-3 space-y-2 text-sm text-[#ECE2D8]/90 font-light animate-in fade-in duration-300">
                         <p className="leading-relaxed">{item.description}</p>
-                        <div className="pt-2 border-t border-white/10 text-[11px] font-mono text-[#ECE2D8]/90">
+                        <div className="pt-2 border-t border-white/10 text-xs font-mono text-[#ECE2D8]">
                           {item.specs}
                         </div>
                       </div>
@@ -151,11 +151,11 @@ export function Studio3DSection() {
             </div>
 
             {/* Bottom Quiet Assurance */}
-            <div className="pt-2 flex items-center justify-between text-[11px] font-sans tracking-[0.16em] uppercase text-[#ECE2D8]/70 border-t border-[#3D291B]">
+            <div className="pt-2 flex flex-wrap items-center justify-center sm:justify-between gap-2 text-xs sm:text-sm font-sans tracking-[0.12em] uppercase text-[#ECE2D8] font-medium border-t border-[#3D291B]">
               <span>Complimentary Courier</span>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <span>100% Cash On Delivery</span>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <span>7-Day Privilege</span>
             </div>
           </div>

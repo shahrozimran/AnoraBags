@@ -77,7 +77,7 @@ export default function TrackOrderPage() {
 
         {/* Search Bar */}
         <div className="max-w-xl mx-auto">
-          <form onSubmit={handleSearch} className="flex gap-2">
+          <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2">
             <div className="relative flex-1">
               <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-[#755944]" />
               <input
@@ -86,13 +86,13 @@ export default function TrackOrderPage() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Enter Order Number (e.g. ANR-2026-1001)"
                 required
-                className="w-full pl-11 pr-4 py-3.5 rounded-full border border-[#E5DCD2] text-[#23170F] text-xs focus:outline-hidden focus:border-[#462F1D] bg-white shadow-2xs font-mono"
+                className="w-full pl-11 pr-4 py-3 sm:py-3.5 rounded-full border border-[#E5DCD2] text-[#23170F] text-base sm:text-xs focus:outline-hidden focus:border-[#462F1D] bg-white shadow-2xs font-mono"
               />
             </div>
             <button
               type="submit"
               disabled={isLoading}
-              className="px-7 py-3.5 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs font-sans tracking-[0.2em] uppercase font-semibold transition shadow-sm disabled:opacity-50"
+              className="w-full sm:w-auto px-7 py-3 sm:py-3.5 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs font-sans tracking-[0.2em] uppercase font-semibold transition shadow-sm disabled:opacity-50 text-center"
             >
               {isLoading ? "Locating..." : "Track"}
             </button>
@@ -105,12 +105,12 @@ export default function TrackOrderPage() {
             {order ? (
               <div className="bg-white rounded-2xl border border-[#E5DCD2] shadow-sm overflow-hidden space-y-6">
                 {/* Header status bar */}
-                <div className="p-6 bg-[#23170F] text-[#ECE2D8] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="p-4 sm:p-6 bg-[#23170F] text-[#ECE2D8] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
                   <div>
                     <span className="text-[11px] font-mono text-[#ECE2D8]/80 block">
                       Order #{order.orderNumber}
                     </span>
-                    <h3 className="font-serif text-xl font-light mt-0.5 text-white">
+                    <h3 className="font-serif text-lg sm:text-xl font-light mt-0.5 text-white">
                       Status: <span className="text-[#ECE2D8] font-normal">{order.orderStatus}</span>
                     </h3>
                   </div>
@@ -122,12 +122,13 @@ export default function TrackOrderPage() {
                 </div>
 
                 {/* Tracking Progress Timeline */}
-                <div className="p-6 sm:p-8 border-b border-[#E5DCD2]">
-                  <h4 className="text-[10px] font-sans font-semibold uppercase tracking-[0.22em] text-[#755944] mb-6">
+                <div className="p-4 xs:p-6 sm:p-8 border-b border-[#E5DCD2]">
+                  <h4 className="text-[10px] font-sans font-semibold uppercase tracking-[0.22em] text-[#755944] mb-4 sm:mb-6">
                     Courier Journey
                   </h4>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center text-xs">
+                  {/* Desktop Horizontal Stepper */}
+                  <div className="hidden sm:grid sm:grid-cols-5 gap-3 text-center text-xs">
                     <div className="flex flex-col items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-[#462F1D] text-[#FAF6F1] flex items-center justify-center">
                         <CheckCircle2 className="w-4 h-4" />
@@ -172,7 +173,7 @@ export default function TrackOrderPage() {
                       <span className="text-[10px] text-[#755944]">Rider en route</span>
                     </div>
 
-                    <div className="flex flex-col items-center gap-2 col-span-2 sm:col-span-1">
+                    <div className="flex flex-col items-center gap-2">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                         order.orderStatus === "Delivered" ? "bg-[#462F1D] text-[#FAF6F1]" : "bg-[#ECE2D8]/50 text-[#755944]"
                       }`}>
@@ -181,6 +182,57 @@ export default function TrackOrderPage() {
                       <span className="font-serif font-normal text-[#23170F]">Delivered</span>
                       <span className="text-[10px] text-[#755944]">Doorstep COD</span>
                     </div>
+                  </div>
+
+                  {/* Mobile Vertical Stepper */}
+                  <div className="sm:hidden space-y-4 relative pl-7 before:absolute before:left-3.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-[#E5DCD2]">
+                    {[
+                      {
+                        title: "Confirmed",
+                        desc: "Order logged at atelier",
+                        icon: CheckCircle2,
+                        active: true
+                      },
+                      {
+                        title: "Atelier Prep",
+                        desc: "Quality inspected & packaged",
+                        icon: Package,
+                        active: ["Processing", "Dispatched", "Out for Delivery", "Delivered"].includes(order.orderStatus)
+                      },
+                      {
+                        title: "Dispatched",
+                        desc: "Courier transit hub departure",
+                        icon: Truck,
+                        active: ["Dispatched", "Out for Delivery", "Delivered"].includes(order.orderStatus)
+                      },
+                      {
+                        title: "Out for Delivery",
+                        desc: "Rider coordinating doorstep arrival",
+                        icon: Truck,
+                        active: ["Out for Delivery", "Delivered"].includes(order.orderStatus)
+                      },
+                      {
+                        title: "Delivered",
+                        desc: "Doorstep inspection & COD settlement",
+                        icon: CheckCircle2,
+                        active: order.orderStatus === "Delivered"
+                      }
+                    ].map((step, idx) => {
+                      const Icon = step.icon
+                      return (
+                        <div key={idx} className="relative flex items-start gap-3">
+                          <div className={`absolute -left-7 w-7 h-7 rounded-full flex items-center justify-center border-2 border-white shadow-xs ${
+                            step.active ? "bg-[#462F1D] text-[#FAF6F1]" : "bg-[#ECE2D8] text-[#755944]"
+                          }`}>
+                            <Icon className="w-3.5 h-3.5" />
+                          </div>
+                          <div className="pt-0.5">
+                            <p className="font-serif text-sm text-[#23170F] font-normal">{step.title}</p>
+                            <p className="text-[11px] text-[#755944] font-light">{step.desc}</p>
+                          </div>
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
 

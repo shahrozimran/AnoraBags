@@ -154,8 +154,8 @@ export default function RefundPolicyPage() {
         </div>
 
         {/* Step-by-Step Return Flow */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[#E5DCD2] shadow-xs space-y-8">
-          <h2 className="font-serif text-2xl font-light text-[#23170F] border-b border-[#E5DCD2] pb-4">
+        <div className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-white border border-[#E5DCD2] shadow-xs space-y-6 sm:space-y-8">
+          <h2 className="font-serif text-xl sm:text-2xl font-light text-[#23170F] border-b border-[#E5DCD2] pb-4">
             How to Return or Exchange in 3 Simple Steps
           </h2>
 
@@ -209,7 +209,7 @@ export default function RefundPolicyPage() {
         </div>
 
         {/* Eligibility Criteria */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-[#F5EFE8] border border-[#E5DCD2] space-y-4">
+        <div className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-[#F5EFE8] border border-[#E5DCD2] space-y-4">
           <h3 className="font-serif text-xl font-light text-[#23170F]">
             Eligibility & Quality Preservation
           </h3>

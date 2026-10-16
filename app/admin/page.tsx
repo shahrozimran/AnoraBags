@@ -419,8 +419,8 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen bg-[#FAF6F1] flex flex-col justify-between">
         <Header />
-        <main className="max-w-md mx-auto px-4 py-20 w-full">
-          <div className="bg-white p-8 sm:p-10 rounded-3xl border border-[#E5DCD2] shadow-xl text-center space-y-6">
+        <main className="max-w-md mx-auto px-4 py-12 sm:py-20 w-full">
+          <div className="bg-white p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-[#E5DCD2] shadow-xl text-center space-y-6">
             <div className="w-16 h-16 rounded-full bg-[#462F1D]/10 text-[#462F1D] flex items-center justify-center mx-auto border border-[#462F1D]/20">
               <ShieldCheck className="w-8 h-8" />
             </div>
@@ -485,27 +485,27 @@ export default function AdminPage() {
         )}
 
         {/* Admin Header with Tab Navigation */}
-        <div className="bg-white p-6 rounded-3xl border border-stone-200/80 shadow-xs space-y-4">
+        <div className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-stone-200/80 shadow-xs space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[11px] uppercase font-mono tracking-widest text-stone-500">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                <span className="text-[10px] sm:text-[11px] uppercase font-mono tracking-widest text-stone-500">
                   Maison Anora Command Center
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-[#462F1D]/10 text-[#462F1D] text-[10px] font-semibold">
                   {dbStatus?.engine || "Universal DB"}
                 </span>
               </div>
-              <h1 className="font-serif text-2xl sm:text-3xl font-light text-stone-900 mt-1">
+              <h1 className="font-serif text-xl sm:text-2xl md:text-3xl font-light text-stone-900 mt-1">
                 Store Operations & Logistics
               </h1>
             </div>
 
-            <div className="flex items-center gap-2.5">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
               <button
                 onClick={() => loadAllAdminData()}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-stone-50 border border-stone-200 text-stone-700 hover:bg-stone-100 text-xs font-medium transition"
+                className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-stone-50 border border-stone-200 text-stone-700 hover:bg-stone-100 text-xs font-medium transition"
                 title="Reload from DB"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin" : ""}`} />
@@ -514,7 +514,7 @@ export default function AdminPage() {
 
               <button
                 onClick={openNewProductModal}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#462F1D] text-white hover:bg-[#342214] text-xs font-semibold uppercase tracking-wider transition shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-[#462F1D] text-white hover:bg-[#342214] text-xs font-semibold uppercase tracking-wider transition shadow-xs"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Bag</span>
@@ -598,14 +598,14 @@ export default function AdminPage() {
         {activeTab === "dashboard" && (
           <div className="space-y-6">
             {/* Top Stat Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Total COD Volume</span>
                 <p className="font-serif text-2xl font-semibold text-stone-900">{orders.length} Orders</p>
                 <p className="text-[11px] text-stone-500 font-light">Nationwide doorsteps</p>
               </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
+              <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Total Booked Value</span>
                 <p className="font-serif text-2xl font-semibold text-[#462F1D]">
                   Rs. {analytics?.totalRevenue.toLocaleString() || 0}
@@ -613,7 +613,7 @@ export default function AdminPage() {
                 <p className="text-[11px] text-stone-500 font-light">Cash receivable volume</p>
               </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
+              <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Delivered Cash Collected</span>
                 <p className="font-serif text-2xl font-semibold text-emerald-700">
                   Rs. {analytics?.deliveredCashCollected.toLocaleString() || 0}
@@ -621,7 +621,7 @@ export default function AdminPage() {
                 <p className="text-[11px] text-emerald-600 font-light">{analytics?.deliveredOrders || 0} parcels completed</p>
               </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
+              <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Average Order Value (AOV)</span>
                 <p className="font-serif text-2xl font-semibold text-stone-900">
                   Rs. {analytics?.averageOrderValue.toLocaleString() || 0}
@@ -750,7 +750,7 @@ export default function AdminPage() {
 
             {/* Table */}
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs text-stone-700">
+              <table className="w-full min-w-[700px] text-left text-xs text-stone-700">
                 <thead className="bg-stone-50 text-[11px] uppercase tracking-wider text-stone-500 border-b border-stone-200 font-semibold">
                   <tr>
                     <th className="py-3 px-4">Order #</th>
@@ -1032,7 +1032,7 @@ export default function AdminPage() {
                 </div>
 
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs text-stone-700">
+                  <table className="w-full min-w-[480px] text-left text-xs text-stone-700">
                     <thead className="bg-stone-50 text-[10px] uppercase tracking-wider text-stone-500 border-b border-stone-200 font-semibold">
                       <tr>
                         <th className="py-2.5 px-3">Client</th>
@@ -1077,7 +1077,7 @@ export default function AdminPage() {
                 </div>
 
                 <div className="overflow-x-auto max-h-96">
-                  <table className="w-full text-left text-xs text-stone-700">
+                  <table className="w-full min-w-[340px] text-left text-xs text-stone-700">
                     <thead className="bg-stone-50 text-[10px] uppercase tracking-wider text-stone-500 border-b border-stone-200 font-semibold sticky top-0">
                       <tr>
                         <th className="py-2.5 px-3">Email</th>
@@ -1469,12 +1469,12 @@ export default function AdminPage() {
 
         {/* MODAL 2: ORDER DETAILS / PACKING SLIP */}
         {selectedOrder && (
-          <div className="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="anora-printable-slip bg-white rounded-3xl border border-stone-200 max-w-xl w-full p-6 sm:p-8 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+            <div className="anora-printable-slip bg-white rounded-2xl sm:rounded-3xl border border-stone-200 max-w-xl w-full p-4 sm:p-8 space-y-4 sm:space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between border-b border-stone-100 pb-4">
                 <div>
                   <span className="text-[10px] uppercase font-mono tracking-widest text-[#462F1D]">COD Packing Slip</span>
-                  <h3 className="font-serif text-2xl font-normal text-stone-900">
+                  <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
                     Order #{selectedOrder.orderNumber}
                   </h3>
                 </div>
@@ -1487,7 +1487,7 @@ export default function AdminPage() {
               </div>
 
               {/* Courier Delivery Details */}
-              <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200/80 space-y-2 text-xs">
+              <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-stone-50 border border-stone-200/80 space-y-2 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-stone-900 flex items-center gap-1.5">
                     <MapPin className="w-3.5 h-3.5 text-[#462F1D]" />
@@ -1499,13 +1499,13 @@ export default function AdminPage() {
                 <p className="text-stone-600">{selectedOrder.address}</p>
                 {selectedOrder.apartment && <p className="text-stone-600">{selectedOrder.apartment}</p>}
                 <p className="text-stone-700 font-semibold">{selectedOrder.city} {selectedOrder.postalCode}</p>
-                <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
-                  <p className="text-stone-600">Phone: <strong>{selectedOrder.phone}</strong> | Email: {selectedOrder.email}</p>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1">
+                  <p className="text-stone-600 break-words">Phone: <strong>{selectedOrder.phone}</strong> | Email: {selectedOrder.email}</p>
                   <a
                     href={`https://wa.me/${formatPakistaniWhatsAppNumber(selectedOrder.phone)}?text=Hi%20${encodeURIComponent(selectedOrder.customerName)},%20this%20is%20Anora%20Bags%20regarding%20order%20${selectedOrder.orderNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 font-medium text-[11px] transition no-print"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 font-medium text-[11px] transition no-print self-start sm:self-auto"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>WhatsApp Concierge</span>

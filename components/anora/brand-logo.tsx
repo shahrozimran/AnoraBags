@@ -19,9 +19,9 @@ export function BrandLogo({
 
   // Dimensions matching the exact aspect ratio of the Anora Bags logo mark (1.29:1)
   const sizeConfig = {
-    sm: { width: 44, height: 34, className: "h-8 sm:h-9 w-auto" },
-    md: { width: 62, height: 48, className: "h-11 sm:h-13 w-auto" },
-    lg: { width: 88, height: 68, className: "h-16 sm:h-18 w-auto" }
+    sm: { width: 44, height: 34, className: "h-7 sm:h-9 w-auto" },
+    md: { width: 62, height: 48, className: "h-9 sm:h-11 md:h-13 w-auto" },
+    lg: { width: 88, height: 68, className: "h-13 sm:h-16 md:h-18 w-auto" }
   }
 
   const currentSize = sizeConfig[size] || sizeConfig.md

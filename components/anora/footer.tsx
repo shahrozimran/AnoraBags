@@ -148,13 +148,13 @@ export function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="pt-8 border-t border-[#3D291B] text-[10px] font-sans tracking-[0.16em] uppercase text-[#ECE2D8]/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-[#3D291B] text-[10px] font-sans tracking-[0.12em] sm:tracking-[0.16em] uppercase text-[#ECE2D8]/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p>© {new Date().getFullYear()} Maison Anora Bags. All rights reserved.</p>
-          <div className="flex items-center gap-4 text-[#ECE2D8]/60">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1.5 text-[#ECE2D8]/60">
             <Link href="/refund-policy" className="hover:text-white transition">7-Day Privilege</Link>
-            <span>•</span>
+            <span className="opacity-40">•</span>
             <span>Cash On Delivery Nationwide</span>
-            <span>•</span>
+            <span className="opacity-40">•</span>
             <Link href="/contact" className="hover:text-white transition">Concierge</Link>
           </div>
         </div>
