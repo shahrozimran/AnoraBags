@@ -24,15 +24,15 @@ export function BrandStory() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#23170F]/75 via-transparent to-transparent pointer-events-none" />
 
-                  <div className="absolute top-5 left-5 text-xs font-medium tracking-[0.16em] uppercase text-white/95 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
-                    Pl. 01 / Lookbook Campagne
+                  <div className="absolute top-5 left-5 text-xs font-medium text-white/95 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
+                    Pl. 01 · Campaign Lookbook
                   </div>
 
                   <div className="absolute bottom-6 left-6 right-6 text-[#FAF6F1] space-y-1.5">
                     <p className="font-serif italic text-xl sm:text-2xl text-[#ECE2D8]">
                       "Quiet luxury is felt in the weight of the brass and the softness of the grain."
                     </p>
-                    <p className="text-xs font-sans tracking-[0.16em] uppercase text-white/80 font-medium">
+                    <p className="text-xs font-sans text-white/80 font-medium">
                       Maison Anora Atelier
                     </p>
                   </div>
@@ -41,7 +41,7 @@ export function BrandStory() {
 
               {/* Minimalist Caption Card */}
               <div className="absolute -bottom-6 -right-4 sm:-right-6 p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] shadow-xl max-w-xs hidden sm:block">
-                <span className="text-xs font-sans tracking-[0.14em] uppercase font-semibold text-[#462F1D] block mb-1.5">
+                <span className="text-xs font-sans font-medium text-[#462F1D] block mb-1.5">
                   Atelier Philosophy
                 </span>
                 <p className="text-sm text-[#3D291B] font-normal leading-relaxed">
@@ -56,8 +56,8 @@ export function BrandStory() {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <span className="h-px w-6 bg-[#462F1D]/40" />
-                <span className="text-xs sm:text-sm font-sans tracking-[0.18em] uppercase font-semibold text-[#462F1D]">
-                  Le Manifeste
+                <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+                  Craft & Philosophy
                 </span>
               </div>
 
@@ -77,7 +77,7 @@ export function BrandStory() {
                   <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     01
                   </span>
-                  <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
+                  <h4 className="text-sm sm:text-base font-semibold text-[#23170F]">
                     Full-Grain Drum-Dyed Calfskin
                   </h4>
                 </div>
@@ -91,7 +91,7 @@ export function BrandStory() {
                   <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     02
                   </span>
-                  <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
+                  <h4 className="text-sm sm:text-base font-semibold text-[#23170F]">
                     Custom 18k Brushed Gold Hardware
                   </h4>
                 </div>
@@ -105,7 +105,7 @@ export function BrandStory() {
                   <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     03
                   </span>
-                  <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
+                  <h4 className="text-sm sm:text-base font-semibold text-[#23170F]">
                     7-Day Unconditional Home Privilege
                   </h4>
                 </div>
@@ -118,9 +118,9 @@ export function BrandStory() {
             <div className="pt-2">
               <Link
                 href="/refund-policy"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-semibold text-[#462F1D] hover-editorial-line"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans font-medium text-[#462F1D] hover-editorial-line"
               >
-                <span>Read The 7-Day Guarantee</span>
+                <span>Read the 7-day guarantee</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -133,8 +133,8 @@ export function BrandStory() {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <span className="h-px w-6 bg-[#462F1D]/40" />
-                <span className="text-xs sm:text-sm font-sans tracking-[0.18em] uppercase font-semibold text-[#462F1D]">
-                  Architecture Intérieure
+                <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+                  Interior Architecture & Fit
                 </span>
               </div>
 
@@ -154,7 +154,7 @@ export function BrandStory() {
                   <div className="h-9 sm:h-11 flex items-baseline">
                     <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#462F1D]">3 Tiers</span>
                   </div>
-                  <h4 className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5 sm:mt-2 min-h-[2.5rem] flex items-center">
+                  <h4 className="text-xs sm:text-sm font-medium text-[#23170F] mt-1.5 sm:mt-2 min-h-[2.5rem] flex items-center">
                     Accordion Dividers
                   </h4>
                 </div>
@@ -168,7 +168,7 @@ export function BrandStory() {
                   <div className="h-9 sm:h-11 flex items-baseline">
                     <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#462F1D]">6.9&quot;</span>
                   </div>
-                  <h4 className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5 sm:mt-2 min-h-[2.5rem] flex items-center">
+                  <h4 className="text-xs sm:text-sm font-medium text-[#23170F] mt-1.5 sm:mt-2 min-h-[2.5rem] flex items-center">
                     Max Smartphone Fit
                   </h4>
                 </div>
@@ -188,8 +188,8 @@ export function BrandStory() {
                   fill
                   className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                 />
-                <div className="absolute bottom-4 left-4 text-xs font-medium tracking-[0.16em] uppercase text-white/95 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
-                  Fig. 02 / Bellows & Gusset Cavity
+                <div className="absolute bottom-4 left-4 text-xs font-medium text-white/95 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
+                  Fig. 02 · Accordion Gusset Cavity
                 </div>
               </div>
             </div>

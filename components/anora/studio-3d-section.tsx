@@ -72,8 +72,8 @@ export function Studio3DSection() {
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-3">
             <span className="h-px w-6 bg-[#ECE2D8]/40" />
-            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#ECE2D8]">
-              Atelier 3D Spatial Study
+            <span className="text-xs sm:text-sm font-sans font-medium text-[#ECE2D8]">
+              3D Interactive Atelier
             </span>
             <span className="h-px w-6 bg-[#ECE2D8]/40" />
           </div>
@@ -104,10 +104,10 @@ export function Studio3DSection() {
           {/* Right: Craftsmanship Breakdown & Architectural Hotspots */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center justify-between border-b border-[#3D291B] pb-3">
-              <span className="font-sans tracking-[0.16em] uppercase text-white font-semibold text-xs sm:text-sm">
+              <span className="font-sans text-white font-medium text-xs sm:text-sm">
                 Artisanal Components
               </span>
-              <span className="text-xs text-[#ECE2D8]/75 font-sans tracking-wide">
+              <span className="text-xs text-[#ECE2D8]/75 font-sans">
                 Tap component to inspect
               </span>
             </div>
@@ -130,7 +130,7 @@ export function Studio3DSection() {
                         <span className="text-[11px] font-sans font-semibold tracking-wider text-[#C5A880] bg-[#3D291B] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                           {item.numeral}
                         </span>
-                        <span className="text-xs font-sans tracking-[0.12em] uppercase font-semibold text-[#ECE2D8]">
+                        <span className="text-xs font-sans font-medium text-[#ECE2D8]">
                           {item.tag}
                         </span>
                       </div>
@@ -148,7 +148,7 @@ export function Studio3DSection() {
                     {isActive && (
                       <div className="mt-3 space-y-2 text-sm text-[#ECE2D8]/90 font-light animate-in fade-in duration-300">
                         <p className="leading-relaxed">{item.description}</p>
-                        <div className="pt-2 border-t border-white/10 text-xs font-sans text-[#ECE2D8]/80 font-normal tracking-wide">
+                        <div className="pt-2 border-t border-white/10 text-xs font-sans text-[#ECE2D8]/80 font-normal">
                           {item.specs}
                         </div>
                       </div>
@@ -159,11 +159,11 @@ export function Studio3DSection() {
             </div>
 
             {/* Bottom Quiet Assurance */}
-            <div className="pt-3 flex flex-wrap items-center justify-center sm:justify-between gap-x-4 gap-y-2 text-xs sm:text-sm font-sans tracking-[0.12em] uppercase text-[#ECE2D8]/85 font-medium border-t border-[#3D291B]">
-              <span className="whitespace-nowrap">Complimentary Courier</span>
-              <span className="hidden sm:inline text-[#ECE2D8]/40">•</span>
+            <div className="pt-3 flex flex-wrap items-center justify-center sm:justify-between gap-x-4 gap-y-2 text-xs sm:text-sm font-sans text-[#ECE2D8]/85 font-normal border-t border-[#3D291B]">
+              <span className="whitespace-nowrap">Complimentary Delivery</span>
+              <span className="hidden sm:inline text-[#ECE2D8]/40">·</span>
               <span className="whitespace-nowrap">100% Cash On Delivery</span>
-              <span className="hidden sm:inline text-[#ECE2D8]/40">•</span>
+              <span className="hidden sm:inline text-[#ECE2D8]/40">·</span>
               <span className="whitespace-nowrap">7-Day Privilege</span>
             </div>
           </div>

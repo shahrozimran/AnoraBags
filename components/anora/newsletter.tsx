@@ -42,8 +42,8 @@ export function Newsletter() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
         <div className="inline-flex items-center gap-3">
           <span className="h-px w-6 bg-[#ECE2D8]/40" />
-          <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#ECE2D8]">
-            Registre De La Maison
+          <span className="text-xs sm:text-sm font-sans font-medium text-[#ECE2D8]">
+            Private Invitations
           </span>
           <span className="h-px w-6 bg-[#ECE2D8]/40" />
         </div>
@@ -75,9 +75,9 @@ export function Newsletter() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="px-8 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] font-sans font-semibold text-xs sm:text-sm tracking-[0.14em] uppercase transition-all duration-300 shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
+              className="px-8 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] font-sans font-medium text-sm transition-all duration-300 shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
             >
-              <span>{status === "loading" ? "Registering..." : "Register"}</span>
+              <span>{status === "loading" ? "Subscribing..." : "Subscribe"}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
@@ -87,8 +87,8 @@ export function Newsletter() {
           <p className="text-sm text-rose-300 font-medium">{message}</p>
         )}
 
-        <p className="text-xs tracking-[0.14em] uppercase font-sans text-[#ECE2D8]/70">
-          Strict confidentiality • Zero promotional noise
+        <p className="text-xs font-sans text-[#ECE2D8]/70 font-normal">
+          Strict confidentiality · Zero promotional spam
         </p>
       </div>
     </section>

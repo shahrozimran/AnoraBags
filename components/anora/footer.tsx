@@ -15,7 +15,7 @@ export function Footer() {
               <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 01
               </span>
-              <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">
+              <h4 className="text-sm sm:text-base font-medium text-white">
                 7-Day Home Privilege
               </h4>
             </div>
@@ -29,7 +29,7 @@ export function Footer() {
               <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 02
               </span>
-              <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">
+              <h4 className="text-sm sm:text-base font-medium text-white">
                 100% Cash On Delivery
               </h4>
             </div>
@@ -43,7 +43,7 @@ export function Footer() {
               <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 03
               </span>
-              <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">
+              <h4 className="text-sm sm:text-base font-medium text-white">
                 Archival Presentation
               </h4>
             </div>
@@ -73,7 +73,7 @@ export function Footer() {
 
           {/* Collections */}
           <div className="space-y-4">
-            <h5 className="text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-white">
+            <h5 className="text-sm font-medium text-white">
               Collections
             </h5>
             <ul className="space-y-3 text-sm text-[#ECE2D8]/80 font-light">
@@ -107,8 +107,8 @@ export function Footer() {
 
           {/* Client Privileges */}
           <div className="space-y-4">
-            <h5 className="text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-white">
-              Privileges
+            <h5 className="text-sm font-medium text-white">
+              Client Services
             </h5>
             <ul className="space-y-3 text-sm text-[#ECE2D8]/80 font-light">
               <li>
@@ -141,7 +141,7 @@ export function Footer() {
 
           {/* Terms & Guarantees */}
           <div className="space-y-4">
-            <h5 className="text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-white">
+            <h5 className="text-sm font-medium text-white">
               Assurance
             </h5>
             <ul className="space-y-3 text-sm text-[#ECE2D8]/80 font-light">
@@ -154,15 +154,15 @@ export function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="pt-8 border-t border-[#3D291B] text-xs font-sans tracking-[0.14em] uppercase text-[#ECE2D8]/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="pt-8 border-t border-[#3D291B] text-xs font-sans text-[#ECE2D8]/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p>© {new Date().getFullYear()} Maison Anora Bags. All rights reserved.</p>
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2 text-[#ECE2D8]/85 text-xs font-medium">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2 text-[#ECE2D8]/85 text-xs font-normal">
             <Link href="/refund-policy" className="hover:text-white transition whitespace-nowrap">
               7-Day Privilege
             </Link>
-            <span className="hidden sm:inline opacity-40">•</span>
+            <span className="hidden sm:inline opacity-40">·</span>
             <span className="whitespace-nowrap">Cash On Delivery Nationwide</span>
-            <span className="hidden sm:inline opacity-40">•</span>
+            <span className="hidden sm:inline opacity-40">·</span>
             <Link href="/contact" className="hover:text-white transition whitespace-nowrap">
               Concierge
             </Link>

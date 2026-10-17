@@ -14,8 +14,8 @@ export function Testimonials() {
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-3">
             <span className="h-px w-6 bg-[#462F1D]/40" />
-            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#462F1D]">
-              Témoignages Vérifiés
+            <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+              Client Reviews
             </span>
             <span className="h-px w-6 bg-[#462F1D]/40" />
           </div>
@@ -33,8 +33,8 @@ export function Testimonials() {
         {featured && (
           <div className="mb-14 p-8 sm:p-12 rounded-2xl bg-white border border-[#E5DCD2] shadow-sm relative overflow-hidden">
             <div className="max-w-3xl space-y-5">
-              <span className="text-xs sm:text-sm font-sans tracking-[0.16em] uppercase text-[#462F1D] font-semibold">
-                Featured Experience • {featured.location}
+              <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+                Featured Review · {featured.location}
               </span>
 
               <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#23170F] leading-[1.3] italic">
@@ -44,9 +44,9 @@ export function Testimonials() {
               <div className="pt-4 flex items-center justify-between text-sm border-t border-[#E5DCD2]/60">
                 <div className="space-y-0.5">
                   <p className="text-base font-medium text-[#23170F]">{featured.author}</p>
-                  <p className="text-xs sm:text-sm text-[#462F1D] font-normal">{featured.location} • Verified Cash On Delivery</p>
+                  <p className="text-xs sm:text-sm text-[#462F1D] font-normal">{featured.location} · Verified Cash On Delivery</p>
                 </div>
-                <div className="text-xs sm:text-sm tracking-widest font-sans uppercase text-[#462F1D] font-semibold">
+                <div className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
                   5.0 ★ Rating
                 </div>
               </div>
@@ -62,7 +62,7 @@ export function Testimonials() {
               className="bg-white/80 backdrop-blur-xs p-6 sm:p-7 rounded-xl border border-[#E5DCD2] shadow-2xs flex flex-col justify-between space-y-4 hover-luxury-lift hover:border-[#462F1D]/30 transition-all duration-300"
             >
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs tracking-wider font-sans uppercase text-[#462F1D]">
+                <div className="flex items-center justify-between text-xs font-sans text-[#462F1D]">
                   <span className="font-medium">{rev.location}</span>
                   <span className="text-[#462F1D] font-semibold">5.0 ★</span>
                 </div>
@@ -78,7 +78,7 @@ export function Testimonials() {
 
               <div className="pt-4 border-t border-[#E5DCD2]/60 flex items-center justify-between text-xs sm:text-sm">
                 <p className="font-medium text-[#23170F]">{rev.author}</p>
-                <span className="text-xs font-sans tracking-wider uppercase font-semibold text-[#462F1D] bg-[#ECE2D8]/60 px-2.5 py-1 rounded-full">
+                <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/60 px-2.5 py-1 rounded-full">
                   Verified COD
                 </span>
               </div>
