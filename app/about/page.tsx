@@ -69,8 +69,8 @@ export default function AboutPage() {
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-2">
             <span className="h-px w-6 bg-[#462F1D]/40" />
-            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#462F1D]">
-              The House of Anora • Atelier Édition
+            <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+              The House of Anora • Story & Craft
             </span>
             <span className="h-px w-6 bg-[#462F1D]/40" />
           </div>
@@ -96,8 +96,8 @@ export default function AboutPage() {
             <span className="font-serif italic text-lg sm:text-xl lg:text-2xl text-[#ECE2D8]">
               "Architectural form meets tactile softness."
             </span>
-            <span className="text-xs text-white/80 font-sans tracking-[0.16em] uppercase font-medium">
-              Maison Anora Atelier
+            <span className="text-xs text-white/90 font-sans font-medium">
+              Anora Design Studio
             </span>
           </div>
         </div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2.5">
                 <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">01</span>
-                <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Leather</span>
+                <span className="text-xs font-sans text-[#462F1D] font-semibold">Leather</span>
               </div>
               <h4 className="font-serif text-lg font-normal text-[#23170F]">
                 Full-Grain Drum-Dyed Calfskin
@@ -130,7 +130,7 @@ export default function AboutPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2.5">
                 <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">02</span>
-                <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Privilege</span>
+                <span className="text-xs font-sans text-[#462F1D] font-semibold">Doorstep Guarantee</span>
               </div>
               <h4 className="font-serif text-lg font-normal text-[#23170F]">
                 7-Day Unconditional Privilege
@@ -145,10 +145,10 @@ export default function AboutPage() {
         {/* CTA */}
         <div className="text-center pt-2">
           <Link
-            href="/#collection"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-medium transition-all duration-300 shadow-sm hover:shadow-md"
+            href="/shop"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-sm font-sans font-medium transition-all duration-300 shadow-sm hover:shadow-md"
           >
-            <span>Explore The Permanent Collection</span>
+            <span>Explore The Collection</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

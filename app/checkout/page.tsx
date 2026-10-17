@@ -88,8 +88,8 @@ export default function CheckoutPage() {
         <div className="mb-12 text-center sm:text-left space-y-2">
           <div className="flex items-center gap-3">
             <span className="h-px w-6 bg-[#462F1D]/40" />
-            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#462F1D]">
-              Service De Conciergerie
+            <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+              Doorstep Checkout
             </span>
           </div>
 
@@ -115,8 +115,8 @@ export default function CheckoutPage() {
             </div>
             <div className="pt-2">
               <Link
-                href="/#collection"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#462F1D] text-[#FAF6F1] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-medium hover:bg-[#23170F] transition"
+                href="/shop"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#462F1D] text-[#FAF6F1] text-sm font-sans font-medium hover:bg-[#23170F] transition"
               >
                 <span>Browse The Collection</span>
                 <ArrowRight className="w-4 h-4" />
@@ -132,14 +132,14 @@ export default function CheckoutPage() {
                   <ShoppingBag className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-medium">Atelier Selection</span>
+                  <span className="text-xs font-sans text-[#462F1D] font-medium">Selected Handbag</span>
                   <p className="font-serif text-base font-normal text-[#23170F]">
                     {items.length} silhouette{items.length > 1 ? "s" : ""} • Rs. {total.toLocaleString()}
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8]/80 px-3 py-1 rounded-full uppercase tracking-wider">
-                Complimentary COD
+              <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/80 px-3 py-1 rounded-full">
+                Free Delivery (COD)
               </span>
             </div>
 
@@ -154,7 +154,7 @@ export default function CheckoutPage() {
                       Client Particulars
                     </h2>
                   </div>
-                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold self-start xs:self-auto">
+                  <span className="text-xs font-sans text-[#462F1D] font-medium self-start xs:self-auto">
                     * Required for Dispatch
                   </span>
                 </div>
@@ -217,7 +217,7 @@ export default function CheckoutPage() {
                       Doorstep Shipping Address
                     </h2>
                   </div>
-                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold bg-[#ECE2D8]/80 px-3 py-1 rounded-full whitespace-nowrap self-start xs:self-auto">
+                  <span className="text-xs font-sans text-[#462F1D] font-medium bg-[#ECE2D8]/80 px-3 py-1 rounded-full whitespace-nowrap self-start xs:self-auto">
                     Express Nationwide
                   </span>
                 </div>
@@ -272,7 +272,7 @@ export default function CheckoutPage() {
 
                   {/* City Quick-Select */}
                   <div className="pt-2">
-                    <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-medium block mb-2">
+                    <span className="text-xs font-sans text-[#462F1D] font-medium block mb-2">
                       Quick Select City:
                     </span>
                     <div className="flex flex-wrap gap-2">
@@ -319,7 +319,7 @@ export default function CheckoutPage() {
                       Payment Privilege
                     </h2>
                   </div>
-                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold whitespace-nowrap self-start sm:self-auto">
+                  <span className="text-xs font-sans text-[#462F1D] font-medium whitespace-nowrap self-start sm:self-auto">
                     100% Cash on Delivery
                   </span>
                 </div>
@@ -334,7 +334,7 @@ export default function CheckoutPage() {
                         Pay exact cash to courier upon doorstep parcel inspection.
                       </p>
                     </div>
-                    <span className="self-start xs:self-auto shrink-0 whitespace-nowrap text-xs font-sans uppercase tracking-wider text-[#462F1D] bg-[#ECE2D8] px-3.5 py-1.5 rounded-full font-semibold">
+                    <span className="self-start xs:self-auto shrink-0 whitespace-nowrap text-xs font-sans text-[#462F1D] bg-[#ECE2D8] px-3.5 py-1.5 rounded-full font-medium">
                       Zero Advance Fee
                     </span>
                   </div>
@@ -361,8 +361,8 @@ export default function CheckoutPage() {
             <div className="lg:col-span-5 space-y-6">
               <div className="bg-white p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-sm space-y-6 sticky top-24">
                 <div className="flex items-center justify-between border-b border-[#E5DCD2] pb-4">
-                  <h3 className="font-serif text-xl font-normal text-[#23170F]">Atelier Receipt</h3>
-                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold">
+                  <h3 className="font-serif text-xl font-normal text-[#23170F]">Order Summary</h3>
+                  <span className="text-xs font-sans text-[#462F1D] font-medium">
                     {items.length} item(s)
                   </span>
                 </div>
@@ -394,8 +394,8 @@ export default function CheckoutPage() {
                   </div>
                   <div className="flex justify-between text-[#462F1D]">
                     <span>Nationwide Express Courier</span>
-                    <span className="text-[#462F1D] font-medium tracking-wide uppercase text-xs sm:text-sm">
-                      Complimentary
+                    <span className="text-[#462F1D] font-medium text-xs sm:text-sm">
+                      Free Delivery
                     </span>
                   </div>
                   <div className="flex justify-between text-[#462F1D]">
@@ -403,11 +403,11 @@ export default function CheckoutPage() {
                     <span className="text-[#23170F] font-medium">Cash On Delivery</span>
                   </div>
                   <div className="flex justify-between items-baseline text-[#23170F] font-normal pt-4 border-t border-[#E5DCD2]">
-                    <span className="font-sans text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#23170F]">
+                    <span className="font-sans text-sm font-semibold text-[#23170F]">
                       Total Due at Doorstep
                     </span>
                     <div className="flex items-baseline gap-1.5">
-                      <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#462F1D]">Rs.</span>
+                      <span className="text-sm font-sans font-medium text-[#462F1D]">Rs.</span>
                       <span className="font-sans text-xl sm:text-2xl font-bold tabular-nums text-[#23170F]">
                         {total.toLocaleString()}
                       </span>
@@ -425,12 +425,12 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-6 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-xs sm:text-sm tracking-[0.14em] uppercase transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2 group disabled:opacity-50"
+                  className="w-full py-4 px-6 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2 group disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
-                      <span>Generating Concierge Order...</span>
+                      <span>Placing Order...</span>
                     </div>
                   ) : (
                     <>

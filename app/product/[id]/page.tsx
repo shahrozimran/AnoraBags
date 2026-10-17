@@ -216,11 +216,11 @@ export default async function ProductPage({ params }: Props) {
         <section className="py-16 bg-[#FAF6F1] border-t border-[#E5DCD2]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-8 text-center space-y-1.5">
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-[#462F1D]">
-                Complete Your Style
+              <span className="text-xs sm:text-sm font-medium text-[#462F1D]">
+                Curated Selection
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#23170F]">
-                You May Also Admire
+                You May Also Like
               </h3>
             </div>
 

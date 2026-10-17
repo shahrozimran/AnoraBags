@@ -66,8 +66,8 @@ export default function ContactPage() {
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2">
             <span className="h-px w-6 bg-[#462F1D]/40" />
-            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#462F1D]">
-              Maison Concierge
+            <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+              Client Concierge
             </span>
             <span className="h-px w-6 bg-[#462F1D]/40" />
           </div>
@@ -102,7 +102,7 @@ export default function ContactPage() {
                     <p className="text-xs sm:text-sm text-[#462F1D] font-normal">Immediate response 9 AM - 10 PM PKT</p>
                   </div>
                 </div>
-                <span className="font-sans font-semibold text-xs sm:text-sm tracking-wider uppercase text-[#462F1D] group-hover:translate-x-1 transition-transform">
+                <span className="font-sans font-medium text-xs sm:text-sm text-[#462F1D] group-hover:translate-x-1 transition-transform">
                   Chat →
                 </span>
               </a>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-serif font-normal text-base text-[#23170F]">Email Atelier</h4>
+                  <h4 className="font-serif font-normal text-base text-[#23170F]">Email Concierge</h4>
                   <p className="text-xs sm:text-sm text-[#462F1D] font-normal">concierge@anorabags.com</p>
                 </div>
               </div>
@@ -132,7 +132,7 @@ export default function ContactPage() {
           {/* Quick links & FAQ */}
           <div className="bg-white p-8 sm:p-10 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-6">
             <h2 className="font-serif text-xl sm:text-2xl font-light text-[#23170F] border-b border-[#E5DCD2] pb-3">
-              Self-Service Privileges
+              Help & Services
             </h2>
 
             <div className="space-y-4">

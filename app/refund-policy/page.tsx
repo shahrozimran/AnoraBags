@@ -111,9 +111,9 @@ export default function RefundPolicyPage() {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 w-full space-y-12">
         {/* Page Hero */}
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#ECE2D8] text-[#462F1D] text-xs sm:text-sm font-sans font-semibold tracking-[0.16em] uppercase">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#ECE2D8] text-[#462F1D] text-xs sm:text-sm font-sans font-medium">
             <ShieldCheck className="w-4 h-4" />
-            <span>The Maison Privilege</span>
+            <span>Our Guarantee</span>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-[#23170F]">
@@ -131,7 +131,7 @@ export default function RefundPolicyPage() {
           <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs space-y-3">
             <div className="flex items-center gap-2.5">
               <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">01</span>
-              <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Window</span>
+              <span className="text-xs font-sans text-[#462F1D] font-semibold">Window</span>
             </div>
             <h3 className="font-serif text-lg font-normal text-[#23170F]">7 Full Days</h3>
             <p className="text-sm text-[#462F1D] font-light leading-relaxed">
@@ -142,7 +142,7 @@ export default function RefundPolicyPage() {
           <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs space-y-3">
             <div className="flex items-center gap-2.5">
               <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">02</span>
-              <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Doorstep</span>
+              <span className="text-xs font-sans text-[#462F1D] font-semibold">Doorstep</span>
             </div>
             <h3 className="font-serif text-lg font-normal text-[#23170F]">At-Home Collection</h3>
             <p className="text-sm text-[#462F1D] font-light leading-relaxed">
@@ -153,7 +153,7 @@ export default function RefundPolicyPage() {
           <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs space-y-3">
             <div className="flex items-center gap-2.5">
               <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">03</span>
-              <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Settlement</span>
+              <span className="text-xs font-sans text-[#462F1D] font-semibold">Settlement</span>
             </div>
             <h3 className="font-serif text-lg font-normal text-[#23170F]">100% Cash / Bank Refund</h3>
             <p className="text-sm text-[#462F1D] font-light leading-relaxed">
@@ -283,7 +283,7 @@ export default function RefundPolicyPage() {
             href="https://wa.me/923001234567?text=Hi%20Anora%20Bags,%20I%20have%20a%20question%20regarding%20returns"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-semibold transition shrink-0 shadow-sm"
+            className="px-8 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-sm font-sans font-medium transition shrink-0 shadow-sm"
           >
             Chat with Concierge
           </a>

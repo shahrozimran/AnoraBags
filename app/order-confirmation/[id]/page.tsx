@@ -56,7 +56,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
               <CheckCircle2 className="w-8 h-8" />
             </div>
 
-            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase text-[#ECE2D8] font-semibold block mb-1.5">
+            <span className="text-xs sm:text-sm font-sans text-[#ECE2D8] font-medium block mb-1.5">
               Order Confirmed • Cash On Delivery
             </span>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-white">
@@ -79,7 +79,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
                 <Banknote className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-xs font-sans font-semibold uppercase tracking-[0.16em] text-[#462F1D]">
+                <h4 className="text-xs font-sans font-medium text-[#462F1D]">
                   Cash Payable at Doorstep:
                 </h4>
                 <p className="text-2xl sm:text-3xl font-sans font-semibold tabular-nums text-[#23170F]">
@@ -126,7 +126,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
                 </p>
                 <Link
                   href="/refund-policy"
-                  className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#462F1D] hover-editorial-line uppercase tracking-wider"
+                  className="inline-flex items-center gap-1.5 text-xs font-sans font-medium text-[#462F1D] hover-editorial-line"
                 >
                   <span>Review Privilege Terms</span>
                   <ArrowRight className="w-4 h-4" />
@@ -138,7 +138,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
             <div className="space-y-4">
               <h3 className="font-serif text-xl font-normal text-[#23170F] flex items-center gap-2">
                 <Package className="w-5 h-5 text-[#462F1D]" />
-                <span>Reserved Silhouettes ({order.items.length})</span>
+                <span>Reserved Handbags ({order.items.length})</span>
               </h3>
 
               <div className="divide-y divide-[#E5DCD2]/70 border border-[#E5DCD2] rounded-xl overflow-hidden bg-[#FAF6F1]/30">
@@ -156,7 +156,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
                       <p className="text-base font-sans font-semibold tabular-nums text-[#23170F]">
                         Rs. {(item.price * item.quantity).toLocaleString()}
                       </p>
-                      <p className="text-xs text-[#462F1D] font-medium uppercase tracking-wider">Cash on Delivery</p>
+                      <p className="text-xs text-[#462F1D] font-normal">Cash on Delivery</p>
                     </div>
                   </div>
                 ))}
@@ -167,7 +167,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E5DCD2]">
               <Link
                 href="/track-order"
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-medium transition text-center shadow-xs"
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-sm font-sans font-medium transition text-center shadow-xs"
               >
                 Track This Order
               </Link>
@@ -177,7 +177,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
                   href={`https://wa.me/923001234567?text=Hi%20Anora%20Bags,%20I%20have%20an%20order%20inquiry%20for%20order%20${order.orderNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-semibold transition border border-[#E5DCD2]"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-sm font-sans font-medium transition border border-[#E5DCD2]"
                 >
                   <MessageCircle className="w-4 h-4 text-[#462F1D]" />
                   <span>WhatsApp Concierge</span>
@@ -185,7 +185,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
 
                 <Link
                   href="/"
-                  className="flex-1 sm:flex-initial px-6 py-4 rounded-full border border-[#E5DCD2] text-[#462F1D] hover:text-[#23170F] hover:bg-[#FAF6F1] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-medium transition text-center"
+                  className="flex-1 sm:flex-initial px-6 py-4 rounded-full border border-[#E5DCD2] text-[#462F1D] hover:text-[#23170F] hover:bg-[#FAF6F1] text-sm font-sans font-medium transition text-center"
                 >
                   Continue Browsing
                 </Link>

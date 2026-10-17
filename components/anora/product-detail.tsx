@@ -15,7 +15,7 @@ const Bag3DCanvas = dynamic(
     loading: () => (
       <div className="w-full h-full min-h-[460px] flex flex-col items-center justify-center bg-[#FAF6F1] rounded-2xl border border-[#E5DCD2] gap-3">
         <div className="w-8 h-8 border-2 border-[#462F1D] border-t-transparent rounded-full animate-spin" />
-        <span className="text-xs text-[#462F1D] font-serif tracking-widest uppercase">Loading 3D Studio...</span>
+        <span className="text-xs text-[#462F1D] font-sans font-medium">Loading 3D Studio...</span>
       </div>
     )
   }
@@ -109,7 +109,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
           <div className="lg:col-span-7 space-y-4">
             {/* View Mode Toggle Pill */}
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="text-xs uppercase tracking-[0.14em] sm:tracking-[0.16em] text-[#462F1D] font-semibold font-sans">
+              <span className="text-xs text-[#462F1D] font-medium font-sans">
                 {viewMode === "gallery" ? "Editorial Lookbook" : "3D Spatial Studio"}
               </span>
               <div className="inline-flex rounded-full bg-[#ECE2D8]/80 p-0.5 sm:p-1 text-xs font-medium text-[#462F1D]">
@@ -148,7 +148,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     className="object-cover object-center transition-all duration-500"
                   />
                   {product.badge && (
-                    <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-[#23170F]/90 backdrop-blur-md text-xs font-semibold tracking-[0.14em] uppercase text-[#FAF6F1]">
+                    <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-[#23170F]/90 backdrop-blur-md text-xs font-medium text-[#FAF6F1]">
                       {product.badge}
                     </div>
                   )}
@@ -198,8 +198,8 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <span className="h-px w-6 bg-[#462F1D]/40" />
-                <span className="text-xs sm:text-sm font-sans tracking-[0.18em] uppercase font-semibold text-[#462F1D]">
-                  {product.category} • Handcrafted Atelier
+                <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+                  {product.category} · Handcrafted Atelier
                 </span>
               </div>
 
@@ -223,7 +223,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             <div className="p-5 sm:p-6 rounded-2xl bg-[#FAF6F1] border border-[#E5DCD2] flex items-center justify-between">
               <div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-sm sm:text-base font-sans font-semibold uppercase tracking-wider text-[#462F1D]">
+                  <span className="text-sm sm:text-base font-sans font-medium text-[#462F1D]">
                     {product.currency}
                   </span>
                   <span className="font-sans text-3xl sm:text-4xl font-semibold tabular-nums text-[#23170F]">
@@ -240,7 +240,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 </p>
               </div>
 
-              <div className="px-3.5 py-1.5 rounded-full bg-[#ECE2D8] text-[#462F1D] text-xs font-sans font-semibold tracking-wider uppercase">
+              <div className="px-3.5 py-1.5 rounded-full bg-[#ECE2D8] text-[#462F1D] text-xs font-sans font-medium">
                 In Stock
               </div>
             </div>
@@ -248,7 +248,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             {/* Color Swatches */}
             <div className="space-y-2.5">
               <div className="flex justify-between text-xs sm:text-sm font-sans">
-                <span className="font-semibold text-[#462F1D] uppercase tracking-wider text-xs">Leather Shade:</span>
+                <span className="font-medium text-[#462F1D] text-xs">Leather Shade:</span>
                 <span className="text-[#23170F] font-semibold">{selectedColor}</span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
@@ -274,7 +274,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
 
             {/* Quantity Selector */}
             <div className="flex items-center gap-4">
-              <span className="text-xs sm:text-sm font-sans font-semibold text-[#462F1D] uppercase tracking-wider">
+              <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
                 Quantity:
               </span>
               <div className="flex items-center border border-[#E5DCD2] rounded-full bg-white">
@@ -300,7 +300,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             <div className="space-y-3 pt-2">
               <button
                 onClick={handleBuyNowCOD}
-                className="w-full py-4 px-8 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-xs sm:text-sm tracking-[0.14em] uppercase transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2.5 group"
+                className="w-full py-4 px-8 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2.5 group"
               >
                 <span>Order with Cash on Delivery (COD)</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -308,7 +308,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
 
               <button
                 onClick={handleAddToCart}
-                className="w-full py-4 px-8 rounded-full bg-transparent hover:bg-[#FAF6F1] text-[#23170F] border border-[#462F1D]/40 hover:border-[#462F1D] font-sans font-medium text-xs sm:text-sm tracking-[0.14em] uppercase transition-all duration-300 flex items-center justify-center gap-2.5"
+                className="w-full py-4 px-8 rounded-full bg-transparent hover:bg-[#FAF6F1] text-[#23170F] border border-[#462F1D]/40 hover:border-[#462F1D] font-sans font-medium text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2.5"
               >
                 <ShoppingBag className="w-4 h-4 text-[#462F1D]" />
                 <span>Add to Atelier Bag</span>
@@ -326,11 +326,11 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-[#E5DCD2] flex flex-wrap items-center justify-between gap-1 text-xs font-sans tracking-wider uppercase text-[#462F1D] font-medium">
+              <div className="pt-2 border-t border-[#E5DCD2] flex flex-wrap items-center justify-between gap-1 text-xs font-sans text-[#462F1D] font-normal">
                 <span>100% Cash On Delivery</span>
-                <span>•</span>
+                <span>·</span>
                 <span>Zero Advance Payment</span>
-                <span>•</span>
+                <span>·</span>
                 <span>Doorstep Inspection</span>
               </div>
             </div>
@@ -339,7 +339,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             <div className="flex items-center justify-between text-xs sm:text-sm text-[#462F1D] pt-2 border-t border-[#E5DCD2]">
               <button onClick={handleShare} className="flex items-center gap-2 hover:text-[#23170F] transition font-medium">
                 <Share2 className="w-4 h-4" />
-                <span className="font-sans text-xs tracking-wider uppercase">{isCopied ? "Link Copied!" : "Share Silhouette"}</span>
+                <span className="font-sans text-xs">{isCopied ? "Link Copied!" : "Share Silhouette"}</span>
               </button>
               <span className="font-serif italic text-[#462F1D] text-xs sm:text-sm">Bespoke Artisan Creation</span>
             </div>
@@ -349,7 +349,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
         {/* Detailed Tabs (Desktop) & Specs Accordion (Mobile) */}
         <div className="border-t border-[#E5DCD2] pt-12 sm:pt-16">
           {/* Desktop Tabs Navigation */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-8 border-b border-[#E5DCD2] pb-px mb-10 text-xs font-sans tracking-[0.14em] uppercase overflow-x-auto scrollbar-none">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8 border-b border-[#E5DCD2] pb-px mb-10 text-sm font-sans overflow-x-auto scrollbar-none">
             <button
               onClick={() => setActiveTab("specs")}
               className={`pb-3.5 transition-colors border-b-2 whitespace-nowrap ${
@@ -523,7 +523,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-2">
                       <div className="flex items-center gap-2">
                         <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">01</span>
-                        <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Step 01</span>
+                        <span className="text-xs font-sans text-[#462F1D] font-semibold">Step 01</span>
                       </div>
                       <p className="font-medium text-sm sm:text-base text-[#23170F]">Notify Concierge</p>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Message our WhatsApp line or order portal with your order number.</p>
@@ -531,7 +531,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-2">
                       <div className="flex items-center gap-2">
                         <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">02</span>
-                        <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Step 02</span>
+                        <span className="text-xs font-sans text-[#462F1D] font-semibold">Step 02</span>
                       </div>
                       <p className="font-medium text-sm sm:text-base text-[#23170F]">Doorstep Pickup</p>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Our courier arrives at your address to collect the bag at zero return fee.</p>
@@ -539,7 +539,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-2">
                       <div className="flex items-center gap-2">
                         <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">03</span>
-                        <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Step 03</span>
+                        <span className="text-xs font-sans text-[#462F1D] font-semibold">Step 03</span>
                       </div>
                       <p className="font-medium text-sm sm:text-base text-[#23170F]">Instant Settlement</p>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Refund is wired within 24 hours via Bank Transfer, EasyPaisa, or JazzCash.</p>
@@ -550,7 +550,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 <div className="pt-2">
                   <Link
                     href="/refund-policy"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-semibold text-[#462F1D] hover-editorial-line"
+                    className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#462F1D] hover-editorial-line"
                   >
                     <span>Review Complete Refund Guidelines</span>
                     <ArrowRight className="w-4 h-4" />
@@ -566,7 +566,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     <h3 className="font-serif text-xl sm:text-2xl font-light text-[#23170F]">Patron Experiences</h3>
                     <p className="text-sm text-[#462F1D] font-normal mt-1">Verified doorstep Cash On Delivery feedback across Pakistan</p>
                   </div>
-                  <div className="text-xs sm:text-sm font-sans tracking-wider uppercase text-[#462F1D] font-semibold">
+                  <div className="text-xs sm:text-sm font-sans text-[#462F1D] font-semibold">
                     5.0 ★ Exceptional
                   </div>
                 </div>
@@ -575,7 +575,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                   {reviews.map((rev) => (
                     <div key={rev.id} className="p-5 sm:p-6 rounded-xl bg-white border border-[#E5DCD2] shadow-2xs space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-sans tracking-wider uppercase font-semibold text-[#462F1D] bg-[#ECE2D8]/60 px-3 py-1 rounded-full">
+                        <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/60 px-3 py-1 rounded-full">
                           5.0 ★ Verified Patron
                         </span>
                         <span className="text-xs sm:text-sm text-[#462F1D] font-normal">{rev.location}</span>
@@ -738,7 +738,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     {reviews.map((rev) => (
                       <div key={rev.id} className="p-4 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] space-y-2">
                         <div className="flex items-center justify-between text-xs sm:text-sm">
-                          <span className="text-[#462F1D] font-semibold uppercase tracking-wider">5.0 ★ Verified Patron</span>
+                          <span className="text-[#462F1D] font-medium">5.0 ★ Verified Patron</span>
                           <span className="text-[#462F1D] font-normal">{rev.location}</span>
                         </div>
                         <p className="font-serif font-normal text-base text-[#23170F]">"{rev.title}"</p>
@@ -778,7 +778,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             <button
               type="button"
               onClick={handleBuyNowCOD}
-              className="px-4 py-2.5 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs font-sans font-medium tracking-wider uppercase transition shadow-xs whitespace-nowrap"
+              className="px-4 py-2.5 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs font-sans font-medium transition shadow-xs whitespace-nowrap"
             >
               Order COD
             </button>

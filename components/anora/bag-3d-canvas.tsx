@@ -533,9 +533,9 @@ export function Bag3DCanvas({
     return (
       <div className={`relative flex flex-col items-center justify-between p-6 rounded-2xl bg-[#FAF6F1] border border-[#E5DCD2] select-none overflow-hidden ${className}`}>
         <div className="w-full flex items-center justify-between pb-3 border-b border-[#E5DCD2]">
-          <div className="flex items-center gap-2 text-[#23170F] text-sm font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-[#23170F] text-sm font-medium">
             <span className="w-2.5 h-2.5 rounded-full bg-[#462F1D]" />
-            <span>Maison Anora Lookbook</span>
+            <span>Anora Lookbook</span>
           </div>
           <span className="text-xs sm:text-sm text-[#462F1D] font-medium">
             100% Cash On Delivery
@@ -584,26 +584,26 @@ export function Bag3DCanvas({
         <div className="absolute inset-0 flex items-center justify-center bg-[#FAF6F1]/85 backdrop-blur-sm z-10">
           <div className="flex flex-col items-center gap-2">
             <div className="w-7 h-7 rounded-full border-2 border-[#E5DCD2] border-t-[#462F1D] animate-spin" />
-            <span className="text-xs font-semibold font-sans uppercase tracking-[0.18em] text-[#462F1D]">
-              Initializing 3D Atelier...
+            <span className="text-xs font-medium font-sans text-[#462F1D]">
+              Loading 3D Studio...
             </span>
           </div>
         </div>
       )}
 
       {/* Subtle Atelier Stamp (Top Left) */}
-      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#E5DCD2] text-xs font-sans tracking-[0.14em] uppercase text-[#462F1D] font-semibold shadow-2xs">
+      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#E5DCD2] text-xs font-sans text-[#462F1D] font-medium shadow-2xs">
         <span className="w-2 h-2 rounded-full bg-[#462F1D]" />
-        <span>Atelier 3D • 360° Studio</span>
+        <span>3D Studio • 360° View</span>
       </div>
 
       {/* Drag hint overlay (Top Right) */}
-      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-1 text-xs uppercase tracking-[0.14em] text-[#462F1D] font-medium px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#E5DCD2] shadow-2xs">
-        <span>Drag To Orbit</span>
+      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-1 text-xs text-[#462F1D] font-medium px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#E5DCD2] shadow-2xs">
+        <span>Drag to Rotate</span>
       </div>
 
       {/* Mobile Camera Angle Presets */}
-      <div className="absolute top-14 sm:hidden inset-x-2 flex flex-wrap items-center justify-center gap-1.5 z-10 text-xs uppercase font-sans tracking-wider pointer-events-auto">
+      <div className="absolute top-14 sm:hidden inset-x-2 flex flex-wrap items-center justify-center gap-1.5 z-10 text-xs font-sans pointer-events-auto">
         {(["threeQuarter", "front", "side", "top"] as CameraAngle[]).map((ang) => (
           <button
             key={ang}
@@ -620,7 +620,7 @@ export function Bag3DCanvas({
       </div>
 
       {/* Desktop Camera Angle Presets (Right side floating pill) */}
-      <div className="absolute top-16 right-4 hidden sm:flex flex-col gap-1.5 p-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-[#E5DCD2] shadow-xs z-10 text-xs uppercase font-sans tracking-wider">
+      <div className="absolute top-16 right-4 hidden sm:flex flex-col gap-1.5 p-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-[#E5DCD2] shadow-xs z-10 text-xs font-sans">
         {(["threeQuarter", "front", "side", "top"] as CameraAngle[]).map((ang) => (
           <button
             key={ang}
@@ -641,7 +641,7 @@ export function Bag3DCanvas({
         <div className="absolute bottom-2 inset-x-2 xs:bottom-4 xs:inset-x-4 flex flex-wrap items-center justify-between gap-2.5 p-2.5 xs:p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E5DCD2] shadow-md">
           {/* Color Switcher */}
           <div className="flex items-center gap-2">
-            <span className="text-xs font-sans tracking-[0.12em] font-semibold text-[#462F1D] uppercase hidden xs:inline">
+            <span className="text-xs font-sans font-medium text-[#462F1D] hidden xs:inline">
               Leather:
             </span>
             <div className="flex items-center gap-1.5">
@@ -668,7 +668,7 @@ export function Bag3DCanvas({
           <div className="flex items-center gap-1.5 text-xs">
             <button
               onClick={() => setHardwareFinish(hardwareFinish === "gold" ? "silver" : "gold")}
-              className="text-xs font-sans tracking-wide uppercase px-3 py-1.5 rounded-lg bg-[#ECE2D8]/60 hover:bg-[#ECE2D8] text-[#462F1D] font-semibold transition whitespace-nowrap"
+              className="text-xs font-sans px-3 py-1.5 rounded-lg bg-[#ECE2D8]/60 hover:bg-[#ECE2D8] text-[#462F1D] font-medium transition whitespace-nowrap"
               title="Toggle Hardware Finish"
             >
               <span className="hidden sm:inline">Hardware: </span>{hardwareFinish === "gold" ? "18k Gold" : "Palladium"}
@@ -702,7 +702,7 @@ export function Bag3DCanvas({
 
             <button
               onClick={handleReset}
-              className="text-xs font-sans tracking-wider uppercase px-2.5 xs:px-3 py-1.5 rounded-lg bg-[#ECE2D8]/60 hover:bg-[#ECE2D8] text-[#462F1D] font-semibold transition"
+              className="text-xs font-sans px-2.5 xs:px-3 py-1.5 rounded-lg bg-[#ECE2D8]/60 hover:bg-[#ECE2D8] text-[#462F1D] font-medium transition"
             >
               Reset
             </button>

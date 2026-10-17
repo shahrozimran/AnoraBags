@@ -23,8 +23,8 @@ const Bag3DCanvas = dynamic(
     loading: () => (
       <div className="w-full h-full min-h-[440px] flex flex-col items-center justify-center bg-[#FAF6F1] rounded-2xl sm:rounded-3xl border border-[#E5DCD2] gap-3">
         <div className="w-7 h-7 border-2 border-[#462F1D] border-t-transparent rounded-full animate-spin" />
-        <span className="text-xs font-semibold text-[#462F1D] font-sans tracking-[0.18em] uppercase">
-          Initializing 3D Atelier...
+        <span className="text-xs font-medium text-[#462F1D] font-sans">
+          Loading 3D Studio...
         </span>
       </div>
     )

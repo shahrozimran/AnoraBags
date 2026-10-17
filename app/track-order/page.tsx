@@ -62,8 +62,8 @@ export default function TrackOrderPage() {
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2">
             <span className="h-px w-6 bg-[#462F1D]/40" />
-            <span className="text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold text-[#462F1D]">
-              Maison Concierge
+            <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+              Order Support
             </span>
             <span className="h-px w-6 bg-[#462F1D]/40" />
           </div>
@@ -92,7 +92,7 @@ export default function TrackOrderPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-semibold transition shadow-sm disabled:opacity-50 text-center"
+              className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-sm font-sans font-medium transition shadow-sm disabled:opacity-50 text-center"
             >
               {isLoading ? "Locating..." : "Track"}
             </button>
@@ -123,7 +123,7 @@ export default function TrackOrderPage() {
 
                 {/* Tracking Progress Timeline */}
                 <div className="p-4 xs:p-6 sm:p-8 border-b border-[#E5DCD2]">
-                  <h4 className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.16em] text-[#462F1D] mb-4 sm:mb-6">
+                  <h4 className="text-sm font-sans font-medium text-[#462F1D] mb-4 sm:mb-6">
                     Courier Journey
                   </h4>
 
@@ -262,17 +262,17 @@ export default function TrackOrderPage() {
                       href={`https://wa.me/923001234567?text=Hi%20Anora%20Bags,%20I%20want%20to%20request%20a%207-day%20return%20or%20exchange%20for%20order%20${order.orderNumber}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans tracking-wide uppercase font-semibold text-[#462F1D] hover-editorial-line"
+                      className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#462F1D] hover-editorial-line"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>Request 7-Day Privilege via WhatsApp</span>
+                      <span>Request 7-Day Return via WhatsApp</span>
                     </a>
                   </div>
                 </div>
 
                 {/* Order Items */}
                 <div className="p-6 sm:p-8 border-t border-[#E5DCD2]">
-                  <h5 className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.16em] text-[#462F1D] mb-4">
+                  <h5 className="text-sm font-sans font-medium text-[#462F1D] mb-4">
                     Items in This Parcel ({order.items.length})
                   </h5>
                   <div className="divide-y divide-[#E5DCD2]/70">
