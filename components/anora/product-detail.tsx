@@ -222,12 +222,15 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             {/* Pricing Section */}
             <div className="p-5 sm:p-6 rounded-2xl bg-[#FAF6F1] border border-[#E5DCD2] flex items-center justify-between">
               <div>
-                <div className="flex items-baseline gap-2 sm:gap-3">
-                  <span className="font-serif text-3xl sm:text-4xl font-light text-[#23170F]">
-                    {product.currency} {product.price.toLocaleString()}
+                <div className="flex items-baseline gap-2">
+                  <span className="text-sm sm:text-base font-sans font-semibold uppercase tracking-wider text-[#462F1D]">
+                    {product.currency}
+                  </span>
+                  <span className="font-serif text-3xl sm:text-4xl font-normal text-[#23170F]">
+                    {product.price.toLocaleString()}
                   </span>
                   {product.originalPrice && (
-                    <span className="text-sm sm:text-base text-[#462F1D]/60 line-through font-normal">
+                    <span className="text-sm sm:text-base text-[#462F1D]/60 line-through font-normal ml-1">
                       {product.currency} {product.originalPrice.toLocaleString()}
                     </span>
                   )}
@@ -457,27 +460,45 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
                     <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">I. Smartphone Fit</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">I</span>
+                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Smartphone Fit</h5>
+                      </div>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Accommodates iPhone 16 Pro Max & Samsung Ultra devices with case.</p>
                     </div>
                     <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">II. Cardholder Slot</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">II</span>
+                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Cardholder Slot</h5>
+                      </div>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Smooth-glide calfskin divider for cards, transit pass, and folded currency.</p>
                     </div>
                     <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">III. Cosmetics Cavity</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">III</span>
+                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Cosmetics Cavity</h5>
+                      </div>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Deep central well for lipstick, compact mirror, and 10ml travel fragrance.</p>
                     </div>
                     <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">IV. Key Fob Leash</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">IV</span>
+                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Key Fob Leash</h5>
+                      </div>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Internal leather anchor preventing keys from scratching sunglasses.</p>
                     </div>
                     <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">V. Eyewear Section</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">V</span>
+                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Eyewear Section</h5>
+                      </div>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Gentle microfiber lining crafted to safeguard designer eyewear frames.</p>
                     </div>
                     <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">VI. Concealed Zip</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">VI</span>
+                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Concealed Zip</h5>
+                      </div>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Concealed security pocket for emergency cash and confidential items.</p>
                     </div>
                   </div>
@@ -499,18 +520,27 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 <div className="space-y-4">
                   <h4 className="font-serif text-lg font-normal text-[#23170F]">How Doorstep Returns & Exchanges Work</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-1.5">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">Step 01</span>
+                    <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">01</span>
+                        <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Step 01</span>
+                      </div>
                       <p className="font-medium text-sm sm:text-base text-[#23170F]">Notify Concierge</p>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Message our WhatsApp line or order portal with your order number.</p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-1.5">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">Step 02</span>
+                    <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">02</span>
+                        <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Step 02</span>
+                      </div>
                       <p className="font-medium text-sm sm:text-base text-[#23170F]">Doorstep Pickup</p>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Our courier arrives at your address to collect the bag at zero return fee.</p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-1.5">
-                      <span className="font-serif italic text-sm text-[#462F1D] block">Step 03</span>
+                    <div className="p-4 rounded-xl bg-white border border-[#E5DCD2] space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">03</span>
+                        <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Step 03</span>
+                      </div>
                       <p className="font-medium text-sm sm:text-base text-[#23170F]">Instant Settlement</p>
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Refund is wired within 24 hours via Bank Transfer, EasyPaisa, or JazzCash.</p>
                     </div>
@@ -575,7 +605,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 className="w-full p-4 flex items-center justify-between text-left font-serif text-sm sm:text-base font-normal text-[#23170F] bg-white transition hover:bg-[#FAF6F1]/50"
               >
                 <span className="flex items-center gap-2">
-                  <span className="font-serif italic text-xs sm:text-sm text-[#462F1D]">I.</span>
+                  <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">I</span>
                   <span>Craft & Technical Specs</span>
                 </span>
                 <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "specs" ? "rotate-180" : ""}`} />
@@ -627,7 +657,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 className="w-full p-4 flex items-center justify-between text-left font-serif text-sm sm:text-base font-normal text-[#23170F] bg-white transition hover:bg-[#FAF6F1]/50"
               >
                 <span className="flex items-center gap-2">
-                  <span className="font-serif italic text-xs sm:text-sm text-[#462F1D]">II.</span>
+                  <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">II</span>
                   <span>Interior Storage & Fit</span>
                 </span>
                 <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "capacity" ? "rotate-180" : ""}`} />
@@ -669,7 +699,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 className="w-full p-4 flex items-center justify-between text-left font-serif text-sm sm:text-base font-normal text-[#23170F] bg-white transition hover:bg-[#FAF6F1]/50"
               >
                 <span className="flex items-center gap-2">
-                  <span className="font-serif italic text-xs sm:text-sm text-[#462F1D]">III.</span>
+                  <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">III</span>
                   <span>7-Day Doorstep Privilege</span>
                 </span>
                 <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "refund" ? "rotate-180" : ""}`} />
@@ -697,7 +727,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 className="w-full p-4 flex items-center justify-between text-left font-serif text-sm sm:text-base font-normal text-[#23170F] bg-white transition hover:bg-[#FAF6F1]/50"
               >
                 <span className="flex items-center gap-2">
-                  <span className="font-serif italic text-xs sm:text-sm text-[#462F1D]">IV.</span>
+                  <span className="text-[10px] font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">IV</span>
                   <span>Patron Reviews ({reviews.length})</span>
                 </span>
                 <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "reviews" ? "rotate-180" : ""}`} />
@@ -732,7 +762,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             </div>
             <div className="min-w-0">
               <p className="font-serif text-sm font-normal text-[#23170F] truncate">{product.name}</p>
-              <p className="font-serif text-sm text-[#462F1D] font-medium">Rs. {product.price.toLocaleString()}</p>
+              <p className="font-sans text-sm text-[#462F1D] font-semibold">Rs. {product.price.toLocaleString()}</p>
             </div>
           </div>
 

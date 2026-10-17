@@ -11,37 +11,43 @@ export function Footer() {
         {/* Top Assurance Ledger */}
         <div className="pb-16 border-b border-[#3D291B]/80 grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="space-y-2.5">
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif italic text-sm text-[#ECE2D8]/70">01.</span>
+            <div className="flex items-center gap-2.5">
+              <span className="text-xs font-mono font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2 py-0.5 rounded border border-[#C5A880]/30 shrink-0">
+                01
+              </span>
               <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">
                 7-Day Home Privilege
               </h4>
             </div>
-            <p className="text-sm text-[#ECE2D8]/80 font-light leading-relaxed pl-6">
+            <p className="text-sm text-[#ECE2D8]/85 font-light leading-relaxed">
               Take 7 full days to try the silhouette with your wardrobe. If not delighted, we arrange doorstep pickup and refund your cash.
             </p>
           </div>
 
           <div className="space-y-2.5">
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif italic text-sm text-[#ECE2D8]/70">02.</span>
+            <div className="flex items-center gap-2.5">
+              <span className="text-xs font-mono font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2 py-0.5 rounded border border-[#C5A880]/30 shrink-0">
+                02
+              </span>
               <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">
                 100% Cash On Delivery
               </h4>
             </div>
-            <p className="text-sm text-[#ECE2D8]/80 font-light leading-relaxed pl-6">
+            <p className="text-sm text-[#ECE2D8]/85 font-light leading-relaxed">
               Zero advance payment or cards required. Inspect your parcel condition at your doorstep and settle cash directly with the courier.
             </p>
           </div>
 
           <div className="space-y-2.5">
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif italic text-sm text-[#ECE2D8]/70">03.</span>
+            <div className="flex items-center gap-2.5">
+              <span className="text-xs font-mono font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2 py-0.5 rounded border border-[#C5A880]/30 shrink-0">
+                03
+              </span>
               <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">
                 Archival Presentation
               </h4>
             </div>
-            <p className="text-sm text-[#ECE2D8]/80 font-light leading-relaxed pl-6">
+            <p className="text-sm text-[#ECE2D8]/85 font-light leading-relaxed">
               Every bag is hand-inspected and enclosed in a rigid keepsake box, protective microfiber dustbag, and inspection certificate.
             </p>
           </div>
@@ -150,12 +156,16 @@ export function Footer() {
         {/* Bottom Copyright */}
         <div className="pt-8 border-t border-[#3D291B] text-xs font-sans tracking-[0.14em] uppercase text-[#ECE2D8]/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p>© {new Date().getFullYear()} Maison Anora Bags. All rights reserved.</p>
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1.5 text-[#ECE2D8]/80">
-            <Link href="/refund-policy" className="hover:text-white transition">7-Day Privilege</Link>
-            <span className="opacity-40">•</span>
-            <span>Cash On Delivery Nationwide</span>
-            <span className="opacity-40">•</span>
-            <Link href="/contact" className="hover:text-white transition">Concierge</Link>
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2 text-[#ECE2D8]/85 text-xs font-medium">
+            <Link href="/refund-policy" className="hover:text-white transition whitespace-nowrap">
+              7-Day Privilege
+            </Link>
+            <span className="hidden sm:inline opacity-40">•</span>
+            <span className="whitespace-nowrap">Cash On Delivery Nationwide</span>
+            <span className="hidden sm:inline opacity-40">•</span>
+            <Link href="/contact" className="hover:text-white transition whitespace-nowrap">
+              Concierge
+            </Link>
           </div>
         </div>
       </div>

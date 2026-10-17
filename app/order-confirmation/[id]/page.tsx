@@ -153,7 +153,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
                       <p className="text-[#462F1D]">Quantity: {item.quantity}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-base font-serif font-medium text-[#23170F]">
+                      <p className="text-base font-sans font-semibold text-[#23170F]">
                         Rs. {(item.price * item.quantity).toLocaleString()}
                       </p>
                       <p className="text-xs text-[#462F1D] font-medium uppercase tracking-wider">Cash on Delivery</p>

@@ -8,7 +8,7 @@ import { useCart } from "@/components/anora/cart-context"
 import { placeOrderAction } from "@/app/actions/order"
 import { Header } from "@/components/anora/header"
 import { Footer } from "@/components/anora/footer"
-import { ArrowRight, ShoppingBag, Check } from "lucide-react"
+import { ArrowRight, ShoppingBag, Check, ShieldCheck } from "lucide-react"
 
 const POPULAR_CITIES = [
   "Karachi",
@@ -147,22 +147,22 @@ export default function CheckoutPage() {
             <div className="lg:col-span-7 space-y-6 sm:space-y-8">
               {/* Step I: Client Details */}
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
-                <div className="flex items-center justify-between border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
-                  <div className="flex items-baseline gap-2.5 sm:gap-3">
-                    <span className="font-serif italic text-base text-[#462F1D]">I.</span>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">I</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Client Particulars
                     </h2>
                   </div>
-                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold">
+                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold self-start xs:self-auto">
                     * Required for Dispatch
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div className="space-y-1.5 sm:col-span-2">
-                    <label className="text-xs sm:text-sm font-sans font-semibold text-[#3D291B] uppercase tracking-wider">
-                      Full Name *
+                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F]">
+                      Full Name <span className="text-[#462F1D] font-bold">*</span>
                     </label>
                     <input
                       type="text"
@@ -176,8 +176,8 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs sm:text-sm font-sans font-semibold text-[#3D291B] uppercase tracking-wider">
-                      Mobile Number (For Courier Call) *
+                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F]">
+                      Mobile Number (For Courier Call) <span className="text-[#462F1D] font-bold">*</span>
                     </label>
                     <input
                       type="tel"
@@ -192,8 +192,9 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs sm:text-sm font-sans font-semibold text-[#3D291B] uppercase tracking-wider">
-                      Email Address (Discreet Updates)
+                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F] flex items-center justify-between">
+                      <span>Email Address</span>
+                      <span className="text-[#8C7A6B] text-xs font-normal lowercase">(discreet updates)</span>
                     </label>
                     <input
                       type="email"
@@ -209,22 +210,22 @@ export default function CheckoutPage() {
 
               {/* Step II: Delivery Address */}
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
-                <div className="flex items-center justify-between border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
-                  <div className="flex items-baseline gap-2.5 sm:gap-3">
-                    <span className="font-serif italic text-base text-[#462F1D]">II.</span>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">II</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Doorstep Shipping Address
                     </h2>
                   </div>
-                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold bg-[#ECE2D8]/60 px-3 py-1 rounded-full">
+                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold bg-[#ECE2D8]/80 px-3 py-1 rounded-full whitespace-nowrap self-start xs:self-auto">
                     Express Nationwide
                   </span>
                 </div>
 
                 <div className="space-y-4 sm:space-y-5">
                   <div className="space-y-1.5">
-                    <label className="text-xs sm:text-sm font-sans font-semibold text-[#3D291B] uppercase tracking-wider">
-                      Street Address & Residence / Office *
+                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F]">
+                      Street Address & Residence / Office <span className="text-[#462F1D] font-bold">*</span>
                     </label>
                     <input
                       type="text"
@@ -239,8 +240,9 @@ export default function CheckoutPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div className="space-y-1.5">
-                      <label className="text-xs sm:text-sm font-sans font-semibold text-[#3D291B] uppercase tracking-wider">
-                        Apartment, Floor, Landmark (Optional)
+                      <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F] flex items-center justify-between">
+                        <span>Apartment, floor, landmark</span>
+                        <span className="text-[#8C7A6B] text-xs font-normal lowercase">(optional)</span>
                       </label>
                       <input
                         type="text"
@@ -253,8 +255,8 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs sm:text-sm font-sans font-semibold text-[#3D291B] uppercase tracking-wider">
-                        City *
+                      <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F]">
+                        City <span className="text-[#462F1D] font-bold">*</span>
                       </label>
                       <input
                         type="text"
@@ -269,8 +271,8 @@ export default function CheckoutPage() {
                   </div>
 
                   {/* City Quick-Select */}
-                  <div className="pt-1">
-                    <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold block mb-2">
+                  <div className="pt-2">
+                    <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-medium block mb-2">
                       Quick Select City:
                     </span>
                     <div className="flex flex-wrap gap-2">
@@ -292,8 +294,9 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs sm:text-sm font-sans font-semibold text-[#3D291B] uppercase tracking-wider">
-                      Concierge Delivery Instructions (Optional)
+                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F] flex items-center justify-between">
+                      <span>Concierge delivery instructions</span>
+                      <span className="text-[#8C7A6B] text-xs font-normal lowercase">(optional)</span>
                     </label>
                     <textarea
                       name="deliveryNotes"
@@ -309,20 +312,20 @@ export default function CheckoutPage() {
 
               {/* Step III: Payment Method (Cash On Delivery Only) */}
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-4 sm:space-y-5">
-                <div className="flex items-center justify-between border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
-                  <div className="flex items-baseline gap-2.5 sm:gap-3">
-                    <span className="font-serif italic text-base text-[#462F1D]">III.</span>
-                    <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">III</span>
+                    <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide whitespace-nowrap">
                       Payment Privilege
                     </h2>
                   </div>
-                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold">
+                  <span className="text-xs font-sans tracking-wider uppercase text-[#462F1D] font-semibold whitespace-nowrap self-start sm:self-auto">
                     100% Cash on Delivery
                   </span>
                 </div>
 
                 <div className="p-4 sm:p-5 rounded-xl border border-[#462F1D]/40 bg-[#ECE2D8]/20 space-y-3">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2.5">
                     <div>
                       <h4 className="text-base font-serif font-normal text-[#23170F]">
                         Cash On Delivery (COD)
@@ -331,7 +334,7 @@ export default function CheckoutPage() {
                         Pay exact cash to courier upon doorstep parcel inspection.
                       </p>
                     </div>
-                    <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] bg-[#ECE2D8] px-3 py-1 rounded-full font-semibold">
+                    <span className="self-start xs:self-auto shrink-0 whitespace-nowrap text-xs font-sans uppercase tracking-wider text-[#462F1D] bg-[#ECE2D8] px-3.5 py-1.5 rounded-full font-semibold">
                       Zero Advance Fee
                     </span>
                   </div>
@@ -376,7 +379,7 @@ export default function CheckoutPage() {
                         <p className="text-[#462F1D] text-xs mt-0.5">Shade: {item.color}</p>
                         <p className="text-[#462F1D] text-xs">Qty: {item.quantity}</p>
                       </div>
-                      <span className="text-sm font-serif font-medium text-[#23170F]">
+                      <span className="text-sm font-sans font-semibold text-[#23170F] whitespace-nowrap">
                         Rs. {(item.price * item.quantity).toLocaleString()}
                       </span>
                     </div>
@@ -387,7 +390,7 @@ export default function CheckoutPage() {
                 <div className="pt-4 border-t border-[#E5DCD2] space-y-2.5 text-sm">
                   <div className="flex justify-between text-[#462F1D]">
                     <span>Pieces Subtotal</span>
-                    <span className="font-medium text-[#23170F]">Rs. {subtotal.toLocaleString()}</span>
+                    <span className="font-semibold text-[#23170F]">Rs. {subtotal.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-[#462F1D]">
                     <span>Nationwide Express Courier</span>
@@ -400,10 +403,15 @@ export default function CheckoutPage() {
                     <span className="text-[#23170F] font-medium">Cash On Delivery</span>
                   </div>
                   <div className="flex justify-between items-baseline text-[#23170F] font-normal pt-4 border-t border-[#E5DCD2]">
-                    <span className="font-sans text-xs sm:text-sm uppercase tracking-wider font-semibold">Total Due at Doorstep</span>
-                    <span className="font-serif text-2xl text-[#462F1D] font-medium">
-                      Rs. {total.toLocaleString()}
+                    <span className="font-sans text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#23170F]">
+                      Total Due at Doorstep
                     </span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#462F1D]">Rs.</span>
+                      <span className="font-serif text-2xl font-bold text-[#23170F]">
+                        {total.toLocaleString()}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -433,11 +441,14 @@ export default function CheckoutPage() {
                 </button>
 
                 {/* Assurance details */}
-                <div className="p-4 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] space-y-1.5 text-xs sm:text-sm text-[#462F1D]">
-                  <p className="font-serif text-sm font-normal text-[#23170F]">
-                    The 7-Day Unconditional Privilege
-                  </p>
-                  <p className="font-light leading-relaxed">
+                <div className="p-4.5 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] space-y-2 text-xs sm:text-sm text-[#3D291B]">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#462F1D] shrink-0" />
+                    <h4 className="font-serif text-sm font-semibold text-[#23170F]">
+                      The 7-Day Unconditional Privilege
+                    </h4>
+                  </div>
+                  <p className="font-light leading-relaxed text-[#462F1D] pl-6">
                     Inspect your parcel with the courier rider. If anything falls short of expectations, our concierge arranges doorstep collection for a prompt refund.
                   </p>
                 </div>

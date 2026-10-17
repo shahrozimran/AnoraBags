@@ -47,8 +47,8 @@ export function Hero() {
                 <span className="italic font-normal text-[#462F1D]">Quiet Presence.</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-[#3D291B] font-normal max-w-xl leading-relaxed pt-1">
-                Conceived in our atelier from genuine full-grain calfskin and solid 18k brushed gold brass. Distinctive minimalist silhouettes designed to accompany every facet of your life—available with 100% Cash on Delivery and an unconditional 7-Day Home Privilege.
+              <p className="text-sm sm:text-base lg:text-lg text-[#3D291B] font-light max-w-xl leading-relaxed pt-1">
+                Conceived in our atelier from genuine full-grain calfskin and solid 18k brushed gold brass. Minimalist silhouettes with 100% Cash on Delivery and an unconditional 7-Day Home Privilege.
               </p>
             </div>
 
@@ -71,45 +71,6 @@ export function Hero() {
                   360°
                 </span>
               </button>
-            </div>
-
-            {/* Editorial Trust Ledger */}
-            <div className="pt-8 border-t border-[#E5DCD2] grid grid-cols-1 sm:grid-cols-3 gap-6 text-[#23170F]">
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="font-serif italic text-sm text-[#462F1D]">01.</span>
-                  <h4 className="text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase text-[#23170F]">
-                    Doorstep Inspection
-                  </h4>
-                </div>
-                <p className="text-sm text-[#462F1D] font-normal leading-relaxed">
-                  100% Cash On Delivery. Verify your piece before payment.
-                </p>
-              </div>
-
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="font-serif italic text-sm text-[#462F1D]">02.</span>
-                  <h4 className="text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase text-[#23170F]">
-                    7-Day Privilege
-                  </h4>
-                </div>
-                <p className="text-sm text-[#462F1D] font-normal leading-relaxed">
-                  Experience at home. Hassle-free doorstep returns.
-                </p>
-              </div>
-
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="font-serif italic text-sm text-[#462F1D]">03.</span>
-                  <h4 className="text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase text-[#23170F]">
-                    Full-Grain Leather
-                  </h4>
-                </div>
-                <p className="text-sm text-[#462F1D] font-normal leading-relaxed">
-                  Hand-burnished edges & 18k brushed gold hardware.
-                </p>
-              </div>
             </div>
           </div>
 
@@ -206,6 +167,51 @@ export function Hero() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+
+        {/* Editorial Trust Ledger - Full Width Below Hero Grid */}
+        <div className="mt-10 sm:mt-14 pt-8 border-t border-[#E5DCD2] grid grid-cols-1 sm:grid-cols-3 gap-6 text-[#23170F]">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                01
+              </span>
+              <h4 className="text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase text-[#23170F]">
+                Doorstep Inspection
+              </h4>
+            </div>
+            <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">
+              100% Cash On Delivery. Verify your piece before payment.
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                02
+              </span>
+              <h4 className="text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase text-[#23170F]">
+                7-Day Privilege
+              </h4>
+            </div>
+            <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">
+              Experience at home. Hassle-free doorstep returns.
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                03
+              </span>
+              <h4 className="text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase text-[#23170F]">
+                Full-Grain Leather
+              </h4>
+            </div>
+            <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">
+              Hand-burnished edges & 18k brushed gold hardware.
+            </p>
           </div>
         </div>
       </div>

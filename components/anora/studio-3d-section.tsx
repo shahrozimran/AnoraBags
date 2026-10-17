@@ -102,12 +102,12 @@ export function Studio3DSection() {
 
           {/* Right: Craftsmanship Breakdown & Architectural Hotspots */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="flex items-center justify-between border-b border-[#3D291B] pb-3 text-xs">
-              <span className="font-sans tracking-[0.16em] uppercase text-[#ECE2D8] font-medium text-xs">
+            <div className="flex items-center justify-between border-b border-[#3D291B] pb-3">
+              <span className="font-sans tracking-[0.16em] uppercase text-white font-semibold text-xs sm:text-sm">
                 Artisanal Components
               </span>
-              <span className="font-serif italic text-[#ECE2D8]/70 text-xs">
-                Select item to inspect
+              <span className="text-xs text-[#ECE2D8]/75 font-sans tracking-wide">
+                Tap component to inspect
               </span>
             </div>
 
@@ -125,11 +125,16 @@ export function Studio3DSection() {
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-xs font-sans tracking-[0.12em] uppercase font-semibold text-[#ECE2D8]">
-                        {item.tag}
-                      </span>
-                      <span className="font-serif text-sm text-[#ECE2D8]/70">
-                        {item.numeral}
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#C5A880] bg-[#3D291B] px-2 py-0.5 rounded border border-[#C5A880]/30 shrink-0">
+                          {item.numeral}
+                        </span>
+                        <span className="text-xs font-sans tracking-[0.12em] uppercase font-semibold text-[#ECE2D8]">
+                          {item.tag}
+                        </span>
+                      </div>
+                      <span className={`text-xs text-[#ECE2D8]/70 transition-transform duration-300 ${isActive ? "rotate-180" : ""}`}>
+                        ▾
                       </span>
                     </div>
 
@@ -151,12 +156,12 @@ export function Studio3DSection() {
             </div>
 
             {/* Bottom Quiet Assurance */}
-            <div className="pt-2 flex flex-wrap items-center justify-center sm:justify-between gap-2 text-xs sm:text-sm font-sans tracking-[0.12em] uppercase text-[#ECE2D8] font-medium border-t border-[#3D291B]">
-              <span>Complimentary Courier</span>
-              <span className="hidden sm:inline">•</span>
-              <span>100% Cash On Delivery</span>
-              <span className="hidden sm:inline">•</span>
-              <span>7-Day Privilege</span>
+            <div className="pt-3 flex flex-wrap items-center justify-center sm:justify-between gap-x-4 gap-y-2 text-xs sm:text-sm font-sans tracking-[0.12em] uppercase text-[#ECE2D8]/85 font-medium border-t border-[#3D291B]">
+              <span className="whitespace-nowrap">Complimentary Courier</span>
+              <span className="hidden sm:inline text-[#ECE2D8]/40">•</span>
+              <span className="whitespace-nowrap">100% Cash On Delivery</span>
+              <span className="hidden sm:inline text-[#ECE2D8]/40">•</span>
+              <span className="whitespace-nowrap">7-Day Privilege</span>
             </div>
           </div>
         </div>

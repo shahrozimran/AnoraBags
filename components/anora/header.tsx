@@ -108,15 +108,17 @@ export function Header() {
               className="relative p-2 sm:p-2.5 rounded-full text-[#23170F] hover:bg-[#ECE2D8]/50 transition-all duration-200 focus:outline-hidden flex items-center gap-2 group"
               aria-label={`Open shopping bag with ${itemCount} items`}
             >
-              <ShoppingBag className="w-5 h-5 text-[#462F1D] group-hover:scale-105 transition-transform" />
+              <div className="relative flex items-center justify-center">
+                <ShoppingBag className="w-5 h-5 text-[#462F1D] group-hover:scale-105 transition-transform" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-full bg-[#462F1D] text-[#ECE2D8] text-[10px] font-sans font-bold flex items-center justify-center leading-none ring-2 ring-[#FAF6F1] shadow-xs">
+                    {itemCount}
+                  </span>
+                )}
+              </div>
               <span className="hidden sm:inline text-xs lg:text-sm tracking-[0.14em] font-medium uppercase text-[#462F1D]">
                 Bag
               </span>
-              {itemCount > 0 && (
-                <span className="w-5 h-5 rounded-full bg-[#462F1D] text-[#ECE2D8] text-xs font-semibold flex items-center justify-center shrink-0">
-                  {itemCount}
-                </span>
-              )}
             </button>
           </div>
         </div>

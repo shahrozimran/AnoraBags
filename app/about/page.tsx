@@ -115,7 +115,10 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-[#E5DCD2]">
             <div className="space-y-2">
-              <span className="font-serif italic text-sm text-[#462F1D]">01. Leather</span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">01</span>
+                <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Leather</span>
+              </div>
               <h4 className="font-serif text-lg font-normal text-[#23170F]">
                 Full-Grain Drum-Dyed Calfskin
               </h4>
@@ -125,7 +128,10 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-2">
-              <span className="font-serif italic text-sm text-[#462F1D]">02. Privilege</span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">02</span>
+                <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Privilege</span>
+              </div>
               <h4 className="font-serif text-lg font-normal text-[#23170F]">
                 7-Day Unconditional Privilege
               </h4>

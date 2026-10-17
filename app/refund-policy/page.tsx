@@ -129,7 +129,10 @@ export default function RefundPolicyPage() {
         {/* 3 Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs space-y-3">
-            <span className="font-serif italic text-sm text-[#462F1D]">01. Window</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">01</span>
+              <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Window</span>
+            </div>
             <h3 className="font-serif text-lg font-normal text-[#23170F]">7 Full Days</h3>
             <p className="text-sm text-[#462F1D] font-light leading-relaxed">
               Your 7-day privilege commences at the exact moment the courier hands you the parcel at your doorstep.
@@ -137,7 +140,10 @@ export default function RefundPolicyPage() {
           </div>
 
           <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs space-y-3">
-            <span className="font-serif italic text-sm text-[#462F1D]">02. Doorstep</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">02</span>
+              <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Doorstep</span>
+            </div>
             <h3 className="font-serif text-lg font-normal text-[#23170F]">At-Home Collection</h3>
             <p className="text-sm text-[#462F1D] font-light leading-relaxed">
               Zero transit hassle. Our courier rider arrives directly at your home or office address to inspect and retrieve the parcel.
@@ -145,7 +151,10 @@ export default function RefundPolicyPage() {
           </div>
 
           <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs space-y-3">
-            <span className="font-serif italic text-sm text-[#462F1D]">03. Settlement</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">03</span>
+              <span className="text-xs font-sans uppercase tracking-wider text-[#462F1D] font-semibold">Settlement</span>
+            </div>
             <h3 className="font-serif text-lg font-normal text-[#23170F]">100% Cash / Bank Refund</h3>
             <p className="text-sm text-[#462F1D] font-light leading-relaxed">
               Full cash refunds are dispatched within 24 hours of collection via Bank Transfer (IBAN), EasyPaisa, or JazzCash.

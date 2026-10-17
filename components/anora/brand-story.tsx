@@ -72,38 +72,44 @@ export function BrandStory() {
             </p>
 
             <div className="space-y-5 pt-4 border-t border-[#E5DCD2]">
-              <div className="space-y-1">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-serif italic text-sm text-[#462F1D]">01.</span>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                    01
+                  </span>
                   <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
                     Full-Grain Drum-Dyed Calfskin
                   </h4>
                 </div>
-                <p className="text-sm sm:text-base text-[#462F1D] font-normal leading-relaxed pl-6">
+                <p className="text-sm sm:text-base text-[#462F1D] font-normal leading-relaxed">
                   Selected for supple hand-feel, structural density, and natural patina that develops character over years of everyday carry.
                 </p>
               </div>
 
-              <div className="space-y-1">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-serif italic text-sm text-[#462F1D]">02.</span>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                    02
+                  </span>
                   <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
                     Custom 18k Brushed Gold Hardware
                   </h4>
                 </div>
-                <p className="text-sm sm:text-base text-[#462F1D] font-normal leading-relaxed pl-6">
+                <p className="text-sm sm:text-base text-[#462F1D] font-normal leading-relaxed">
                   Every clasp, link, and grommet is custom cast from solid brass alloy for weight and a satisfying mechanical click.
                 </p>
               </div>
 
-              <div className="space-y-1">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-serif italic text-sm text-[#462F1D]">03.</span>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                    03
+                  </span>
                   <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
                     7-Day Unconditional Home Privilege
                   </h4>
                 </div>
-                <p className="text-sm sm:text-base text-[#462F1D] font-normal leading-relaxed pl-6">
+                <p className="text-sm sm:text-base text-[#462F1D] font-normal leading-relaxed">
                   Pay cash to the courier only upon doorstep parcel inspection. Enjoy 7 full days to try it with your wardrobe.
                 </p>
               </div>
@@ -143,22 +149,26 @@ export function BrandStory() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-3">
-              <div className="p-5 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2]">
-                <p className="font-serif text-3xl sm:text-4xl font-light text-[#462F1D]">3 Tiers</p>
-                <p className="text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5">
-                  Accordion Dividers
-                </p>
-                <p className="text-sm text-[#462F1D] font-normal mt-1 leading-relaxed">
+              <div className="p-5 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex flex-col justify-between">
+                <div>
+                  <p className="font-serif text-3xl sm:text-4xl font-light text-[#462F1D]">3 Tiers</p>
+                  <h4 className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5 sm:mt-2 min-h-0 sm:min-h-[2.5rem] flex items-center">
+                    Accordion Dividers
+                  </h4>
+                </div>
+                <p className="text-xs sm:text-sm text-[#462F1D] font-normal mt-1 sm:mt-2 leading-relaxed">
                   Dedicated compartments for cosmetics, cards, and daily essentials.
                 </p>
               </div>
 
-              <div className="p-5 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2]">
-                <p className="font-serif text-3xl sm:text-4xl font-light text-[#462F1D]">6.9"</p>
-                <p className="text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5">
-                  Max Smartphone Fit
-                </p>
-                <p className="text-sm text-[#462F1D] font-normal mt-1 leading-relaxed">
+              <div className="p-5 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex flex-col justify-between">
+                <div>
+                  <p className="font-serif text-3xl sm:text-4xl font-light text-[#462F1D]">6.9"</p>
+                  <h4 className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5 sm:mt-2 min-h-0 sm:min-h-[2.5rem] flex items-center">
+                    Max Smartphone Fit
+                  </h4>
+                </div>
+                <p className="text-xs sm:text-sm text-[#462F1D] font-normal mt-1 sm:mt-2 leading-relaxed">
                   Comfortably accommodates iPhone 16 Pro Max & Samsung Ultra devices.
                 </p>
               </div>

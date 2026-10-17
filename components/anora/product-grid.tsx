@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react"
 import type { Product } from "@/lib/types"
 import { ProductCard } from "./product-card"
+import { ChevronDown } from "lucide-react"
 
 interface ProductGridProps {
   products: Product[]
@@ -66,45 +67,50 @@ export function ProductGrid({ products }: ProductGridProps) {
             </p>
           </div>
 
-          {/* Minimalist Sort Dropdown */}
+          {/* Refined Luxury Sort Pill Dropdown */}
           <div className="flex items-center gap-2.5 self-start md:self-end">
-            <span className="text-xs tracking-[0.14em] uppercase font-sans text-[#462F1D] font-semibold">
+            <span className="text-xs tracking-[0.14em] uppercase font-sans text-[#462F1D] font-semibold whitespace-nowrap">
               Sort:
             </span>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-transparent border-b border-[#462F1D]/40 py-1.5 px-2 text-sm text-[#23170F] font-medium tracking-wide focus:outline-hidden focus:border-[#462F1D] cursor-pointer"
-            >
-              <option value="featured">Featured Curations</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="rating">Client Favorites</option>
-            </select>
+            <div className="relative">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as any)}
+                className="appearance-none bg-white border border-[#E5DCD2] rounded-full py-2 pl-4 pr-9 text-xs sm:text-sm text-[#23170F] font-medium tracking-wide focus:outline-hidden focus:border-[#462F1D] cursor-pointer shadow-2xs hover:border-[#462F1D]/60 transition"
+              >
+                <option value="featured">Featured Curations</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating">Client Favorites</option>
+              </select>
+              <ChevronDown className="w-3.5 h-3.5 text-[#462F1D] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
           </div>
         </div>
 
         {/* Minimalist Typographic Category Navigation */}
-        <div className="flex items-center gap-8 overflow-x-auto pb-4 mb-12 scrollbar-none border-b border-[#E5DCD2] text-xs sm:text-sm font-sans tracking-[0.16em] uppercase">
-          {CATEGORIES.map((cat) => {
-            const isActive = activeCategory === cat.id
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`pb-3 relative transition-colors duration-200 whitespace-nowrap font-medium ${
-                  isActive
-                    ? "text-[#462F1D] font-semibold"
-                    : "text-[#462F1D]/75 hover:text-[#23170F]"
-                }`}
-              >
-                <span>{cat.label}</span>
-                {isActive && (
-                  <span className="absolute bottom-0 inset-x-0 h-0.5 bg-[#462F1D] animate-in fade-in duration-200" />
-                )}
-              </button>
-            )
-          })}
+        <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0 mb-10 overflow-x-auto scrollbar-none border-b border-[#E5DCD2]">
+          <div className="flex items-center gap-6 sm:gap-8 min-w-max pb-3 text-xs sm:text-sm font-sans tracking-[0.16em] uppercase">
+            {CATEGORIES.map((cat) => {
+              const isActive = activeCategory === cat.id
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`pb-2.5 relative transition-colors duration-200 whitespace-nowrap font-medium ${
+                    isActive
+                      ? "text-[#462F1D] font-bold"
+                      : "text-[#462F1D]/70 hover:text-[#23170F]"
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                  {isActive && (
+                    <span className="absolute bottom-0 inset-x-0 h-0.5 bg-[#462F1D] animate-in fade-in duration-200" />
+                  )}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
         {/* Products Grid */}

@@ -174,7 +174,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                 Rs. {product.originalPrice.toLocaleString()}
               </span>
             )}
-            <span className="font-serif text-base sm:text-lg font-medium text-[#23170F]">
+            <span className="font-sans font-semibold text-base sm:text-lg text-[#23170F]">
               Rs. {product.price.toLocaleString()}
             </span>
           </div>
