@@ -17,12 +17,14 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { addItem } = useCart()
   const [selectedColor, setSelectedColor] = useState(product.colorName)
   const [isAdded, setIsAdded] = useState(false)
+  const canPurchase = product.inStock && (product.availableColors.find(color => color.name === selectedColor)?.inStock ?? true)
   const media = getProductMedia(product, selectedColor)
   const productUrl = `/product/${product.id}${product.availableColors.length > 1 ? `?color=${encodeURIComponent(media.color)}` : ""}`
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    if (!canPurchase) return
     addItem(
       {
         id: product.id,
@@ -77,7 +79,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         <div className="absolute inset-x-2.5 bottom-2.5 sm:inset-x-3.5 sm:bottom-3.5 z-20 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-2 sm:group-hover:translate-y-0 opacity-100 translate-y-0 transition-all duration-300">
           <button
             type="button"
-            onClick={handleQuickAdd}
+            disabled={!canPurchase}
+                onClick={handleQuickAdd}
             className={`w-full py-3 sm:py-3.5 px-4 rounded-xl text-sm font-sans font-medium transition-all duration-300 shadow-md flex items-center justify-center gap-2 ${
               isAdded
                 ? "bg-[#23170F] text-[#ECE2D8]"

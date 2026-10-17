@@ -30,6 +30,7 @@ export type {
 export { SEED_PRODUCTS, SEED_REVIEWS }
 
 export interface StoreData {
+  adminSessions?: AdminSession[]
   products: Product[]
   orders: Order[]
   reviews: Review[]
@@ -38,6 +39,7 @@ export interface StoreData {
 }
 
 export interface CreateOrderInput {
+  accessTokenHash?: string
   customerName: string
   email: string
   phone: string
@@ -52,7 +54,16 @@ export interface CreateOrderInput {
   totalAmount: number
 }
 
+export interface AdminSession {
+  tokenHash: string
+  keyHash: string
+  expiresAt: number
+}
+
 export interface IDatabaseAdapter {
+  createAdminSession(session: AdminSession): Promise<void>
+  findAdminSession(tokenHash: string): Promise<AdminSession | null>
+  revokeAdminSession(tokenHash: string): Promise<void>
   readonly engine: DatabaseStatus['engine']
   readonly isRemote: boolean
   getProducts(options?: { category?: string; query?: string; sort?: string }): Promise<Product[]>
@@ -94,18 +105,28 @@ class LocalJsonAdapter implements IDatabaseAdapter {
   private cachedMtime = 0
   private isWritablePath = true
 
-  constructor() {
-    const primaryDir = path.join(process.cwd(), 'data')
+  constructor(skipLocal = false) {
+    const primaryDir = process.env.ANORA_DATA_DIR || path.join(process.cwd(), '.anora-data')
     const primaryPath = path.join(primaryDir, 'anora-store.json')
+    this.dataDir = primaryDir
+    this.dbPath = primaryPath
+    if (skipLocal) return
 
     // Check if process.cwd() is writable (on some serverless edge providers it is read-only)
     try {
-      if (!fs.existsSync(primaryDir)) {
+      if (!fs.existsSync(/* turbopackIgnore: true */ primaryDir)) {
         fs.mkdirSync(primaryDir, { recursive: true })
       }
       this.dataDir = primaryDir
       this.dbPath = primaryPath
+      const legacyPath = path.join(process.cwd(), 'data', 'anora-store.json')
+      if (!fs.existsSync(primaryPath) && fs.existsSync(legacyPath)) {
+        fs.copyFileSync(legacyPath, primaryPath)
+      }
     } catch {
+      if (process.env.NODE_ENV === 'production' || process.env.ANORA_DATA_DIR) {
+        throw new Error('Configure a writable, durable ANORA_DATA_DIR for private store data.')
+      }
       // Fallback to OS temp directory which is guaranteed writable on Vercel/AWS Lambda
       const fallbackDir = path.join(os.tmpdir(), 'anora-data')
       try {
@@ -122,7 +143,7 @@ class LocalJsonAdapter implements IDatabaseAdapter {
     }
   }
 
-  private loadStore(): StoreData {
+  protected async loadStore(): Promise<StoreData> {
     if (fs.existsSync(this.dbPath)) {
       try {
         const stats = fs.statSync(this.dbPath)
@@ -132,6 +153,7 @@ class LocalJsonAdapter implements IDatabaseAdapter {
         const raw = fs.readFileSync(this.dbPath, 'utf-8')
         const parsed = JSON.parse(raw)
         this.cachedData = {
+          adminSessions: Array.isArray(parsed.adminSessions) ? parsed.adminSessions : [],
           products: Array.isArray(parsed.products) && parsed.products.length > 0 ? parsed.products : SEED_PRODUCTS,
           orders: Array.isArray(parsed.orders) ? parsed.orders : [],
           reviews: Array.isArray(parsed.reviews) && parsed.reviews.length > 0 ? parsed.reviews : SEED_REVIEWS,
@@ -140,8 +162,9 @@ class LocalJsonAdapter implements IDatabaseAdapter {
         }
         this.cachedMtime = stats.mtimeMs
         return this.cachedData
-      } catch (e) {
-        console.error('[Anora DB] Error reading DB json, fallback to seed:', e)
+      } catch {
+        this.cachedData = null
+        throw new Error('Store data could not be read safely.')
       }
     }
 
@@ -152,12 +175,12 @@ class LocalJsonAdapter implements IDatabaseAdapter {
       subscribers: [],
       lastOrderNumber: 1000
     }
-    this.saveStore(initial)
+    await this.saveStore(initial)
     this.cachedData = initial
     return initial
   }
 
-  private saveStore(data: StoreData) {
+  protected async saveStore(data: StoreData) {
     this.cachedData = data
     try {
       if (!fs.existsSync(this.dataDir)) {
@@ -181,12 +204,13 @@ class LocalJsonAdapter implements IDatabaseAdapter {
         this.cachedMtime = fs.statSync(this.dbPath).mtimeMs
       } catch {}
     } catch (writeErr) {
-      console.warn('[Anora DB] Notice: Write fell back to in-memory state:', writeErr)
+      this.cachedData = null
+      throw new Error('Store data could not be saved.')
     }
   }
 
   async getProducts(options?: { category?: string; query?: string; sort?: string }): Promise<Product[]> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     let list = [...store.products]
 
     if (options?.category && options.category !== 'all') {
@@ -227,13 +251,13 @@ class LocalJsonAdapter implements IDatabaseAdapter {
   }
 
   async getProductById(id: string): Promise<Product | null> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const found = store.products.find((p) => p.id === id)
     return found || null
   }
 
   async saveProduct(input: ProductInput): Promise<Product> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
 
     const defaultSpecs: ProductSpec = {
       dimensions: input.specs?.dimensions || '22 cm (W) × 17 cm (H) × 9 cm (D)',
@@ -296,12 +320,12 @@ class LocalJsonAdapter implements IDatabaseAdapter {
       store.products.unshift(updatedProduct)
     }
 
-    this.saveStore(store)
+    await this.saveStore(store)
     return updatedProduct
   }
 
   async deleteProduct(id: string): Promise<boolean> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const initialLen = store.products.length
     if (initialLen <= 1) {
       // Keep at least one signature bag to prevent store breaking
@@ -309,28 +333,28 @@ class LocalJsonAdapter implements IDatabaseAdapter {
     }
     store.products = store.products.filter((p) => p.id !== id)
     if (store.products.length !== initialLen) {
-      this.saveStore(store)
+      await this.saveStore(store)
       return true
     }
     return false
   }
 
   async toggleProductStock(id: string): Promise<Product | null> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const product = store.products.find((p) => p.id === id)
     if (!product) return null
     product.inStock = !product.inStock
-    this.saveStore(store)
+    await this.saveStore(store)
     return product
   }
 
   async getOrders(): Promise<Order[]> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     return [...store.orders]
   }
 
   async getOrderByIdOrNumber(idOrNumber: string): Promise<Order | null> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const clean = idOrNumber.trim().toLowerCase()
     if (!clean) return null
 
@@ -342,26 +366,17 @@ class LocalJsonAdapter implements IDatabaseAdapter {
     const byId = store.orders.find((o) => String(o.id) === clean)
     if (byId) return byId
 
-    // Lookup by phone digits
-    const queryDigits = clean.replace(/[^0-9]/g, '')
-    if (queryDigits.length >= 7) {
-      const byPhone = store.orders.find((o) => {
-        const orderPhoneDigits = o.phone.replace(/[^0-9]/g, '')
-        return orderPhoneDigits.endsWith(queryDigits) || queryDigits.endsWith(orderPhoneDigits)
-      })
-      if (byPhone) return byPhone
-    }
-
     return null
   }
 
   async createOrder(input: CreateOrderInput): Promise<Order> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const newOrderSeq = (store.lastOrderNumber || 1000) + 1
     const year = new Date().getFullYear()
     const orderNumber = `ANR-${year}-${newOrderSeq}`
 
     const newOrder: Order = {
+      accessTokenHash: input.accessTokenHash,
       id: newOrderSeq,
       orderNumber,
       customerName: input.customerName.trim(),
@@ -387,13 +402,13 @@ class LocalJsonAdapter implements IDatabaseAdapter {
 
     store.orders.unshift(newOrder)
     store.lastOrderNumber = newOrderSeq
-    this.saveStore(store)
+    await this.saveStore(store)
 
     return newOrder
   }
 
   async updateOrderStatus(orderId: number, status: Order['orderStatus']): Promise<Order | null> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const idx = store.orders.findIndex((o) => o.id === orderId)
     if (idx === -1) return null
 
@@ -402,12 +417,12 @@ class LocalJsonAdapter implements IDatabaseAdapter {
     if (status === 'Delivered') {
       store.orders[idx].paymentStatus = 'Paid Cash on Delivery'
     }
-    this.saveStore(store)
+    await this.saveStore(store)
     return store.orders[idx]
   }
 
   async getReviewsForProduct(productId: string): Promise<Review[]> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     return store.reviews.filter((r) => r.productId === productId)
   }
 
@@ -419,7 +434,7 @@ class LocalJsonAdapter implements IDatabaseAdapter {
     comment: string
     location?: string
   }): Promise<Review> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const newReview: Review = {
       id: `rev-${Date.now()}`,
       productId: input.productId,
@@ -433,17 +448,17 @@ class LocalJsonAdapter implements IDatabaseAdapter {
     }
 
     store.reviews.unshift(newReview)
-    this.saveStore(store)
+    await this.saveStore(store)
     return newReview
   }
 
   async getSubscribers(): Promise<Subscriber[]> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     return [...store.subscribers]
   }
 
   async addSubscriber(email: string): Promise<{ success: boolean; message: string }> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const cleanEmail = email.trim().toLowerCase()
     if (!cleanEmail || !cleanEmail.includes('@')) {
       return { success: false, message: 'Please enter a valid email address.' }
@@ -459,12 +474,12 @@ class LocalJsonAdapter implements IDatabaseAdapter {
       email: cleanEmail,
       createdAt: new Date().toISOString()
     })
-    this.saveStore(store)
+    await this.saveStore(store)
     return { success: true, message: "Welcome to the Anora Club. You'll receive early access to new bag releases!" }
   }
 
   async getAdminAnalytics(): Promise<AdminAnalytics> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const orders = store.orders
 
     const totalRevenue = orders.reduce((acc, o) => acc + o.totalAmount, 0)
@@ -508,7 +523,7 @@ class LocalJsonAdapter implements IDatabaseAdapter {
   }
 
   async getCustomerSummaries(): Promise<CustomerSummary[]> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     const map = new Map<string, CustomerSummary>()
 
     for (const order of store.orders) {
@@ -541,7 +556,7 @@ class LocalJsonAdapter implements IDatabaseAdapter {
   }
 
   async getDatabaseStatus(): Promise<DatabaseStatus> {
-    const store = this.loadStore()
+    const store = await this.loadStore()
     return {
       engine: this.engine,
       isRemote: this.isRemote,
@@ -556,6 +571,22 @@ class LocalJsonAdapter implements IDatabaseAdapter {
     }
   }
 
+  async createAdminSession(session: AdminSession): Promise<void> {
+    const store = await this.loadStore()
+    store.adminSessions = [...(store.adminSessions || []).filter(item => item.expiresAt > Date.now()), session]
+    await this.saveStore(store)
+  }
+
+  async findAdminSession(tokenHash: string): Promise<AdminSession | null> {
+    return (await this.loadStore()).adminSessions?.find(item => item.tokenHash === tokenHash && item.expiresAt > Date.now()) || null
+  }
+
+  async revokeAdminSession(tokenHash: string): Promise<void> {
+    const store = await this.loadStore()
+    store.adminSessions = (store.adminSessions || []).filter(item => item.tokenHash !== tokenHash && item.expiresAt > Date.now())
+    await this.saveStore(store)
+  }
+
   async resetToSeed(): Promise<void> {
     const initial: StoreData = {
       products: SEED_PRODUCTS,
@@ -564,7 +595,7 @@ class LocalJsonAdapter implements IDatabaseAdapter {
       subscribers: [],
       lastOrderNumber: 1000
     }
-    this.saveStore(initial)
+    await this.saveStore(initial)
   }
 }
 
@@ -572,6 +603,31 @@ class LocalJsonAdapter implements IDatabaseAdapter {
 // 2. Serverless Edge PostgreSQL Adapter (Neon / Supabase 1-Click Ready)
 // ---------------------------------------------------------------------------
 class ServerlessPostgresAdapter extends LocalJsonAdapter {
+  private sessionTableInitialized = false
+
+  private async ensureSessionTable() {
+    if (this.sessionTableInitialized) return
+    await this.executeQuery("CREATE TABLE IF NOT EXISTS anora_admin_sessions (token_hash VARCHAR(64) PRIMARY KEY, key_hash VARCHAR(64) NOT NULL, expires_at BIGINT NOT NULL);")
+    this.sessionTableInitialized = true
+  }
+
+  override async createAdminSession(session: AdminSession) {
+    await this.ensureSessionTable()
+    await this.executeQuery("DELETE FROM anora_admin_sessions WHERE expires_at <= $1;", [Date.now()])
+    await this.executeQuery("INSERT INTO anora_admin_sessions (token_hash, key_hash, expires_at) VALUES ($1, $2, $3);", [session.tokenHash, session.keyHash, session.expiresAt])
+  }
+
+  override async findAdminSession(tokenHash: string): Promise<AdminSession | null> {
+    await this.ensureSessionTable()
+    const rows = await this.executeQuery("SELECT token_hash, key_hash, expires_at FROM anora_admin_sessions WHERE token_hash = $1 AND expires_at > $2 LIMIT 1;", [tokenHash, Date.now()])
+    const row = rows[0]
+    return row ? { tokenHash: row.token_hash, keyHash: row.key_hash, expiresAt: Number(row.expires_at) } : null
+  }
+
+  override async revokeAdminSession(tokenHash: string) {
+    await this.ensureSessionTable()
+    await this.executeQuery("DELETE FROM anora_admin_sessions WHERE token_hash = $1;", [tokenHash])
+  }
   override readonly engine: DatabaseStatus['engine'] = 'serverless-postgres'
   override readonly isRemote = true
 
@@ -581,7 +637,7 @@ class ServerlessPostgresAdapter extends LocalJsonAdapter {
   private isTableInitialized = false
 
   constructor(connectionUrl: string) {
-    super()
+    super(true)
     this.connectionUrl = connectionUrl
     try {
       const url = new URL(connectionUrl)
@@ -599,6 +655,7 @@ class ServerlessPostgresAdapter extends LocalJsonAdapter {
     const endpoint = `https://${this.host}/sql`
     const res = await fetch(endpoint, {
       method: 'POST',
+      signal: AbortSignal.timeout(10000),
       headers: {
         'Authorization': `Bearer ${this.password}`,
         'Content-Type': 'application/json'
@@ -662,246 +719,25 @@ class ServerlessPostgresAdapter extends LocalJsonAdapter {
     )
   }
 
-  override async getProducts(options?: { category?: string; query?: string; sort?: string }): Promise<Product[]> {
-    try {
-      const store = await this.fetchRemoteStore()
-      let list = [...store.products]
-      if (options?.category && options.category !== 'all') {
-        list = list.filter((p) => p.category.toLowerCase() === options.category?.toLowerCase())
-      }
-      if (options?.query) {
-        const q = options.query.toLowerCase()
-        list = list.filter((p) => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q))
-      }
-      return list
-    } catch (e) {
-      console.warn('[Anora DB] Remote Postgres fetch failed, falling back to local persistent store:', e)
-      return super.getProducts(options)
-    }
+  // All catalog/order/customer methods use the same authoritative store boundary.
+  // Remote failures must never read from or write to a different local database.
+  protected override async loadStore(): Promise<StoreData> {
+    return this.fetchRemoteStore()
   }
 
-  override async getProductById(id: string): Promise<Product | null> {
-    try {
-      const store = await this.fetchRemoteStore()
-      return store.products.find((p) => p.id === id) || null
-    } catch {
-      return super.getProductById(id)
-    }
-  }
-
-  override async saveProduct(input: ProductInput): Promise<Product> {
-    try {
-      const store = await this.fetchRemoteStore()
-      const targetId = input.id?.trim() || `the-anora-${input.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`
-      const existingIdx = store.products.findIndex((p) => p.id === targetId)
-
-      const savedProd: Product = {
-        id: targetId,
-        name: input.name.trim(),
-        tagline: input.tagline.trim() || 'Timeless Style, Modern You — Bags For Every You',
-        price: Math.max(1, Math.round(Number(input.price) || 6990)),
-        originalPrice: input.originalPrice ? Math.round(Number(input.originalPrice)) : null,
-        currency: input.currency || 'Rs.',
-        category: input.category || 'crossbody',
-        colorName: input.colorName.trim() || 'Classic Noir',
-        colorHex: input.colorHex.trim() || '#181615',
-        availableColors: input.availableColors && input.availableColors.length > 0 ? input.availableColors : [{ name: input.colorName || 'Classic Noir', hex: input.colorHex || '#181615', inStock: true }],
-        badge: input.badge ? input.badge.trim() : null,
-        image: input.image.trim() || '/images/products/bordeaux-crossbody-hero.jpeg',
-        images: input.images && input.images.length > 0 ? input.images : [input.image.trim() || '/images/products/bordeaux-crossbody-hero.jpeg'],
-        description: input.description.trim(),
-        story: input.story?.trim() || 'Handcrafted in our bespoke atelier.',
-        features: input.features && input.features.length > 0 ? input.features : ['100% Cash On Delivery Nationwide', '7-Day Hassle-Free Doorstep Return Guarantee'],
-        specs: {
-          dimensions: input.specs?.dimensions || '22 cm (W) × 17 cm (H) × 9 cm (D)',
-          weight: input.specs?.weight || '480 grams',
-          material: input.specs?.material || 'Full-Grain Pebbled Calfskin Leather',
-          hardware: input.specs?.hardware || '18k Brushed Gold Brass',
-          strapDrop: input.specs?.strapDrop || '52 cm (Adjustable)',
-          capacity: input.specs?.capacity || 'Accordion interior with center zip divider',
-          closure: input.specs?.closure || 'Mechanical Circular Twist-Lock',
-          origin: input.specs?.origin || 'Bespoke Handcrafted Leather Atelier'
-        },
-        rating: input.rating !== undefined ? Number(input.rating) : (existingIdx >= 0 ? store.products[existingIdx].rating : 5.0),
-        reviewCount: input.reviewCount !== undefined ? Number(input.reviewCount) : (existingIdx >= 0 ? store.products[existingIdx].reviewCount : 0),
-        inStock: input.inStock !== undefined ? Boolean(input.inStock) : true,
-        featured: input.featured !== undefined ? Boolean(input.featured) : false,
-        isNew: input.isNew !== undefined ? Boolean(input.isNew) : true,
-        supports3D: input.supports3D ?? (existingIdx >= 0 ? store.products[existingIdx].supports3D : undefined)
-      }
-
-      if (existingIdx >= 0) {
-        store.products[existingIdx] = savedProd
-      } else {
-        store.products.unshift(savedProd)
-      }
-      await this.persistRemoteStore(store)
-      return savedProd
-    } catch {
-      return super.saveProduct(input)
-    }
-  }
-
-  override async deleteProduct(id: string): Promise<boolean> {
-    try {
-      const store = await this.fetchRemoteStore()
-      if (store.products.length <= 1) return false
-      const initialLen = store.products.length
-      store.products = store.products.filter((p) => p.id !== id)
-      if (store.products.length !== initialLen) {
-        await this.persistRemoteStore(store)
-        return true
-      }
-      return false
-    } catch {
-      return super.deleteProduct(id)
-    }
-  }
-
-  override async toggleProductStock(id: string): Promise<Product | null> {
-    try {
-      const store = await this.fetchRemoteStore()
-      const prod = store.products.find((p) => p.id === id)
-      if (!prod) return null
-      prod.inStock = !prod.inStock
-      await this.persistRemoteStore(store)
-      return prod
-    } catch {
-      return super.toggleProductStock(id)
-    }
-  }
-
-  override async getOrders(): Promise<Order[]> {
-    try {
-      const store = await this.fetchRemoteStore()
-      return [...store.orders]
-    } catch {
-      return super.getOrders()
-    }
-  }
-
-  override async getOrderByIdOrNumber(idOrNumber: string): Promise<Order | null> {
-    try {
-      const store = await this.fetchRemoteStore()
-      const clean = idOrNumber.trim().toLowerCase()
-      if (!clean) return null
-      const byOrderNum = store.orders.find((o) => o.orderNumber.toLowerCase() === clean)
-      if (byOrderNum) return byOrderNum
-      const byId = store.orders.find((o) => String(o.id) === clean)
-      if (byId) return byId
-      const queryDigits = clean.replace(/[^0-9]/g, '')
-      if (queryDigits.length >= 7) {
-        const byPhone = store.orders.find((o) => {
-          const orderPhoneDigits = o.phone.replace(/[^0-9]/g, '')
-          return orderPhoneDigits.endsWith(queryDigits) || queryDigits.endsWith(orderPhoneDigits)
-        })
-        if (byPhone) return byPhone
-      }
-      return null
-    } catch {
-      return super.getOrderByIdOrNumber(idOrNumber)
-    }
-  }
-
-  override async createOrder(input: CreateOrderInput): Promise<Order> {
-    try {
-      const store = await this.fetchRemoteStore()
-      const newOrderSeq = (store.lastOrderNumber || 1000) + 1
-      const year = new Date().getFullYear()
-      const orderNumber = `ANR-${year}-${newOrderSeq}`
-
-      const newOrder: Order = {
-        id: newOrderSeq,
-        orderNumber,
-        customerName: input.customerName.trim(),
-        email: input.email.trim(),
-        phone: input.phone.trim(),
-        address: input.address.trim(),
-        apartment: input.apartment?.trim(),
-        city: input.city.trim(),
-        postalCode: input.postalCode?.trim(),
-        deliveryNotes: input.deliveryNotes?.trim(),
-        items: input.items,
-        subtotal: input.subtotal,
-        shippingFee: input.shippingFee,
-        totalAmount: input.totalAmount,
-        currency: 'Rs.',
-        paymentMethod: 'CASH_ON_DELIVERY',
-        paymentStatus: 'Pending Cash on Delivery',
-        orderStatus: 'Confirmed',
-        refundWindowDays: 7,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      }
-
-      store.orders.unshift(newOrder)
-      store.lastOrderNumber = newOrderSeq
-      await this.persistRemoteStore(store)
-      return newOrder
-    } catch {
-      return super.createOrder(input)
-    }
-  }
-
-  override async updateOrderStatus(orderId: number, status: Order['orderStatus']): Promise<Order | null> {
-    try {
-      const store = await this.fetchRemoteStore()
-      const idx = store.orders.findIndex((o) => o.id === orderId)
-      if (idx === -1) return null
-      store.orders[idx].orderStatus = status
-      store.orders[idx].updatedAt = new Date().toISOString()
-      if (status === 'Delivered') {
-        store.orders[idx].paymentStatus = 'Paid Cash on Delivery'
-      }
-      await this.persistRemoteStore(store)
-      return store.orders[idx]
-    } catch {
-      return super.updateOrderStatus(orderId, status)
-    }
+  protected override async saveStore(data: StoreData): Promise<void> {
+    await this.persistRemoteStore(data)
   }
 
   override async getDatabaseStatus(): Promise<DatabaseStatus> {
-    try {
-      const store = await this.fetchRemoteStore()
-      const maskedUrl = this.connectionUrl.replace(/:([^:@]+)@/, ':***@')
-      return {
-        engine: 'serverless-postgres',
-        isRemote: true,
-        isWritable: true,
-        storagePath: maskedUrl,
-        counts: {
-          products: store.products.length,
-          orders: store.orders.length,
-          reviews: store.reviews.length,
-          subscribers: store.subscribers.length
-        }
-      }
-    } catch {
-      const base = await super.getDatabaseStatus()
-      const maskedUrl = this.connectionUrl.replace(/:([^:@]+)@/, ':***@')
-      return {
-        ...base,
-        engine: 'serverless-postgres',
-        isRemote: true,
-        storagePath: maskedUrl
-      }
+    const store = await this.fetchRemoteStore()
+    return {
+      engine: this.engine, isRemote: true, isWritable: true,
+      storagePath: this.connectionUrl.replace(/:([^:@]+)@/, ':***@'),
+      counts: { products: store.products.length, orders: store.orders.length, reviews: store.reviews.length, subscribers: store.subscribers.length },
     }
   }
 
-  override async resetToSeed(): Promise<void> {
-    try {
-      const initial: StoreData = {
-        products: SEED_PRODUCTS,
-        orders: [],
-        reviews: SEED_REVIEWS,
-        subscribers: [],
-        lastOrderNumber: 1000
-      }
-      await this.persistRemoteStore(initial)
-    } catch {
-      await super.resetToSeed()
-    }
-  }
 }
 
 // ---------------------------------------------------------------------------
@@ -916,6 +752,10 @@ function createActiveAdapter(): IDatabaseAdapter {
 }
 
 const activeAdapter: IDatabaseAdapter = createActiveAdapter()
+
+export const createAdminSession = (session: AdminSession) => activeAdapter.createAdminSession(session)
+export const findAdminSession = (tokenHash: string) => activeAdapter.findAdminSession(tokenHash)
+export const revokeAdminSession = (tokenHash: string) => activeAdapter.revokeAdminSession(tokenHash)
 
 // ---------------------------------------------------------------------------
 // 4. Public Database API (Universal Module Exports)

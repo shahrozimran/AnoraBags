@@ -4,6 +4,7 @@ import React, { useState, useEffect, useTransition } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import type { Order, Product, ProductInput, Subscriber, CustomerSummary, AdminAnalytics, DatabaseStatus } from "@/lib/types"
+import { csvCell } from "@/lib/security/serialization"
 import { Header } from "@/components/anora/header"
 import { Footer } from "@/components/anora/footer"
 import {
@@ -19,6 +20,7 @@ import {
   fetchDatabaseStatusAction,
   resetDatabaseAction,
   verifyAdminKeyAction,
+  fetchAdminSessionAction,
   logoutAdminAction
 } from "@/app/actions/admin"
 import {
@@ -65,7 +67,6 @@ export default function AdminPage() {
   const [isPending, startTransition] = useTransition()
   const [filterStatus, setFilterStatus] = useState<string>("all")
   const [search, setSearch] = useState("")
-  const [adminKey, setAdminKey] = useState<string>("")
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [passcodeInput, setPasscodeInput] = useState("")
   const [authError, setAuthError] = useState("")
@@ -105,28 +106,24 @@ export default function AdminPage() {
   const [feedbackMessage, setFeedbackMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
 
   useEffect(() => {
-    const saved = typeof window !== "undefined" ? sessionStorage.getItem("anora_admin_key") : null
-    if (saved) {
-      setAdminKey(saved)
-      setIsAuthenticated(true)
-      loadAllAdminData(saved)
-    } else {
-      setIsLoading(false)
-    }
+    // Remove any credential retained by the previous client-key implementation.
+    try { sessionStorage.removeItem("anora_admin_key") } catch {}
+    fetchAdminSessionAction().then(async ({ authenticated }) => {
+      setIsAuthenticated(authenticated)
+      if (authenticated) await loadAllAdminData()
+    }).catch(() => setIsAuthenticated(false)).finally(() => setIsLoading(false))
   }, [])
 
-  const loadAllAdminData = async (key?: string) => {
-    const activeKey = key || adminKey
-    if (!activeKey) return
+  const loadAllAdminData = async () => {
     setIsLoading(true)
     try {
       const [ordList, prodList, subsList, custsList, analyticsData, dbInfo] = await Promise.all([
-        fetchAdminOrders(activeKey),
-        fetchAdminProducts(activeKey),
-        fetchSubscribersAction(activeKey),
-        fetchCustomerSummariesAction(activeKey),
-        fetchAdminAnalyticsAction(activeKey),
-        fetchDatabaseStatusAction(activeKey)
+        fetchAdminOrders(),
+        fetchAdminProducts(),
+        fetchSubscribersAction(),
+        fetchCustomerSummariesAction(),
+        fetchAdminAnalyticsAction(),
+        fetchDatabaseStatusAction()
       ])
       setOrders(ordList)
       setProducts(prodList)
@@ -135,7 +132,10 @@ export default function AdminPage() {
       setAnalytics(analyticsData)
       setDbStatus(dbInfo)
     } catch (e) {
-      console.error("Failed to load admin data:", e)
+      setIsAuthenticated(false)
+      setOrders([])
+      setCustomers([])
+      setSubscribers([])
     } finally {
       setIsLoading(false)
     }
@@ -147,10 +147,9 @@ export default function AdminPage() {
     setAuthError("")
     const res = await verifyAdminKeyAction(passcodeInput)
     if (res.success) {
-      sessionStorage.setItem("anora_admin_key", passcodeInput)
-      setAdminKey(passcodeInput)
+      setPasscodeInput("")
       setIsAuthenticated(true)
-      loadAllAdminData(passcodeInput)
+      loadAllAdminData()
     } else {
       setAuthError(res.message || "Incorrect Admin PIN.")
     }
@@ -159,9 +158,15 @@ export default function AdminPage() {
   const handleLogout = async () => {
     try {
       await logoutAdminAction()
-    } catch {}
-    sessionStorage.removeItem("anora_admin_key")
-    setAdminKey("")
+    } catch {
+      showFeedback("Logout could not be confirmed. Please try again.", "error")
+      return
+    }
+    try { sessionStorage.removeItem("anora_admin_key") } catch {}
+    setOrders([])
+    setCustomers([])
+    setSubscribers([])
+    setSelectedOrder(null)
     setIsAuthenticated(false)
   }
 
@@ -186,7 +191,7 @@ export default function AdminPage() {
   // Order Status Change
   const handleStatusChange = async (orderId: number, newStatus: Order["orderStatus"]) => {
     try {
-      const res = await updateOrderStatusAction(orderId, newStatus, adminKey)
+      const res = await updateOrderStatusAction(orderId, newStatus)
       if (!res.success) {
         showFeedback(res.message || "Failed to update order status", "error")
         return
@@ -207,7 +212,7 @@ export default function AdminPage() {
       }
       showFeedback(`Order #${orderId} marked as ${newStatus}`)
       // refresh analytics
-      const updatedAnalytics = await fetchAdminAnalyticsAction(adminKey)
+      const updatedAnalytics = await fetchAdminAnalyticsAction()
       setAnalytics(updatedAnalytics)
     } catch (e) {
       console.error("Failed to update status:", e)
@@ -276,13 +281,13 @@ export default function AdminPage() {
   const handleSaveProduct = async (e: React.FormEvent) => {
     e.preventDefault()
     startTransition(async () => {
-      const res = await saveProductAction(productForm, adminKey)
+      const res = await saveProductAction(productForm)
       if (res.success && res.product) {
         showFeedback(`Bag "${res.product.name}" successfully saved to catalog!`)
         setIsProductModalOpen(false)
-        const updatedList = await fetchAdminProducts(adminKey)
+        const updatedList = await fetchAdminProducts()
         setProducts(updatedList)
-        const updatedAnalytics = await fetchAdminAnalyticsAction(adminKey)
+        const updatedAnalytics = await fetchAdminAnalyticsAction()
         setAnalytics(updatedAnalytics)
       } else {
         showFeedback(res.message || "Failed to save product", "error")
@@ -293,12 +298,12 @@ export default function AdminPage() {
   const handleDeleteProduct = async (id: string, name: string) => {
     if (!confirm(`Are you sure you want to remove "${name}" from the catalog?`)) return
     startTransition(async () => {
-      const res = await deleteProductAction(id, adminKey)
+      const res = await deleteProductAction(id)
       if (res.success) {
         showFeedback(`Product "${name}" removed.`)
-        const updatedList = await fetchAdminProducts(adminKey)
+        const updatedList = await fetchAdminProducts()
         setProducts(updatedList)
-        const updatedAnalytics = await fetchAdminAnalyticsAction(adminKey)
+        const updatedAnalytics = await fetchAdminAnalyticsAction()
         setAnalytics(updatedAnalytics)
       } else {
         showFeedback(res.message || "Could not delete product.", "error")
@@ -308,7 +313,7 @@ export default function AdminPage() {
 
   const handleToggleStock = async (id: string) => {
     startTransition(async () => {
-      const res = await toggleProductStockAction(id, adminKey)
+      const res = await toggleProductStockAction(id)
       if (res.success) {
         setProducts((prev) =>
           prev.map((p) => (p.id === id ? { ...p, inStock: res.inStock ?? !p.inStock } : p))
@@ -324,7 +329,7 @@ export default function AdminPage() {
   const handleResetDatabase = async () => {
     if (!confirm("Reset database to initial seed catalog and sample reviews? All custom orders will be cleared.")) return
     startTransition(async () => {
-      const res = await resetDatabaseAction(adminKey)
+      const res = await resetDatabaseAction()
       if (res.success) {
         showFeedback("Database reset to factory seeds!")
         loadAllAdminData()
@@ -341,20 +346,8 @@ export default function AdminPage() {
       return
     }
     const headers = ["OrderNumber", "Date", "Customer", "Phone", "Email", "City", "Address", "ItemsCount", "TotalPKR", "Status", "PaymentStatus"]
-    const rows = orders.map((o) => [
-      o.orderNumber,
-      new Date(o.createdAt).toLocaleDateString(),
-      `"${o.customerName.replace(/"/g, '""')}"`,
-      `"${o.phone}"`,
-      `"${o.email}"`,
-      `"${o.city}"`,
-      `"${(o.address + (o.apartment ? ", " + o.apartment : "")).replace(/"/g, '""')}"`,
-      o.items.length,
-      o.totalAmount,
-      o.orderStatus,
-      o.paymentStatus
-    ])
-    const csvContent = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n")
+    const rows = orders.map(o => [o.orderNumber, new Date(o.createdAt).toLocaleDateString(), o.customerName, o.phone, o.email, o.city, o.address + (o.apartment ? ", " + o.apartment : ""), o.items.length, o.totalAmount, o.orderStatus, o.paymentStatus])
+    const csvContent = [headers.map(csvCell).join(","), ...rows.map((r) => r.map(csvCell).join(","))].join("\n")
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
     const url = URL.createObjectURL(blob)
     const link = document.createElement("a")
@@ -370,16 +363,8 @@ export default function AdminPage() {
       return
     }
     const headers = ["Name", "Phone", "Email", "City", "OrderCount", "TotalSpentPKR", "LatestOrderDate"]
-    const rows = customers.map((c) => [
-      `"${c.name.replace(/"/g, '""')}"`,
-      `"${c.phone}"`,
-      `"${c.email}"`,
-      `"${c.city}"`,
-      c.orderCount,
-      c.totalSpent,
-      new Date(c.latestOrderDate).toLocaleDateString()
-    ])
-    const csvContent = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n")
+    const rows = customers.map(c => [c.name, c.phone, c.email, c.city, c.orderCount, c.totalSpent, new Date(c.latestOrderDate).toLocaleDateString()])
+    const csvContent = [headers.map(csvCell).join(","), ...rows.map((r) => r.map(csvCell).join(","))].join("\n")
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
     const url = URL.createObjectURL(blob)
     const link = document.createElement("a")
@@ -396,7 +381,7 @@ export default function AdminPage() {
     }
     const headers = ["ID", "Email", "SubscribedAt"]
     const rows = subscribers.map((s) => [s.id, s.email, new Date(s.createdAt).toLocaleDateString()])
-    const csvContent = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n")
+    const csvContent = [headers.map(csvCell).join(","), ...rows.map((r) => r.map(csvCell).join(","))].join("\n")
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
     const url = URL.createObjectURL(blob)
     const link = document.createElement("a")
@@ -431,19 +416,22 @@ export default function AdminPage() {
               <span className="text-xs font-semibold text-[#462F1D]">Staff Portal</span>
               <h1 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">Anora Admin Access</h1>
               <p className="text-sm text-stone-600 font-light">
-                Enter your security PIN to manage bag catalogs, dispatch orders, and inspect COD metrics.
+                Enter your staff password to manage bag catalogs, dispatch orders, and inspect COD metrics.
               </p>
             </div>
 
             <form onSubmit={handleLogin} className="space-y-4 text-left">
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-stone-700">Security PIN / Access Key</label>
+                <label className="text-xs font-semibold text-stone-700">Staff password</label>
                 <input
                   type="password"
                   value={passcodeInput}
                   onChange={(e) => setPasscodeInput(e.target.value)}
-                  placeholder="Enter Admin PIN"
+                  placeholder="Enter staff password"
                   className="w-full px-4 py-3 rounded-xl border border-stone-300 text-stone-900 text-sm focus:outline-hidden focus:border-[#462F1D] bg-stone-50/50"
+                  autoComplete="current-password"
+                  maxLength={256}
+                  required
                   autoFocus
                 />
               </div>

@@ -1,3 +1,4 @@
+import { safeJsonLd } from "@/lib/security/serialization"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Plus } from "lucide-react"
@@ -20,7 +21,7 @@ export default function FAQPage() {
   }
   return (
     <HelpPage title="Frequently asked questions" description="The little details, made simple. Find answers about your order, your bag, and everything in between." path="/faq">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <div className="mb-8 flex flex-wrap gap-3 text-xs">
         <Link href="/track-order" className="rounded-full border border-[#D8C9BA] px-4 py-2.5 hover:bg-[#EDE2D7]">Track your order ↗</Link>
         <Link href="/return-policy" className="rounded-full border border-[#D8C9BA] px-4 py-2.5 hover:bg-[#EDE2D7]">Start a return ↗</Link>

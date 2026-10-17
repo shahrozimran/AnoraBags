@@ -41,7 +41,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     try {
       const stored = localStorage.getItem(CART_STORAGE_KEY)
       if (stored) {
-        setItems(JSON.parse(stored))
+        const parsed = JSON.parse(stored)
+        if (Array.isArray(parsed)) setItems(parsed.filter(item => item && typeof item.id === "string" && Number.isFinite(item.price) && Number.isInteger(item.quantity) && item.quantity > 0).slice(0, 20).map(item => ({ ...item, quantity: Math.min(20, item.quantity) })))
       }
     } catch (e) {
       console.warn("Could not load cart from localStorage", e)
@@ -71,7 +72,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         const existingIdx = prev.findIndex((i) => i.id === product.id && i.color === selectedColor)
         if (existingIdx > -1) {
           const updated = [...prev]
-          updated[existingIdx].quantity += quantity
+          updated[existingIdx] = { ...updated[existingIdx], quantity: Math.min(20, updated[existingIdx].quantity + quantity) }
           return updated
         } else {
           return [
@@ -80,7 +81,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
               id: product.id,
               name: product.name,
               price: product.price,
-              quantity,
+              quantity: Math.max(1, Math.min(20, Math.floor(quantity))),
               color: selectedColor,
               image: selectedImage,
               currency
@@ -99,7 +100,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return
     }
     setItems((prev) =>
-      prev.map((i) => (i.id === id && i.color === color ? { ...i, quantity } : i))
+      prev.map((i) => (i.id === id && i.color === color ? { ...i, quantity: Math.max(1, Math.min(20, Math.floor(quantity))) } : i))
     )
   }, [])
 

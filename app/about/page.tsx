@@ -1,3 +1,4 @@
+import { safeJsonLd } from "@/lib/security/serialization"
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -58,7 +59,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[#FAF6F1] flex flex-col justify-between">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(aboutSchema) }}
       />
 
       <Header />

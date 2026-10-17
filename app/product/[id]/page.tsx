@@ -1,3 +1,4 @@
+import { safeJsonLd } from "@/lib/security/serialization"
 import React from "react"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
@@ -207,7 +208,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     <main className="min-h-screen bg-[#FAF6F1]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(productSchema) }}
       />
       <Header />
       <CartDrawer />

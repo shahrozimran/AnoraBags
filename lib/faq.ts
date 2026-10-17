@@ -12,7 +12,7 @@ export const FAQ_GROUPS = [
     questions: [
       { question: "Where do you deliver and how much does it cost?", answer: "We offer free delivery across Pakistan, subject to courier coverage for your address. Any delivery charge is shown in your checkout total before you place the order. We do not currently offer international delivery." },
       { question: "When will my order arrive?", answer: "Delivery typically takes 2–3 working days after dispatch. This is an estimate; remote locations, public holidays, weather, and courier delays can take longer. Contact us with your order number for help with a delayed parcel." },
-      { question: "How do I track my order?", answer: "Open Track your order and enter your order number or the phone number you used at checkout to view the latest order status. If you need help, send your order number to our team." },
+      { question: "How do I track my order?", answer: "Open Track your order and enter both your order number and the full mobile number used at checkout. We require both to help keep order details private. If you need help, contact our team." },
     ],
   },
   {

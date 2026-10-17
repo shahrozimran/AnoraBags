@@ -4,6 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { getOrderByIdOrNumber } from "@/lib/db"
+import { hasOrderAccess, ORDER_NUMBER } from "@/lib/security/order-access"
+import { isAdminAuthenticated } from "@/lib/security/admin-auth"
 import { Header } from "@/components/anora/header"
 import { Footer } from "@/components/anora/footer"
 import {
@@ -27,6 +29,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
+  if (!ORDER_NUMBER.test(id)) notFound()
   return {
     title: `Order #${id} Confirmed — Anora Bags`,
     robots: {
@@ -39,11 +42,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function OrderConfirmationPage({ params }: Props) {
   const { id } = await params
+  if (!ORDER_NUMBER.test(id)) notFound()
   const order = await getOrderByIdOrNumber(id)
 
   if (!order) {
     notFound()
   }
+  if (!(await hasOrderAccess(order)) && !(await isAdminAuthenticated())) notFound()
 
   return (
     <div className="min-h-screen bg-[#FAF6F1] flex flex-col justify-between">

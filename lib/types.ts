@@ -53,6 +53,7 @@ export interface OrderItem {
 }
 
 export interface Order {
+  accessTokenHash?: string
   id: number
   orderNumber: string
   customerName: string

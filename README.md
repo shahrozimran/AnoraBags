@@ -32,7 +32,7 @@
   3. **100% Refund**: Reimbursed within 24 hours via Bank Transfer, EasyPaisa, or JazzCash.
 
 ### 4. Full-Featured Admin Portal (`/admin`)
-- **Passcode Protected Gate**: Luxury PIN-authenticated access (`anora2026`).
+- **Passcode Protected Gate**: Server-verified, revocable 8-hour sessions. Set a unique ADMIN_KEY of at least 24 characters; no default credential is accepted.
 - **Product Catalog Management**: Add new bags, edit pricing, specs, tags, stock availability, and featured status.
 - **Order Lifecycle Management**: Live tracking of orders with status progression (*Confirmed → Dispatched → Out for Delivery → Delivered → Cancelled*).
 - **Customer & Subscriber Directory**: Export newsletter subscribers and view patron purchase histories.
@@ -106,3 +106,15 @@ npx tsx scripts/test-audits.mjs
 ---
 
 © 2026 Anora Bags. All rights reserved. Handcrafted with devotion.
+
+## Security configuration
+
+- Install with npm ci. npm is the supported package manager and package-lock.json is authoritative.
+- Set ADMIN_KEY to a unique random password of at least 24 characters in .env.local (local only) or your hosting secret manager. Admin access fails closed when it is missing. Never use NEXT_PUBLIC_ for secrets.
+- Authentication uses HttpOnly, SameSite=Strict cookies, a server-side 8-hour expiry, and server-side logout revocation. Existing legacy admin cookies and browser-stored keys no longer authorize access.
+- Runtime order, customer, newsletter, and admin-session data lives in ignored .anora-data/ by default. Existing data/anora-store.json is copied once on first use for compatibility. Use a private durable ANORA_DATA_DIR on a single writable host. Do not commit live data or expose this directory as static files.
+- Production must use HTTPS. Serve next start behind a reverse proxy; never expose next dev publicly.
+- Only enable TRUST_PROXY behind an ingress that overwrites x-forwarded-for. The built-in bounded limiter is process-local; without a trusted client IP it deliberately uses a shared bucket, so configure the ingress before public traffic. Multi-instance/serverless deployments also require a shared ingress/WAF rate limit and a transactional database. Set APP_ORIGIN to the canonical public origin if your reverse proxy rewrites Host.
+- Customer confirmations require an HttpOnly order capability issued at checkout (30 days) or an authenticated staff session. Tracking requires the exact order number and full checkout mobile number, never a numeric ID or phone suffix. Phone matching is privacy protection, not an authenticated customer account or OTP verification.
+- Run npm run test:security and npm run build. The security tests create disposable stores and never reset the live database. The legacy scripts/test-audits.mjs now delegates to this isolated suite.
+- The optional remote Postgres adapter requires its supported HTTPS /sql endpoint; a raw generic PostgreSQL URL is not a complete tested hosting integration. Validate your actual provider before using it with customer data. Remote auth/session operations and order creation fail closed on backend failure.

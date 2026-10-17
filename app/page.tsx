@@ -1,3 +1,4 @@
+import { safeJsonLd } from "@/lib/security/serialization"
 import React from "react"
 import type { Metadata } from "next"
 import { getProducts } from "@/lib/db"
@@ -128,7 +129,7 @@ export default async function HomePage() {
     <main className="min-h-screen bg-[#FAF6F1]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(homeSchema) }}
       />
       <Header />
       <CartDrawer />

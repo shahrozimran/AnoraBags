@@ -23,6 +23,7 @@ import {
 
 export default function TrackOrderPage() {
   const [query, setQuery] = useState("")
+  const [phone, setPhone] = useState("")
   const [order, setOrder] = useState<Order | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [searched, setSearched] = useState(false)
@@ -37,7 +38,10 @@ export default function TrackOrderPage() {
     setSearched(true)
 
     try {
-      const res = await fetch(`/api/orders/track?q=${encodeURIComponent(query.trim())}`)
+      const res = await fetch("/api/orders/track", {
+        method: "POST", headers: { "Content-Type": "application/json" }, cache: "no-store",
+        body: JSON.stringify({ orderNumber: query.trim(), phone }),
+      })
       const data = await res.json()
       if (data.success && data.order) {
         setOrder(data.order)
@@ -72,7 +76,7 @@ export default function TrackOrderPage() {
             Track Your <span className="italic font-normal text-[#462F1D]">COD Parcel</span>
           </h1>
           <p className="text-base sm:text-lg text-[#462F1D] font-light max-w-lg mx-auto leading-relaxed">
-            Enter your Order Number (e.g. <code>ANR-2026-1001</code>) or your phone number to check courier transit status and 7-day doorstep privilege.
+            Enter your order number and the full mobile number used at checkout to securely check your order status.
           </p>
         </div>
 
@@ -86,10 +90,15 @@ export default function TrackOrderPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Enter Order Number (e.g. ANR-2026-1001)"
+                aria-label="Order number"
+                maxLength={30}
                 required
                 className="w-full pl-12 pr-4 py-3.5 sm:py-4 rounded-full border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-white shadow-2xs font-mono"
               />
             </div>
+            <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} required maxLength={30}
+              aria-label="Phone number used at checkout" autoComplete="tel" placeholder="Checkout mobile number"
+              className="min-w-0 rounded-full border border-[#E5DCD2] bg-white px-5 py-3.5 text-sm focus:outline-2 focus:outline-[#462F1D]" />
             <button
               type="submit"
               disabled={isLoading}

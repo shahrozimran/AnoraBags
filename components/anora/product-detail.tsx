@@ -50,6 +50,7 @@ export function ProductDetail({ product, reviews = [], initialColor }: ProductDe
 
   const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [selectedColor, setSelectedColor] = useState(getProductMedia(product, initialColor).color)
+  const canPurchase = product.inStock && (product.availableColors.find(color => color.name === selectedColor)?.inStock ?? true)
   const media = getProductMedia(product, selectedColor)
   const galleryImages = media.images
   const activeImage = galleryImages[activeImageIndex] || media.image
@@ -60,6 +61,7 @@ export function ProductDetail({ product, reviews = [], initialColor }: ProductDe
   const [isCopied, setIsCopied] = useState(false)
 
   const handleAddToCart = () => {
+    if (!canPurchase) return
     addItem(
       {
         id: product.id,
@@ -74,6 +76,7 @@ export function ProductDetail({ product, reviews = [], initialColor }: ProductDe
   }
 
   const handleBuyNowCOD = () => {
+    if (!canPurchase) return
     addItem(
       {
         id: product.id,
@@ -300,7 +303,7 @@ export function ProductDetail({ product, reviews = [], initialColor }: ProductDe
                 </button>
                 <span className="px-3.5 text-sm font-semibold text-[#23170F]">{quantity}</span>
                 <button
-                  onClick={() => setQuantity(quantity + 1)}
+                  onClick={() => setQuantity(Math.min(20, quantity + 1))}
                   className="px-4 py-2 text-[#462F1D] hover:text-[#23170F] transition font-medium"
                   aria-label="Increase quantity"
                 >
@@ -312,6 +315,7 @@ export function ProductDetail({ product, reviews = [], initialColor }: ProductDe
             {/* Primary Action Buttons */}
             <div className="space-y-3 pt-2">
               <button
+                disabled={!canPurchase}
                 onClick={handleBuyNowCOD}
                 className="w-full py-4 px-8 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2.5 group"
               >
@@ -320,6 +324,7 @@ export function ProductDetail({ product, reviews = [], initialColor }: ProductDe
               </button>
 
               <button
+                disabled={!canPurchase}
                 onClick={handleAddToCart}
                 className="w-full py-4 px-8 rounded-full bg-transparent hover:bg-[#FAF6F1] text-[#23170F] border border-[#462F1D]/40 hover:border-[#462F1D] font-sans font-medium text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2.5"
               >
@@ -717,7 +722,8 @@ export function ProductDetail({ product, reviews = [], initialColor }: ProductDe
           <div className="flex items-center gap-2 shrink-0">
             <button
               type="button"
-              onClick={handleAddToCart}
+              disabled={!canPurchase}
+                onClick={handleAddToCart}
               className="p-2.5 rounded-full border border-[#462F1D]/30 text-[#462F1D] bg-white hover:bg-[#FAF6F1] transition shadow-2xs"
               aria-label="Add to bag"
             >
@@ -725,7 +731,8 @@ export function ProductDetail({ product, reviews = [], initialColor }: ProductDe
             </button>
             <button
               type="button"
-              onClick={handleBuyNowCOD}
+              disabled={!canPurchase}
+                onClick={handleBuyNowCOD}
               className="px-4 py-2.5 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs font-sans font-medium transition shadow-xs whitespace-nowrap"
             >
               Buy Now (COD)

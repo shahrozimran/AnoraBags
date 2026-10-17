@@ -1,19 +1,14 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import { getOrders } from "@/lib/db"
+import { isAdminAuthenticated } from "@/lib/security/admin-auth"
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic"
 
-export async function GET(request: NextRequest) {
-  const adminKey = request.headers.get("x-admin-key") || request.nextUrl.searchParams.get("key")
-  const expectedKey = process.env.ADMIN_KEY || "anora2026"
-
-  if (adminKey !== expectedKey) {
-    return NextResponse.json(
-      { success: false, message: "Unauthorized. Admin credentials required." },
-      { status: 401 }
-    )
+export async function GET() {
+  const headers = { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex, nofollow" }
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ success: false, message: "Unauthorized." }, { status: 401, headers })
   }
-
-  const orders = await getOrders()
-  return NextResponse.json({ success: true, orders })
+  const orders = (await getOrders()).map(({ accessTokenHash: _privateToken, ...order }) => order)
+  return NextResponse.json({ success: true, orders }, { headers })
 }

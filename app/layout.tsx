@@ -1,3 +1,4 @@
+import { safeJsonLd } from "@/lib/security/serialization"
 import React from "react"
 import type { Metadata, Viewport } from "next"
 import { DM_Sans, Playfair_Display, Cormorant_Garamond } from "next/font/google"
@@ -5,6 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { CartProvider } from "@/components/anora/cart-context"
 import "./globals.css"
 import { STORE_CONTACT } from "@/lib/site-config"
+import { headers } from "next/headers"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -101,11 +103,12 @@ export const viewport: Viewport = {
   viewportFit: "cover"
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const nonce = (await headers()).get("x-nonce") || undefined
   // Global Schema.org graph for AEO and GEO engine consumption
   const globalSchema = {
     "@context": "https://schema.org",
@@ -191,8 +194,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
+          nonce={nonce}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(globalSchema) }}
         />
       </head>
       <body id="top" className={`${dmSans.variable} ${playfairDisplay.variable} ${cormorantGaramond.variable} font-sans antialiased text-[#23170F] bg-[#FAF6F1]`}>
