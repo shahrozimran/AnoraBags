@@ -10,6 +10,7 @@ import { Footer } from "@/components/anora/footer"
 
 interface Props {
   params: Promise<{ id: string }>
+  searchParams?: Promise<{ color?: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -65,7 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ProductPage({ params }: Props) {
+export default async function ProductPage({ params, searchParams }: Props) {
   const { id } = await params
   const product = await getProductById(id)
 
@@ -77,6 +78,7 @@ export default async function ProductPage({ params }: Props) {
     getProducts(),
     getReviewsForProduct(product.id)
   ])
+  const initialColor = (await searchParams)?.color
 
   const related = allProducts.filter((p) => p.id !== product.id).slice(0, 3)
 
@@ -120,7 +122,7 @@ export default async function ProductPage({ params }: Props) {
         "description": product.description,
         "sku": product.id,
         "mpn": product.id.toUpperCase(),
-        "color": product.colorName,
+        "color": product.availableColors.map((color) => color.name),
         "material": product.specs?.material || "Full-Grain Calfskin Leather",
         "brand": {
           "@type": "Brand",
@@ -176,11 +178,11 @@ export default async function ProductPage({ params }: Props) {
             "refundType": "https://schema.org/FullRefund"
           }
         },
-        "aggregateRating": {
+        ...(product.reviewCount > 0 ? { "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": product.rating,
-          "reviewCount": product.reviewCount || Math.max(reviews.length, 1)
-        },
+          "reviewCount": product.reviewCount
+        } } : {}),
         ...(reviews.length > 0
           ? {
               "review": reviews.map((r) => ({
@@ -209,7 +211,7 @@ export default async function ProductPage({ params }: Props) {
       />
       <Header />
       <CartDrawer />
-      <ProductDetail product={product} reviews={reviews} />
+      <ProductDetail key={`${product.id}:${initialColor || product.colorName}`} product={product} reviews={reviews} initialColor={initialColor} />
 
       {/* Related Handbags Section */}
       {related.length > 0 && (

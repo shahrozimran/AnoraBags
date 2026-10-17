@@ -1,24 +1,28 @@
 import type { Product, Review } from './types'
+import { CITY_CHAIN_BAG, ESPRESSO_CURVE_BAG, NAVY_SIGNATURE_BAG, NOIR_GEOMETRIC_BAG } from './catalog-products'
 
 export const SEED_PRODUCTS: Product[] = [
+  NOIR_GEOMETRIC_BAG,
+  CITY_CHAIN_BAG,
+  NAVY_SIGNATURE_BAG,
+  ESPRESSO_CURVE_BAG,
   {
     id: 'the-anora-bordeaux-flap-crossbody',
     name: 'The Anora Bordeaux Flap Crossbody',
     tagline: 'Timeless Style, Modern You — Bags For Every You',
-    price: 6990,
-    originalPrice: 8990,
+    price: 2799,
+    originalPrice: null,
     currency: 'Rs.',
     category: 'crossbody',
     colorName: 'Rich Bordeaux Wine',
     colorHex: '#4A1525',
     availableColors: [
-      { name: 'Rich Bordeaux Wine', hex: '#4A1525', inStock: true },
-      { name: 'Noir Black', hex: '#1C1917', inStock: true },
-      { name: 'Caramel Saddle', hex: '#B36B39', inStock: true }
+      { name: 'Rich Bordeaux Wine', hex: '#4A1525', inStock: true }
     ],
     badge: 'Signature Bestseller',
-    image: '/images/products/bordeaux-crossbody-hero.jpeg',
+    image: '/images/products/bordeaux-white/front.webp',
     images: [
+      '/images/products/bordeaux-white/front.webp',
       '/images/products/bordeaux-crossbody-hero.jpeg',
       '/images/products/bordeaux-crossbody-lifestyle.jpeg',
       '/images/products/bordeaux-crossbody-model.jpeg',
@@ -48,72 +52,26 @@ export const SEED_PRODUCTS: Product[] = [
     reviewCount: 142,
     inStock: true,
     featured: true,
-    isNew: false
-  },
-  {
-    id: 'the-anora-dua-satchel',
-    name: 'The Anora Dua Satchel in Espresso & Cognac',
-    tagline: 'Sculpted Dual-Tone Luxury — Something Beautiful is on the Way',
-    price: 8490,
-    originalPrice: 10990,
-    currency: 'Rs.',
-    category: 'satchel',
-    colorName: 'Espresso & Cognac Tan',
-    colorHex: '#3D251E',
-    availableColors: [
-      { name: 'Espresso & Cognac Tan', hex: '#3D251E', inStock: true },
-      { name: 'Monochrome Noir', hex: '#1C1917', inStock: true }
-    ],
-    badge: 'Limited Preview • Drop Soon',
-    image: '/images/products/cognac-espresso-satchel.jpeg',
-    images: [
-      '/images/products/cognac-espresso-satchel.jpeg'
-    ],
-    description: 'A masterclass in color harmony. Deep espresso brown saddle leather juxtaposed with warm caramel cognac accents. Currently showcased as our upcoming artisan release ("Something Beautiful is on the Way"). Features our signature Anora A-Lock hardware, sculpted top carry handle, and structured flap construction.',
-    story: 'Inspired by warm European café afternoons and bespoke vintage travel trunks. The dual-tone leather is vegetable-tanned to patina gracefully over years of devotion.',
-    features: [
-      'Two-tone dual leather construction in Italian Espresso & Saddle Cognac',
-      'Signature Anora A-Lock turn-clasp closure',
-      'Reinforced rolled leather top handle for hand or forearm carry',
-      'Detachable and adjustable leather crossbody strap included',
-      'Spacious main interior with plush suede-touch lining and slip pockets',
-      'Protective metal feet at the base to safeguard leather when placed down',
-      '7-Day Hassle-Free Returns & 100% Cash on Delivery'
-    ],
-    specs: {
-      dimensions: '26 cm (W) × 19 cm (H) × 11 cm (D)',
-      weight: '590 grams',
-      material: 'Vegetable-Tanned Dual Grain Leather',
-      hardware: 'Brushed Satin Gold Hardware',
-      strapDrop: '48 - 56 cm (Adjustable & Detachable)',
-      capacity: 'Spacious cavity fits 10" tablet, journal, wallet, cosmetics',
-      closure: 'Architectural Lock-Clasp',
-      origin: 'Handmade by Master Artisans'
-    },
-    rating: 4.95,
-    reviewCount: 96,
-    inStock: true,
-    featured: true,
-    isNew: true
+    isNew: false,
+    supports3D: false
   },
   {
     id: 'the-anora-petit-ivory-handbag',
     name: 'The Anora Petit Ivory Top-Handle Handbag',
     tagline: 'Minimalist Sculptural Elegance for Day & Evening',
-    price: 7290,
-    originalPrice: 9490,
+    price: 2799,
+    originalPrice: null,
     currency: 'Rs.',
     category: 'top-handle',
     colorName: 'Alabaster Ivory Cream',
     colorHex: '#F5F0E6',
     availableColors: [
-      { name: 'Alabaster Ivory Cream', hex: '#F5F0E6', inStock: true },
-      { name: 'Buttercream Blush', hex: '#EED9C4', inStock: true },
-      { name: 'Classic Noir', hex: '#1C1917', inStock: true }
+      { name: 'Alabaster Ivory Cream', hex: '#F5F0E6', inStock: true }
     ],
     badge: 'New Arrival',
-    image: '/images/products/ivory-top-handle.jpeg',
+    image: '/images/products/ivory-white/front.webp',
     images: [
+      '/images/products/ivory-white/front.webp',
       '/images/products/ivory-top-handle.jpeg'
     ],
     description: 'A pure embodiment of minimalist quiet luxury. Clean sculptural curves, pristine ivory smooth calfskin, and architectural palladium silver lock detailing. A statement in refined simplicity.',
@@ -140,97 +98,9 @@ export const SEED_PRODUCTS: Product[] = [
     reviewCount: 64,
     inStock: true,
     featured: true,
-    isNew: true
+    isNew: true,
+    supports3D: false
   },
-  {
-    id: 'the-anora-noir-crossbody',
-    name: 'The Anora Noir Flap Crossbody',
-    tagline: 'Classic Midnight Black with Brushed Gold Monogram Clasp',
-    price: 6990,
-    originalPrice: 8990,
-    currency: 'Rs.',
-    category: 'crossbody',
-    colorName: 'Midnight Noir Black',
-    colorHex: '#181615',
-    availableColors: [
-      { name: 'Midnight Noir Black', hex: '#181615', inStock: true },
-      { name: 'Rich Bordeaux Wine', hex: '#4A1525', inStock: true }
-    ],
-    badge: 'Essential Classic',
-    image: '/images/products/bordeaux-crossbody-lifestyle.jpeg',
-    images: [
-      '/images/products/bordeaux-crossbody-lifestyle.jpeg',
-      '/images/products/bordeaux-crossbody-model.jpeg'
-    ],
-    description: 'The little black bag, elevated to perfection. Deepest midnight black textured calfskin complemented by radiant warm gold hardware. Fully inspectable in 360° rotation in our 3D Studio.',
-    story: 'Timelessness is not an accident—it is crafted. The Noir Flap embodies our core motto: "Same you, more style".',
-    features: [
-      'Supple textured pebbled leather with scratch-resistant treatment',
-      'Signature brushed gold hardware with locking ring closure',
-      'Concealed back slip pocket for quick-access transit passes or phone',
-      'Accordion interior with protective microfiber lining',
-      '7-Day Hassle-Free Returns & 100% Cash on Delivery'
-    ],
-    specs: {
-      dimensions: '22 cm (W) × 17 cm (H) × 9 cm (D)',
-      weight: '480 grams',
-      material: 'Pebbled Calfskin Leather',
-      hardware: '18k Brushed Gold Brass',
-      strapDrop: '52 cm (Adjustable)',
-      capacity: 'Fits phone, card wallet, compact powder, sunglasses',
-      closure: 'Twist-Lock',
-      origin: 'Bespoke Handcrafted Leather Atelier'
-    },
-    rating: 4.92,
-    reviewCount: 88,
-    inStock: true,
-    featured: false,
-    isNew: false
-  },
-  {
-    id: 'the-anora-caramel-shoulder-bag',
-    name: 'The Anora Sienna Shoulder Bag',
-    tagline: 'Warm Earth Tones & Sculptural Silhouette',
-    price: 7890,
-    originalPrice: 9990,
-    currency: 'Rs.',
-    category: 'shoulder',
-    colorName: 'Sienna Saddle Tan',
-    colorHex: '#9E5B32',
-    availableColors: [
-      { name: 'Sienna Saddle Tan', hex: '#9E5B32', inStock: true },
-      { name: 'Bordeaux Wine', hex: '#4A1525', inStock: true }
-    ],
-    badge: 'Staff Favorite',
-    image: '/images/products/cognac-espresso-satchel.jpeg',
-    images: [
-      '/images/products/cognac-espresso-satchel.jpeg'
-    ],
-    description: 'An elegant crescent-inspired shoulder bag draped in rich caramel sienna leather. Sits comfortably under the arm with a fluid silhouette that elevates minimalist trench coats and knitwear.',
-    story: 'Sculpted for modern everyday mobility without sacrificing feminine grace.',
-    features: [
-      'Supple glove-tanned leather with buttery hand-feel',
-      'Comfort-contoured shoulder strap designed for all-day wear',
-      'Secure zip top closure with custom leather puller',
-      'Interior zip pocket and key leash',
-      '7-Day Hassle-Free Returns & 100% Cash on Delivery'
-    ],
-    specs: {
-      dimensions: '28 cm (W) × 18 cm (H) × 7 cm (D)',
-      weight: '450 grams',
-      material: 'Glove-Tanned Calfskin Leather',
-      hardware: 'Antique Brushed Brass',
-      strapDrop: '26 cm (Shoulder drop)',
-      capacity: 'Fits sunglasses case, phone, makeup pouch, cardholder',
-      closure: 'Top Zipper & Magnetic Guard',
-      origin: 'Bespoke Atelier'
-    },
-    rating: 4.85,
-    reviewCount: 52,
-    inStock: true,
-    featured: false,
-    isNew: false
-  }
 ]
 
 export const SEED_REVIEWS: Review[] = [
@@ -255,17 +125,6 @@ export const SEED_REVIEWS: Review[] = [
     verified: true,
     location: 'Karachi',
     createdAt: '2026-10-08T14:15:00Z'
-  },
-  {
-    id: 'rev-3',
-    productId: 'the-anora-dua-satchel',
-    author: 'Zainab K.',
-    rating: 5,
-    title: 'The two-tone leather is sheer perfection',
-    comment: 'The dual espresso and cognac tones match almost everything in my wardrobe. You can smell the authentic leather the moment you open the box. The COD service was smooth and the rider waited for me to verify the parcel.',
-    verified: true,
-    location: 'Islamabad',
-    createdAt: '2026-10-05T09:40:00Z'
   },
   {
     id: 'rev-4',

@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic"
 export const metadata: Metadata = {
   title: "Shop All Handcrafted Leather Handbags — Anora Bags",
   description:
-    "Explore the full collection of Anora Bags. Minimalist crossbody bags, structured satchels, and sculptural top-handles. 100% Cash On Delivery nationwide in Pakistan & 7-Day Doorstep Returns.",
+    "Explore Anora Bags in two collections: Crossbody Bags and Top-Handle Bags. Cash On Delivery nationwide in Pakistan & 7-Day Doorstep Returns.",
   alternates: {
     canonical: "https://anorabags.com/shop"
   },
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     siteName: "Anora Bags",
     locale: "en_PK",
     type: "website",
-    images: ["/images/products/bordeaux-crossbody-hero.jpeg"]
+    images: ["/images/products/bordeaux-white/front.webp"]
   },
   twitter: {
     card: "summary_large_image",
     title: "Shop All Handbags — Anora Bags",
     description: "Minimalist luxury leather handbags. 100% Cash On Delivery nationwide with 7-Day Returns.",
-    images: ["/images/products/bordeaux-crossbody-hero.jpeg"]
+    images: ["/images/products/bordeaux-white/front.webp"]
   }
 }
 

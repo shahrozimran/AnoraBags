@@ -1,190 +1,40 @@
-import React from "react"
-import Link from "next/link"
 import type { Metadata } from "next"
-import { Header } from "@/components/anora/header"
-import { Footer } from "@/components/anora/footer"
-import { CartDrawer } from "@/components/anora/cart-drawer"
-import { MessageCircle, Phone, Mail, Clock, ShieldCheck, MapPin } from "lucide-react"
+import Link from "next/link"
+import { ArrowUpRight, Mail, MessageCircle, Phone } from "lucide-react"
+import { HelpPage } from "@/components/anora/help-page"
+import { STORE_CONTACT } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: "Contact Concierge — Anora Bags",
-  description: "Connect with the Anora Bags team for order inquiries, 7-day returns, and nationwide COD delivery assistance.",
-  alternates: {
-    canonical: "https://anorabags.com/contact"
-  },
-  openGraph: {
-    title: "Contact Concierge — Anora Bags",
-    description: "Connect with the Anora Bags team for order inquiries, 7-day returns, and COD assistance.",
-    url: "https://anorabags.com/contact",
-    siteName: "Anora Bags",
-    locale: "en_PK",
-    type: "website"
-  }
+  title: "Contact us",
+  description: "Contact Anora Bags at +92 319 4186103 or anorabags10@gmail.com for orders, delivery, and 7-day returns.",
+  alternates: { canonical: "/contact" },
 }
 
 export default function ContactPage() {
-  const contactSchema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://anorabags.com"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Contact Concierge",
-            "item": "https://anorabags.com/contact"
-          }
-        ]
-      },
-      {
-        "@type": "ContactPage",
-        "name": "Anora Bags Concierge Support",
-        "url": "https://anorabags.com/contact",
-        "description": "WhatsApp, email, and live courier tracking assistance."
-      }
-    ]
-  }
-
   return (
-    <div className="min-h-screen bg-[#FAF6F1] flex flex-col justify-between">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
-      />
-
-      <Header />
-      <CartDrawer />
-
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 w-full space-y-12">
-        <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2">
-            <span className="h-px w-6 bg-[#462F1D]/40" />
-            <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
-              Client Concierge
-            </span>
-            <span className="h-px w-6 bg-[#462F1D]/40" />
-          </div>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-[#23170F]">
-            Personal Concierge <span className="italic font-normal text-[#462F1D]">Assistance</span>
-          </h1>
-          <p className="text-base sm:text-lg text-[#462F1D] font-light max-w-lg mx-auto leading-relaxed">
-            Direct assistance with leather selections, nationwide COD parcel routing, and 7-day doorstep privilege arrangements.
-          </p>
+    <HelpPage title="Let’s talk." description="A question about a bag, an order, or a return? Get in touch with the Anora team. We’re here to help." path="/contact">
+      <div className="grid gap-4 sm:grid-cols-2">
+        {[
+          { icon: MessageCircle, label: "WhatsApp", value: STORE_CONTACT.phoneLabel, href: STORE_CONTACT.whatsapp, external: true, text: "Send us a message about your order or a bag you love." },
+          { icon: Phone, label: "Call us", value: STORE_CONTACT.phoneLabel, href: `tel:${STORE_CONTACT.phone}`, external: false, text: "Talk to our team about product and delivery questions." },
+          { icon: Mail, label: "Email us", value: STORE_CONTACT.email, href: `mailto:${STORE_CONTACT.email}`, external: false, text: "For order enquiries, returns, or other questions." },
+        ].map(({ icon: Icon, label, value, href, external, text }) => (
+          <a key={label} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group rounded-2xl border border-[#DECFBF] bg-white/70 p-6 transition-colors hover:border-[#9E8269] hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#462F1D]">
+            <div className="mb-6 flex items-center justify-between"><Icon className="h-5 w-5 text-[#806650]" aria-hidden="true" /><ArrowUpRight className="h-4 w-4 text-[#806650] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" /></div>
+            <h2 className="font-serif text-3xl">{label}</h2>
+            <p className="mt-3 break-all text-sm font-medium">{value}</p>
+            <p className="mt-3 text-sm leading-6 text-[#74604F]">{text}</p>
+          </a>
+        ))}
+        <div className="rounded-2xl bg-[#EDE2D7] p-6">
+          <h2 className="font-serif text-3xl">Have your order number?</h2>
+          <p className="mt-3 text-sm leading-6 text-[#74604F]">Include it in your message so we can help you faster. Please never send passwords, PINs, or verification codes.</p>
+          <Link href="/track-order" className="mt-5 inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4">Track your order<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Direct channels */}
-          <div className="bg-white p-8 sm:p-10 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-6">
-            <h2 className="font-serif text-xl sm:text-2xl font-light text-[#23170F] border-b border-[#E5DCD2] pb-3">
-              Direct Channels
-            </h2>
-
-            <div className="space-y-4 text-sm">
-              <a
-                href="https://wa.me/923001234567?text=Hi%20Anora%20Bags,%20I%20have%20an%20inquiry"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-5 rounded-xl bg-[#ECE2D8]/40 border border-[#462F1D]/20 flex items-center justify-between text-[#23170F] hover:bg-[#ECE2D8]/70 transition group"
-              >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-full bg-[#462F1D] text-[#FAF6F1] flex items-center justify-center shrink-0">
-                    <MessageCircle className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif font-normal text-base text-[#23170F]">WhatsApp Concierge</h4>
-                    <p className="text-xs sm:text-sm text-[#462F1D] font-normal">Immediate response 9 AM - 10 PM PKT</p>
-                  </div>
-                </div>
-                <span className="font-sans font-medium text-xs sm:text-sm text-[#462F1D] group-hover:translate-x-1 transition-transform">
-                  Chat →
-                </span>
-              </a>
-
-              <div className="p-5 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex items-center gap-3.5 text-[#23170F]">
-                <div className="w-12 h-12 rounded-full bg-[#ECE2D8] flex items-center justify-center text-[#462F1D] shrink-0">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-normal text-base text-[#23170F]">Email Concierge</h4>
-                  <p className="text-xs sm:text-sm text-[#462F1D] font-normal">concierge@anorabags.com</p>
-                </div>
-              </div>
-
-              <div className="p-5 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex items-center gap-3.5 text-[#23170F]">
-                <div className="w-12 h-12 rounded-full bg-[#ECE2D8] flex items-center justify-center text-[#462F1D] shrink-0">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-normal text-base text-[#23170F]">Concierge Hours</h4>
-                  <p className="text-xs sm:text-sm text-[#462F1D] font-normal">Monday – Sunday, 9:00 AM – 10:00 PM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Quick links & FAQ */}
-          <div className="bg-white p-8 sm:p-10 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-6">
-            <h2 className="font-serif text-xl sm:text-2xl font-light text-[#23170F] border-b border-[#E5DCD2] pb-3">
-              Help & Services
-            </h2>
-
-            <div className="space-y-4">
-              <Link
-                href="/track-order"
-                className="block p-5 rounded-xl border border-[#E5DCD2] hover:border-[#462F1D] transition group"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-serif text-base font-normal text-[#23170F] group-hover:text-[#462F1D] transition-colors">
-                      Track Your COD Order
-                    </h4>
-                    <p className="text-xs sm:text-sm text-[#462F1D] font-light mt-0.5">
-                      Check real-time courier dispatch status with your order number.
-                    </p>
-                  </div>
-                  <span className="text-[#462F1D] group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </Link>
-
-              <Link
-                href="/refund-policy"
-                className="block p-5 rounded-xl border border-[#E5DCD2] hover:border-[#462F1D] transition group"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-serif text-base font-normal text-[#23170F] group-hover:text-[#462F1D] transition-colors">
-                      7-Day Home Privilege
-                    </h4>
-                    <p className="text-xs sm:text-sm text-[#462F1D] font-light mt-0.5">
-                      Review doorstep return collection and cash settlement terms.
-                    </p>
-                  </div>
-                  <span className="text-[#462F1D] group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </Link>
-
-              <div className="p-5 rounded-xl bg-[#ECE2D8]/30 border border-[#E5DCD2] text-sm text-[#462F1D] space-y-1.5">
-                <span className="font-medium text-[#23170F] flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#462F1D]" />
-                  <span>The Anora Assurance</span>
-                </span>
-                <p className="font-light text-xs sm:text-sm leading-relaxed">
-                  All shipments travel via insured express courier with 100% Cash On Delivery and doorstep parcel inspection.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+      <div className="mt-8 rounded-xl border border-[#DECFBF] px-6 py-5 text-sm leading-7 text-[#74604F]">
+        Looking for a quick answer? Visit our <Link href="/faq" className="font-medium text-[#34251B] underline underline-offset-4">FAQs</Link>, <Link href="/delivery-policy" className="font-medium text-[#34251B] underline underline-offset-4">delivery policy</Link>, or <Link href="/return-policy" className="font-medium text-[#34251B] underline underline-offset-4">return policy</Link>.
+      </div>
+    </HelpPage>
   )
 }

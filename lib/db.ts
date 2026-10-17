@@ -286,7 +286,8 @@ class LocalJsonAdapter implements IDatabaseAdapter {
       reviewCount: input.reviewCount !== undefined ? Number(input.reviewCount) : (existingIndex >= 0 ? store.products[existingIndex].reviewCount : 0),
       inStock: input.inStock !== undefined ? Boolean(input.inStock) : true,
       featured: input.featured !== undefined ? Boolean(input.featured) : false,
-      isNew: input.isNew !== undefined ? Boolean(input.isNew) : true
+      isNew: input.isNew !== undefined ? Boolean(input.isNew) : true,
+      supports3D: input.supports3D ?? (existingIndex >= 0 ? store.products[existingIndex].supports3D : undefined)
     }
 
     if (existingIndex >= 0) {
@@ -725,7 +726,8 @@ class ServerlessPostgresAdapter extends LocalJsonAdapter {
         reviewCount: input.reviewCount !== undefined ? Number(input.reviewCount) : (existingIdx >= 0 ? store.products[existingIdx].reviewCount : 0),
         inStock: input.inStock !== undefined ? Boolean(input.inStock) : true,
         featured: input.featured !== undefined ? Boolean(input.featured) : false,
-        isNew: input.isNew !== undefined ? Boolean(input.isNew) : true
+        isNew: input.isNew !== undefined ? Boolean(input.isNew) : true,
+        supports3D: input.supports3D ?? (existingIdx >= 0 ? store.products[existingIdx].supports3D : undefined)
       }
 
       if (existingIdx >= 0) {

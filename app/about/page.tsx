@@ -136,7 +136,7 @@ export default function AboutPage() {
                 7-Day Unconditional Privilege
               </h4>
               <p className="text-sm text-[#462F1D] font-light leading-relaxed">
-                We believe trust is earned at your doorstep. Inspect your bag in person. If it doesn't surpass your expectations, our concierge collects it for an instant refund.
+                We believe trust is earned at your doorstep. Inspect your bag in person. If it isn't right for you, contact us within 7 days to arrange a return under our return policy.
               </p>
             </div>
           </div>

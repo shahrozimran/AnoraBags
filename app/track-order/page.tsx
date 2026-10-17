@@ -1,5 +1,6 @@
 "use client"
 
+import { STORE_CONTACT } from "@/lib/site-config"
 import React, { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -259,7 +260,7 @@ export default function TrackOrderPage() {
                       Protected by our unconditional 7-day doorstep return guarantee. For an exchange or full cash refund, tap below to notify our concierge.
                     </p>
                     <a
-                      href={`https://wa.me/923001234567?text=Hi%20Anora%20Bags,%20I%20want%20to%20request%20a%207-day%20return%20or%20exchange%20for%20order%20${order.orderNumber}`}
+                      href={`${STORE_CONTACT.whatsapp}?text=Hi%20Anora%20Bags,%20I%20want%20to%20request%20a%207-day%20return%20or%20exchange%20for%20order%20${order.orderNumber}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#462F1D] hover-editorial-line"

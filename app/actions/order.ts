@@ -1,6 +1,7 @@
 "use server"
 
 import { createOrder, getProductById, type OrderItem } from "@/lib/db"
+import { getProductMedia } from "@/lib/product-media"
 
 export interface PlaceOrderResult {
   success: boolean
@@ -52,7 +53,8 @@ export async function placeOrderAction(
       const realProduct = await getProductById(String(item.id))
       const canonicalPrice = realProduct ? realProduct.price : Math.max(1000, Math.round(Number(item.price) || 6990))
       const canonicalName = realProduct ? realProduct.name : String(item.name || "Handcrafted Bag")
-      const canonicalImage = realProduct ? realProduct.image : String(item.image || "/images/products/bordeaux-crossbody-hero.jpeg")
+      const media = realProduct ? getProductMedia(realProduct, item.color) : null
+      const canonicalImage = media?.image || String(item.image || "/images/products/bordeaux-crossbody-hero.jpeg")
       const quantity = Math.max(1, Math.min(20, Math.floor(Number(item.quantity) || 1)))
       
       safeItems.push({
@@ -60,7 +62,7 @@ export async function placeOrderAction(
         name: canonicalName,
         price: canonicalPrice,
         quantity,
-        color: String(item.color || (realProduct ? realProduct.colorName : "Rich Bordeaux")),
+        color: media?.color || String(item.color || "Rich Bordeaux"),
         image: canonicalImage
       })
     }

@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect } from "react"
 import type { Product } from "@/lib/types"
 import { ProductCard } from "./product-card"
 import { ChevronDown } from "lucide-react"
+import { COLLECTIONS } from "@/lib/site-config"
 
 interface ProductGridProps {
   products: Product[]
@@ -12,21 +13,17 @@ interface ProductGridProps {
 
 const CATEGORIES = [
   { id: "all", label: "All Handbags" },
-  { id: "crossbody", label: "Crossbody" },
-  { id: "satchel", label: "Satchels" },
-  { id: "top-handle", label: "Top-Handle" },
-  { id: "shoulder", label: "Shoulder Bags" }
+  ...COLLECTIONS,
 ]
 
 export function ProductGrid({ products, initialCategory }: ProductGridProps) {
-  const [activeCategory, setActiveCategory] = useState(initialCategory || "all")
+  const selectedCategory = COLLECTIONS.some(collection => collection.id === initialCategory) ? initialCategory! : "all"
+  const [activeCategory, setActiveCategory] = useState(selectedCategory)
   const [sortBy, setSortBy] = useState<"featured" | "price-asc" | "price-desc" | "rating">("featured")
 
   useEffect(() => {
-    if (initialCategory) {
-      setActiveCategory(initialCategory)
-    }
-  }, [initialCategory])
+    setActiveCategory(selectedCategory)
+  }, [selectedCategory])
 
   const filteredProducts = useMemo(() => {
     let list = [...products]
@@ -70,7 +67,7 @@ export function ProductGrid({ products, initialCategory }: ProductGridProps) {
             </h2>
 
             <p className="text-base sm:text-lg text-[#3D291B] font-light max-w-lg leading-relaxed">
-              Meticulously sculpted from full-grain calfskin leather, hand-burnished edge paint, and bespoke brass hardware. 100% Cash On Delivery with doorstep inspection.
+              Discover structured silhouettes, textured finishes, and considered details for every day. 100% Cash On Delivery with doorstep inspection.
             </p>
           </div>
 
@@ -107,6 +104,7 @@ export function ProductGrid({ products, initialCategory }: ProductGridProps) {
                 return (
                   <button
                     key={cat.id}
+                    aria-pressed={isActive}
                     onClick={() => setActiveCategory(cat.id)}
                     className={`pb-2.5 relative transition-colors duration-200 whitespace-nowrap font-medium ${
                       isActive

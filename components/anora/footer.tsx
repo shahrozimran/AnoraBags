@@ -1,172 +1,78 @@
-"use client"
-
-import React from "react"
 import Link from "next/link"
+import { ArrowUpRight, Banknote, Mail, MessageCircle, Phone, RotateCcw, Truck } from "lucide-react"
 import { BrandLogo } from "./brand-logo"
+import { COLLECTIONS, HELP_LINKS, STORE_CONTACT } from "@/lib/site-config"
+
+const linkStyle = "py-1 text-[#CFC2B7] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E8D9C9]"
 
 export function Footer() {
   return (
-    <footer className="bg-[#1A110B] text-[#ECE2D8] pt-20 pb-12 border-t border-[#3D291B]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Assurance Ledger */}
-        <div className="pb-16 border-b border-[#3D291B]/80 grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div className="space-y-2.5">
-            <div className="flex items-center gap-2.5">
-              <span className="text-xs font-sans font-semibold text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
-                01
-              </span>
-              <h4 className="text-sm sm:text-base font-medium text-white">
-                7-Day Home Privilege
-              </h4>
-            </div>
-            <p className="text-sm text-[#ECE2D8]/85 font-light leading-relaxed">
-              Take 7 full days to try the silhouette with your wardrobe. If not delighted, we arrange doorstep pickup and refund your cash.
-            </p>
-          </div>
-
-          <div className="space-y-2.5">
-            <div className="flex items-center gap-2.5">
-              <span className="text-xs font-sans font-semibold text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
-                02
-              </span>
-              <h4 className="text-sm sm:text-base font-medium text-white">
-                100% Cash On Delivery
-              </h4>
-            </div>
-            <p className="text-sm text-[#ECE2D8]/85 font-light leading-relaxed">
-              Zero advance payment or cards required. Inspect your parcel condition at your doorstep and settle cash directly with the courier.
-            </p>
-          </div>
-
-          <div className="space-y-2.5">
-            <div className="flex items-center gap-2.5">
-              <span className="text-xs font-sans font-semibold text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
-                03
-              </span>
-              <h4 className="text-sm sm:text-base font-medium text-white">
-                Archival Presentation
-              </h4>
-            </div>
-            <p className="text-sm text-[#ECE2D8]/85 font-light leading-relaxed">
-              Every bag is hand-inspected and enclosed in a rigid keepsake box, protective microfiber dustbag, and inspection certificate.
-            </p>
-          </div>
-        </div>
-
-        {/* Main Footer Links */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="inline-block group">
-              <BrandLogo size="md" showTagline={true} variant="light" />
+    <footer id="footer" className="bg-[#211A16] text-[#F6F0EA]">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid gap-5 border-b border-white/10 py-7 sm:grid-cols-3 sm:gap-8">
+          {[
+            { icon: Truck, title: "Delivered across Pakistan", text: "Free nationwide delivery", href: "/delivery-policy" },
+            { icon: Banknote, title: "Pay when it arrives", text: "Cash on delivery only", href: "/delivery-policy#payment" },
+            { icon: RotateCcw, title: "A little peace of mind", text: "7-day returns & exchanges", href: "/return-policy" },
+          ].map(({ icon: Icon, title, text, href }) => (
+            <Link key={title} href={href} className="group flex items-center gap-4 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              <Icon className="h-5 w-5 shrink-0 text-[#C8AF96]" strokeWidth={1.4} aria-hidden="true" />
+              <div className="flex-1">
+                <p className="text-sm font-medium">{title}</p>
+                <p className="mt-1 text-xs text-[#CFC2B7]">{text}</p>
+              </div>
+              <ArrowUpRight className="h-4 w-4 text-[#C8AF96] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </Link>
+          ))}
+        </div>
 
-            <p className="text-sm text-[#ECE2D8]/80 font-light max-w-sm leading-relaxed">
-              Bespoke luxury leather goods crafted with quiet geometry and architectural discipline. Available nationwide through our signature Cash on Delivery privilege.
-            </p>
+        <div className="grid gap-x-10 gap-y-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1.25fr_0.85fr_1fr] lg:py-14">
+          <div>
+            <Link href="/" aria-label="Anora Bags home" className="inline-block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              <BrandLogo size="lg" variant="light" />
+            </Link>
+            <p className="mt-5 max-w-xs text-sm leading-6 text-[#CFC2B7]">Bags for every you. Thoughtful shapes and everyday favourites, delivered to your door.</p>
+            <Link href="/shop" className="mt-5 inline-flex items-center gap-2 border-b border-[#C8AF96]/50 pb-1 text-sm transition-colors hover:text-[#C8AF96]">
+              Find your everyday bag <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
 
-            <div className="pt-2 text-sm text-[#ECE2D8]/90 space-y-1 font-light">
-              <p>Client Concierge: concierge@anorabags.com</p>
-              <p>Direct WhatsApp: +92 300 1234567</p>
+          <nav aria-label="Footer collection">
+            <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.16em] text-[#AFA094]">Collections</h2>
+            <ul className="space-y-1 text-sm">
+              {COLLECTIONS.map(({ label, href }) => <li key={href}><Link className={linkStyle} href={href}>{label}</Link></li>)}
+              <li><Link className={`${linkStyle} mt-1 text-[#F6F0EA]`} href="/shop">Shop all bags ↗</Link></li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Footer customer care">
+            <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.16em] text-[#AFA094]">Customer care</h2>
+            <ul className="space-y-1 text-sm">
+              {HELP_LINKS.slice(0, 3).map(({ label, href }) => <li key={href}><Link className={linkStyle} href={href}>{label}</Link></li>)}
+              <li><Link href="/about" className={linkStyle}>Our story</Link></li>
+              <li><Link href="/contact" className={linkStyle}>Contact us</Link></li>
+            </ul>
+          </nav>
+
+          <div>
+            <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.16em] text-[#AFA094]">Let’s talk</h2>
+            <div className="space-y-3 text-sm">
+              <a href={`tel:${STORE_CONTACT.phone}`} className={`${linkStyle} flex items-center gap-2.5`}><Phone className="h-4 w-4 shrink-0" aria-hidden="true" />{STORE_CONTACT.phoneLabel}</a>
+              <a href={`mailto:${STORE_CONTACT.email}`} className={`${linkStyle} flex items-center gap-2.5 break-all`}><Mail className="h-4 w-4 shrink-0" aria-hidden="true" />{STORE_CONTACT.email}</a>
+              <a href={STORE_CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/25 px-5 text-sm transition-colors hover:border-white/60 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                <MessageCircle className="h-4 w-4" aria-hidden="true" /> Chat on WhatsApp <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
             </div>
-          </div>
-
-          {/* Collections */}
-          <div className="space-y-4">
-            <h5 className="text-sm font-medium text-white">
-              Collections
-            </h5>
-            <ul className="space-y-3 text-sm text-[#ECE2D8]/80 font-light">
-              <li>
-                <Link href="/product/the-anora-bordeaux-flap-crossbody" className="hover-editorial-line hover:text-white transition">
-                  The Bordeaux Flap
-                </Link>
-              </li>
-              <li>
-                <Link href="/product/the-anora-dua-satchel" className="hover-editorial-line hover:text-white transition">
-                  The Dua Satchel
-                </Link>
-              </li>
-              <li>
-                <Link href="/product/the-anora-petit-ivory-handbag" className="hover-editorial-line hover:text-white transition">
-                  The Petit Ivory
-                </Link>
-              </li>
-              <li>
-                <Link href="/product/the-anora-noir-crossbody" className="hover-editorial-line hover:text-white transition">
-                  The Noir Flap
-                </Link>
-              </li>
-              <li>
-                <Link href="/#studio3d" className="hover-editorial-line text-[#ECE2D8] transition">
-                  3D Spatial Studio
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Client Privileges */}
-          <div className="space-y-4">
-            <h5 className="text-sm font-medium text-white">
-              Client Services
-            </h5>
-            <ul className="space-y-3 text-sm text-[#ECE2D8]/80 font-light">
-              <li>
-                <Link href="/refund-policy" className="hover-editorial-line hover:text-white transition">
-                  7-Day Return Privilege
-                </Link>
-              </li>
-              <li>
-                <Link href="/track-order" className="hover-editorial-line hover:text-white transition">
-                  Track Order (COD)
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover-editorial-line hover:text-white transition">
-                  Our Story
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover-editorial-line hover:text-white transition">
-                  Client Concierge
-                </Link>
-              </li>
-              <li>
-                <Link href="/refund-policy#faq" className="hover-editorial-line hover:text-white transition">
-                  Delivery & Inspection FAQ
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Terms & Guarantees */}
-          <div className="space-y-4">
-            <h5 className="text-sm font-medium text-white">
-              Assurance
-            </h5>
-            <ul className="space-y-3 text-sm text-[#ECE2D8]/80 font-light">
-              <li>Payment: 100% Cash On Delivery</li>
-              <li>Shipping: Free Express Nationwide</li>
-              <li>Returns: 7-Day Doorstep Pickup</li>
-              <li>Hardware: 18k Brushed Gold Core</li>
-            </ul>
           </div>
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="pt-8 border-t border-[#3D291B] text-xs font-sans text-[#ECE2D8]/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="flex flex-col gap-4 border-t border-white/10 py-6 text-xs text-[#B7A99E] sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Anora Bags. All rights reserved.</p>
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2 text-[#ECE2D8]/85 text-xs font-normal">
-            <Link href="/refund-policy" className="hover:text-white transition whitespace-nowrap">
-              7-Day Privilege
-            </Link>
-            <span className="hidden sm:inline opacity-40">·</span>
-            <span className="whitespace-nowrap">Cash On Delivery Nationwide</span>
-            <span className="hidden sm:inline opacity-40">·</span>
-            <Link href="/contact" className="hover:text-white transition whitespace-nowrap">
-              Concierge
-            </Link>
-          </div>
+          <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-3">
+            <Link href="/terms-and-conditions" className="hover:text-white">Terms & conditions</Link>
+            <Link href="/privacy-policy" className="hover:text-white">Privacy policy</Link>
+            <a href="#top" className="inline-flex items-center gap-1 hover:text-white">Back to top <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
+          </nav>
         </div>
       </div>
     </footer>

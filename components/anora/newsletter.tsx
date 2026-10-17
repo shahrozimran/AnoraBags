@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
+import Link from "next/link"
 import { subscribeAction } from "@/app/actions/newsletter"
 import { ArrowRight, Check } from "lucide-react"
 
@@ -11,22 +12,16 @@ export function Newsletter() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!email) return
+    if (!email || status === "loading") return
     setStatus("loading")
-
+    setMessage("")
     const formData = new FormData()
     formData.append("email", email)
-
     try {
       const res = await subscribeAction(formData)
-      if (res.success) {
-        setStatus("success")
-        setMessage(res.message)
-        setEmail("")
-      } else {
-        setStatus("error")
-        setMessage(res.message)
-      }
+      setStatus(res.success ? "success" : "error")
+      setMessage(res.message)
+      if (res.success) setEmail("")
     } catch {
       setStatus("error")
       setMessage("Something went wrong. Please try again.")
@@ -34,62 +29,35 @@ export function Newsletter() {
   }
 
   return (
-    <section className="py-24 bg-[#23170F] text-[#ECE2D8] relative overflow-hidden border-b border-[#3D291B]">
-      {/* Decorative ambient lighting */}
-      <div className="absolute top-0 right-1/4 w-[460px] h-[460px] rounded-full bg-[#462F1D]/30 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-[360px] h-[360px] rounded-full bg-[#ECE2D8]/10 blur-3xl pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-        <div className="inline-flex items-center gap-3">
-          <span className="h-px w-6 bg-[#ECE2D8]/40" />
-          <span className="text-xs sm:text-sm font-sans font-medium text-[#ECE2D8]">
-            Private Invitations
-          </span>
-          <span className="h-px w-6 bg-[#ECE2D8]/40" />
+    <section id="newsletter" aria-labelledby="newsletter-title" className="border-t border-[#E0D5C9] bg-[#EEE5DC]">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-[#76614F]">The Anora edit</p>
+          <h2 id="newsletter-title" className="font-serif text-4xl leading-tight tracking-tight sm:text-5xl">Good things. In your inbox.</h2>
+          <p className="mt-3 max-w-md text-sm leading-6 text-[#6C5848]">New arrivals, fresh favourites, and a little style inspiration. Stay in the loop with Anora.</p>
         </div>
-
-        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.02em] text-white">
-          Private Invitations <br />
-          <span className="italic font-normal text-[#ECE2D8]">To Rare Silhouettes</span>
-        </h2>
-
-        <p className="text-base sm:text-lg text-[#ECE2D8]/90 font-light max-w-lg mx-auto leading-relaxed">
-          Patrons receive discreet notifications for limited-batch leather drops, upcoming satchel releases, and private trunk showings.
-        </p>
-
-        {status === "success" ? (
-          <div className="p-4 rounded-xl bg-[#2E1E14] border border-[#ECE2D8]/30 max-w-md mx-auto flex items-center justify-center gap-2 text-sm text-[#ECE2D8]">
-            <Check className="w-5 h-5 text-[#ECE2D8]" />
-            <span>{message}</span>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col sm:flex-row gap-2.5 pt-2">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              required
-              className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-hidden focus:border-[#ECE2D8] transition font-sans"
-            />
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="px-8 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] font-sans font-medium text-sm transition-all duration-300 shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
-            >
-              <span>{status === "loading" ? "Subscribing..." : "Subscribe"}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </form>
-        )}
-
-        {status === "error" && (
-          <p className="text-sm text-rose-300 font-medium">{message}</p>
-        )}
-
-        <p className="text-xs font-sans text-[#ECE2D8]/70 font-normal">
-          Strict confidentiality · Zero promotional spam
-        </p>
+        <div>
+          {status === "success" ? (
+            <div role="status" className="flex min-h-14 items-center gap-3 rounded-xl border border-[#CABBAC] bg-white/50 p-4 text-sm">
+              <Check className="h-5 w-5 shrink-0" aria-hidden="true" /><p>{message}</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} aria-label="Newsletter signup">
+              <label htmlFor="newsletter-email" className="mb-2.5 block text-xs font-medium text-[#594333]">Your email address</label>
+              <div className="flex flex-col gap-2 sm:flex-row">
+                <input id="newsletter-email" name="email" type="email" autoComplete="email" value={email}
+                  onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" required maxLength={254}
+                  aria-invalid={status === "error"} aria-describedby={status === "error" ? "newsletter-error" : "newsletter-privacy"}
+                  className="min-w-0 flex-1 rounded-lg border border-[#CBBAAA] bg-white/60 px-4 py-3.5 text-sm placeholder:text-[#897566] focus:border-[#462F1D] focus:outline-2 focus:outline-offset-2 focus:outline-[#462F1D]" />
+                <button type="submit" disabled={status === "loading"} className="inline-flex min-h-12 items-center justify-center gap-6 rounded-lg bg-[#34251B] px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-[#503926] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#462F1D] disabled:opacity-60">
+                  {status === "loading" ? "Joining…" : "Join the list"}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+              {status === "error" && <p id="newsletter-error" role="alert" className="mt-3 text-sm text-[#991B1B]">{message}</p>}
+            </form>
+          )}
+          <p id="newsletter-privacy" className="mt-3 text-xs leading-5 text-[#715D4D]">By subscribing, you agree to our <Link href="/privacy-policy" className="underline underline-offset-2 hover:text-[#23170F]">privacy policy</Link>. Contact us anytime to unsubscribe.</p>
+        </div>
       </div>
     </section>
   )

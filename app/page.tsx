@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { getProducts } from "@/lib/db"
 import { Header } from "@/components/anora/header"
 import { Hero } from "@/components/anora/hero"
-import { Studio3DSection } from "@/components/anora/studio-3d-section"
 import { ProductGrid } from "@/components/anora/product-grid"
 import { BrandStory } from "@/components/anora/brand-story"
 import { Testimonials } from "@/components/anora/testimonials"
@@ -16,7 +15,7 @@ export const dynamic = "force-dynamic"
 export const metadata: Metadata = {
   title: "Anora Bags — Bags For Every You | Handcrafted Luxury Handbags",
   description:
-    "Carry confidence everyday with Anora Bags. Handcrafted minimalist luxury leather handbags with 3D interactive studio, 100% Cash On Delivery nationwide, and an unconditional 7-day doorstep refund guarantee.",
+    "Carry confidence everyday with Anora Bags. Explore our collection of handbags with 100% Cash On Delivery nationwide and a 7-day doorstep refund guarantee.",
   keywords: [
     "Anora Bags",
     "anorabags.com",
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/products/bordeaux-crossbody-hero.jpeg",
+        url: "/images/products/bordeaux-white/front.webp",
         width: 1200,
         height: 630,
         alt: "Anora Bags Signature Bordeaux Flap Crossbody"
@@ -52,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anora Bags — Bags For Every You | Handcrafted Luxury",
     description: "Handcrafted minimalist luxury leather bags. 100% Cash On Delivery nationwide across Pakistan & 7-Day Doorstep Refund Policy.",
-    images: ["/images/products/bordeaux-crossbody-hero.jpeg"]
+    images: ["/images/products/bordeaux-white/front.webp"]
   }
 }
 
@@ -93,7 +92,7 @@ export default async function HomePage() {
             "name": "Does Anora Bags offer Cash on Delivery (COD) in Pakistan?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Anora Bags offers 100% Cash On Delivery (COD) nationwide across Pakistan with zero advance payment. You can inspect your parcel at your doorstep before handing payment to the courier rider."
+              "text": "Anora Bags currently accepts Cash on Delivery (COD) only. Pay the order total in cash to the courier when your parcel arrives. No advance payment is required."
             }
           },
           {
@@ -101,7 +100,7 @@ export default async function HomePage() {
             "name": "What is Anora Bags' 7-day refund guarantee?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Every Anora order is protected by our unconditional 7-Day Hassle-Free Doorstep Return Guarantee. If you are not completely delighted with your bag, our courier picks it up directly from your doorstep and your refund is processed within 24 hours."
+              "text": "Contact us within 7 days of delivery to request a return or exchange. We arrange free doorstep collection and process approved refunds after return verification. Please see our return policy for item condition and refund details."
             }
           },
           {
@@ -133,11 +132,10 @@ export default async function HomePage() {
       />
       <Header />
       <CartDrawer />
-      <Hero />
-      <Studio3DSection />
+      <Hero products={products} />
       <ProductGrid products={products} />
-      <BrandStory />
-      <Testimonials />
+      <BrandStory product={products[0]} />
+      <Testimonials products={products} />
       <Newsletter />
       <Footer />
     </main>

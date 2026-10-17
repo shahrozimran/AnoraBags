@@ -4,8 +4,9 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight } from "lucide-react"
+import type { Product } from "@/lib/types"
 
-export function BrandStory() {
+export function BrandStory({ product }: { product?: Product }) {
   return (
     <section className="py-24 md:py-32 bg-white overflow-hidden border-b border-[#E5DCD2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -117,7 +118,7 @@ export function BrandStory() {
 
             <div className="pt-2">
               <Link
-                href="/refund-policy"
+                href="/return-policy"
                 className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans font-medium text-[#462F1D] hover-editorial-line"
               >
                 <span>Read the 7-day guarantee</span>
@@ -127,74 +128,78 @@ export function BrandStory() {
           </div>
         </div>
 
-        {/* Story Spread 2: Interior Functional Architecture */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-20 border-t border-[#E5DCD2]">
+        {/* Story Spread 2: Current Catalog Product */}
+        {product && <div id="catalog-details" className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-20 border-t border-[#E5DCD2]">
           <div className="lg:col-span-6 space-y-6 lg:order-1 order-2">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <span className="h-px w-6 bg-[#462F1D]/40" />
                 <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
-                  Interior Architecture & Fit
+                  From Our Collection
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.02em] text-[#23170F]">
-                Thoughtful Capacity <br />
-                <span className="italic font-normal text-[#462F1D]">Without Architectural Bulk</span>
+                A Closer Look <br />
+                <span className="italic font-normal text-[#462F1D]">At Everyday Style</span>
               </h2>
             </div>
 
             <p className="text-base sm:text-lg text-[#3D291B] font-light leading-relaxed">
-              Minimalist geometry on the outside, spacious utility on the inside. Our accordion bellows expand gracefully to fit your smartphone, lip tint, keys, wallet, sunglasses, and pocket fragrance with dedicated dividers.
+              {product.description}
             </p>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-3">
               <div className="p-4 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex flex-col justify-between">
                 <div>
                   <div className="h-9 sm:h-11 flex items-baseline">
-                    <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#462F1D]">3 Tiers</span>
+                    <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#462F1D]">{product.colorName}</span>
                   </div>
                   <h4 className="text-xs sm:text-sm font-medium text-[#23170F] mt-1.5 sm:mt-2 min-h-[2.5rem] flex items-center">
-                    Accordion Dividers
+                    The Color
                   </h4>
                 </div>
                 <p className="text-xs sm:text-sm text-[#462F1D] font-normal mt-1 sm:mt-2 leading-relaxed">
-                  Dedicated compartments for cosmetics, cards, and daily essentials.
+                  {product.specs.material}
                 </p>
               </div>
 
               <div className="p-4 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex flex-col justify-between">
                 <div>
                   <div className="h-9 sm:h-11 flex items-baseline">
-                    <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#462F1D]">6.9&quot;</span>
+                    <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#462F1D]">The Details</span>
                   </div>
                   <h4 className="text-xs sm:text-sm font-medium text-[#23170F] mt-1.5 sm:mt-2 min-h-[2.5rem] flex items-center">
-                    Max Smartphone Fit
+                    Finishing Touches
                   </h4>
                 </div>
                 <p className="text-xs sm:text-sm text-[#462F1D] font-normal mt-1 sm:mt-2 leading-relaxed">
-                  Comfortably accommodates iPhone 16 Pro Max & Samsung Ultra devices.
+                  {product.specs.hardware}
                 </p>
               </div>
             </div>
+            <Link href={`/product/${product.id}`} className="inline-flex items-center gap-2 text-sm font-medium text-[#462F1D] hover-editorial-line">
+              Explore {product.name} <ArrowUpRight className="w-4 h-4 shrink-0" />
+            </Link>
           </div>
 
           <div className="lg:col-span-6 lg:order-2 order-1">
             <div className="rounded-2xl overflow-hidden border border-[#E5DCD2] bg-[#F5EFE8] shadow-sm relative group">
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <Image
-                  src="/images/products/bordeaux-crossbody-interior.jpeg"
-                  alt="Anora Bag Interior Capacity & Compartments"
+                  src={product.images[1] || product.image}
+                  alt={`${product.name} — catalog photograph`}
                   fill
-                  className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                  sizes="(max-width: 1024px) 100vw, 600px"
+                  className="object-contain object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                 />
                 <div className="absolute bottom-4 left-4 text-xs font-medium text-white/95 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
-                  Fig. 02 · Accordion Gusset Cavity
+                  {product.name}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>}
       </div>
     </section>
   )

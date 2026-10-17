@@ -9,6 +9,14 @@ export interface ProductSpec {
   origin: string
 }
 
+export interface ProductColor {
+  name: string
+  hex: string
+  inStock: boolean
+  image?: string
+  images?: string[]
+}
+
 export interface Product {
   id: string
   name: string
@@ -19,7 +27,7 @@ export interface Product {
   category: 'crossbody' | 'satchel' | 'top-handle' | 'tote' | 'shoulder'
   colorName: string
   colorHex: string
-  availableColors: { name: string; hex: string; inStock: boolean }[]
+  availableColors: ProductColor[]
   badge: string | null
   image: string
   images: string[]
@@ -32,6 +40,7 @@ export interface Product {
   inStock: boolean
   featured: boolean
   isNew: boolean
+  supports3D?: boolean
 }
 
 export interface OrderItem {
@@ -95,7 +104,7 @@ export interface ProductInput {
   category: 'crossbody' | 'satchel' | 'top-handle' | 'tote' | 'shoulder'
   colorName: string
   colorHex: string
-  availableColors?: { name: string; hex: string; inStock: boolean }[]
+  availableColors?: ProductColor[]
   badge?: string | null
   image: string
   images?: string[]
@@ -108,6 +117,7 @@ export interface ProductInput {
   inStock?: boolean
   featured?: boolean
   isNew?: boolean
+  supports3D?: boolean
 }
 
 export interface CustomerSummary {

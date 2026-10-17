@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8
     },
     {
-      url: `${baseUrl}/refund-policy`,
+      url: `${baseUrl}/return-policy`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8
@@ -53,5 +53,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   ]
 
-  return [...staticUrls, ...productUrls]
+  const helpUrls = ["/faq", "/delivery-policy", "/terms-and-conditions", "/privacy-policy"].map(path => ({
+    url: `${baseUrl}${path}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }))
+
+  return [...staticUrls, ...helpUrls, ...productUrls]
 }

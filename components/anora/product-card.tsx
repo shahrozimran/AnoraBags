@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import type { Product } from "@/lib/types"
+import { getProductMedia } from "@/lib/product-media"
 import { useCart } from "./cart-context"
 import { ArrowUpRight, Check } from "lucide-react"
 
@@ -16,9 +17,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { addItem } = useCart()
   const [selectedColor, setSelectedColor] = useState(product.colorName)
   const [isAdded, setIsAdded] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
-
-  const secondaryImage = product.images?.[1] || product.image
+  const media = getProductMedia(product, selectedColor)
+  const productUrl = `/product/${product.id}${product.availableColors.length > 1 ? `?color=${encodeURIComponent(media.color)}` : ""}`
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -29,7 +29,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         name: product.name,
         price: product.price,
         color: selectedColor,
-        image: product.image,
+        image: media.image,
         currency: product.currency
       },
       1
@@ -41,41 +41,22 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   return (
     <div
       className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-[#E5DCD2]/70 hover-luxury-lift hover:border-[#462F1D]/30"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Visual Canvas with Smooth Image Cross-Fade */}
+      {/* Catalog display image */}
       <div className="w-full aspect-[4/5] bg-[#F5EFE8] overflow-hidden relative">
         <Link
-          href={`/product/${product.id}`}
+          href={productUrl}
           className="absolute inset-0 z-10 block"
           aria-label={`View silhouette: ${product.name}`}
         >
           {/* Primary View */}
           <Image
-            src={product.image}
-            alt={product.name}
+            src={media.image}
+            alt={`${product.name} — ${media.color}`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className={`object-cover object-center transition-all duration-700 ease-out ${
-              isHovered && secondaryImage !== product.image
-                ? "opacity-0 scale-105"
-                : "opacity-100 scale-100 group-hover:scale-[1.03]"
-            }`}
+            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
-
-          {/* Secondary View (Cross-Fade on Hover) */}
-          {secondaryImage !== product.image && (
-            <Image
-              src={secondaryImage}
-              alt={`${product.name} alternate view`}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className={`object-cover object-center transition-all duration-700 ease-out ${
-                isHovered ? "opacity-100 scale-105" : "opacity-0 scale-100"
-              }`}
-            />
-          )}
 
           {/* Minimalist Top Stamp */}
           <div className="absolute top-3 left-3 sm:top-3.5 sm:left-3.5 z-10 pointer-events-none max-w-[55%]">
@@ -90,12 +71,6 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             )}
           </div>
 
-          {/* Doorstep COD Guarantee Tag */}
-          <div className="absolute top-3 right-3 sm:top-3.5 sm:right-3.5 z-10 pointer-events-none">
-            <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/95 backdrop-blur-md px-3 py-1 rounded-full border border-[#462F1D]/20">
-              Cash on Delivery
-            </span>
-          </div>
         </Link>
 
         {/* Sleek Quick-Action Bar */}
@@ -128,10 +103,10 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         <div className="space-y-1 sm:space-y-1.5">
           <div className="flex items-center justify-between text-xs text-[#462F1D] font-medium">
             <span className="capitalize">{product.category}</span>
-            <span className="font-serif italic text-[#462F1D]/80">Full-grain leather</span>
+            <span className="font-serif italic text-[#462F1D]/80 truncate max-w-[65%]">{product.specs.material}</span>
           </div>
 
-          <Link href={`/product/${product.id}`} className="block group/link">
+          <Link href={productUrl} className="block group/link">
             <h3 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] group-hover/link:text-[#462F1D] transition-colors leading-snug line-clamp-1">
               {product.name}
             </h3>
@@ -156,6 +131,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                     setSelectedColor(c.name)
                   }}
                   title={c.name}
+                  aria-label={`${product.name}: ${c.name}`}
+                  aria-pressed={isSelected}
+                  disabled={!c.inStock}
                   className={`w-5 h-5 rounded-full transition-all duration-200 border ${
                     isSelected
                       ? "scale-115 border-[#23170F] ring-2 ring-[#23170F]/40 shadow-xs"

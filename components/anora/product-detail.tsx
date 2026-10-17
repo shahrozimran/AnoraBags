@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import type { Product, Review } from "@/lib/types"
+import { getProductMedia } from "@/lib/product-media"
 import dynamic from "next/dynamic"
 import { useCart } from "./cart-context"
 
@@ -40,14 +41,18 @@ import {
 interface ProductDetailProps {
   product: Product
   reviews?: Review[]
+  initialColor?: string
 }
 
-export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
+export function ProductDetail({ product, reviews = [], initialColor }: ProductDetailProps) {
   const router = useRouter()
   const { addItem } = useCart()
 
-  const [activeImage, setActiveImage] = useState(product.images[0] || product.image)
-  const [selectedColor, setSelectedColor] = useState(product.colorName)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [selectedColor, setSelectedColor] = useState(getProductMedia(product, initialColor).color)
+  const media = getProductMedia(product, selectedColor)
+  const galleryImages = media.images
+  const activeImage = galleryImages[activeImageIndex] || media.image
   const [quantity, setQuantity] = useState(1)
   const [activeTab, setActiveTab] = useState<"specs" | "capacity" | "refund" | "reviews">("specs")
   const [mobileAccordionOpen, setMobileAccordionOpen] = useState<"specs" | "capacity" | "refund" | "reviews" | null>("specs")
@@ -61,7 +66,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
         name: product.name,
         price: product.price,
         color: selectedColor,
-        image: activeImage,
+        image: media.image,
         currency: product.currency
       },
       quantity
@@ -75,7 +80,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
         name: product.name,
         price: product.price,
         color: selectedColor,
-        image: activeImage,
+        image: media.image,
         currency: product.currency
       },
       quantity
@@ -112,7 +117,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               <span className="text-xs text-[#462F1D] font-medium font-sans">
                 {viewMode === "gallery" ? "Editorial Lookbook" : "3D Spatial Studio"}
               </span>
-              <div className="inline-flex rounded-full bg-[#ECE2D8]/80 p-0.5 sm:p-1 text-xs font-medium text-[#462F1D]">
+              {product.supports3D !== false && <div className="inline-flex rounded-full bg-[#ECE2D8]/80 p-0.5 sm:p-1 text-xs font-medium text-[#462F1D]">
                 <button
                   onClick={() => setViewMode("gallery")}
                   className={`px-2.5 sm:px-3.5 py-1 rounded-full transition-all duration-200 text-xs font-medium ${
@@ -132,7 +137,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     360°
                   </span>
                 </button>
-              </div>
+              </div>}
             </div>
 
             {/* Main Stage */}
@@ -141,7 +146,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 <>
                   <Image
                     src={activeImage}
-                    alt={product.name}
+                    alt={`${product.name} — ${selectedColor}, view ${activeImageIndex + 1}`}
                     fill
                     priority
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
@@ -154,9 +159,9 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                   )}
 
                   {/* Mobile image counter */}
-                  {product.images.length > 1 && (
+                  {galleryImages.length > 1 && (
                     <div className="absolute bottom-4 right-4 sm:hidden px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-xs font-mono text-white/95">
-                      {product.images.indexOf(activeImage) + 1} / {product.images.length}
+                      {activeImageIndex + 1} / {galleryImages.length}
                     </div>
                   )}
                 </>
@@ -176,17 +181,19 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             </div>
 
             {/* Thumbnails row (when in photo mode) */}
-            {viewMode === "gallery" && product.images.length > 1 && (
+            {viewMode === "gallery" && galleryImages.length > 1 && (
               <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none">
-                {product.images.map((img, idx) => (
+                {galleryImages.map((img, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setActiveImage(img)}
+                    onClick={() => setActiveImageIndex(idx)}
+                    aria-label={`${selectedColor} — catalog view ${idx + 1}`}
+                    aria-pressed={activeImageIndex === idx}
                     className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border transition-all duration-200 shrink-0 ${
                       activeImage === img ? "border-[#462F1D] ring-2 ring-[#462F1D]/30 shadow-xs scale-102" : "border-[#E5DCD2] hover:border-[#462F1D]/50 opacity-80 hover:opacity-100"
                     }`}
                   >
-                    <Image src={img} alt={`Thumbnail ${idx + 1}`} fill className="object-cover" />
+                    <Image src={img} alt={`${product.name} — ${selectedColor}, catalog view ${idx + 1}`} fill className="object-cover" />
                   </button>
                 ))}
               </div>
@@ -199,7 +206,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               <div className="flex items-center gap-3">
                 <span className="h-px w-6 bg-[#462F1D]/40" />
                 <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
-                  {product.category} · Handcrafted Leather
+                  {product.category} · {product.specs.material}
                 </span>
               </div>
 
@@ -212,11 +219,11 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               </p>
 
               {/* Minimalist Customer Rating */}
-              <div className="flex items-center gap-2.5 pt-1 text-sm text-[#462F1D]">
+              {product.reviewCount > 0 ? <div className="flex items-center gap-2.5 pt-1 text-sm text-[#462F1D]">
                 <span className="font-semibold">★ {product.rating}</span>
                 <span className="opacity-40">•</span>
                 <span className="text-sm font-normal">({product.reviewCount} verified customer reviews)</span>
-              </div>
+              </div> : <p className="pt-1 text-sm text-[#462F1D]">New arrival · Be the first to review</p>}
             </div>
 
             {/* Pricing Section */}
@@ -248,7 +255,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
             {/* Color Swatches */}
             <div className="space-y-2.5">
               <div className="flex justify-between text-xs sm:text-sm font-sans">
-                <span className="font-medium text-[#462F1D] text-xs">Leather Shade:</span>
+                <span className="font-medium text-[#462F1D] text-xs">Color:</span>
                 <span className="text-[#23170F] font-semibold">{selectedColor}</span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
@@ -257,7 +264,13 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                   return (
                     <button
                       key={col.name}
-                      onClick={() => setSelectedColor(col.name)}
+                      onClick={() => {
+                        setSelectedColor(col.name)
+                        setActiveImageIndex(0)
+                        setViewMode("gallery")
+                      }}
+                      aria-pressed={isSelected}
+                      disabled={!col.inStock}
                       className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full border text-xs sm:text-sm font-sans transition-all duration-200 ${
                         isSelected
                           ? "border-[#23170F] bg-[#23170F] text-[#FAF6F1] shadow-xs"
@@ -443,65 +456,16 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
 
             {activeTab === "capacity" && (
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                <div className="md:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#E5DCD2] bg-[#F5EFE8]">
-                  <Image
-                    src="/images/products/bordeaux-crossbody-interior.jpeg"
-                    alt="Bag interior capacity breakdown"
-                    fill
-                    className="object-cover"
-                  />
+                <div className="md:col-span-5 relative aspect-[4/5] rounded-2xl overflow-hidden border border-[#E5DCD2] bg-[#F5EFE8]">
+                  <Image src={galleryImages[1] || media.image} alt={product.name + " — " + selectedColor + " carrying details"} fill className="object-cover" />
                 </div>
                 <div className="md:col-span-7 space-y-4">
-                  <h3 className="font-serif text-xl sm:text-2xl font-light text-[#23170F]">
-                    Architectural Interior Engineering
-                  </h3>
-                  <p className="text-sm sm:text-base text-[#5A4333] font-light leading-relaxed">
-                    Every Anora silhouette features structured triple-accordion bellows that maximize utility and preserve the clean exterior form.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
-                    <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">I</span>
-                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Smartphone Fit</h5>
-                      </div>
-                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Accommodates iPhone 16 Pro Max & Samsung Ultra devices with case.</p>
-                    </div>
-                    <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">II</span>
-                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Cardholder Slot</h5>
-                      </div>
-                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Smooth-glide calfskin divider for cards, transit pass, and folded currency.</p>
-                    </div>
-                    <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">III</span>
-                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Cosmetics Cavity</h5>
-                      </div>
-                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Deep central well for lipstick, compact mirror, and 10ml travel fragrance.</p>
-                    </div>
-                    <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">IV</span>
-                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Key Fob Leash</h5>
-                      </div>
-                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Internal leather anchor preventing keys from scratching sunglasses.</p>
-                    </div>
-                    <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">V</span>
-                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Eyewear Section</h5>
-                      </div>
-                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Gentle microfiber lining crafted to safeguard designer eyewear frames.</p>
-                    </div>
-                    <div className="p-4 bg-white rounded-xl border border-[#E5DCD2] space-y-1.5 shadow-2xs">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">VI</span>
-                        <h5 className="font-serif font-normal text-sm text-[#23170F]">Concealed Zip</h5>
-                      </div>
-                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Concealed security pocket for emergency cash and confidential items.</p>
-                    </div>
-                  </div>
+                  <h3 className="font-serif text-xl sm:text-2xl font-light text-[#23170F]">Storage & Carrying Details</h3>
+                  <p className="text-sm sm:text-base text-[#5A4333] font-light leading-relaxed">{product.specs.capacity}</p>
+                  <p className="text-sm text-[#462F1D]">{product.specs.strapDrop}</p>
+                  <ul className="space-y-2 text-sm text-[#462F1D] list-disc pl-5">
+                    {product.features.map((feature) => <li key={feature}>{feature}</li>)}
+                  </ul>
                 </div>
               </div>
             )}
@@ -542,14 +506,14 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                         <span className="text-xs font-sans text-[#462F1D] font-semibold">Step 03</span>
                       </div>
                       <p className="font-medium text-sm sm:text-base text-[#23170F]">Instant Settlement</p>
-                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Refund is wired within 24 hours via Bank Transfer, EasyPaisa, or JazzCash.</p>
+                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal leading-relaxed">Approved refunds are processed within 24 hours of return verification via bank transfer, EasyPaisa, or JazzCash. Posting times may vary.</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-2">
                   <Link
-                    href="/refund-policy"
+                    href="/return-policy"
                     className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#462F1D] hover-editorial-line"
                   >
                     <span>Review Complete Refund Guidelines</span>
@@ -663,28 +627,12 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 <ChevronDown className={`w-4 h-4 text-[#462F1D] transition-transform duration-200 ${mobileAccordionOpen === "capacity" ? "rotate-180" : ""}`} />
               </button>
               {mobileAccordionOpen === "capacity" && (
-                <div className="p-4 pt-0 border-t border-[#E5DCD2]/60 space-y-3 text-sm animate-in fade-in duration-200">
-                  <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden mt-3 border border-[#E5DCD2]">
-                    <Image
-                      src="/images/products/bordeaux-crossbody-interior.jpeg"
-                      alt="Bag interior capacity breakdown"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <p className="text-[#5A4333] font-light leading-relaxed">
-                    Structured triple-accordion bellows expand smoothly to fit your iPhone 16 Pro Max, keys, wallet, cosmetics, and eyewear.
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 pt-1 text-xs sm:text-sm">
-                    <div className="p-3 bg-[#FAF6F1] rounded-lg border border-[#E5DCD2]">
-                      <span className="font-medium text-[#23170F] block">Smartphone Fit</span>
-                      <span className="text-[#462F1D] font-normal">Up to 6.9" screens</span>
-                    </div>
-                    <div className="p-3 bg-[#FAF6F1] rounded-lg border border-[#E5DCD2]">
-                      <span className="font-medium text-[#23170F] block">Card Slots</span>
-                      <span className="text-[#462F1D] font-normal">Smooth calfskin divider</span>
-                    </div>
-                  </div>
+                <div className="p-4 border-t border-[#E5DCD2]/60 space-y-3 text-sm animate-in fade-in duration-200">
+                  <p className="text-[#5A4333] font-light leading-relaxed">{product.specs.capacity}</p>
+                  <p className="text-[#462F1D]">{product.specs.strapDrop}</p>
+                  <ul className="space-y-2 text-[#462F1D] list-disc pl-5">
+                    {product.features.map((feature) => <li key={feature}>{feature}</li>)}
+                  </ul>
                 </div>
               )}
             </div>
@@ -707,7 +655,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               {mobileAccordionOpen === "refund" && (
                 <div className="p-4 pt-0 border-t border-[#E5DCD2]/60 space-y-3 text-sm animate-in fade-in duration-200">
                   <p className="text-[#5A4333] font-light leading-relaxed pt-3">
-                    Try the bag in the comfort of your home for 7 full days. If you are not delighted, our courier collects the parcel at zero charge for an immediate bank or mobile cash refund.
+                    Inspect your bag at home and contact us within 7 days for a return. We arrange free collection and process your refund after return verification. See the return policy for details.
                   </p>
                   <div className="p-3.5 rounded-xl bg-[#ECE2D8]/40 border border-[#E5DCD2] space-y-1 text-xs sm:text-sm">
                     <p className="font-medium text-[#23170F]">100% Cash On Delivery nationwide</p>

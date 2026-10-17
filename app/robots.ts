@@ -25,7 +25,7 @@ export default function robots(): MetadataRoute.Robots {
           "Applebot",
           "Google-Extended"
         ],
-        allow: ["/", "/shop", "/product/*", "/refund-policy", "/about", "/contact", "/track-order"],
+        allow: ["/", "/shop", "/product/*", "/return-policy", "/delivery-policy", "/faq", "/terms-and-conditions", "/privacy-policy", "/about", "/contact", "/track-order"],
         disallow: ["/admin", "/admin/*", "/checkout", "/order-confirmation/*", "/api/*"]
       }
     ],

@@ -1,3 +1,4 @@
+import { STORE_CONTACT } from "@/lib/site-config"
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -122,10 +123,10 @@ export default async function OrderConfirmationPage({ params }: Props) {
                   <span>7-Day Home Privilege</span>
                 </h3>
                 <p className="text-[#462F1D] font-light leading-relaxed">
-                  Your 7-day privilege begins upon parcel handover. If anything falls short of expectations, our courier collects the parcel for an immediate refund.
+                  Your 7-day return window begins when your parcel arrives. Contact us within 7 days to arrange free collection. Refunds are processed after return verification.
                 </p>
                 <Link
-                  href="/refund-policy"
+                  href="/return-policy"
                   className="inline-flex items-center gap-1.5 text-xs font-sans font-medium text-[#462F1D] hover-editorial-line"
                 >
                   <span>Review Privilege Terms</span>
@@ -174,7 +175,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
 
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <a
-                  href={`https://wa.me/923001234567?text=Hi%20Anora%20Bags,%20I%20have%20an%20order%20inquiry%20for%20order%20${order.orderNumber}`}
+                  href={`${STORE_CONTACT.whatsapp}?text=Hi%20Anora%20Bags,%20I%20have%20an%20order%20inquiry%20for%20order%20${order.orderNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-sm font-sans font-medium transition border border-[#E5DCD2]"

@@ -1,58 +1,235 @@
 {
   "products": [
     {
-      "id": "the-anora-the-anora-test-royale-flap",
-      "name": "The Anora Test Royale Flap",
-      "tagline": "Sculptural Minimalism",
-      "price": 7990,
-      "originalPrice": 9990,
+      "id": "the-anora-noir-geometric-crossbody",
+      "name": "The Anora Noir Geometric Crossbody",
+      "tagline": "Sculpted texture. Silver accents. Everyday elegance.",
+      "price": 2799,
+      "originalPrice": null,
       "currency": "Rs.",
       "category": "crossbody",
-      "colorName": "Bordeaux Wine",
-      "colorHex": "#4A1525",
+      "colorName": "Classic Black",
+      "colorHex": "#171719",
       "availableColors": [
         {
-          "name": "Bordeaux Wine",
-          "hex": "#4A1525",
+          "name": "Classic Black",
+          "hex": "#171719",
           "inStock": true
         }
       ],
-      "badge": "Exclusive Edition",
-      "image": "/images/products/bordeaux-crossbody-hero.jpeg",
+      "badge": "New Arrival",
+      "image": "/images/products/noir-geometric/front.webp",
       "images": [
-        "/images/products/bordeaux-crossbody-hero.jpeg"
+        "/images/products/noir-geometric/front.webp",
+        "/images/products/noir-geometric/angle.webp",
+        "/images/products/noir-geometric/detail.webp"
       ],
-      "description": "Bespoke calfskin bag with 18k brushed gold hardware.",
-      "story": "Handcrafted in our bespoke atelier with devotion to clean lines and sculptural minimalism.",
+      "description": "Meet your new everyday black bag. A structured silhouette with geometric triangle texture, a softly rounded flap and a polished silver-tone double-ring clasp. Carry it by the curved top handle or style it with the chain strap or adjustable crossbody strap.",
+      "story": "A classic black palette meets sculpted geometric texture. Silver-tone accents and versatile carrying options make this compact silhouette an effortless finishing touch for everyday outfits and evenings out.",
       "features": [
-        "Handcrafted genuine full-grain calfskin leather",
-        "Architectural brushed gold custom hardware",
-        "Triple accordion compartments with security zip",
-        "100% Cash On Delivery Nationwide",
-        "7-Day Hassle-Free Doorstep Return Guarantee"
+        "Black geometric triangle-textured exterior",
+        "Rounded flap with double-stitched edging",
+        "Polished silver-tone double-ring clasp",
+        "Curved top handle with silver-tone attachments",
+        "Black-and-silver chain strap and adjustable long strap",
+        "Cash on Delivery nationwide with 7-day returns"
       ],
       "specs": {
-        "dimensions": "24 cm × 18 cm × 10 cm",
-        "weight": "510 grams",
-        "material": "Full-Grain Pebbled Calfskin Leather",
-        "hardware": "18k Brushed Gold Brass",
-        "strapDrop": "54 cm (Adjustable)",
-        "capacity": "Triple compartment interior",
-        "closure": "Mechanical Twist-Lock",
-        "origin": "Bespoke Atelier"
+        "dimensions": "Contact us for exact measurements",
+        "weight": "Contact us for exact weight",
+        "material": "Geometric textured finish",
+        "hardware": "Polished silver-tone hardware",
+        "strapDrop": "Adjustable crossbody strap; chain strap included",
+        "capacity": "Compact silhouette. Contact us to confirm interior layout and device fit before ordering.",
+        "closure": "Flap with double-ring clasp",
+        "origin": "Anora Bags collection"
       },
-      "rating": 5,
+      "rating": 0,
       "reviewCount": 0,
       "inStock": true,
       "featured": true,
-      "isNew": true
+      "isNew": true,
+      "supports3D": false
+    },
+    {
+      "id": "the-anora-city-chain-crossbody",
+      "name": "The Anora City Chain Crossbody",
+      "tagline": "Clean lines. Golden details. Effortless everyday style.",
+      "price": 2499,
+      "originalPrice": null,
+      "currency": "Rs.",
+      "category": "crossbody",
+      "colorName": "Classic Black",
+      "colorHex": "#18181A",
+      "availableColors": [
+        {
+          "name": "Classic Black",
+          "hex": "#18181A",
+          "inStock": true,
+          "image": "/images/products/city-chain/black-front.webp",
+          "images": [
+            "/images/products/city-chain/black-front.webp",
+            "/images/products/city-chain/black-angle.webp",
+            "/images/products/city-chain/black-side.webp"
+          ]
+        },
+        {
+          "name": "Dusty Terracotta",
+          "hex": "#B47767",
+          "inStock": true,
+          "image": "/images/products/city-chain/terracotta-front.webp",
+          "images": [
+            "/images/products/city-chain/terracotta-front.webp",
+            "/images/products/city-chain/terracotta-angle.webp",
+            "/images/products/city-chain/terracotta-side.webp"
+          ]
+        }
+      ],
+      "badge": "New Arrival",
+      "image": "/images/products/city-chain/black-front.webp",
+      "images": [
+        "/images/products/city-chain/black-front.webp",
+        "/images/products/city-chain/black-angle.webp",
+        "/images/products/city-chain/black-side.webp",
+        "/images/products/city-chain/terracotta-front.webp",
+        "/images/products/city-chain/terracotta-angle.webp",
+        "/images/products/city-chain/terracotta-side.webp"
+      ],
+      "description": "A streamlined rectangular crossbody with a softly rounded flap, an angular gold-tone clasp and a chain-accented strap. Choose classic black or muted dusty terracotta for a simple finishing touch from day to evening.",
+      "story": "A compact silhouette with an understated finish and a statement clasp. Two considered colors bring the same clean design to everyday outfits and evenings out.",
+      "features": [
+        "Structured horizontal silhouette with a softly rounded flap",
+        "Smooth, lightly textured exterior with matching edge stitching",
+        "Angular gold-tone clasp and matching strap attachments",
+        "Chain-accented shoulder strap and adjustable long strap",
+        "Available in Classic Black and Dusty Terracotta",
+        "Cash on Delivery nationwide with 7-day returns"
+      ],
+      "specs": {
+        "dimensions": "Contact us for exact measurements",
+        "weight": "Contact us for exact weight",
+        "material": "Smooth textured finish",
+        "hardware": "Gold-tone angular clasp and chain",
+        "strapDrop": "Chain-accented strap; adjustable long strap included",
+        "capacity": "Compact silhouette. Contact us to confirm the interior layout and device fit before ordering.",
+        "closure": "Flap with angular clasp",
+        "origin": "Anora Bags collection"
+      },
+      "rating": 0,
+      "reviewCount": 0,
+      "inStock": true,
+      "featured": true,
+      "isNew": true,
+      "supports3D": false
+    },
+    {
+      "id": "the-anora-navy-signature-crossbody",
+      "name": "The Anora Navy Signature Crossbody",
+      "tagline": "Tonal pattern. Curved lines. A golden finishing touch.",
+      "price": 2499,
+      "originalPrice": null,
+      "currency": "Rs.",
+      "category": "crossbody",
+      "colorName": "Navy & Black",
+      "colorHex": "#26344D",
+      "availableColors": [
+        {
+          "name": "Navy & Black",
+          "hex": "#26344D",
+          "inStock": true
+        }
+      ],
+      "badge": "New Arrival",
+      "image": "/images/products/navy-signature/front.webp",
+      "images": [
+        "/images/products/navy-signature/front.webp",
+        "/images/products/navy-signature/angle.webp",
+        "/images/products/navy-signature/side.webp"
+      ],
+      "description": "A compact crossbody with a dark navy patterned flap, a solid black body and softly rounded edges. A polished gold-tone clasp and a simple dark strap complete its understated silhouette.",
+      "story": "Tonal navy pattern brings subtle texture to a classic black base. A curved flap and clean profile make it an easy companion for everyday outfits.",
+      "features": [
+        "Dark navy patterned flap with a tonal woven finish",
+        "Solid black lower panel and side gussets",
+        "Curved flap edge and rounded lower corners",
+        "Polished gold-tone rounded clasp and strap rings",
+        "Simple dark shoulder strap",
+        "Cash on Delivery nationwide with 7-day returns"
+      ],
+      "specs": {
+        "dimensions": "Contact us for exact measurements",
+        "weight": "Contact us for exact weight",
+        "material": "Patterned woven finish",
+        "hardware": "Polished gold-tone clasp and strap rings",
+        "strapDrop": "Long shoulder strap; contact us for strap measurements",
+        "capacity": "Compact silhouette. Contact us to confirm the interior layout and device fit before ordering.",
+        "closure": "Curved flap with rounded clasp",
+        "origin": "Anora Bags collection"
+      },
+      "rating": 0,
+      "reviewCount": 0,
+      "inStock": true,
+      "featured": true,
+      "isNew": true,
+      "supports3D": false
+    },
+    {
+      "id": "the-anora-espresso-curve-crossbody",
+      "name": "The Anora Espresso Curve Crossbody",
+      "tagline": "Rich texture. Subtle contrast. Everyday polish.",
+      "price": 2499,
+      "originalPrice": null,
+      "currency": "Rs.",
+      "category": "crossbody",
+      "colorName": "Black & Espresso",
+      "colorHex": "#322824",
+      "availableColors": [
+        {
+          "name": "Black & Espresso",
+          "hex": "#322824",
+          "inStock": true
+        }
+      ],
+      "badge": "New Arrival",
+      "image": "/images/products/espresso-curve/front.webp",
+      "images": [
+        "/images/products/espresso-curve/front.webp",
+        "/images/products/espresso-curve/angle.webp",
+        "/images/products/espresso-curve/side.webp"
+      ],
+      "description": "A curved crossbody with a black pebbled flap over a deep espresso-brown body. Rounded corners, matching edge stitching and a polished gold-tone clasp bring a refined finish to the slim silhouette.",
+      "story": "Black and deep espresso meet in a quiet contrast of tone and texture. The sweeping flap and simple dark strap keep the design versatile from day to evening.",
+      "features": [
+        "Black flap with a pebbled textured finish",
+        "Deep espresso-brown lower panel",
+        "Sweeping curved flap seam and rounded base",
+        "Polished gold-tone rounded clasp and strap rings",
+        "Simple dark shoulder strap",
+        "Cash on Delivery nationwide with 7-day returns"
+      ],
+      "specs": {
+        "dimensions": "Contact us for exact measurements",
+        "weight": "Contact us for exact weight",
+        "material": "Pebbled textured finish",
+        "hardware": "Polished gold-tone clasp and strap rings",
+        "strapDrop": "Long shoulder strap; contact us for strap measurements",
+        "capacity": "Compact silhouette. Contact us to confirm the interior layout and device fit before ordering.",
+        "closure": "Curved flap with rounded clasp",
+        "origin": "Anora Bags collection"
+      },
+      "rating": 0,
+      "reviewCount": 0,
+      "inStock": true,
+      "featured": true,
+      "isNew": true,
+      "supports3D": false
     },
     {
       "id": "the-anora-bordeaux-flap-crossbody",
       "name": "The Anora Bordeaux Flap Crossbody",
       "tagline": "Timeless Style, Modern You — Bags For Every You",
-      "price": 6990,
-      "originalPrice": 8990,
+      "price": 2799,
+      "originalPrice": null,
       "currency": "Rs.",
       "category": "crossbody",
       "colorName": "Rich Bordeaux Wine",
@@ -62,21 +239,12 @@
           "name": "Rich Bordeaux Wine",
           "hex": "#4A1525",
           "inStock": true
-        },
-        {
-          "name": "Noir Black",
-          "hex": "#1C1917",
-          "inStock": true
-        },
-        {
-          "name": "Caramel Saddle",
-          "hex": "#B36B39",
-          "inStock": true
         }
       ],
       "badge": "Signature Bestseller",
-      "image": "/images/products/bordeaux-crossbody-hero.jpeg",
+      "image": "/images/products/bordeaux-white/front.webp",
       "images": [
+        "/images/products/bordeaux-white/front.webp",
         "/images/products/bordeaux-crossbody-hero.jpeg",
         "/images/products/bordeaux-crossbody-lifestyle.jpeg",
         "/images/products/bordeaux-crossbody-model.jpeg",
@@ -106,68 +274,15 @@
       "reviewCount": 142,
       "inStock": true,
       "featured": true,
-      "isNew": false
-    },
-    {
-      "id": "the-anora-dua-satchel",
-      "name": "The Anora Dua Satchel in Espresso & Cognac",
-      "tagline": "Sculpted Dual-Tone Luxury — Something Beautiful is on the Way",
-      "price": 8490,
-      "originalPrice": 10990,
-      "currency": "Rs.",
-      "category": "satchel",
-      "colorName": "Espresso & Cognac Tan",
-      "colorHex": "#3D251E",
-      "availableColors": [
-        {
-          "name": "Espresso & Cognac Tan",
-          "hex": "#3D251E",
-          "inStock": true
-        },
-        {
-          "name": "Monochrome Noir",
-          "hex": "#1C1917",
-          "inStock": true
-        }
-      ],
-      "badge": "Limited Preview • Drop Soon",
-      "image": "/images/products/cognac-espresso-satchel.jpeg",
-      "images": [
-        "/images/products/cognac-espresso-satchel.jpeg"
-      ],
-      "description": "A masterclass in color harmony. Deep espresso brown saddle leather juxtaposed with warm caramel cognac accents. Currently showcased as our upcoming artisan release (\"Something Beautiful is on the Way\"). Features our signature Anora A-Lock hardware, sculpted top carry handle, and structured flap construction.",
-      "story": "Inspired by warm European café afternoons and bespoke vintage travel trunks. The dual-tone leather is vegetable-tanned to patina gracefully over years of devotion.",
-      "features": [
-        "Two-tone dual leather construction in Italian Espresso & Saddle Cognac",
-        "Signature Anora A-Lock turn-clasp closure",
-        "Reinforced rolled leather top handle for hand or forearm carry",
-        "Detachable and adjustable leather crossbody strap included",
-        "Spacious main interior with plush suede-touch lining and slip pockets",
-        "Protective metal feet at the base to safeguard leather when placed down",
-        "7-Day Hassle-Free Returns & 100% Cash on Delivery"
-      ],
-      "specs": {
-        "dimensions": "26 cm (W) × 19 cm (H) × 11 cm (D)",
-        "weight": "590 grams",
-        "material": "Vegetable-Tanned Dual Grain Leather",
-        "hardware": "Brushed Satin Gold Hardware",
-        "strapDrop": "48 - 56 cm (Adjustable & Detachable)",
-        "capacity": "Spacious cavity fits 10\" tablet, journal, wallet, cosmetics",
-        "closure": "Architectural Lock-Clasp",
-        "origin": "Handmade by Master Artisans"
-      },
-      "rating": 4.95,
-      "reviewCount": 96,
-      "inStock": true,
-      "featured": true,
-      "isNew": true
+      "isNew": false,
+      "supports3D": false
     },
     {
       "id": "the-anora-petit-ivory-handbag",
       "name": "The Anora Petit Ivory Top-Handle Handbag",
       "tagline": "Minimalist Sculptural Elegance for Day & Evening",
-      "price": 7290,
-      "originalPrice": 9490,
+      "price": 2799,
+      "originalPrice": null,
       "currency": "Rs.",
       "category": "top-handle",
       "colorName": "Alabaster Ivory Cream",
@@ -177,21 +292,12 @@
           "name": "Alabaster Ivory Cream",
           "hex": "#F5F0E6",
           "inStock": true
-        },
-        {
-          "name": "Buttercream Blush",
-          "hex": "#EED9C4",
-          "inStock": true
-        },
-        {
-          "name": "Classic Noir",
-          "hex": "#1C1917",
-          "inStock": true
         }
       ],
       "badge": "New Arrival",
-      "image": "/images/products/ivory-top-handle.jpeg",
+      "image": "/images/products/ivory-white/front.webp",
       "images": [
+        "/images/products/ivory-white/front.webp",
         "/images/products/ivory-top-handle.jpeg"
       ],
       "description": "A pure embodiment of minimalist quiet luxury. Clean sculptural curves, pristine ivory smooth calfskin, and architectural palladium silver lock detailing. A statement in refined simplicity.",
@@ -218,112 +324,8 @@
       "reviewCount": 64,
       "inStock": true,
       "featured": true,
-      "isNew": true
-    },
-    {
-      "id": "the-anora-noir-crossbody",
-      "name": "The Anora Noir Flap Crossbody",
-      "tagline": "Classic Midnight Black with Brushed Gold Monogram Clasp",
-      "price": 6990,
-      "originalPrice": 8990,
-      "currency": "Rs.",
-      "category": "crossbody",
-      "colorName": "Midnight Noir Black",
-      "colorHex": "#181615",
-      "availableColors": [
-        {
-          "name": "Midnight Noir Black",
-          "hex": "#181615",
-          "inStock": true
-        },
-        {
-          "name": "Rich Bordeaux Wine",
-          "hex": "#4A1525",
-          "inStock": true
-        }
-      ],
-      "badge": "Essential Classic",
-      "image": "/images/products/bordeaux-crossbody-lifestyle.jpeg",
-      "images": [
-        "/images/products/bordeaux-crossbody-lifestyle.jpeg",
-        "/images/products/bordeaux-crossbody-model.jpeg"
-      ],
-      "description": "The little black bag, elevated to perfection. Deepest midnight black textured calfskin complemented by radiant warm gold hardware. Fully inspectable in 360° rotation in our 3D Studio.",
-      "story": "Timelessness is not an accident—it is crafted. The Noir Flap embodies our core motto: \"Same you, more style\".",
-      "features": [
-        "Supple textured pebbled leather with scratch-resistant treatment",
-        "Signature brushed gold hardware with locking ring closure",
-        "Concealed back slip pocket for quick-access transit passes or phone",
-        "Accordion interior with protective microfiber lining",
-        "7-Day Hassle-Free Returns & 100% Cash on Delivery"
-      ],
-      "specs": {
-        "dimensions": "22 cm (W) × 17 cm (H) × 9 cm (D)",
-        "weight": "480 grams",
-        "material": "Pebbled Calfskin Leather",
-        "hardware": "18k Brushed Gold Brass",
-        "strapDrop": "52 cm (Adjustable)",
-        "capacity": "Fits phone, card wallet, compact powder, sunglasses",
-        "closure": "Twist-Lock",
-        "origin": "Bespoke Handcrafted Leather Atelier"
-      },
-      "rating": 4.92,
-      "reviewCount": 88,
-      "inStock": true,
-      "featured": false,
-      "isNew": false
-    },
-    {
-      "id": "the-anora-caramel-shoulder-bag",
-      "name": "The Anora Sienna Shoulder Bag",
-      "tagline": "Warm Earth Tones & Sculptural Silhouette",
-      "price": 7890,
-      "originalPrice": 9990,
-      "currency": "Rs.",
-      "category": "shoulder",
-      "colorName": "Sienna Saddle Tan",
-      "colorHex": "#9E5B32",
-      "availableColors": [
-        {
-          "name": "Sienna Saddle Tan",
-          "hex": "#9E5B32",
-          "inStock": true
-        },
-        {
-          "name": "Bordeaux Wine",
-          "hex": "#4A1525",
-          "inStock": true
-        }
-      ],
-      "badge": "Staff Favorite",
-      "image": "/images/products/cognac-espresso-satchel.jpeg",
-      "images": [
-        "/images/products/cognac-espresso-satchel.jpeg"
-      ],
-      "description": "An elegant crescent-inspired shoulder bag draped in rich caramel sienna leather. Sits comfortably under the arm with a fluid silhouette that elevates minimalist trench coats and knitwear.",
-      "story": "Sculpted for modern everyday mobility without sacrificing feminine grace.",
-      "features": [
-        "Supple glove-tanned leather with buttery hand-feel",
-        "Comfort-contoured shoulder strap designed for all-day wear",
-        "Secure zip top closure with custom leather puller",
-        "Interior zip pocket and key leash",
-        "7-Day Hassle-Free Returns & 100% Cash on Delivery"
-      ],
-      "specs": {
-        "dimensions": "28 cm (W) × 18 cm (H) × 7 cm (D)",
-        "weight": "450 grams",
-        "material": "Glove-Tanned Calfskin Leather",
-        "hardware": "Antique Brushed Brass",
-        "strapDrop": "26 cm (Shoulder drop)",
-        "capacity": "Fits sunglasses case, phone, makeup pouch, cardholder",
-        "closure": "Top Zipper & Magnetic Guard",
-        "origin": "Bespoke Atelier"
-      },
-      "rating": 4.85,
-      "reviewCount": 52,
-      "inStock": true,
-      "featured": false,
-      "isNew": false
+      "isNew": true,
+      "supports3D": false
     }
   ],
   "orders": [],

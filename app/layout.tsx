@@ -4,6 +4,7 @@ import { DM_Sans, Playfair_Display, Cormorant_Garamond } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { CartProvider } from "@/components/anora/cart-context"
 import "./globals.css"
+import { STORE_CONTACT } from "@/lib/site-config"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
     description: "Minimalist luxury leather handbags. 100% Cash On Delivery nationwide across Pakistan & 7-Day Doorstep Refund Guarantee.",
     images: [
       {
-        url: "/images/products/bordeaux-crossbody-hero.jpeg",
+        url: "/images/products/bordeaux-white/front.webp",
         width: 1200,
         height: 630,
         alt: "Anora Bags Handcrafted Luxury Leather Bags"
@@ -77,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anora Bags — Bags For Every You | Handcrafted Luxury Handbags",
     description: "Minimalist luxury leather handbags. 100% Cash On Delivery nationwide across Pakistan & 7-Day Doorstep Refund Guarantee.",
-    images: ["/images/products/bordeaux-crossbody-hero.jpeg"],
+    images: ["/images/products/bordeaux-white/front.webp"],
     creator: "@anorabags"
   },
   icons: {
@@ -136,7 +137,8 @@ export default function RootLayout({
         "slogan": "Timeless Style, Modern You — Bags For Every You",
         "contactPoint": {
           "@type": "ContactPoint",
-          "telephone": "+92-300-1234567",
+          "telephone": STORE_CONTACT.phone,
+          "email": STORE_CONTACT.email,
           "contactType": "Customer Concierge",
           "areaServed": "PK",
           "availableLanguage": ["English", "Urdu"]
@@ -158,7 +160,7 @@ export default function RootLayout({
         },
         "currenciesAccepted": "PKR",
         "paymentAccepted": "Cash on Delivery, COD",
-        "priceRange": "Rs. 6990 - Rs. 10990",
+        "priceRange": "Rs. 2499 - Rs. 2799",
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "PK",
@@ -193,7 +195,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       </head>
-      <body className={`${dmSans.variable} ${playfairDisplay.variable} ${cormorantGaramond.variable} font-sans antialiased text-[#23170F] bg-[#FAF6F1]`}>
+      <body id="top" className={`${dmSans.variable} ${playfairDisplay.variable} ${cormorantGaramond.variable} font-sans antialiased text-[#23170F] bg-[#FAF6F1]`}>
         <CartProvider>
           {children}
         </CartProvider>

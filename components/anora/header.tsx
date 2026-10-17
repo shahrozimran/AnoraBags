@@ -1,10 +1,21 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import { ShoppingBag, Menu, X, ArrowUpRight } from "lucide-react"
 import { useCart } from "./cart-context"
 import { BrandLogo } from "./brand-logo"
-import { ShoppingBag, Menu, X, ArrowUpRight } from "lucide-react"
+import { COLLECTIONS } from "@/lib/site-config"
+
+const navigationLinks = [
+  { label: "Shop All", href: "/shop" },
+  ...COLLECTIONS,
+]
+const storyLinks = [
+  { label: "Our Story", href: "/about" },
+  { label: "Contact", href: "/contact" },
+]
+const focusStyle = "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#77573E]"
 
 export function Header() {
   const { itemCount, setIsOpen } = useCart()
@@ -12,222 +23,96 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    handleScroll()
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMobileMenuOpen(false)
+    }
+    window.addEventListener("keydown", handleEscape)
+    return () => window.removeEventListener("keydown", handleEscape)
+  }, [isMobileMenuOpen])
+
   return (
     <>
-      {/* Top Announcement Bar */}
-      <div className="bg-[#23170F] text-[#ECE2D8] text-xs font-sans py-2 px-3 sm:px-4 border-b border-[#3D291B]/60 select-none overflow-hidden">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <span className="hidden md:inline-block text-[#ECE2D8]/85 font-normal">
-            Anora Bags · Full-Grain Calfskin Leather
-          </span>
-          <div className="flex-1 text-center font-normal truncate px-2 min-w-0">
-            <span className="truncate inline-block max-w-full text-xs">
-              Cash on Delivery Nationwide <span className="opacity-40 mx-1.5">·</span> Doorstep Inspection <span className="opacity-40 mx-1.5">·</span> 7-Day Returns
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-4 text-[#ECE2D8]/85 hover:text-white transition font-normal text-xs">
-            <Link href="/track-order" className="hover-editorial-line">
-              Track Order
-            </Link>
-          </div>
+      <div className="border-b border-white/5 bg-[#2A1D14] text-[#F1E7DC]">
+        <div className="mx-auto flex min-h-9 max-w-7xl items-center justify-center px-5 py-2 text-center sm:px-8">
+          <p className="text-[10px] tracking-[0.08em] text-[#D3C0AD]">
+            Anora Bags <span className="mx-2 text-[#A2876C]" aria-hidden="true">/</span> Full-Grain Calfskin Leather
+          </p>
         </div>
       </div>
 
-      {/* Main Luxury Navigation Bar */}
-      <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-          isScrolled
-            ? "bg-[#FAF6F1]/95 backdrop-blur-md border-b border-[#E5DCD2] py-2.5 sm:py-3 shadow-xs"
-            : "bg-[#FAF6F1]/90 backdrop-blur-xs border-b border-[#E5DCD2]/60 py-3 sm:py-4"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Mobile menu trigger */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-[#462F1D] hover:text-[#23170F] focus:outline-hidden transition"
-            aria-label="Toggle navigation menu"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+      <header className={`sticky top-0 z-40 w-full border-b transition-[background-color,box-shadow,border-color] duration-300 ${isScrolled ? "border-[#DCCFC2] bg-[#FAF6F1]/95 shadow-[0_4px_24px_-16px_rgba(46,31,20,0.3)] backdrop-blur-xl" : "border-[#E6DCD2] bg-[#FAF6F1]"}`}>
+        <div className={`mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 transition-[height] duration-300 sm:px-8 ${isScrolled ? "h-[76px] sm:h-[84px]" : "h-[80px] sm:h-[100px]"}`}>
+          <div className="min-w-0 justify-self-start">
+            <button type="button" onClick={() => setIsMobileMenuOpen(open => !open)}
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isMobileMenuOpen} aria-controls="mobile-navigation"
+              className={`flex h-11 w-11 items-center justify-center rounded-full border border-[#DDD0C3] text-[#462F1D] transition-colors hover:bg-[#EDE2D7] lg:hidden ${focusStyle}`}>
+              {isMobileMenuOpen ? <X className="h-[18px] w-[18px]" aria-hidden="true" /> : <Menu className="h-[18px] w-[18px]" aria-hidden="true" />}
+            </button>
 
-          {/* Left Category Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-7 text-sm font-medium text-[#23170F]/80">
-            <Link
-              href="/shop"
-              className="hover:text-[#462F1D] transition-colors hover-editorial-line py-1"
-            >
-              Collection
-            </Link>
-            <Link
-              href="/shop?category=crossbody"
-              className="hover:text-[#462F1D] transition-colors hover-editorial-line py-1"
-            >
-              Crossbody
-            </Link>
-            <Link
-              href="/shop?category=satchel"
-              className="hover:text-[#462F1D] transition-colors hover-editorial-line py-1"
-            >
-              Satchels
-            </Link>
-            <Link
-              href="/shop?category=top-handle"
-              className="hover:text-[#462F1D] transition-colors hover-editorial-line py-1"
-            >
-              Top-Handle
-            </Link>
-            <Link
-              href="/#studio3d"
-              className="hover:text-[#462F1D] transition-colors hover-editorial-line py-1 flex items-center gap-1.5"
-            >
-              <span>3D Studio</span>
-              <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#ECE2D8] text-[#462F1D] font-sans font-medium">
-                360°
-              </span>
-            </Link>
-          </nav>
+            <nav aria-label="Collections" className="hidden items-center gap-1 whitespace-nowrap text-[13px] font-medium lg:flex xl:gap-2">
+              {navigationLinks.map(({ label, href }, index) => (
+                <Link key={href} href={href}
+                  className={`inline-flex min-h-10 items-center rounded-full px-4 transition-colors ${index === 0 ? "bg-[#39291D] text-[#FFF9F3] hover:bg-[#553C28]" : "text-[#654F3E] hover:bg-[#EDE2D7] hover:text-[#302217]"} ${focusStyle}`}>
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-          {/* Centered Brand Mark */}
-          <Link href="/" className="flex flex-col items-center group py-0.5" aria-label="Anora Bags Home">
-            <BrandLogo size="md" showTagline={true} variant="dark" />
+          <Link href="/" aria-label="Anora Bags Home" className={`group flex flex-col items-center justify-center rounded-sm px-3 py-1 ${focusStyle}`}>
+            <BrandLogo size="md" showTagline variant="dark" />
           </Link>
 
-          {/* Right Action Icons & Editorial Links */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-medium text-[#23170F]/80">
-              <Link
-                href="/about"
-                className="hover:text-[#462F1D] transition-colors hover-editorial-line py-1"
-              >
-                Our Story
-              </Link>
-              <Link
-                href="/contact"
-                className="hover:text-[#462F1D] transition-colors hover-editorial-line py-1"
-              >
-                Contact
-              </Link>
+          <div className="flex items-center gap-4 justify-self-end sm:gap-6">
+            <nav aria-label="About Anora" className="hidden items-center gap-5 text-[13px] font-medium text-[#654F3E] lg:flex xl:gap-7">
+              {storyLinks.map(({ label, href }) => (
+                <Link key={href} href={href} className={`py-2 transition-colors hover:text-[#23170F] ${focusStyle}`}>
+                  {label}
+                </Link>
+              ))}
             </nav>
-
-            <Link
-              href="/track-order"
-              className="hidden sm:inline-block text-xs sm:text-sm font-medium text-[#3D291B] hover:text-[#462F1D] hover-editorial-line transition"
-            >
-              Track Order
-            </Link>
-
-            <button
-              onClick={() => setIsOpen(true)}
-              className="relative p-2 sm:p-2.5 rounded-full text-[#23170F] hover:bg-[#ECE2D8]/50 transition-all duration-200 focus:outline-hidden flex items-center gap-2 group"
+            <span className="hidden h-5 w-px bg-[#DDCEC0] lg:block" aria-hidden="true" />
+            <button type="button" onClick={() => setIsOpen(true)}
               aria-label={`Open shopping bag with ${itemCount} items`}
-            >
-              <div className="relative flex items-center justify-center">
-                <ShoppingBag className="w-5 h-5 text-[#462F1D] group-hover:scale-105 transition-transform" />
-                {itemCount > 0 && (
-                  <span className="absolute -top-1.5 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-[#462F1D] text-[#ECE2D8] text-[10px] font-sans font-bold flex items-center justify-center leading-none ring-2 ring-[#FAF6F1] shadow-xs">
-                    {itemCount}
-                  </span>
-                )}
-              </div>
-              <span className="hidden sm:inline text-sm font-medium text-[#462F1D]">
-                Bag
+              className={`group inline-flex h-11 items-center justify-center gap-2.5 rounded-full border border-[#D5C4B3] bg-[#F5EDE4]/60 px-3.5 text-[#39291D] transition-colors hover:border-[#A88B70] hover:bg-[#EDE2D7] sm:px-4 ${focusStyle}`}>
+              <span className="relative">
+                <ShoppingBag className="h-[18px] w-[18px]" strokeWidth={1.6} aria-hidden="true" />
+                {itemCount > 0 && <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#39291D] px-1 text-[9px] font-semibold text-white ring-2 ring-[#FAF6F1] sm:hidden">{itemCount}</span>}
               </span>
+              <span className="hidden text-[13px] font-medium sm:inline">Bag</span>
+              <span className="hidden h-5 min-w-5 items-center justify-center rounded-full bg-[#E6D9CB] px-1 text-[10px] font-semibold sm:flex" aria-hidden="true">{itemCount}</span>
             </button>
           </div>
         </div>
 
-        {/* Mobile Slide-down Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-[#E5DCD2] bg-[#FAF6F1] px-6 py-6 space-y-5 animate-in slide-in-from-top-2 duration-300 shadow-xl">
-            <nav className="flex flex-col space-y-1 text-sm font-medium text-[#23170F]">
-              <Link
-                href="/shop"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between hover:text-[#462F1D]"
-              >
-                <span>All Handbags</span>
-                <ArrowUpRight className="w-4 h-4 opacity-50" />
-              </Link>
-              <Link
-                href="/shop?category=crossbody"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between hover:text-[#462F1D]"
-              >
-                <span>Crossbody Bags</span>
-                <ArrowUpRight className="w-4 h-4 opacity-50" />
-              </Link>
-              <Link
-                href="/shop?category=satchel"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between hover:text-[#462F1D]"
-              >
-                <span>Satchels</span>
-                <ArrowUpRight className="w-4 h-4 opacity-50" />
-              </Link>
-              <Link
-                href="/shop?category=top-handle"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between hover:text-[#462F1D]"
-              >
-                <span>Top-Handle Handbags</span>
-                <ArrowUpRight className="w-4 h-4 opacity-50" />
-              </Link>
-              <Link
-                href="/#studio3d"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between text-[#462F1D]"
-              >
-                <span>3D Interactive Studio</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-[#ECE2D8] text-[#462F1D] font-medium">
-                  360°
-                </span>
-              </Link>
-              <Link
-                href="/about"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between hover:text-[#462F1D]"
-              >
-                <span>Our Story</span>
-                <ArrowUpRight className="w-4 h-4 opacity-50" />
-              </Link>
-              <Link
-                href="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between hover:text-[#462F1D]"
-              >
-                <span>Contact</span>
-                <ArrowUpRight className="w-4 h-4 opacity-50" />
-              </Link>
-              <Link
-                href="/track-order"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 flex items-center justify-between hover:text-[#462F1D]"
-              >
-                <span>Track Order</span>
-                <ArrowUpRight className="w-4 h-4 opacity-50" />
-              </Link>
-            </nav>
-
-            <div className="pt-3 border-t border-[#E5DCD2]">
-              <div className="p-4 rounded-xl bg-[#ECE2D8]/40 border border-[#E5DCD2] space-y-1">
-                <p className="font-serif italic text-base text-[#462F1D]">The Anora Assurance</p>
-                <p className="text-xs sm:text-sm font-normal text-[#5A4333] leading-relaxed">
-                  100% Cash on Delivery nationwide. Inspect your parcel at your doorstep before payment, with 7-day hassle-free returns.
-                </p>
+          <div id="mobile-navigation" className="absolute inset-x-0 top-full border-b border-[#DCCFC2] bg-[#FAF6F1] px-5 pb-6 pt-2 shadow-[0_20px_30px_-25px_rgba(46,31,20,0.45)] sm:px-8 lg:hidden">
+            <nav aria-label="Mobile navigation" className="mx-auto max-w-7xl">
+              <p className="pb-3 pt-3 text-[10px] font-medium uppercase tracking-[0.18em] text-[#947B64]">Explore Anora</p>
+              {navigationLinks.map(({ label, href }) => (
+                <Link key={href} href={href} onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center justify-between border-b border-[#E5D9CD] py-4 text-sm font-medium text-[#39291D] ${focusStyle}`}>
+                  {label}<ArrowUpRight className="h-4 w-4 text-[#947B64]" aria-hidden="true" />
+                </Link>
+              ))}
+              <div className="flex gap-7 pt-5">
+                {storyLinks.map(({ label, href }) => (
+                  <Link key={href} href={href} onClick={() => setIsMobileMenuOpen(false)} className={`py-2 text-sm text-[#74604F] hover:text-[#39291D] ${focusStyle}`}>{label}</Link>
+                ))}
               </div>
-            </div>
+            </nav>
           </div>
         )}
       </header>
     </>
   )
 }
-
