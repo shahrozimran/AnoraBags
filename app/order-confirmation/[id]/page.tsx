@@ -19,7 +19,8 @@ import {
   Phone,
   ArrowRight,
   MessageCircle,
-  Package
+  Package,
+  FileDown
 } from "lucide-react"
 
 import type { Metadata } from "next"
@@ -188,31 +189,46 @@ export default async function OrderConfirmationPage({ params }: Props) {
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E5DCD2]">
-              <Link
-                href="/track-order"
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-sm font-sans font-medium transition text-center shadow-xs"
+            <div className="pt-4 flex flex-col gap-4 border-t border-[#E5DCD2]">
+              {/* Download Receipt — full-width prominent CTA */}
+              <a
+                href={`/api/orders/${order.orderNumber}/receipt`}
+                download={`Anora-Receipt-${order.orderNumber}.pdf`}
+                className="w-full flex items-center justify-center gap-2.5 py-4 px-6 rounded-2xl bg-[#23170F] hover:bg-[#462F1D] text-[#FAF6F1] text-sm font-sans font-medium transition-all duration-300 shadow-sm hover:shadow-md group"
               >
-                Track This Order
-              </Link>
+                <FileDown className="w-4 h-4 shrink-0 transition-transform group-hover:translate-y-0.5" />
+                <span>Download PDF Receipt</span>
+                <span className="ml-auto text-xs text-[#ECE2D8]/70 font-normal hidden sm:inline">
+                  Anora-Receipt-{order.orderNumber}.pdf
+                </span>
+              </a>
 
-              <div className="flex items-center gap-3 w-full sm:w-auto">
-                <a
-                  href={`${STORE_CONTACT.whatsapp}?text=Hi%20Anora%20Bags,%20I%20have%20an%20order%20inquiry%20for%20order%20${order.orderNumber}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-sm font-sans font-medium transition border border-[#E5DCD2]"
-                >
-                  <MessageCircle className="w-4 h-4 text-[#462F1D]" />
-                  <span>WhatsApp Concierge</span>
-                </a>
-
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
                 <Link
-                  href="/"
-                  className="flex-1 sm:flex-initial px-6 py-4 rounded-full border border-[#E5DCD2] text-[#462F1D] hover:text-[#23170F] hover:bg-[#FAF6F1] text-sm font-sans font-medium transition text-center"
+                  href="/track-order"
+                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-sm font-sans font-medium transition text-center shadow-xs"
                 >
-                  Continue Browsing
+                  Track This Order
                 </Link>
+
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <a
+                    href={`${STORE_CONTACT.whatsapp}?text=Hi%20Anora%20Bags,%20I%20have%20an%20order%20inquiry%20for%20order%20${order.orderNumber}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-sm font-sans font-medium transition border border-[#E5DCD2]"
+                  >
+                    <MessageCircle className="w-4 h-4 text-[#462F1D]" />
+                    <span>WhatsApp Concierge</span>
+                  </a>
+
+                  <Link
+                    href="/"
+                    className="flex-1 sm:flex-initial px-6 py-4 rounded-full border border-[#E5DCD2] text-[#462F1D] hover:text-[#23170F] hover:bg-[#FAF6F1] text-sm font-sans font-medium transition text-center"
+                  >
+                    Continue Browsing
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

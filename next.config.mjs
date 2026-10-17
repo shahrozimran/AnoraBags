@@ -3,7 +3,7 @@ const nextConfig = {
   poweredByHeader: false,
   outputFileTracingExcludes: { '/*': ['./.env*', './.anora-data/**', './tests/**', './docs/**'] },
   experimental: { serverActions: { bodySizeLimit: '64kb' } },
-  serverExternalPackages: ['node:sqlite', 'nodemailer'],
+  serverExternalPackages: ['node:sqlite', 'nodemailer', 'pdfkit'],
   images: {
     unoptimized: true,
   },

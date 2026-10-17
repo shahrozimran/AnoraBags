@@ -1,6 +1,7 @@
 import "server-only"
 import nodemailer from "nodemailer"
 import type { Order } from "@/lib/types"
+import { generateReceiptPDF } from "@/lib/pdf-receipt"
 
 // ---------------------------------------------------------------------------
 // Gmail SMTP transporter
@@ -188,11 +189,21 @@ export async function sendAdminOrderNotification(order: Order): Promise<void> {
 </html>`
 
   try {
+    // Generate PDF receipt in parallel with email construction
+    const pdfBuffer = await generateReceiptPDF(order)
+
     await transporter.sendMail({
       from: `"Anora Bags Orders" <${adminEmail}>`,
       to: adminEmail,
       subject: `🛍️ New Order ${order.orderNumber} — Rs. ${order.totalAmount.toLocaleString()} COD from ${order.customerName}`,
       html,
+      attachments: [
+        {
+          filename: `Anora-Receipt-${order.orderNumber}.pdf`,
+          content:  pdfBuffer,
+          contentType: "application/pdf",
+        },
+      ],
     })
     console.log(`[Anora Email] Order notification sent for ${order.orderNumber}`)
   } catch (err) {
