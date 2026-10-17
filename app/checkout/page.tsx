@@ -103,20 +103,20 @@ export default function CheckoutPage() {
         </div>
 
         {items.length === 0 ? (
-          <div className="bg-white p-16 rounded-2xl border border-[#E5DCD2] text-center max-w-xl mx-auto space-y-5 shadow-sm">
+          <div className="bg-white p-6 sm:p-12 md:p-16 rounded-2xl border border-[#E5DCD2] text-center max-w-xl mx-auto space-y-5 shadow-sm">
             <div className="w-16 h-16 rounded-full bg-[#ECE2D8]/40 border border-[#E5DCD2] flex items-center justify-center mx-auto text-[#462F1D]">
               <ShoppingBag className="w-7 h-7 stroke-1" />
             </div>
             <div className="space-y-1.5">
-              <h2 className="font-serif text-2xl font-light text-[#23170F]">Your shopping bag is empty</h2>
-              <p className="text-sm text-[#462F1D] max-w-sm mx-auto font-light leading-relaxed">
+              <h2 className="font-serif text-xl sm:text-2xl font-light text-[#23170F]">Your shopping bag is empty</h2>
+              <p className="text-xs sm:text-sm text-[#462F1D] max-w-sm mx-auto font-light leading-relaxed">
                 Please select a handcrafted leather silhouette from our permanent collection to continue.
               </p>
             </div>
             <div className="pt-2">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#462F1D] text-[#FAF6F1] text-sm font-sans font-medium hover:bg-[#23170F] transition"
+                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#462F1D] text-[#FAF6F1] text-xs sm:text-sm font-sans font-medium hover:bg-[#23170F] transition"
               >
                 <span>Browse The Collection</span>
                 <ArrowRight className="w-4 h-4" />
@@ -126,19 +126,19 @@ export default function CheckoutPage() {
         ) : (
           <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start w-full">
             {/* Mobile Quick Order Summary (Streamlined single-column mobile view) */}
-            <div className="lg:hidden col-span-1 w-full p-4 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="lg:hidden col-span-1 w-full p-4 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div className="w-10 h-10 rounded-full bg-[#ECE2D8] flex items-center justify-center text-[#462F1D] shrink-0">
                   <ShoppingBag className="w-5 h-5" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-xs font-sans text-[#462F1D] font-medium block">Selected Handbag</span>
-                  <p className="font-serif text-base font-normal text-[#23170F]">
+                  <p className="font-serif text-sm sm:text-base font-normal text-[#23170F] truncate">
                     {items.length} silhouette{items.length > 1 ? "s" : ""} • Rs. {total.toLocaleString()}
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/80 px-2.5 sm:px-3 py-1 rounded-full shrink-0">
+              <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/80 px-2.5 sm:px-3 py-1 rounded-full shrink-0 whitespace-nowrap">
                 Free Delivery (COD)
               </span>
             </div>
@@ -171,12 +171,12 @@ export default function CheckoutPage() {
                       value={formData.customerName}
                       onChange={handleChange}
                       placeholder="e.g. Ayesha Khan"
-                      className="w-full px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
+                      className="w-full min-w-0 px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F]">
+                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F] block">
                       Mobile Number (For Courier Call) <span className="text-[#462F1D] font-bold">*</span>
                     </label>
                     <input
@@ -186,7 +186,7 @@ export default function CheckoutPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="e.g. 0300 1234567"
-                      className="w-full px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
+                      className="w-full min-w-0 px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
                     />
                     <p className="text-xs text-[#462F1D] font-light">Courier rider will coordinate doorstep delivery</p>
                   </div>
@@ -202,7 +202,7 @@ export default function CheckoutPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="ayesha@example.com"
-                      className="w-full px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
+                      className="w-full min-w-0 px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
                     />
                   </div>
                 </div>
@@ -217,7 +217,7 @@ export default function CheckoutPage() {
                       Doorstep Shipping Address
                     </h2>
                   </div>
-                  <span className="text-xs font-sans text-[#462F1D] font-medium bg-[#ECE2D8]/80 px-3 py-1 rounded-full whitespace-nowrap self-start sm:self-auto">
+                  <span className="text-xs font-sans text-[#462F1D] font-medium bg-[#ECE2D8]/80 px-3 py-1 rounded-full whitespace-nowrap self-start sm:self-auto shrink-0">
                     Express Nationwide
                   </span>
                 </div>
@@ -234,7 +234,7 @@ export default function CheckoutPage() {
                       value={formData.address}
                       onChange={handleChange}
                       placeholder="House / Flat #, Street name, Sector / Area"
-                      className="w-full px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
+                      className="w-full min-w-0 px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
                     />
                   </div>
 
@@ -250,7 +250,7 @@ export default function CheckoutPage() {
                         value={formData.apartment}
                         onChange={handleChange}
                         placeholder="Suite 4B, Floor 2"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
+                        className="w-full min-w-0 px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
                       />
                     </div>
 
@@ -265,7 +265,7 @@ export default function CheckoutPage() {
                         value={formData.city}
                         onChange={handleChange}
                         placeholder="e.g. Lahore, Karachi, Islamabad"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
+                        className="w-full min-w-0 px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
                       />
                     </div>
                   </div>
@@ -304,7 +304,7 @@ export default function CheckoutPage() {
                       value={formData.deliveryNotes}
                       onChange={handleChange}
                       placeholder="e.g. Please deliver after 2 PM or contact security reception if unavailable"
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
+                      className="w-full min-w-0 px-4 py-2.5 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
                     />
                   </div>
                 </div>
@@ -315,11 +315,11 @@ export default function CheckoutPage() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
                     <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">III</span>
-                    <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide whitespace-nowrap">
+                    <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Payment Privilege
                     </h2>
                   </div>
-                  <span className="text-xs font-sans text-[#462F1D] font-medium whitespace-nowrap self-start sm:self-auto">
+                  <span className="text-xs font-sans text-[#462F1D] font-medium whitespace-nowrap self-start sm:self-auto shrink-0">
                     100% Cash on Delivery
                   </span>
                 </div>
@@ -362,7 +362,7 @@ export default function CheckoutPage() {
               <div className="bg-white p-4 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-sm space-y-6 static lg:sticky lg:top-24">
                 <div className="flex items-center justify-between border-b border-[#E5DCD2] pb-4">
                   <h3 className="font-serif text-lg sm:text-xl font-normal text-[#23170F]">Order Summary</h3>
-                  <span className="text-xs font-sans text-[#462F1D] font-medium">
+                  <span className="text-xs font-sans text-[#462F1D] font-medium shrink-0">
                     {items.length} item(s)
                   </span>
                 </div>
@@ -388,25 +388,25 @@ export default function CheckoutPage() {
 
                 {/* Pricing Math */}
                 <div className="pt-4 border-t border-[#E5DCD2] space-y-2.5 text-sm">
-                  <div className="flex justify-between text-[#462F1D]">
-                    <span>Pieces Subtotal</span>
-                    <span className="font-semibold font-sans tabular-nums text-[#23170F]">Rs. {subtotal.toLocaleString()}</span>
+                  <div className="flex justify-between text-[#462F1D] gap-2">
+                    <span className="truncate">Pieces Subtotal</span>
+                    <span className="font-semibold font-sans tabular-nums text-[#23170F] shrink-0 whitespace-nowrap">Rs. {subtotal.toLocaleString()}</span>
                   </div>
-                  <div className="flex justify-between text-[#462F1D]">
-                    <span>Nationwide Express Courier</span>
-                    <span className="text-[#462F1D] font-medium text-xs sm:text-sm">
+                  <div className="flex justify-between text-[#462F1D] gap-2">
+                    <span className="truncate">Nationwide Express Courier</span>
+                    <span className="text-[#462F1D] font-medium text-xs sm:text-sm shrink-0 whitespace-nowrap">
                       Free Delivery
                     </span>
                   </div>
-                  <div className="flex justify-between text-[#462F1D]">
-                    <span>Settlement Method</span>
-                    <span className="text-[#23170F] font-medium">Cash On Delivery</span>
+                  <div className="flex justify-between text-[#462F1D] gap-2">
+                    <span className="truncate">Settlement Method</span>
+                    <span className="text-[#23170F] font-medium shrink-0 whitespace-nowrap">Cash On Delivery</span>
                   </div>
-                  <div className="flex justify-between items-baseline text-[#23170F] font-normal pt-4 border-t border-[#E5DCD2]">
-                    <span className="font-sans text-sm font-semibold text-[#23170F]">
+                  <div className="flex justify-between items-baseline text-[#23170F] font-normal pt-4 border-t border-[#E5DCD2] gap-2">
+                    <span className="font-sans text-xs sm:text-sm font-semibold text-[#23170F] shrink-0">
                       Total Due at Doorstep
                     </span>
-                    <div className="flex items-baseline gap-1.5 shrink-0">
+                    <div className="flex items-baseline gap-1.5 shrink-0 whitespace-nowrap">
                       <span className="text-sm font-sans font-medium text-[#462F1D]">Rs.</span>
                       <span className="font-sans text-xl sm:text-2xl font-bold tabular-nums text-[#23170F]">
                         {total.toLocaleString()}
@@ -425,7 +425,7 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-6 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2 group disabled:opacity-50"
+                  className="w-full py-4 px-6 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2 group disabled:opacity-50 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center gap-2">
@@ -434,7 +434,7 @@ export default function CheckoutPage() {
                     </div>
                   ) : (
                     <>
-                      <span>Confirm Cash On Delivery Order</span>
+                      <span className="truncate">Confirm Cash On Delivery Order</span>
                       <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
                     </>
                   )}

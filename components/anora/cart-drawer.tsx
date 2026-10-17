@@ -20,21 +20,21 @@ export function CartDrawer() {
       />
 
       {/* Drawer Panel Container */}
-      <div className="fixed inset-y-0 right-0 w-full max-w-full sm:max-w-md lg:max-w-lg flex justify-end pointer-events-none">
+      <div className="fixed inset-y-0 right-0 w-full max-w-md sm:max-w-lg flex justify-end pointer-events-none">
         <div className="w-full h-full bg-[#FAF6F1] border-l border-[#E5DCD2] shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300 overflow-x-hidden pointer-events-auto">
           {/* Header */}
-          <div className="p-4 sm:p-6 border-b border-[#E5DCD2] flex items-center justify-between bg-white/60">
-            <div>
+          <div className="p-4 sm:p-6 border-b border-[#E5DCD2] flex items-center justify-between bg-white/60 gap-3">
+            <div className="min-w-0">
               <span className="text-xs font-sans text-[#462F1D] font-medium block">
                 Anora Bags
               </span>
-              <h2 className="text-lg sm:text-xl font-serif font-normal text-[#23170F] tracking-tight">
+              <h2 className="text-lg sm:text-xl font-serif font-normal text-[#23170F] tracking-tight truncate">
                 Shopping Bag ({itemCount})
               </h2>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2 rounded-full text-[#462F1D] hover:text-[#23170F] hover:bg-[#ECE2D8]/50 transition"
+              className="p-2 rounded-full text-[#462F1D] hover:text-[#23170F] hover:bg-[#ECE2D8]/50 transition shrink-0 cursor-pointer"
               aria-label="Close bag drawer"
             >
               <X className="w-5 h-5" />
@@ -42,7 +42,7 @@ export function CartDrawer() {
           </div>
 
           {/* COD Notice Strip */}
-          <div className="bg-[#ECE2D8]/50 border-b border-[#E5DCD2] px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm font-sans text-[#462F1D] font-medium">
+          <div className="bg-[#ECE2D8]/50 border-b border-[#E5DCD2] px-3 sm:px-6 py-2.5 flex items-center justify-between text-[11px] xs:text-xs sm:text-sm font-sans text-[#462F1D] font-medium gap-1.5 whitespace-nowrap overflow-hidden">
             <span>100% Cash On Delivery</span>
             <span className="opacity-40">·</span>
             <span>7-Day Doorstep Returns</span>
@@ -63,7 +63,7 @@ export function CartDrawer() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="px-8 py-3.5 rounded-full bg-[#462F1D] text-[#FAF6F1] text-sm font-sans font-medium hover:bg-[#23170F] transition"
+                  className="px-8 py-3.5 rounded-full bg-[#462F1D] text-[#FAF6F1] text-sm font-sans font-medium hover:bg-[#23170F] transition cursor-pointer"
                 >
                   Explore Collection
                 </button>
@@ -88,7 +88,7 @@ export function CartDrawer() {
                         </h4>
                         <button
                           onClick={() => removeItem(item.id, item.color)}
-                          className="text-[#9E8B7C] hover:text-[#462F1D] transition p-1 shrink-0"
+                          className="text-[#9E8B7C] hover:text-[#462F1D] transition p-1 shrink-0 cursor-pointer"
                           title="Remove item"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -97,7 +97,7 @@ export function CartDrawer() {
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal mt-0.5 truncate">
                         Color: {item.color}
                       </p>
-                      <p className="text-sm font-sans font-semibold tabular-nums text-[#23170F] mt-1">
+                      <p className="text-sm font-sans font-semibold tabular-nums text-[#23170F] mt-1 whitespace-nowrap">
                         {item.currency} {item.price.toLocaleString()}
                       </p>
                     </div>
@@ -106,24 +106,24 @@ export function CartDrawer() {
                       <div className="flex items-center border border-[#E5DCD2] rounded-lg bg-white shrink-0">
                         <button
                           onClick={() => updateQuantity(item.id, item.color, item.quantity - 1)}
-                          className="px-2.5 py-1 text-[#462F1D] hover:text-[#23170F] transition"
+                          className="px-2 sm:px-2.5 py-1 text-[#462F1D] hover:text-[#23170F] transition cursor-pointer"
                           aria-label="Decrease quantity"
                         >
                           <Minus className="w-3.5 h-3.5" />
                         </button>
-                        <span className="px-2.5 text-sm font-medium text-[#23170F]">
+                        <span className="px-2 sm:px-2.5 text-xs sm:text-sm font-medium text-[#23170F] tabular-nums">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() => updateQuantity(item.id, item.color, item.quantity + 1)}
-                          className="px-2.5 py-1 text-[#462F1D] hover:text-[#23170F] transition"
+                          className="px-2 sm:px-2.5 py-1 text-[#462F1D] hover:text-[#23170F] transition cursor-pointer"
                           aria-label="Increase quantity"
                         >
                           <Plus className="w-3.5 h-3.5" />
                         </button>
                       </div>
 
-                      <span className="text-sm sm:text-base font-sans font-semibold tabular-nums text-[#23170F] shrink-0 text-right">
+                      <span className="text-xs sm:text-sm md:text-base font-sans font-semibold tabular-nums text-[#23170F] shrink-0 text-right whitespace-nowrap">
                         {item.currency} {(item.price * item.quantity).toLocaleString()}
                       </span>
                     </div>
@@ -137,19 +137,19 @@ export function CartDrawer() {
           {items.length > 0 && (
             <div className="p-4 sm:p-6 border-t border-[#E5DCD2] bg-white/70 space-y-3 sm:space-y-4">
               <div className="space-y-2 text-sm">
-                <div className="flex justify-between text-[#462F1D]">
-                  <span>Subtotal</span>
-                  <span className="font-semibold font-sans tabular-nums text-[#23170F]">Rs. {subtotal.toLocaleString()}</span>
+                <div className="flex justify-between text-[#462F1D] gap-2">
+                  <span className="truncate">Subtotal</span>
+                  <span className="font-semibold font-sans tabular-nums text-[#23170F] shrink-0 whitespace-nowrap">Rs. {subtotal.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between text-[#462F1D]">
-                  <span>Nationwide Express Delivery</span>
-                  <span className="text-[#462F1D] font-medium text-xs sm:text-sm">
+                <div className="flex justify-between text-[#462F1D] gap-2">
+                  <span className="truncate">Nationwide Express Delivery</span>
+                  <span className="text-[#462F1D] font-medium text-xs sm:text-sm shrink-0 whitespace-nowrap">
                     Free
                   </span>
                 </div>
-                <div className="flex justify-between items-baseline text-[#23170F] font-normal pt-3 border-t border-[#E5DCD2]">
-                  <span className="font-sans text-sm font-medium">Cash Payable at Doorstep</span>
-                  <div className="flex items-baseline gap-1.5">
+                <div className="flex justify-between items-baseline text-[#23170F] font-normal pt-3 border-t border-[#E5DCD2] gap-2">
+                  <span className="font-sans text-xs sm:text-sm font-medium shrink-0">Cash Payable at Doorstep</span>
+                  <div className="flex items-baseline gap-1.5 shrink-0 whitespace-nowrap">
                     <span className="text-sm font-sans font-medium text-[#462F1D]">Rs.</span>
                     <span className="font-sans text-xl sm:text-2xl font-bold tabular-nums text-[#23170F]">
                       {total.toLocaleString()}
@@ -162,7 +162,7 @@ export function CartDrawer() {
                 <Link
                   href="/checkout"
                   onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md group text-center"
+                  className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md group text-center cursor-pointer"
                 >
                   <span className="truncate">Proceed to Checkout (COD)</span>
                   <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
