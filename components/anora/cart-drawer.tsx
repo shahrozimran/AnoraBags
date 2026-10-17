@@ -25,7 +25,7 @@ export function CartDrawer() {
           {/* Header */}
           <div className="p-4 sm:p-6 border-b border-[#E5DCD2] flex items-center justify-between bg-white/60">
             <div>
-              <span className="text-xs font-sans tracking-[0.18em] uppercase text-[#462F1D] font-semibold block">
+              <span className="text-xs font-sans text-[#462F1D] font-medium block">
                 Maison Anora
               </span>
               <h2 className="text-lg sm:text-xl font-serif font-normal text-[#23170F] tracking-tight">
@@ -42,10 +42,10 @@ export function CartDrawer() {
           </div>
 
           {/* COD Notice Strip */}
-          <div className="bg-[#ECE2D8]/50 border-b border-[#E5DCD2] px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm font-sans tracking-wide text-[#462F1D] font-medium">
+          <div className="bg-[#ECE2D8]/50 border-b border-[#E5DCD2] px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm font-sans text-[#462F1D] font-medium">
             <span>100% Cash On Delivery</span>
-            <span className="opacity-40">•</span>
-            <span>7-Day Doorstep Privilege</span>
+            <span className="opacity-40">·</span>
+            <span>7-Day Doorstep Returns</span>
           </div>
 
           {/* Items List */}
@@ -63,7 +63,7 @@ export function CartDrawer() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="px-8 py-3.5 rounded-full bg-[#462F1D] text-[#FAF6F1] text-xs sm:text-sm font-sans tracking-[0.14em] uppercase font-medium hover:bg-[#23170F] transition"
+                  className="px-8 py-3.5 rounded-full bg-[#462F1D] text-[#FAF6F1] text-sm font-sans font-medium hover:bg-[#23170F] transition"
                 >
                   Explore Collection
                 </button>
@@ -143,14 +143,14 @@ export function CartDrawer() {
                 </div>
                 <div className="flex justify-between text-[#462F1D]">
                   <span>Nationwide Express Delivery</span>
-                  <span className="text-[#462F1D] font-medium uppercase tracking-wider text-xs sm:text-sm">
-                    Complimentary
+                  <span className="text-[#462F1D] font-medium text-xs sm:text-sm">
+                    Free
                   </span>
                 </div>
                 <div className="flex justify-between items-baseline text-[#23170F] font-normal pt-3 border-t border-[#E5DCD2]">
-                  <span className="font-sans text-xs sm:text-sm font-semibold tracking-wider uppercase">Cash Payable at Doorstep</span>
+                  <span className="font-sans text-sm font-medium">Cash Payable at Doorstep</span>
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#462F1D]">Rs.</span>
+                    <span className="text-sm font-sans font-medium text-[#462F1D]">Rs.</span>
                     <span className="font-sans text-xl sm:text-2xl font-bold tabular-nums text-[#23170F]">
                       {total.toLocaleString()}
                     </span>
@@ -162,15 +162,15 @@ export function CartDrawer() {
                 <Link
                   href="/checkout"
                   onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-xs sm:text-sm tracking-[0.14em] uppercase transition-all duration-300 shadow-sm hover:shadow-md group text-center"
+                  className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] font-sans font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md group text-center"
                 >
-                  <span className="truncate">Proceed to Concierge Order</span>
+                  <span className="truncate">Proceed to Checkout (COD)</span>
                   <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
 
               <p className="text-xs text-center text-[#462F1D] font-normal leading-relaxed">
-                Doorstep inspection prior to settlement • 7-day unconditional returns
+                Doorstep inspection prior to settlement · 7-day unconditional returns
               </p>
             </div>
           )}
