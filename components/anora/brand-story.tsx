@@ -74,7 +74,7 @@ export function BrandStory() {
             <div className="space-y-5 pt-4 border-t border-[#E5DCD2]">
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                  <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     01
                   </span>
                   <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
@@ -88,7 +88,7 @@ export function BrandStory() {
 
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                  <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     02
                   </span>
                   <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
@@ -102,7 +102,7 @@ export function BrandStory() {
 
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-mono font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20 shrink-0">
+                  <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     03
                   </span>
                   <h4 className="text-sm sm:text-base font-semibold tracking-[0.08em] uppercase text-[#23170F]">
@@ -148,11 +148,13 @@ export function BrandStory() {
               Minimalist geometry on the outside, spacious utility on the inside. Our accordion bellows expand gracefully to fit your smartphone, lip tint, keys, wallet, sunglasses, and pocket fragrance with dedicated dividers.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-3">
-              <div className="p-5 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex flex-col justify-between">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-3">
+              <div className="p-4 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex flex-col justify-between">
                 <div>
-                  <p className="font-serif text-3xl sm:text-4xl font-light text-[#462F1D]">3 Tiers</p>
-                  <h4 className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5 sm:mt-2 min-h-0 sm:min-h-[2.5rem] flex items-center">
+                  <div className="h-9 sm:h-11 flex items-baseline">
+                    <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#462F1D]">3 Tiers</span>
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5 sm:mt-2 min-h-[2.5rem] flex items-center">
                     Accordion Dividers
                   </h4>
                 </div>
@@ -161,10 +163,12 @@ export function BrandStory() {
                 </p>
               </div>
 
-              <div className="p-5 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex flex-col justify-between">
+              <div className="p-4 sm:p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] flex flex-col justify-between">
                 <div>
-                  <p className="font-serif text-3xl sm:text-4xl font-light text-[#462F1D]">6.9"</p>
-                  <h4 className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5 sm:mt-2 min-h-0 sm:min-h-[2.5rem] flex items-center">
+                  <div className="h-9 sm:h-11 flex items-baseline">
+                    <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-[#462F1D]">6.9&quot;</span>
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#23170F] mt-1.5 sm:mt-2 min-h-[2.5rem] flex items-center">
                     Max Smartphone Fit
                   </h4>
                 </div>

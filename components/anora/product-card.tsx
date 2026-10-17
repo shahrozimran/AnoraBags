@@ -80,11 +80,11 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           {/* Minimalist Top Stamp */}
           <div className="absolute top-3 left-3 sm:top-3.5 sm:left-3.5 z-10 pointer-events-none max-w-[55%]">
             {product.badge ? (
-              <span className="text-xs tracking-[0.12em] uppercase font-sans font-semibold text-[#23170F] bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-[#E5DCD2] shadow-2xs truncate block">
+              <span className="text-xs font-sans font-medium text-[#23170F] bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-[#E5DCD2] shadow-2xs truncate block">
                 {product.badge}
               </span>
             ) : (
-              <span className="text-xs tracking-[0.14em] uppercase font-sans font-medium text-[#462F1D] bg-white/90 backdrop-blur-xs px-3 py-1 rounded-full border border-[#E5DCD2]/80">
+              <span className="text-xs font-sans font-medium text-[#462F1D] bg-white/90 backdrop-blur-xs px-3 py-1 rounded-full border border-[#E5DCD2]/80">
                 Fig. 0{index + 1}
               </span>
             )}
@@ -92,8 +92,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
 
           {/* Doorstep COD Guarantee Tag */}
           <div className="absolute top-3 right-3 sm:top-3.5 sm:right-3.5 z-10 pointer-events-none">
-            <span className="text-xs tracking-[0.12em] uppercase font-sans font-semibold text-[#462F1D] bg-[#ECE2D8]/95 backdrop-blur-md px-3 py-1 rounded-full border border-[#462F1D]/20">
-              COD Privilege
+            <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/95 backdrop-blur-md px-3 py-1 rounded-full border border-[#462F1D]/20">
+              Cash on Delivery
             </span>
           </div>
         </Link>
@@ -103,7 +103,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           <button
             type="button"
             onClick={handleQuickAdd}
-            className={`w-full py-3 sm:py-3.5 px-4 rounded-xl text-xs sm:text-sm font-sans tracking-[0.12em] uppercase font-semibold transition-all duration-300 shadow-md flex items-center justify-center gap-2 ${
+            className={`w-full py-3 sm:py-3.5 px-4 rounded-xl text-sm font-sans font-medium transition-all duration-300 shadow-md flex items-center justify-center gap-2 ${
               isAdded
                 ? "bg-[#23170F] text-[#ECE2D8]"
                 : "bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1]"
@@ -126,9 +126,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       {/* Card Info & Details */}
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
         <div className="space-y-1 sm:space-y-1.5">
-          <div className="flex items-center justify-between text-xs tracking-[0.14em] uppercase text-[#462F1D] font-semibold">
-            <span>{product.category}</span>
-            <span className="font-serif italic capitalize text-[#462F1D]/90 font-medium">Full-grain</span>
+          <div className="flex items-center justify-between text-xs text-[#462F1D] font-medium">
+            <span className="capitalize">{product.category}</span>
+            <span className="font-serif italic text-[#462F1D]/80">Full-grain leather</span>
           </div>
 
           <Link href={`/product/${product.id}`} className="block group/link">
@@ -181,7 +181,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         </div>
 
         {/* Delivery Guarantee Line */}
-        <div className="flex items-center justify-between text-xs tracking-[0.1em] uppercase text-[#462F1D] font-medium pt-1">
+        <div className="flex items-center justify-between text-xs text-[#462F1D]/80 font-normal pt-1">
           <span>Doorstep Inspection</span>
           <span>7-Day Return</span>
         </div>

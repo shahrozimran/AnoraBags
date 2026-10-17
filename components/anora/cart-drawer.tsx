@@ -97,7 +97,7 @@ export function CartDrawer() {
                       <p className="text-xs sm:text-sm text-[#462F1D] font-normal mt-0.5">
                         Color: {item.color}
                       </p>
-                      <p className="text-sm font-sans font-semibold text-[#23170F] mt-1">
+                      <p className="text-sm font-sans font-semibold tabular-nums text-[#23170F] mt-1">
                         {item.currency} {item.price.toLocaleString()}
                       </p>
                     </div>
@@ -123,7 +123,7 @@ export function CartDrawer() {
                         </button>
                       </div>
 
-                      <span className="text-sm sm:text-base font-sans font-semibold text-[#23170F]">
+                      <span className="text-sm sm:text-base font-sans font-semibold tabular-nums text-[#23170F]">
                         {item.currency} {(item.price * item.quantity).toLocaleString()}
                       </span>
                     </div>
@@ -139,7 +139,7 @@ export function CartDrawer() {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-[#462F1D]">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-[#23170F]">Rs. {subtotal.toLocaleString()}</span>
+                  <span className="font-semibold font-sans tabular-nums text-[#23170F]">Rs. {subtotal.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-[#462F1D]">
                   <span>Nationwide Express Delivery</span>
@@ -149,9 +149,9 @@ export function CartDrawer() {
                 </div>
                 <div className="flex justify-between items-baseline text-[#23170F] font-normal pt-3 border-t border-[#E5DCD2]">
                   <span className="font-sans text-xs sm:text-sm font-semibold tracking-wider uppercase">Cash Payable at Doorstep</span>
-                  <div className="flex items-baseline gap-1">
+                  <div className="flex items-baseline gap-1.5">
                     <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#462F1D]">Rs.</span>
-                    <span className="font-serif text-xl sm:text-2xl font-bold text-[#23170F]">
+                    <span className="font-sans text-xl sm:text-2xl font-bold tabular-nums text-[#23170F]">
                       {total.toLocaleString()}
                     </span>
                   </div>

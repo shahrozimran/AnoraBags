@@ -245,7 +245,7 @@ export default function TrackOrderPage() {
                     </h5>
                     <div className="space-y-1.5 text-[#462F1D]">
                       <p>Settlement: <strong className="text-[#23170F]">100% Cash On Delivery</strong></p>
-                      <p>Amount Due Rider: <strong className="font-serif text-xl text-[#462F1D] font-medium">Rs. {order.totalAmount.toLocaleString()}</strong></p>
+                      <p>Amount Due Rider: <strong className="font-sans font-semibold tabular-nums text-lg text-[#462F1D]">Rs. {order.totalAmount.toLocaleString()}</strong></p>
                       <p>Status: <span className="font-semibold text-[#462F1D]">{order.paymentStatus}</span></p>
                     </div>
                   </div>
@@ -287,7 +287,7 @@ export default function TrackOrderPage() {
                             <p className="text-[#462F1D]">Color: {item.color} • Qty: {item.quantity}</p>
                           </div>
                         </div>
-                        <span className="text-sm sm:text-base font-serif font-medium text-[#23170F]">
+                        <span className="text-sm sm:text-base font-sans font-semibold tabular-nums text-[#23170F]">
                           Rs. {(item.price * item.quantity).toLocaleString()}
                         </span>
                       </div>

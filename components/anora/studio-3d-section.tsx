@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import dynamic from "next/dynamic"
+import { ChevronDown } from "lucide-react"
 
 const Bag3DCanvas = dynamic(
   () => import("./bag-3d-canvas").then((m) => m.Bag3DCanvas),
@@ -23,7 +24,7 @@ export function Studio3DSection() {
 
   const CRAFT_HIGHLIGHTS = [
     {
-      numeral: "I",
+      numeral: "01",
       title: "18k Brushed Gold Clasp",
       tag: "Signature Hardware",
       angle: "front" as const,
@@ -32,7 +33,7 @@ export function Studio3DSection() {
       specs: "Solid brass core • Ceramic anti-tarnish micro-seal"
     },
     {
-      numeral: "II",
+      numeral: "02",
       title: "Full-Grain Pebbled Calfskin",
       tag: "Artisanal Material",
       angle: "threeQuarter" as const,
@@ -41,7 +42,7 @@ export function Studio3DSection() {
       specs: "1.4mm thickness • Hand-burnished edge dye"
     },
     {
-      numeral: "III",
+      numeral: "03",
       title: "Triple Accordion Gussets",
       tag: "Functional Geometry",
       angle: "side" as const,
@@ -50,7 +51,7 @@ export function Studio3DSection() {
       specs: "Microfiber suede lining • Concealed security zip divider"
     },
     {
-      numeral: "IV",
+      numeral: "04",
       title: "Woven Chain & Ergonomic Rest",
       tag: "Balanced Carrying",
       angle: "top" as const,
@@ -125,17 +126,19 @@ export function Studio3DSection() {
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono font-bold tracking-wider text-[#C5A880] bg-[#3D291B] px-2 py-0.5 rounded border border-[#C5A880]/30 shrink-0">
+                      <div className="flex items-center gap-2.5">
+                        <span className="text-[11px] font-sans font-semibold tracking-wider text-[#C5A880] bg-[#3D291B] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                           {item.numeral}
                         </span>
                         <span className="text-xs font-sans tracking-[0.12em] uppercase font-semibold text-[#ECE2D8]">
                           {item.tag}
                         </span>
                       </div>
-                      <span className={`text-xs text-[#ECE2D8]/70 transition-transform duration-300 ${isActive ? "rotate-180" : ""}`}>
-                        ▾
-                      </span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-[#C5A880] transition-transform duration-300 ${
+                          isActive ? "rotate-180" : ""
+                        }`}
+                      />
                     </div>
 
                     <h4 className="font-serif text-base sm:text-lg font-normal text-white mb-1.5">
@@ -145,7 +148,7 @@ export function Studio3DSection() {
                     {isActive && (
                       <div className="mt-3 space-y-2 text-sm text-[#ECE2D8]/90 font-light animate-in fade-in duration-300">
                         <p className="leading-relaxed">{item.description}</p>
-                        <div className="pt-2 border-t border-white/10 text-xs font-mono text-[#ECE2D8]">
+                        <div className="pt-2 border-t border-white/10 text-xs font-sans text-[#ECE2D8]/80 font-normal tracking-wide">
                           {item.specs}
                         </div>
                       </div>

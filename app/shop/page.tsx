@@ -32,7 +32,11 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function ShopPage() {
+export default async function ShopPage(props: {
+  searchParams?: Promise<{ category?: string }>
+}) {
+  const searchParams = await props.searchParams
+  const category = searchParams?.category
   const products = await getProducts()
 
   const shopSchema = {
@@ -81,7 +85,7 @@ export default async function ShopPage() {
       <Header />
       <CartDrawer />
       <div className="py-6">
-        <ProductGrid products={products} />
+        <ProductGrid products={products} initialCategory={category} />
       </div>
       <Footer />
     </main>

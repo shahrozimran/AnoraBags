@@ -12,7 +12,7 @@ export function Footer() {
         <div className="pb-16 border-b border-[#3D291B]/80 grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="space-y-2.5">
             <div className="flex items-center gap-2.5">
-              <span className="text-xs font-mono font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2 py-0.5 rounded border border-[#C5A880]/30 shrink-0">
+              <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 01
               </span>
               <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">
@@ -26,7 +26,7 @@ export function Footer() {
 
           <div className="space-y-2.5">
             <div className="flex items-center gap-2.5">
-              <span className="text-xs font-mono font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2 py-0.5 rounded border border-[#C5A880]/30 shrink-0">
+              <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 02
               </span>
               <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">
@@ -40,7 +40,7 @@ export function Footer() {
 
           <div className="space-y-2.5">
             <div className="flex items-center gap-2.5">
-              <span className="text-xs font-mono font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2 py-0.5 rounded border border-[#C5A880]/30 shrink-0">
+              <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 03
               </span>
               <h4 className="text-sm font-semibold tracking-[0.14em] uppercase text-white">

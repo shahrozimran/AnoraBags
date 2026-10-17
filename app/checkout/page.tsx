@@ -149,7 +149,7 @@ export default function CheckoutPage() {
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
                 <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">I</span>
+                    <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">I</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Client Particulars
                     </h2>
@@ -186,7 +186,7 @@ export default function CheckoutPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="e.g. 0300 1234567"
-                      className="w-full px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition font-mono"
+                      className="w-full px-4 py-3 rounded-xl border border-[#E5DCD2] text-[#23170F] text-sm sm:text-base focus:outline-hidden focus:border-[#462F1D] bg-[#FAF6F1]/40 transition"
                     />
                     <p className="text-xs text-[#462F1D] font-light">Courier rider will coordinate doorstep delivery</p>
                   </div>
@@ -212,7 +212,7 @@ export default function CheckoutPage() {
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
                 <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">II</span>
+                    <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">II</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Doorstep Shipping Address
                     </h2>
@@ -314,7 +314,7 @@ export default function CheckoutPage() {
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-4 sm:space-y-5">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-xs font-mono font-bold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2 py-0.5 rounded border border-[#462F1D]/20">III</span>
+                    <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">III</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide whitespace-nowrap">
                       Payment Privilege
                     </h2>
@@ -379,7 +379,7 @@ export default function CheckoutPage() {
                         <p className="text-[#462F1D] text-xs mt-0.5">Shade: {item.color}</p>
                         <p className="text-[#462F1D] text-xs">Qty: {item.quantity}</p>
                       </div>
-                      <span className="text-sm font-sans font-semibold text-[#23170F] whitespace-nowrap">
+                      <span className="text-sm font-sans font-semibold tabular-nums text-[#23170F] whitespace-nowrap">
                         Rs. {(item.price * item.quantity).toLocaleString()}
                       </span>
                     </div>
@@ -390,7 +390,7 @@ export default function CheckoutPage() {
                 <div className="pt-4 border-t border-[#E5DCD2] space-y-2.5 text-sm">
                   <div className="flex justify-between text-[#462F1D]">
                     <span>Pieces Subtotal</span>
-                    <span className="font-semibold text-[#23170F]">Rs. {subtotal.toLocaleString()}</span>
+                    <span className="font-semibold font-sans tabular-nums text-[#23170F]">Rs. {subtotal.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-[#462F1D]">
                     <span>Nationwide Express Courier</span>
@@ -406,9 +406,9 @@ export default function CheckoutPage() {
                     <span className="font-sans text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#23170F]">
                       Total Due at Doorstep
                     </span>
-                    <div className="flex items-baseline gap-1">
+                    <div className="flex items-baseline gap-1.5">
                       <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#462F1D]">Rs.</span>
-                      <span className="font-serif text-2xl font-bold text-[#23170F]">
+                      <span className="font-sans text-xl sm:text-2xl font-bold tabular-nums text-[#23170F]">
                         {total.toLocaleString()}
                       </span>
                     </div>
@@ -441,7 +441,7 @@ export default function CheckoutPage() {
                 </button>
 
                 {/* Assurance details */}
-                <div className="p-4.5 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] space-y-2 text-xs sm:text-sm text-[#3D291B]">
+                <div className="p-4.5 rounded-xl bg-[#FAF6F1] border border-[#462F1D]/25 space-y-2 text-xs sm:text-sm text-[#3D291B] shadow-2xs">
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-[#462F1D] shrink-0" />
                     <h4 className="font-serif text-sm font-semibold text-[#23170F]">

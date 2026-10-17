@@ -1,25 +1,32 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo, useEffect } from "react"
 import type { Product } from "@/lib/types"
 import { ProductCard } from "./product-card"
 import { ChevronDown } from "lucide-react"
 
 interface ProductGridProps {
   products: Product[]
+  initialCategory?: string
 }
 
 const CATEGORIES = [
-  { id: "all", label: "All Silhouettes" },
+  { id: "all", label: "All Handbags" },
   { id: "crossbody", label: "Crossbody" },
-  { id: "satchel", label: "Satchel" },
+  { id: "satchel", label: "Satchels" },
   { id: "top-handle", label: "Top-Handle" },
-  { id: "shoulder", label: "Shoulder" }
+  { id: "shoulder", label: "Shoulder Bags" }
 ]
 
-export function ProductGrid({ products }: ProductGridProps) {
-  const [activeCategory, setActiveCategory] = useState("all")
+export function ProductGrid({ products, initialCategory }: ProductGridProps) {
+  const [activeCategory, setActiveCategory] = useState(initialCategory || "all")
   const [sortBy, setSortBy] = useState<"featured" | "price-asc" | "price-desc" | "rating">("featured")
+
+  useEffect(() => {
+    if (initialCategory) {
+      setActiveCategory(initialCategory)
+    }
+  }, [initialCategory])
 
   const filteredProducts = useMemo(() => {
     let list = [...products]
@@ -53,13 +60,13 @@ export function ProductGrid({ products }: ProductGridProps) {
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <span className="h-px w-6 bg-[#462F1D]/40" />
-              <span className="text-xs sm:text-sm font-sans tracking-[0.18em] uppercase font-semibold text-[#462F1D]">
-                Catalogue Permanent
+              <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
+                Permanent Collection
               </span>
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.02em] text-[#23170F]">
-              The Handcrafted <span className="italic font-normal text-[#462F1D]">Silhouettes</span>
+              Handcrafted <span className="italic font-normal text-[#462F1D]">Silhouettes</span>
             </h2>
 
             <p className="text-base sm:text-lg text-[#3D291B] font-light max-w-lg leading-relaxed">
@@ -67,16 +74,16 @@ export function ProductGrid({ products }: ProductGridProps) {
             </p>
           </div>
 
-          {/* Refined Luxury Sort Pill Dropdown */}
+          {/* Refined Sort Dropdown */}
           <div className="flex items-center gap-2.5 self-start md:self-end">
-            <span className="text-xs tracking-[0.14em] uppercase font-sans text-[#462F1D] font-semibold whitespace-nowrap">
-              Sort:
+            <span className="text-xs sm:text-sm font-sans text-[#462F1D] font-medium whitespace-nowrap">
+              Sort by:
             </span>
             <div className="relative">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="appearance-none bg-white border border-[#E5DCD2] rounded-full py-2 pl-4 pr-9 text-xs sm:text-sm text-[#23170F] font-medium tracking-wide focus:outline-hidden focus:border-[#462F1D] cursor-pointer shadow-2xs hover:border-[#462F1D]/60 transition"
+                className="appearance-none bg-white border border-[#E5DCD2] rounded-full py-2 pl-4 pr-9 text-xs sm:text-sm text-[#23170F] font-medium focus:outline-hidden focus:border-[#462F1D] cursor-pointer shadow-2xs hover:border-[#462F1D]/60 transition"
               >
                 <option value="featured">Featured Curations</option>
                 <option value="price-asc">Price: Low to High</option>
@@ -88,30 +95,36 @@ export function ProductGrid({ products }: ProductGridProps) {
           </div>
         </div>
 
-        {/* Minimalist Typographic Category Navigation */}
-        <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0 mb-10 overflow-x-auto scrollbar-none border-b border-[#E5DCD2]">
-          <div className="flex items-center gap-6 sm:gap-8 min-w-max pb-3 text-xs sm:text-sm font-sans tracking-[0.16em] uppercase">
-            {CATEGORIES.map((cat) => {
-              const isActive = activeCategory === cat.id
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`pb-2.5 relative transition-colors duration-200 whitespace-nowrap font-medium ${
-                    isActive
-                      ? "text-[#462F1D] font-bold"
-                      : "text-[#462F1D]/70 hover:text-[#23170F]"
-                  }`}
-                >
-                  <span>{cat.label}</span>
-                  {isActive && (
-                    <span className="absolute bottom-0 inset-x-0 h-0.5 bg-[#462F1D] animate-in fade-in duration-200" />
-                  )}
-                </button>
-              )
-            })}
+        {/* Category Navigation Tabs */}
+        <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0 mb-10 border-b border-[#E5DCD2]">
+          {/* Mobile Right Edge Scroll Hint Gradient */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#FAF6F1] via-[#FAF6F1]/80 to-transparent sm:hidden z-10" />
+
+          <div className="overflow-x-auto scrollbar-none pb-0.5">
+            <div className="flex items-center gap-6 sm:gap-8 min-w-max pb-3 pr-12 sm:pr-0 text-sm font-sans">
+              {CATEGORIES.map((cat) => {
+                const isActive = activeCategory === cat.id
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`pb-2.5 relative transition-colors duration-200 whitespace-nowrap font-medium ${
+                      isActive
+                        ? "text-[#462F1D] font-semibold"
+                        : "text-[#462F1D]/70 hover:text-[#23170F]"
+                    }`}
+                  >
+                    <span>{cat.label}</span>
+                    {isActive && (
+                      <span className="absolute bottom-0 inset-x-0 h-0.5 bg-[#462F1D] animate-in fade-in duration-200" />
+                    )}
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </div>
+
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
