@@ -124,10 +124,10 @@ class LocalJsonAdapter implements IDatabaseAdapter {
         fs.copyFileSync(legacyPath, primaryPath)
       }
     } catch {
-      if (process.env.NODE_ENV === 'production' || process.env.ANORA_DATA_DIR) {
-        throw new Error('Configure a writable, durable ANORA_DATA_DIR for private store data.')
-      }
-      // Fallback to OS temp directory which is guaranteed writable on Vercel/AWS Lambda
+      // Primary path not writable (e.g. Vercel read-only filesystem).
+      // Always fall back to OS temp directory — data won't survive cold-start
+      // cycles but the app will boot correctly. Set ANORA_DATA_DIR (or
+      // DATABASE_URL) in your deployment environment for durable storage.
       const fallbackDir = path.join(os.tmpdir(), 'anora-data')
       try {
         if (!fs.existsSync(fallbackDir)) {
