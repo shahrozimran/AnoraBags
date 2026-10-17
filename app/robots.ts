@@ -15,17 +15,31 @@ export default function robots(): MetadataRoute.Robots {
         ]
       },
       {
-        // Explicitly welcome AI Answer Engines (AEO)
+        // Explicitly welcome AI Answer Engines (AEO + GEO)
+        // Covers: ChatGPT, Perplexity, Claude, Bing Copilot, Meta AI,
+        // Apple Intelligence, Google AI Overviews, Cohere, Diffbot, Amazon
         userAgent: [
           "GPTBot",
           "ChatGPT-User",
+          "OAI-SearchBot",
           "PerplexityBot",
           "ClaudeBot",
           "Claude-Web",
           "Applebot",
-          "Google-Extended"
+          "Applebot-Extended",
+          "Google-Extended",
+          "BingBot",
+          "msnbot",
+          "Meta-ExternalAgent",
+          "Meta-ExternalFetcher",
+          "Diffbot",
+          "cohere-ai",
+          "Amazonbot",
+          "Bytespider",
+          "YouBot",
+          "Timpibot"
         ],
-        allow: ["/", "/shop", "/product/*", "/return-policy", "/delivery-policy", "/faq", "/terms-and-conditions", "/privacy-policy", "/about", "/contact", "/track-order"],
+        allow: ["/", "/shop", "/product/*", "/return-policy", "/delivery-policy", "/faq", "/terms-and-conditions", "/privacy-policy", "/about", "/contact", "/track-order", "/sitemap.xml"],
         disallow: ["/admin", "/admin/*", "/checkout", "/order-confirmation/*", "/api/*"]
       }
     ],

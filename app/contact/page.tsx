@@ -5,9 +5,31 @@ import { HelpPage } from "@/components/anora/help-page"
 import { STORE_CONTACT } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: "Contact us",
-  description: "Contact Anora Bags at +92 319 4186103 or anorabags10@gmail.com for orders, delivery, and 7-day returns.",
-  alternates: { canonical: "/contact" },
+  title: "Contact Us — Anora Bags Customer Support",
+  description: "Contact Anora Bags via WhatsApp, phone, or email for orders, delivery status, and 7-day returns. Reach us at +92 319 4186103 or anorabags10@gmail.com. Pakistan nationwide.",
+  alternates: { canonical: "https://anorabags.com/contact" },
+  keywords: [
+    "contact Anora Bags",
+    "Anora Bags WhatsApp",
+    "Anora Bags phone number",
+    "Anora Bags customer support Pakistan",
+    "handbag customer service Pakistan",
+    "COD bag help Pakistan"
+  ],
+  openGraph: {
+    title: "Contact Us — Anora Bags",
+    description: "Reach Anora Bags on WhatsApp, phone, or email for orders, tracking, and 7-day return requests.",
+    url: "https://anorabags.com/contact",
+    siteName: "Anora Bags",
+    locale: "en_PK",
+    type: "website",
+    images: [{ url: "/images/products/bordeaux-white/front.webp", width: 1200, height: 630, alt: "Contact Anora Bags" }]
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact Anora Bags",
+    description: "WhatsApp, phone, or email — we're here to help with your order."
+  }
 }
 
 export default function ContactPage() {

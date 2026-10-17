@@ -6,9 +6,34 @@ import { HelpPage } from "@/components/anora/help-page"
 import { FAQ_GROUPS } from "@/lib/faq"
 
 export const metadata: Metadata = {
-  title: "Frequently asked questions",
-  description: "Help with Anora Bags orders, COD payments, colours, delivery, tracking, and 7-day returns.",
-  alternates: { canonical: "/faq" },
+  title: "Frequently Asked Questions — Anora Bags Help Centre",
+  description: "Get answers about Anora Bags orders, Cash on Delivery payments, colours, delivery estimates, parcel tracking, and our 7-day hassle-free return guarantee. Pakistan nationwide delivery.",
+  alternates: { canonical: "https://anorabags.com/faq" },
+  keywords: [
+    "Anora Bags FAQ",
+    "cash on delivery Pakistan",
+    "how to track Anora order",
+    "7 day return bags Pakistan",
+    "Anora Bags return policy",
+    "COD handbags Pakistan",
+    "free delivery bags Pakistan",
+    "how to order Anora bags"
+  ],
+  openGraph: {
+    title: "FAQ — Anora Bags Help Centre",
+    description: "Answers about COD orders, delivery, tracking, and 7-day returns for Anora Bags in Pakistan.",
+    url: "https://anorabags.com/faq",
+    siteName: "Anora Bags",
+    locale: "en_PK",
+    type: "website",
+    images: [{ url: "/images/products/bordeaux-white/front.webp", width: 1200, height: 630, alt: "Anora Bags FAQ" }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ — Anora Bags Help Centre",
+    description: "Answers about COD orders, delivery, tracking, and 7-day returns.",
+    images: ["/images/products/bordeaux-white/front.webp"]
+  }
 }
 
 export default function FAQPage() {

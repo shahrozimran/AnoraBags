@@ -29,40 +29,47 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${product.name} — Handcrafted Luxury Handbag | Anora Bags`,
-    description: `${product.description} 100% Cash On Delivery nationwide in Pakistan with 7-Day Hassle-Free Returns. Price: Rs. ${product.price.toLocaleString()} PKR.`,
+    description: `${product.description.slice(0, 140)} Cash on Delivery nationwide in Pakistan. Free delivery & 7-day hassle-free returns. Price: Rs. ${product.price.toLocaleString()} PKR.`,
     alternates: {
       canonical: canonicalUrl
     },
     keywords: [
       product.name,
+      `${product.name} price Pakistan`,
+      `buy ${product.name} online`,
+      `${product.name} cash on delivery`,
       "Anora Bags",
       product.category,
       product.colorName,
+      `${product.colorName} leather bag`,
       "luxury handbags Pakistan",
       "cash on delivery leather bags",
-      "7-day refund bags"
+      "handcrafted bags Karachi",
+      "designer handbags Lahore",
+      "leather bags Islamabad",
+      "7-day refund bags Pakistan"
     ],
     openGraph: {
-      title: `${product.name} — Anora Bags`,
-      description: product.tagline,
+      title: `${product.name} — Rs. ${product.price.toLocaleString()} | Anora Bags`,
+      description: `${product.tagline}. Free delivery & 7-day return. Cash on Delivery in Pakistan.`,
       url: canonicalUrl,
       siteName: "Anora Bags",
       locale: "en_PK",
       type: "website",
       images: [
         {
-          url: product.image,
+          url: product.image.startsWith("http") ? product.image : `https://anorabags.com${product.image}`,
           width: 800,
           height: 1000,
-          alt: product.name
+          alt: `${product.name} — Anora Bags`
         }
       ]
     },
     twitter: {
       card: "summary_large_image",
       title: `${product.name} — Anora Bags`,
-      description: product.tagline,
-      images: [product.image]
+      description: `${product.tagline}. Cash on Delivery. 7-day returns.`,
+      images: [product.image.startsWith("http") ? product.image : `https://anorabags.com${product.image}`]
     }
   }
 }

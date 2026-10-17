@@ -4,9 +4,32 @@ import { HelpPage } from "@/components/anora/help-page"
 import { STORE_CONTACT } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: "Return & exchange policy",
-  description: "Request an Anora Bags return or exchange within 7 days of delivery. Free doorstep collection and help with COD refunds.",
-  alternates: { canonical: "/return-policy" },
+  title: "7-Day Return & Exchange Policy — Anora Bags",
+  description: "Return or exchange your Anora Bag within 7 days of delivery. Free doorstep collection, no hassle. COD refunds via bank transfer, EasyPaisa, or JazzCash. Pakistan nationwide.",
+  alternates: { canonical: "https://anorabags.com/return-policy" },
+  keywords: [
+    "Anora Bags return policy",
+    "7 day return bags Pakistan",
+    "exchange handbag Pakistan",
+    "COD refund Pakistan",
+    "free return leather bag",
+    "Anora Bags refund",
+    "return bags Karachi Lahore Islamabad"
+  ],
+  openGraph: {
+    title: "7-Day Return & Exchange Policy — Anora Bags",
+    description: "Return or exchange within 7 days. Free doorstep collection and fast COD refunds across Pakistan.",
+    url: "https://anorabags.com/return-policy",
+    siteName: "Anora Bags",
+    locale: "en_PK",
+    type: "website",
+    images: [{ url: "/images/products/bordeaux-white/front.webp", width: 1200, height: 630, alt: "Anora Bags Return Policy" }]
+  },
+  twitter: {
+    card: "summary",
+    title: "7-Day Return Policy — Anora Bags",
+    description: "Free doorstep collection. COD refunds within 24 hours of verification."
+  }
 }
 
 export default function ReturnPolicyPage() {

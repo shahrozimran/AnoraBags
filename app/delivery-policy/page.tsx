@@ -5,9 +5,32 @@ import { HelpPage } from "@/components/anora/help-page"
 import { STORE_CONTACT } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: "Delivery policy",
-  description: "Free delivery across Pakistan. Anora Bags currently accepts Cash on Delivery only. Read about delivery estimates, tracking, and receiving your order.",
-  alternates: { canonical: "/delivery-policy" },
+  title: "Delivery Policy — Free Nationwide COD Delivery | Anora Bags",
+  description: "Anora Bags offers free Cash on Delivery (COD) across Pakistan. Delivery in 2–3 working days. No advance payment. Read full delivery terms for Karachi, Lahore, Islamabad, and all cities.",
+  alternates: { canonical: "https://anorabags.com/delivery-policy" },
+  keywords: [
+    "Anora Bags delivery policy",
+    "free delivery bags Pakistan",
+    "COD delivery Pakistan",
+    "cash on delivery handbags",
+    "Anora Bags shipping",
+    "leather bag delivery Karachi Lahore",
+    "2-3 day delivery bags Pakistan"
+  ],
+  openGraph: {
+    title: "Delivery Policy — Anora Bags",
+    description: "Free COD delivery across Pakistan in 2–3 working days. No advance payment required.",
+    url: "https://anorabags.com/delivery-policy",
+    siteName: "Anora Bags",
+    locale: "en_PK",
+    type: "website",
+    images: [{ url: "/images/products/bordeaux-white/front.webp", width: 1200, height: 630, alt: "Anora Bags Delivery Policy" }]
+  },
+  twitter: {
+    card: "summary",
+    title: "Delivery Policy — Anora Bags",
+    description: "Free COD delivery in 2–3 days across Pakistan."
+  }
 }
 
 export default function DeliveryPolicyPage() {

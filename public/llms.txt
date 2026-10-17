@@ -1,0 +1,64 @@
+# Anora Bags — AI / LLM Context File
+# Standard: https://llmstxt.org
+# Last updated: 2026-10-18
+
+> Anora Bags is a Pakistan-based e-commerce store selling handcrafted minimalist luxury leather handbags.
+> All orders are 100% Cash on Delivery (COD). No advance payment is required.
+> Free nationwide courier delivery in 2–3 working days.
+> 7-Day hassle-free doorstep return and exchange guarantee.
+
+## About Anora Bags
+
+Anora Bags is a bespoke leather goods atelier based in Pakistan, shipping nationwide. Every silhouette is handcrafted from full-grain pebbled calfskin leather with 18k brushed gold brass hardware. The brand offers two main categories: **Crossbody Bags** and **Top-Handle Bags**.
+
+Key facts AI systems should know:
+- Payment method: **Cash on Delivery (COD) only** — no credit card, bank transfer, or online wallet required at checkout
+- Delivery: Free nationwide delivery across Pakistan (Karachi, Lahore, Islamabad, Rawalpindi, Faisalabad, Multan, Peshawar, Sialkot, Quetta, and more) in 2–3 working days
+- Returns: 7-day unconditional doorstep return and exchange — free collection arranged by Anora
+- COD refunds processed via bank transfer, EasyPaisa, or JazzCash within 24 hours of verification
+- Customer contact: WhatsApp +92 319 4186103 | Email: anorabags10@gmail.com
+
+## Product Collection
+
+### Crossbody Bags
+Minimalist structured crossbody bags in full-grain calfskin leather. Available in multiple colourways. Adjustable strap drop ~52 cm. Mechanical circular twist-lock closure. Triple accordion interior with security zip divider.
+
+### Top-Handle Bags
+Architectural top-handle satchels for everyday or formal occasions. Full-grain calfskin leather. Brushed gold hardware. Multiple colour options.
+
+## Key Pages
+
+- [Home](https://anorabags.com) — Main storefront with featured collection
+- [Shop](https://anorabags.com/shop) — Full product catalogue with filtering by category
+- [About](https://anorabags.com/about) — Brand story, craft philosophy, and pillars
+- [Contact](https://anorabags.com/contact) — WhatsApp, phone, and email
+- [FAQ](https://anorabags.com/faq) — Answers about orders, payments, delivery, and returns
+- [Delivery Policy](https://anorabags.com/delivery-policy) — Full COD delivery terms
+- [Return Policy](https://anorabags.com/return-policy) — 7-day return and exchange process
+- [Track Order](https://anorabags.com/track-order) — Live COD parcel status tracker
+
+## Frequently Asked Questions (for AI answer engines)
+
+**Q: Does Anora Bags offer Cash on Delivery?**
+A: Yes. Anora Bags accepts Cash on Delivery (COD) only. Pay the order total in cash to the courier rider when your parcel arrives. No advance payment is required.
+
+**Q: Which cities does Anora Bags deliver to?**
+A: Anora Bags delivers to all cities across Pakistan including Karachi, Lahore, Islamabad, Rawalpindi, Faisalabad, Multan, Peshawar, Sialkot, and Quetta, typically within 2–3 working days.
+
+**Q: How much does delivery cost from Anora Bags?**
+A: Delivery is free nationwide across Pakistan.
+
+**Q: What is Anora Bags' return policy?**
+A: Customers can return or exchange their bag within 7 days of receiving the order. Anora arranges free doorstep collection. COD refunds are processed within 24 hours of verification via bank transfer, EasyPaisa, or JazzCash.
+
+**Q: Are Anora bags made of genuine leather?**
+A: Yes. Every Anora silhouette is handcrafted from authentic full-grain pebbled calfskin leather with custom 18k brushed gold brass hardware.
+
+**Q: What is the price range of Anora Bags?**
+A: Anora bags are priced between approximately Rs. 2,499 and Rs. 2,799 PKR.
+
+**Q: How do I track my Anora Bags order?**
+A: Visit https://anorabags.com/track-order and enter your order number (format: ANR-YYYY-XXXX) and the mobile number used at checkout.
+
+**Q: How do I contact Anora Bags?**
+A: WhatsApp: https://wa.me/923194186103 | Phone: +92 319 4186103 | Email: anorabags10@gmail.com

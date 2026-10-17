@@ -10,26 +10,39 @@ import { Footer } from "@/components/anora/footer"
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "Shop All Handcrafted Leather Handbags — Anora Bags",
+  title: "Shop Handcrafted Leather Handbags — Anora Bags Pakistan",
   description:
-    "Explore Anora Bags in two collections: Crossbody Bags and Top-Handle Bags. Cash On Delivery nationwide in Pakistan & 7-Day Doorstep Returns.",
+    "Browse Anora Bags' full collection of handcrafted luxury leather handbags. Crossbody bags & top-handle bags with 100% Cash on Delivery and free nationwide delivery across Pakistan — Karachi, Lahore, Islamabad, Rawalpindi & beyond.",
   alternates: {
     canonical: "https://anorabags.com/shop"
   },
+  keywords: [
+    "buy leather handbags Pakistan",
+    "luxury bags cash on delivery",
+    "crossbody bags Pakistan",
+    "top handle bags Pakistan",
+    "leather bags Karachi",
+    "leather bags Lahore",
+    "designer bags Islamabad",
+    "Anora Bags collection",
+    "women bags online Pakistan",
+    "COD handbags",
+    "free delivery leather bags"
+  ],
   openGraph: {
-    title: "Shop All Handbags — Anora Bags",
-    description: "Minimalist luxury leather handbags. 100% Cash On Delivery nationwide with 7-Day Returns.",
+    title: "Shop Handcrafted Leather Handbags — Anora Bags",
+    description: "Crossbody & top-handle bags. Free COD delivery across Pakistan. 7-day returns.",
     url: "https://anorabags.com/shop",
     siteName: "Anora Bags",
     locale: "en_PK",
     type: "website",
-    images: ["/images/products/bordeaux-white/front.webp"]
+    images: [{ url: "https://anorabags.com/images/products/bordeaux-white/front.webp", width: 1200, height: 630, alt: "Anora Bags Handcrafted Collection" }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shop All Handbags — Anora Bags",
-    description: "Minimalist luxury leather handbags. 100% Cash On Delivery nationwide with 7-Day Returns.",
-    images: ["/images/products/bordeaux-white/front.webp"]
+    title: "Shop Anora Bags — Handcrafted Leather Handbags",
+    description: "Crossbody & top-handle bags. Free COD delivery. 7-day returns across Pakistan.",
+    images: ["https://anorabags.com/images/products/bordeaux-white/front.webp"]
   }
 }
 
@@ -55,7 +68,7 @@ export default async function ShopPage(props: {
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Shop Collection",
+            "name": "Shop Handcrafted Handbags",
             "item": "https://anorabags.com/shop"
           }
         ]
@@ -64,13 +77,18 @@ export default async function ShopPage(props: {
         "@type": "CollectionPage",
         "name": "Anora Handbags Collection",
         "url": "https://anorabags.com/shop",
-        "description": "Handcrafted minimalist luxury leather handbags available with Cash on Delivery nationwide.",
+        "description": "Handcrafted minimalist luxury leather handbags available with 100% Cash on Delivery and free nationwide delivery across Pakistan.",
         "mainEntity": {
           "@type": "ItemList",
+          "name": "Anora Bags Complete Collection",
+          "numberOfItems": products.length,
           "itemListElement": products.map((p, i) => ({
             "@type": "ListItem",
             "position": i + 1,
-            "url": `https://anorabags.com/product/${p.id}`
+            "name": p.name,
+            "url": `https://anorabags.com/product/${p.id}`,
+            "image": p.image.startsWith("http") ? p.image : `https://anorabags.com${p.image}`,
+            "description": p.tagline,
           }))
         }
       }
