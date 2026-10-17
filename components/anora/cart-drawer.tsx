@@ -26,10 +26,10 @@ export function CartDrawer() {
           <div className="p-4 sm:p-6 border-b border-[#E5DCD2] flex items-center justify-between bg-white/60">
             <div>
               <span className="text-xs font-sans text-[#462F1D] font-medium block">
-                Maison Anora
+                Anora Bags
               </span>
               <h2 className="text-lg sm:text-xl font-serif font-normal text-[#23170F] tracking-tight">
-                Your Atelier Bag ({itemCount})
+                Shopping Bag ({itemCount})
               </h2>
             </div>
             <button

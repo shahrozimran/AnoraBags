@@ -40,7 +40,7 @@ export default function AboutPage() {
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "About Maison Anora",
+            "name": "About Anora Bags",
             "item": "https://anorabags.com/about"
           }
         ]
@@ -116,7 +116,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-[#E5DCD2]">
             <div className="space-y-2">
               <div className="flex items-center gap-2.5">
-                <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">01</span>
+                <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">01</span>
                 <span className="text-xs font-sans text-[#462F1D] font-semibold">Leather</span>
               </div>
               <h4 className="font-serif text-lg font-normal text-[#23170F]">
@@ -129,7 +129,7 @@ export default function AboutPage() {
 
             <div className="space-y-2">
               <div className="flex items-center gap-2.5">
-                <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">02</span>
+                <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">02</span>
                 <span className="text-xs font-sans text-[#462F1D] font-semibold">Doorstep Guarantee</span>
               </div>
               <h4 className="font-serif text-lg font-normal text-[#23170F]">

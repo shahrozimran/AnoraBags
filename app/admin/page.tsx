@@ -96,7 +96,7 @@ export default function AdminPage() {
       strapDrop: "52 cm (Adjustable)",
       capacity: "Accordion interior with center zip divider",
       closure: "Mechanical Circular Twist-Lock",
-      origin: "Bespoke Handcrafted Leather Atelier"
+      origin: "Handcrafted Full-Grain Leather Studio"
     }
   })
 
@@ -241,7 +241,7 @@ export default function AdminPage() {
         strapDrop: "52 cm (Adjustable)",
         capacity: "Accordion interior with center zip divider",
         closure: "Mechanical Circular Twist-Lock",
-        origin: "Bespoke Handcrafted Leather Atelier"
+        origin: "Handcrafted Full-Grain Leather Studio"
       }
     })
     setIsProductModalOpen(true)
@@ -425,7 +425,7 @@ export default function AdminPage() {
               <ShieldCheck className="w-8 h-8" />
             </div>
             <div className="space-y-1">
-              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#462F1D]">Staff Portal</span>
+              <span className="text-xs font-semibold text-[#462F1D]">Staff Portal</span>
               <h1 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">Anora Admin Access</h1>
               <p className="text-sm text-stone-600 font-light">
                 Enter your security PIN to manage bag catalogs, dispatch orders, and inspect COD metrics.
@@ -434,7 +434,7 @@ export default function AdminPage() {
 
             <form onSubmit={handleLogin} className="space-y-4 text-left">
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-700">Security PIN / Access Key</label>
+                <label className="text-xs font-semibold text-stone-700">Security PIN / Access Key</label>
                 <input
                   type="password"
                   value={passcodeInput}
@@ -451,7 +451,7 @@ export default function AdminPage() {
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl bg-[#462F1D] text-white hover:bg-[#32231A] text-xs font-semibold uppercase tracking-wider transition shadow-sm"
+                className="w-full py-3.5 rounded-xl bg-[#462F1D] text-white hover:bg-[#32231A] text-sm font-medium transition shadow-sm"
               >
                 Authenticate & Unlock
               </button>
@@ -490,8 +490,8 @@ export default function AdminPage() {
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                <span className="text-xs uppercase font-mono tracking-wider text-stone-600">
-                  Maison Anora Command Center
+                <span className="text-xs font-mono text-stone-600">
+                  Anora Admin Command Center
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#462F1D]/10 text-[#462F1D] text-xs font-semibold">
                   {dbStatus?.engine || "Universal DB"}
@@ -514,7 +514,7 @@ export default function AdminPage() {
 
               <button
                 onClick={openNewProductModal}
-                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-[#462F1D] text-white hover:bg-[#342214] text-xs font-semibold uppercase tracking-wider transition shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-[#462F1D] text-white hover:bg-[#342214] text-xs font-medium transition shadow-xs"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Bag</span>
@@ -600,13 +600,13 @@ export default function AdminPage() {
             {/* Top Stat Cards */}
             <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
-                <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Total COD Volume</span>
+                <span className="text-xs font-medium text-stone-500">Total COD Volume</span>
                 <p className="font-serif text-2xl font-semibold text-stone-900">{orders.length} Orders</p>
                 <p className="text-xs text-stone-500 font-normal">Nationwide doorsteps</p>
               </div>
 
               <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
-                <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Total Booked Value</span>
+                <span className="text-xs font-medium text-stone-500">Total Booked Value</span>
                 <p className="font-serif text-2xl font-semibold text-[#462F1D]">
                   Rs. {analytics?.totalRevenue.toLocaleString() || 0}
                 </p>
@@ -614,7 +614,7 @@ export default function AdminPage() {
               </div>
 
               <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
-                <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Delivered Cash Collected</span>
+                <span className="text-xs font-medium text-stone-500">Delivered Cash Collected</span>
                 <p className="font-serif text-2xl font-semibold text-emerald-700">
                   Rs. {analytics?.deliveredCashCollected.toLocaleString() || 0}
                 </p>
@@ -622,7 +622,7 @@ export default function AdminPage() {
               </div>
 
               <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs space-y-1">
-                <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Average Order Value (AOV)</span>
+                <span className="text-xs font-medium text-stone-500">Average Order Value (AOV)</span>
                 <p className="font-serif text-2xl font-semibold text-stone-900">
                   Rs. {analytics?.averageOrderValue.toLocaleString() || 0}
                 </p>
@@ -634,9 +634,9 @@ export default function AdminPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
+                  <span className="text-xs font-medium text-amber-700 flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5" />
-                    <span>In Atelier Prep</span>
+                    <span>In Preparation</span>
                   </span>
                   <span className="text-sm font-bold text-amber-800">{analytics?.pendingOrders || 0}</span>
                 </div>
@@ -647,7 +647,7 @@ export default function AdminPage() {
 
               <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 flex items-center gap-1.5">
+                  <span className="text-xs font-medium text-blue-700 flex items-center gap-1.5">
                     <Truck className="w-3.5 h-3.5" />
                     <span>In Courier Transit</span>
                   </span>
@@ -660,7 +660,7 @@ export default function AdminPage() {
 
               <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
+                  <span className="text-xs font-medium text-emerald-700 flex items-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Delivered & 7-Day Window</span>
                   </span>
@@ -751,7 +751,7 @@ export default function AdminPage() {
             {/* Table */}
             <div className="overflow-x-auto">
               <table className="w-full min-w-[700px] text-left text-xs text-stone-700">
-                <thead className="bg-stone-50 text-xs uppercase tracking-wider text-stone-600 border-b border-stone-200 font-semibold">
+                <thead className="bg-stone-50 text-xs text-stone-600 border-b border-stone-200 font-semibold">
                   <tr>
                     <th className="py-3 px-4">Order #</th>
                     <th className="py-3 px-4">Client</th>
@@ -892,7 +892,7 @@ export default function AdminPage() {
 
               <button
                 onClick={openNewProductModal}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#462F1D] text-white hover:bg-[#342214] text-xs font-semibold uppercase tracking-wider transition shadow-xs"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#462F1D] text-white hover:bg-[#342214] text-xs font-medium transition shadow-xs"
               >
                 <Plus className="w-4 h-4" />
                 <span>Create New Bag</span>
@@ -914,14 +914,14 @@ export default function AdminPage() {
                         className="object-cover"
                       />
                       {prod.badge && (
-                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#462F1D] text-white text-xs font-semibold uppercase tracking-wider shadow-sm">
+                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#462F1D] text-white text-xs font-medium shadow-sm">
                           {prod.badge}
                         </div>
                       )}
                       <div className="absolute top-3 right-3 flex items-center gap-1.5">
                         <button
                           onClick={() => handleToggleStock(prod.id)}
-                          className={`px-2.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase transition shadow-sm ${
+                          className={`px-2.5 py-1 rounded-full text-xs font-medium transition shadow-sm ${
                             prod.inStock
                               ? "bg-emerald-600 text-white"
                               : "bg-rose-600 text-white"
@@ -934,7 +934,7 @@ export default function AdminPage() {
 
                     <div className="p-5 space-y-3">
                       <div>
-                        <span className="text-xs uppercase font-mono tracking-widest text-[#462F1D]">
+                        <span className="text-xs font-medium text-[#462F1D] capitalize">
                           {prod.category}
                         </span>
                         <h4 className="font-serif text-lg font-normal text-stone-900 line-clamp-1">
@@ -1033,7 +1033,7 @@ export default function AdminPage() {
 
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[480px] text-left text-xs text-stone-700">
-                    <thead className="bg-stone-50 text-xs uppercase tracking-wider text-stone-600 border-b border-stone-200 font-semibold">
+                    <thead className="bg-stone-50 text-xs text-stone-600 border-b border-stone-200 font-semibold">
                       <tr>
                         <th className="py-2.5 px-3">Client</th>
                         <th className="py-2.5 px-3">City</th>
@@ -1078,7 +1078,7 @@ export default function AdminPage() {
 
                 <div className="overflow-x-auto max-h-96">
                   <table className="w-full min-w-[340px] text-left text-xs text-stone-700">
-                    <thead className="bg-stone-50 text-xs uppercase tracking-wider text-stone-600 border-b border-stone-200 font-semibold sticky top-0">
+                    <thead className="bg-stone-50 text-xs text-stone-600 border-b border-stone-200 font-semibold sticky top-0">
                       <tr>
                         <th className="py-2.5 px-3">Email</th>
                         <th className="py-2.5 px-3">Subscribed At</th>
@@ -1113,7 +1113,7 @@ export default function AdminPage() {
         {activeTab === "database" && (
           <div className="bg-white rounded-3xl border border-stone-200 shadow-xs p-8 space-y-6">
             <div className="space-y-1">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#462F1D]">Infrastructure</span>
+              <span className="text-xs font-semibold text-[#462F1D]">Infrastructure</span>
               <h2 className="font-serif text-2xl font-normal text-stone-900">Database Engine & Hosting Environment</h2>
               <p className="text-xs text-stone-500 font-light">
                 Designed for 100% zero-cost out of the box with 1-click serverless edge Postgres (Neon/Supabase) scalability.
@@ -1122,7 +1122,7 @@ export default function AdminPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
               <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/80 space-y-3 text-xs">
-                <h4 className="font-semibold text-stone-900 uppercase tracking-wider">Active Storage Adapter</h4>
+                <h4 className="font-semibold text-stone-900">Active Storage Adapter</h4>
                 <div className="space-y-1.5 text-stone-600">
                   <p><strong>Engine:</strong> <span className="font-mono text-stone-900">{dbStatus?.engine}</span></p>
                   <p><strong>Location:</strong> <span className="font-mono text-xs text-stone-700">{dbStatus?.storagePath}</span></p>
@@ -1132,7 +1132,7 @@ export default function AdminPage() {
               </div>
 
               <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/80 space-y-3 text-xs">
-                <h4 className="font-semibold text-stone-900 uppercase tracking-wider">Record Summary</h4>
+                <h4 className="font-semibold text-stone-900">Record Summary</h4>
                 <div className="space-y-1.5 text-stone-600">
                   <p><strong>Products in Catalog:</strong> {dbStatus?.counts.products}</p>
                   <p><strong>Total COD Orders:</strong> {dbStatus?.counts.orders}</p>
@@ -1151,7 +1151,7 @@ export default function AdminPage() {
               <button
                 onClick={handleResetDatabase}
                 disabled={isPending}
-                className="px-4 py-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 hover:bg-rose-100 text-xs font-semibold uppercase tracking-wider transition"
+                className="px-4 py-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 hover:bg-rose-100 text-xs font-medium transition"
               >
                 Reset Database
               </button>
@@ -1178,7 +1178,7 @@ export default function AdminPage() {
               <form onSubmit={handleSaveProduct} className="space-y-4 text-xs">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5 sm:col-span-2">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Bag Name *</label>
+                    <label className="font-medium text-stone-700">Bag Name *</label>
                     <input
                       type="text"
                       required
@@ -1190,7 +1190,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5 sm:col-span-2">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Editorial Tagline</label>
+                    <label className="font-medium text-stone-700">Editorial Tagline</label>
                     <input
                       type="text"
                       value={productForm.tagline}
@@ -1201,7 +1201,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Price (PKR) *</label>
+                    <label className="font-medium text-stone-700">Price (PKR) *</label>
                     <input
                       type="number"
                       required
@@ -1212,7 +1212,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Original Price (Strikethrough)</label>
+                    <label className="font-medium text-stone-700">Original Price (Strikethrough)</label>
                     <input
                       type="number"
                       value={productForm.originalPrice || ""}
@@ -1223,7 +1223,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Silhouette Category</label>
+                    <label className="font-medium text-stone-700">Silhouette Category</label>
                     <select
                       value={productForm.category}
                       onChange={(e) => setProductForm({ ...productForm, category: e.target.value as any })}
@@ -1238,7 +1238,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Badge Tag (Optional)</label>
+                    <label className="font-medium text-stone-700">Badge Tag (Optional)</label>
                     <input
                       type="text"
                       value={productForm.badge || ""}
@@ -1249,7 +1249,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Color Shade Name</label>
+                    <label className="font-medium text-stone-700">Color Shade Name</label>
                     <input
                       type="text"
                       value={productForm.colorName}
@@ -1260,7 +1260,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Color Hex Code</label>
+                    <label className="font-medium text-stone-700">Color Hex Code</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="color"
@@ -1278,7 +1278,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5 sm:col-span-2">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Primary Image URL</label>
+                    <label className="font-medium text-stone-700">Primary Image URL</label>
                     <input
                       type="text"
                       value={productForm.image}
@@ -1289,7 +1289,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5 sm:col-span-2">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Description</label>
+                    <label className="font-medium text-stone-700">Description</label>
                     <textarea
                       rows={3}
                       value={productForm.description}
@@ -1300,7 +1300,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5 sm:col-span-2">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Atelier Story</label>
+                    <label className="font-medium text-stone-700">Design Story</label>
                     <textarea
                       rows={2}
                       value={productForm.story || ""}
@@ -1311,7 +1311,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Dimensions</label>
+                    <label className="font-medium text-stone-700">Dimensions</label>
                     <input
                       type="text"
                       value={productForm.specs?.dimensions || ""}
@@ -1327,7 +1327,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Weight</label>
+                    <label className="font-medium text-stone-700">Weight</label>
                     <input
                       type="text"
                       value={productForm.specs?.weight || ""}
@@ -1343,7 +1343,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Leather Material</label>
+                    <label className="font-medium text-stone-700">Leather Material</label>
                     <input
                       type="text"
                       value={productForm.specs?.material || ""}
@@ -1359,7 +1359,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Hardware Accent</label>
+                    <label className="font-medium text-stone-700">Hardware Accent</label>
                     <input
                       type="text"
                       value={productForm.specs?.hardware || ""}
@@ -1375,7 +1375,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Strap Drop</label>
+                    <label className="font-medium text-stone-700">Strap Drop</label>
                     <input
                       type="text"
                       value={productForm.specs?.strapDrop || ""}
@@ -1391,7 +1391,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Closure Type</label>
+                    <label className="font-medium text-stone-700">Closure Type</label>
                     <input
                       type="text"
                       value={productForm.specs?.closure || ""}
@@ -1407,7 +1407,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-1.5 sm:col-span-2">
-                    <label className="font-semibold text-stone-700 uppercase tracking-wider">Capacity & Compartments</label>
+                    <label className="font-medium text-stone-700">Capacity & Compartments</label>
                     <input
                       type="text"
                       value={productForm.specs?.capacity || ""}
@@ -1457,7 +1457,7 @@ export default function AdminPage() {
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="px-6 py-2.5 rounded-full bg-[#462F1D] hover:bg-[#342214] text-white font-semibold uppercase tracking-wider transition shadow-sm disabled:opacity-50"
+                    className="px-6 py-2.5 rounded-full bg-[#462F1D] hover:bg-[#342214] text-white font-medium transition shadow-sm disabled:opacity-50"
                   >
                     {isPending ? "Saving..." : "Save Handbag"}
                   </button>
@@ -1473,7 +1473,7 @@ export default function AdminPage() {
             <div className="anora-printable-slip bg-white rounded-2xl sm:rounded-3xl border border-stone-200 max-w-xl w-full p-4 sm:p-8 space-y-4 sm:space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between border-b border-stone-100 pb-4">
                 <div>
-                  <span className="text-xs font-semibold uppercase font-mono tracking-widest text-[#462F1D]">COD Packing Slip</span>
+                  <span className="text-xs font-semibold font-mono text-[#462F1D]">COD Packing Slip</span>
                   <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
                     Order #{selectedOrder.orderNumber}
                   </h3>
@@ -1520,7 +1520,7 @@ export default function AdminPage() {
 
               {/* Items Breakdown */}
               <div className="space-y-3">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-500">
+                <h4 className="text-xs font-medium text-stone-500">
                   Parcel Contents ({selectedOrder.items.length})
                 </h4>
                 <div className="divide-y divide-stone-100 border border-stone-200 rounded-2xl overflow-hidden">

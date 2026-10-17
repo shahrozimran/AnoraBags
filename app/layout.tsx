@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     "designer handbags Karachi",
     "women leather bags Islamabad"
   ],
-  authors: [{ name: "Anora Atelier", url: "https://anorabags.com" }],
+  authors: [{ name: "Anora Bags", url: "https://anorabags.com" }],
   creator: "Anora Bags",
   publisher: "Anora Bags",
   formatDetection: {

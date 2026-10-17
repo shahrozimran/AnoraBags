@@ -73,7 +73,7 @@ export function Studio3DSection() {
           <div className="inline-flex items-center gap-3">
             <span className="h-px w-6 bg-[#ECE2D8]/40" />
             <span className="text-xs sm:text-sm font-sans font-medium text-[#ECE2D8]">
-              3D Interactive Atelier
+              3D Interactive Studio
             </span>
             <span className="h-px w-6 bg-[#ECE2D8]/40" />
           </div>
@@ -105,7 +105,7 @@ export function Studio3DSection() {
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center justify-between border-b border-[#3D291B] pb-3">
               <span className="font-sans text-white font-medium text-xs sm:text-sm">
-                Artisanal Components
+                Craftsmanship Details
               </span>
               <span className="text-xs text-[#ECE2D8]/75 font-sans">
                 Tap component to inspect
@@ -127,7 +127,7 @@ export function Studio3DSection() {
                   >
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2.5">
-                        <span className="text-[11px] font-sans font-semibold tracking-wider text-[#C5A880] bg-[#3D291B] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
+                        <span className="text-[11px] font-sans font-semibold text-[#C5A880] bg-[#3D291B] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                           {item.numeral}
                         </span>
                         <span className="text-xs font-sans font-medium text-[#ECE2D8]">

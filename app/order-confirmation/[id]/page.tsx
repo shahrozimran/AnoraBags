@@ -63,7 +63,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
               Thank You, {order.customerName.split(" ")[0]}
             </h1>
             <p className="text-sm sm:text-base text-[#ECE2D8]/90 font-light max-w-lg mx-auto mt-2 leading-relaxed">
-              Your handcrafted Anora order has been registered at our atelier. We are carefully preparing your silhouette for dispatch.
+              Your handcrafted Anora order has been registered. We are carefully preparing your bag for dispatch.
             </p>
 
             <div className="mt-6 inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-sm font-mono">

@@ -5,15 +5,13 @@ import Image from "next/image"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import {
-  ArrowRight,
-  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
   RotateCw,
   Box,
-  ShieldCheck,
-  Sparkles,
-  Check
+  ArrowUpRight,
+  Layers,
+  Sparkles
 } from "lucide-react"
 
 const Bag3DCanvas = dynamic(
@@ -21,10 +19,10 @@ const Bag3DCanvas = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full min-h-[440px] flex flex-col items-center justify-center bg-[#FAF6F1] rounded-2xl sm:rounded-3xl border border-[#E5DCD2] gap-3">
+      <div className="w-full h-full min-h-[480px] flex flex-col items-center justify-center bg-[#FAF6F1] rounded-2xl sm:rounded-3xl border border-[#E5DCD2] gap-3">
         <div className="w-7 h-7 border-2 border-[#462F1D] border-t-transparent rounded-full animate-spin" />
         <span className="text-xs font-medium text-[#462F1D] font-sans">
-          Loading 3D Studio...
+          Initializing 3D Studio...
         </span>
       </div>
     )
@@ -54,20 +52,20 @@ const HERO_VISUALS: HeroVisual[] = [
     originalPrice: "Rs. 8,990",
     badge: "Signature Bestseller",
     image: "/images/products/bordeaux-crossbody-hero.jpeg",
-    alt: "The Anora Bags Signature Bordeaux Flap Crossbody in rich wine pebbled calfskin",
+    alt: "The Anora Bags Signature Bordeaux Flap Crossbody on marble with baby's breath flowers and silk",
     productUrl: "/product/the-anora-bordeaux-flap-crossbody",
     colorName: "Rich Bordeaux Wine",
     colorHex: "#4A1525"
   },
   {
     id: "bordeaux-model",
-    title: "Maison Anora Editorial Lookbook",
+    title: "Anora Bags Editorial Lookbook",
     subtitle: "Campaign 2026 • Parisian Silhouette On-Model",
     price: "Rs. 6,990",
     originalPrice: "Rs. 8,990",
     badge: "Campaign Lookbook",
     image: "/images/products/bordeaux-crossbody-model.jpeg",
-    alt: "Editorial model carrying the Anora Bordeaux Flap Crossbody bag",
+    alt: "Editorial fashion model wearing the Anora Bordeaux Flap Crossbody with gold chain",
     productUrl: "/product/the-anora-bordeaux-flap-crossbody",
     colorName: "Rich Bordeaux Wine",
     colorHex: "#4A1525"
@@ -78,9 +76,9 @@ const HERO_VISUALS: HeroVisual[] = [
     subtitle: "Dual-Tone Italian Espresso & Saddle Cognac",
     price: "Rs. 8,490",
     originalPrice: "Rs. 10,990",
-    badge: "Limited Artisan Drop",
+    badge: "Limited Drop",
     image: "/images/products/cognac-espresso-satchel.jpeg",
-    alt: "The Anora Dua Satchel in espresso brown and cognac tan with rolled top handle",
+    alt: "The Anora Dua Satchel in espresso brown and saddle cognac with rolled top handle",
     productUrl: "/product/the-anora-dua-satchel",
     colorName: "Espresso & Cognac Tan",
     colorHex: "#3D251E"
@@ -88,10 +86,10 @@ const HERO_VISUALS: HeroVisual[] = [
   {
     id: "ivory-top-handle",
     title: "The Petit Ivory Top-Handle",
-    subtitle: "Sculptural Alabaster Smooth Calfskin & Silver Lock",
+    subtitle: "Sculptural Alabaster Smooth Calfskin",
     price: "Rs. 7,290",
     originalPrice: "Rs. 9,490",
-    badge: "New Arrival",
+    badge: "New Silhouette",
     image: "/images/products/ivory-top-handle.jpeg",
     alt: "The Petit Ivory Top-Handle Handbag with high-polish palladium hardware",
     productUrl: "/product/the-anora-petit-ivory-handbag",
@@ -101,23 +99,23 @@ const HERO_VISUALS: HeroVisual[] = [
   {
     id: "bordeaux-lifestyle",
     title: "Artisanal Edge & Dual Chain",
-    subtitle: "Solid Brass Ring-Lock Clasp & Microfiber Interior",
+    subtitle: "18k Brushed Gold Clasp & Saddle Stitching",
     price: "Rs. 6,990",
     originalPrice: "Rs. 8,990",
-    badge: "Atelier Details",
+    badge: "Craft Details",
     image: "/images/products/bordeaux-crossbody-lifestyle.jpeg",
-    alt: "Close-up craftsmanship details of the Anora Bordeaux Flap Crossbody",
+    alt: "Macro craftsmanship details of the Anora Bordeaux Flap Crossbody clasp and leather",
     productUrl: "/product/the-anora-bordeaux-flap-crossbody",
     colorName: "Rich Bordeaux Wine",
     colorHex: "#4A1525"
   },
   {
     id: "bordeaux-interior",
-    title: "Bespoke Accordion Architecture",
+    title: "Accordion Architecture",
     subtitle: "Triple Bellows Compartments with Center Security Zip",
     price: "Rs. 6,990",
     originalPrice: "Rs. 8,990",
-    badge: "Capacity & Interior",
+    badge: "Capacity",
     image: "/images/products/bordeaux-crossbody-interior.jpeg",
     alt: "Interior triple accordion compartments of the Anora Crossbody bag",
     productUrl: "/product/the-anora-bordeaux-flap-crossbody",
@@ -152,6 +150,17 @@ export function Hero() {
     return () => clearInterval(timer)
   }, [viewMode, isPaused, nextSlide])
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (viewMode === "3d") return
+      if (e.key === "ArrowLeft") prevSlide()
+      if (e.key === "ArrowRight") nextSlide()
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [viewMode, nextSlide, prevSlide])
+
   // Touch swipe support for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
     if (viewMode === "3d") return
@@ -166,9 +175,9 @@ export function Hero() {
 
   const handleTouchEnd = () => {
     if (viewMode === "3d" || touchStartXRef.current === null) return
-    if (touchDeltaXRef.current > 45) {
+    if (touchDeltaXRef.current > 40) {
       prevSlide()
-    } else if (touchDeltaXRef.current < -45) {
+    } else if (touchDeltaXRef.current < -40) {
       nextSlide()
     }
     touchStartXRef.current = null
@@ -177,217 +186,165 @@ export function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden bg-[#FAF6F1] pt-3 pb-8 sm:pt-6 sm:pb-12 md:pt-8 md:pb-16 border-b border-[#E5DCD2]"
+      className="relative overflow-hidden bg-[#FAF6F1] pt-3 pb-6 sm:pt-4 sm:pb-10 md:pt-6 md:pb-12 border-b border-[#E5DCD2]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      aria-label="Anora Luxury Bag Showcase"
     >
       {/* Ambient luxury lighting */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#ECE2D8]/45 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-[420px] h-[420px] rounded-full bg-[#462F1D]/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[#ECE2D8]/50 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-[450px] h-[450px] rounded-full bg-[#462F1D]/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-        {/* Header Bar Above Stage */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3 sm:mb-4 pb-2 border-b border-[#E5DCD2]/60">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-[#462F1D]" />
-            <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
-              Maison Anora · Autumn / Winter 2026
-            </span>
-          </div>
-
-          {/* Mode Switcher: Editorial Lookbook vs 3D Orbit */}
-          <div className="inline-flex items-center rounded-full bg-[#ECE2D8]/80 p-1 text-xs font-medium text-[#462F1D] self-start sm:self-auto shadow-2xs">
-            <button
-              onClick={() => setViewMode("photo")}
-              className={`px-3.5 py-1 sm:py-1.5 rounded-full transition-all duration-200 text-xs font-medium flex items-center gap-1.5 ${
-                viewMode === "photo"
-                  ? "bg-white text-[#23170F] shadow-xs font-semibold"
-                  : "hover:text-[#23170F]"
-              }`}
-            >
-              <span>Editorial Lookbook</span>
-              <span className="text-[11px] opacity-70">({HERO_VISUALS.length})</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode("3d")}
-              className={`px-3.5 py-1 sm:py-1.5 rounded-full transition-all duration-200 text-xs font-medium flex items-center gap-1.5 ${
-                viewMode === "3d"
-                  ? "bg-[#462F1D] text-[#FAF6F1] shadow-xs font-semibold"
-                  : "hover:text-[#23170F]"
-              }`}
-            >
-              <Box className="w-3.5 h-3.5" />
-              <span>Interactive 3D</span>
-              <span className="text-[11px] px-1.5 py-0.2 rounded-full bg-[#ECE2D8] text-[#462F1D] font-bold">
-                360°
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* Cinematic Product Visual Stage */}
+        {/* Cinematic Visual Stage — Visual First, Clean, Uncluttered */}
         <div
-          className="relative h-[420px] xs:h-[480px] sm:h-[540px] md:h-[620px] lg:h-[680px] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#E5DCD2] bg-[#F5EFE8] shadow-sm select-none"
+          className="relative w-full h-[58vh] min-h-[460px] max-h-[740px] xs:h-[62vh] sm:h-[68vh] md:h-[74vh] lg:h-[78vh] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#E5DCD2] bg-[#F5EFE8] shadow-md select-none group"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
+          {/* Top Bar Floating Controls — Shared across Photo & 3D */}
+          <div className="absolute top-3 inset-x-3 sm:top-5 sm:inset-x-5 flex items-center justify-between z-30 pointer-events-none">
+            {/* Visual Slide Index Pill */}
+            <div className="pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-white/20 text-white shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <span className="text-xs font-sans font-medium text-white/90">
+                0{activeIdx + 1} / 0{HERO_VISUALS.length}
+              </span>
+              <span className="hidden sm:inline-block text-white/50">·</span>
+              <span className="hidden sm:inline-block text-xs text-white/90 font-sans">
+                {activeVisual.badge}
+              </span>
+            </div>
+
+            {/* Dual Mode Switcher: Lookbook vs 3D Orbit */}
+            <div className="pointer-events-auto inline-flex items-center rounded-full bg-black/45 backdrop-blur-md border border-white/20 p-1 text-xs shadow-xs">
+              <button
+                onClick={() => setViewMode("photo")}
+                className={`px-3 py-1 rounded-full transition-all duration-200 text-xs font-medium ${
+                  viewMode === "photo"
+                    ? "bg-white text-[#23170F] font-semibold shadow-xs"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                Lookbook
+              </button>
+
+              <button
+                onClick={() => setViewMode("3d")}
+                className={`px-3 py-1 rounded-full transition-all duration-200 text-xs font-medium flex items-center gap-1.5 ${
+                  viewMode === "3d"
+                    ? "bg-[#462F1D] text-white font-semibold shadow-xs"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                <Box className="w-3.5 h-3.5" />
+                <span>3D Orbit</span>
+                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#ECE2D8] text-[#462F1D] font-bold">
+                  360°
+                </span>
+              </button>
+            </div>
+          </div>
+
           {viewMode === "photo" ? (
-            <div className="relative w-full h-full group">
-              {/* Product Hero Image */}
+            <div className="relative w-full h-full">
+              {/* Pristine Full-Res Product Image (Zero baked-in text) */}
               <Image
                 key={activeVisual.id}
                 src={activeVisual.image}
                 alt={activeVisual.alt}
                 fill
                 priority
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1280px"
-                className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.02]"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 95vw, 1280px"
+                className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.015]"
               />
 
-              {/* Luxury Vignette & Depth Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#23170F]/90 via-[#23170F]/20 to-[#23170F]/30 pointer-events-none" />
+              {/* Minimal Bottom Scrim for Text Contrast — Keeps the Bag Crystal Clear */}
+              <div className="absolute inset-x-0 bottom-0 h-44 sm:h-52 bg-gradient-to-t from-black/75 via-black/25 to-transparent pointer-events-none" />
 
-              {/* Top Editorial Floating Badges */}
-              <div className="absolute top-3 left-3 sm:top-5 sm:left-5 flex items-center gap-2 z-10">
-                <span className="text-xs font-medium text-white/95 bg-black/45 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 shadow-xs">
-                  Fig. 0{activeIdx + 1} · {activeVisual.badge}
-                </span>
-                <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-white/90 bg-black/35 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15">
-                  <span
-                    className="w-2.5 h-2.5 rounded-full border border-white/40"
-                    style={{ backgroundColor: activeVisual.colorHex }}
-                  />
-                  <span>{activeVisual.colorName}</span>
-                </span>
-              </div>
-
-              {/* Top-Right Quick 3D Switch Pill */}
-              <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-10">
-                <button
-                  onClick={() => setViewMode("3d")}
-                  className="flex items-center gap-1.5 text-xs font-sans font-medium text-white bg-black/45 hover:bg-[#462F1D] backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 transition-all duration-300 shadow-xs"
-                >
-                  <RotateCw className="w-3.5 h-3.5 animate-spin-slow" />
-                  <span>Inspect in 3D</span>
-                  <span className="text-[11px] px-1.5 py-0.5 rounded-full bg-[#ECE2D8] text-[#462F1D] font-bold">
-                    360°
-                  </span>
-                </button>
-              </div>
-
-              {/* Prev / Next Slide Arrows */}
+              {/* Minimal Prev / Next Navigation Arrows */}
               <button
                 onClick={prevSlide}
-                aria-label="Previous product visual"
-                className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-black/30 hover:bg-white text-white hover:text-[#23170F] backdrop-blur-md border border-white/20 hover:border-white flex items-center justify-center transition-all duration-300 shadow-md z-10 group"
+                aria-label="Previous bag image"
+                className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/35 hover:bg-white text-white hover:text-[#23170F] backdrop-blur-md border border-white/20 hover:border-white flex items-center justify-center transition-all duration-300 shadow-md z-20 group/btn"
               >
-                <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
+                <ChevronLeft className="w-5 h-5 transition-transform group-hover/btn:-translate-x-0.5" />
               </button>
 
               <button
                 onClick={nextSlide}
-                aria-label="Next product visual"
-                className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-black/30 hover:bg-white text-white hover:text-[#23170F] backdrop-blur-md border border-white/20 hover:border-white flex items-center justify-center transition-all duration-300 shadow-md z-10 group"
+                aria-label="Next bag image"
+                className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/35 hover:bg-white text-white hover:text-[#23170F] backdrop-blur-md border border-white/20 hover:border-white flex items-center justify-center transition-all duration-300 shadow-md z-20 group/btn"
               >
-                <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
+                <ChevronRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-0.5" />
               </button>
 
-              {/* Bottom Minimalist Floating Editorial Card */}
-              <div className="absolute bottom-3 inset-x-3 sm:bottom-6 sm:inset-x-6 z-10">
-                <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-[#23170F]/70 backdrop-blur-md border border-white/20 text-[#FAF6F1] shadow-xl">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
-                    {/* Minimalist Title & Price */}
-                    <div className="space-y-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-medium text-[#ECE2D8]">
-                          {activeVisual.badge}
+              {/* Minimal Understated Luxury Title & Action — Floating Cleanly at Bottom */}
+              <div className="absolute bottom-3 inset-x-3 sm:bottom-6 sm:inset-x-6 z-20">
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 text-white">
+                  {/* Bag Identity & Price */}
+                  <div className="space-y-1">
+                    <span className="block text-xs font-sans text-[#ECE2D8]/90 font-medium">
+                      Anora Bags · Autumn / Winter 2026
+                    </span>
+                    <h1 className="font-serif text-xl xs:text-2xl sm:text-3xl lg:text-4xl font-light text-white drop-shadow-xs">
+                      {activeVisual.title}
+                    </h1>
+                    <div className="flex items-center gap-2.5 pt-0.5">
+                      <span className="font-sans text-base sm:text-xl font-semibold text-white tabular-nums">
+                        {activeVisual.price}
+                      </span>
+                      {activeVisual.originalPrice && (
+                        <span className="text-xs sm:text-sm text-white/55 line-through">
+                          {activeVisual.originalPrice}
                         </span>
-                        <span className="text-[#ECE2D8]/40">·</span>
-                        <span className="text-xs text-[#ECE2D8]/80 font-normal">
-                          100% Cash On Delivery
-                        </span>
-                      </div>
-
-                      <h1 className="font-serif text-lg xs:text-xl sm:text-2xl md:text-3xl font-light text-white truncate">
-                        {activeVisual.title}
-                      </h1>
-
-                      <p className="text-xs sm:text-sm text-[#ECE2D8]/85 font-light line-clamp-1">
+                      )}
+                      <span className="text-white/30 text-xs">·</span>
+                      <span className="text-xs text-[#ECE2D8]/90 font-light hidden xs:inline">
                         {activeVisual.subtitle}
-                      </p>
+                      </span>
                     </div>
+                  </div>
 
-                    {/* Price & Primary Call To Action */}
-                    <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-4 shrink-0 pt-2 md:pt-0 border-t border-white/10 md:border-t-0">
-                      <div className="text-left md:text-right">
-                        <div className="font-sans text-lg sm:text-2xl font-semibold text-white tabular-nums">
-                          {activeVisual.price}
-                        </div>
-                        {activeVisual.originalPrice && (
-                          <div className="text-xs text-white/50 line-through">
-                            {activeVisual.originalPrice}
-                          </div>
-                        )}
-                      </div>
+                  {/* Understated Action Buttons */}
+                  <div className="flex items-center gap-2.5 shrink-0 pt-1 sm:pt-0">
+                    <Link
+                      href={activeVisual.productUrl}
+                      className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white hover:bg-[#FAF6F1] text-[#23170F] text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-1.5 group/link"
+                    >
+                      <span>Explore Bag</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                    </Link>
 
-                      <div className="flex items-center gap-2">
-                        <Link
-                          href={activeVisual.productUrl}
-                          className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#FAF6F1] hover:bg-white text-[#23170F] text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-1.5 group shrink-0"
-                        >
-                          <span>Discover Bag</span>
-                          <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </Link>
-
-                        <Link
-                          href="/shop"
-                          className="hidden sm:inline-flex px-4 py-2.5 sm:py-3 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-medium transition border border-white/20 shrink-0"
-                        >
-                          All Bags
-                        </Link>
-                      </div>
-                    </div>
+                    <button
+                      onClick={() => setViewMode("3d")}
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-black/40 hover:bg-black/60 text-white text-xs sm:text-sm font-medium backdrop-blur-md border border-white/20 transition-all duration-300"
+                    >
+                      <RotateCw className="w-3.5 h-3.5 animate-spin-slow" />
+                      <span className="hidden sm:inline">Inspect 3D</span>
+                      <span className="sm:hidden">3D</span>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           ) : (
-            /* 3D WebGL Spatial Orbit Stage */
-            <div className="relative w-full h-full">
+            /* 3D WebGL Interactive Bag Canvas */
+            <div className="relative w-full h-full bg-[#FAF6F1]">
               <Bag3DCanvas
                 initialColor="#462F1D"
                 interactive={true}
                 className="w-full h-full"
                 showControls={true}
               />
-
-              {/* Close 3D / Return to Photography Button */}
-              <button
-                onClick={() => setViewMode("photo")}
-                className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 px-3.5 py-1.5 rounded-full bg-white/95 text-[#23170F] hover:bg-white text-xs font-medium border border-[#E5DCD2] shadow-md transition"
-              >
-                Back to Lookbook
-              </button>
             </div>
           )}
         </div>
 
-        {/* Interactive Visual Thumbnail Strip */}
-        <div className="mt-4 sm:mt-5">
-          <div className="flex items-center justify-between mb-2 px-1">
-            <span className="text-xs font-sans text-[#462F1D] font-medium">
-              Select silhouette:
-            </span>
-            <div className="flex items-center gap-1 text-xs text-[#462F1D]/80 font-sans">
-              <span>{activeIdx + 1}</span>
-              <span>/</span>
-              <span>{HERO_VISUALS.length}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none">
+        {/* Visual-First Miniature Bag Showcase Gallery */}
+        <div className="mt-3 sm:mt-5">
+          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-1 scrollbar-none">
             {HERO_VISUALS.map((item, idx) => {
               const isActive = viewMode === "photo" && activeIdx === idx
               return (
@@ -397,13 +354,13 @@ export function Hero() {
                     setActiveIdx(idx)
                     setViewMode("photo")
                   }}
-                  className={`group relative shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 text-left cursor-pointer ${
+                  className={`group relative shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "border-[#462F1D] ring-2 ring-[#462F1D]/30 scale-102 shadow-sm"
-                      : "border-[#E5DCD2] opacity-75 hover:opacity-100 hover:border-[#462F1D]/50"
+                      : "border-[#E5DCD2] opacity-75 hover:opacity-100 hover:border-[#462F1D]/60"
                   }`}
+                  aria-label={`View silhouette ${idx + 1}: ${item.title}`}
                   title={item.title}
-                  aria-label={`View ${item.title}`}
                 >
                   <Image
                     src={item.image}
@@ -414,7 +371,7 @@ export function Hero() {
                   />
                   <div
                     className={`absolute inset-0 transition-opacity ${
-                      isActive ? "bg-transparent" : "bg-black/15 group-hover:bg-transparent"
+                      isActive ? "bg-transparent" : "bg-black/10 group-hover:bg-transparent"
                     }`}
                   />
                   <div className="absolute bottom-1 right-1 px-1 rounded-sm bg-black/60 text-[9px] text-white font-sans font-medium">
@@ -424,7 +381,7 @@ export function Hero() {
               )
             })}
 
-            {/* 3D Interactive Thumbnail Button */}
+            {/* 3D Orbit Shortcut Tile */}
             <button
               onClick={() => setViewMode("3d")}
               className={`shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 flex flex-col items-center justify-center gap-1 transition-all duration-200 cursor-pointer ${
@@ -432,8 +389,8 @@ export function Hero() {
                   ? "border-[#462F1D] bg-[#462F1D] text-[#FAF6F1] ring-2 ring-[#462F1D]/30 shadow-sm"
                   : "border-[#E5DCD2] bg-[#ECE2D8]/50 hover:bg-[#ECE2D8] text-[#462F1D]"
               }`}
-              title="Launch 3D Interactive Atelier"
-              aria-label="Launch 3D Interactive Atelier"
+              aria-label="Launch 3D Interactive Studio"
+              title="Launch 3D Interactive Studio"
             >
               <RotateCw className="w-4 h-4" />
               <span className="text-[10px] font-sans font-semibold">
@@ -443,54 +400,30 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Minimal Understated Luxury Trust Ledger */}
-        <div className="mt-5 sm:mt-8 pt-4 sm:pt-6 border-t border-[#E5DCD2] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-[#23170F]">
-          <div className="flex items-center gap-2.5 py-1">
+        {/* Minimal Understated Luxury Trust Ledger — Single Horizontal Line */}
+        <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-[#E5DCD2]/70 flex flex-wrap items-center justify-between gap-y-2 gap-x-4 text-xs text-[#462F1D]/85 font-sans">
+          <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#462F1D] shrink-0" />
-            <div className="min-w-0">
-              <span className="block text-xs sm:text-sm font-medium text-[#23170F] truncate">
-                100% Cash On Delivery
-              </span>
-              <span className="text-xs text-[#462F1D]/80 block truncate">
-                Nationwide across Pakistan
-              </span>
-            </div>
+            <span className="font-medium text-[#23170F]">100% Cash On Delivery</span>
+            <span className="text-[#462F1D]/60 hidden md:inline">Nationwide</span>
           </div>
 
-          <div className="flex items-center gap-2.5 py-1">
+          <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#462F1D] shrink-0" />
-            <div className="min-w-0">
-              <span className="block text-xs sm:text-sm font-medium text-[#23170F] truncate">
-                Doorstep Inspection
-              </span>
-              <span className="text-xs text-[#462F1D]/80 block truncate">
-                Verify before payment
-              </span>
-            </div>
+            <span className="font-medium text-[#23170F]">Doorstep Inspection</span>
+            <span className="text-[#462F1D]/60 hidden md:inline">Verify before payment</span>
           </div>
 
-          <div className="flex items-center gap-2.5 py-1">
+          <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#462F1D] shrink-0" />
-            <div className="min-w-0">
-              <span className="block text-xs sm:text-sm font-medium text-[#23170F] truncate">
-                7-Day Home Privilege
-              </span>
-              <span className="text-xs text-[#462F1D]/80 block truncate">
-                Hassle-free doorstep returns
-              </span>
-            </div>
+            <span className="font-medium text-[#23170F]">7-Day Doorstep Returns</span>
+            <span className="text-[#462F1D]/60 hidden md:inline">Unconditional guarantee</span>
           </div>
 
-          <div className="flex items-center gap-2.5 py-1">
+          <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#462F1D] shrink-0" />
-            <div className="min-w-0">
-              <span className="block text-xs sm:text-sm font-medium text-[#23170F] truncate">
-                Full-Grain Calfskin
-              </span>
-              <span className="text-xs text-[#462F1D]/80 block truncate">
-                18k brushed gold hardware
-              </span>
-            </div>
+            <span className="font-medium text-[#23170F]">Full-Grain Calfskin</span>
+            <span className="text-[#462F1D]/60 hidden md:inline">18k brushed gold hardware</span>
           </div>
         </div>
       </div>

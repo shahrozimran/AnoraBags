@@ -145,8 +145,8 @@ export default function TrackOrderPage() {
                       }`}>
                         <Package className="w-5 h-5" />
                       </div>
-                      <span className="font-serif font-normal text-sm sm:text-base text-[#23170F]">Atelier Prep</span>
-                      <span className="text-xs sm:text-sm text-[#462F1D] font-normal">Quality boxed</span>
+                      <span className="font-serif font-normal text-sm sm:text-base text-[#23170F]">Preparing Order</span>
+                      <span className="text-xs sm:text-sm text-[#462F1D] font-normal">Quality inspected</span>
                     </div>
 
                     <div className="flex flex-col items-center gap-2">
@@ -189,12 +189,12 @@ export default function TrackOrderPage() {
                     {[
                       {
                         title: "Confirmed",
-                        desc: "Order logged at atelier",
+                        desc: "Order logged",
                         icon: CheckCircle2,
                         active: true
                       },
                       {
-                        title: "Atelier Prep",
+                        title: "Preparing Order",
                         desc: "Quality inspected & packaged",
                         icon: Package,
                         active: ["Processing", "Dispatched", "Out for Delivery", "Delivered"].includes(order.orderStatus)

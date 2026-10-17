@@ -108,7 +108,7 @@ export default function CheckoutPage() {
               <ShoppingBag className="w-7 h-7 stroke-1" />
             </div>
             <div className="space-y-1.5">
-              <h2 className="font-serif text-2xl font-light text-[#23170F]">Your atelier bag is empty</h2>
+              <h2 className="font-serif text-2xl font-light text-[#23170F]">Your shopping bag is empty</h2>
               <p className="text-sm text-[#462F1D] max-w-sm mx-auto font-light leading-relaxed">
                 Please select a handcrafted leather silhouette from our permanent collection to continue.
               </p>
@@ -149,7 +149,7 @@ export default function CheckoutPage() {
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
                 <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">I</span>
+                    <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">I</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Client Particulars
                     </h2>
@@ -212,7 +212,7 @@ export default function CheckoutPage() {
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
                 <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">II</span>
+                    <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">II</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Doorstep Shipping Address
                     </h2>
@@ -314,7 +314,7 @@ export default function CheckoutPage() {
               <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-4 sm:space-y-5">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">III</span>
+                    <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">III</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide whitespace-nowrap">
                       Payment Privilege
                     </h2>

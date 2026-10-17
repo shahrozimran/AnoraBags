@@ -199,7 +199,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               <div className="flex items-center gap-3">
                 <span className="h-px w-6 bg-[#462F1D]/40" />
                 <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
-                  {product.category} · Handcrafted Atelier
+                  {product.category} · Handcrafted Leather
                 </span>
               </div>
 
@@ -211,11 +211,11 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 "{product.tagline}"
               </p>
 
-              {/* Minimalist Patron Rating */}
+              {/* Minimalist Customer Rating */}
               <div className="flex items-center gap-2.5 pt-1 text-sm text-[#462F1D]">
-                <span className="font-semibold tracking-wider">★ {product.rating}</span>
+                <span className="font-semibold">★ {product.rating}</span>
                 <span className="opacity-40">•</span>
-                <span className="text-sm font-normal">({product.reviewCount} verified patron reviews)</span>
+                <span className="text-sm font-normal">({product.reviewCount} verified customer reviews)</span>
               </div>
             </div>
 
@@ -311,7 +311,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                 className="w-full py-4 px-8 rounded-full bg-transparent hover:bg-[#FAF6F1] text-[#23170F] border border-[#462F1D]/40 hover:border-[#462F1D] font-sans font-medium text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2.5"
               >
                 <ShoppingBag className="w-4 h-4 text-[#462F1D]" />
-                <span>Add to Atelier Bag</span>
+                <span>Add to Bag</span>
               </button>
             </div>
 
@@ -738,7 +738,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
                     {reviews.map((rev) => (
                       <div key={rev.id} className="p-4 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] space-y-2">
                         <div className="flex items-center justify-between text-xs sm:text-sm">
-                          <span className="text-[#462F1D] font-medium">5.0 ★ Verified Patron</span>
+                          <span className="text-[#462F1D] font-medium">5.0 ★ Verified Customer</span>
                           <span className="text-[#462F1D] font-normal">{rev.location}</span>
                         </div>
                         <p className="font-serif font-normal text-base text-[#23170F]">"{rev.title}"</p>
@@ -780,7 +780,7 @@ export function ProductDetail({ product, reviews = [] }: ProductDetailProps) {
               onClick={handleBuyNowCOD}
               className="px-4 py-2.5 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-xs font-sans font-medium transition shadow-xs whitespace-nowrap"
             >
-              Order COD
+              Buy Now (COD)
             </button>
           </div>
         </div>

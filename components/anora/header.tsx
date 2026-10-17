@@ -25,7 +25,7 @@ export function Header() {
       <div className="bg-[#23170F] text-[#ECE2D8] text-xs font-sans py-2 px-3 sm:px-4 border-b border-[#3D291B]/60 select-none overflow-hidden">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <span className="hidden md:inline-block text-[#ECE2D8]/85 font-normal">
-            Maison Anora · Full-Grain Calfskin Leather
+            Anora Bags · Full-Grain Calfskin Leather
           </span>
           <div className="flex-1 text-center font-normal truncate px-2 min-w-0">
             <span className="truncate inline-block max-w-full text-xs">
@@ -102,7 +102,7 @@ export function Header() {
 
           {/* Right Action Icons & Editorial Links */}
           <div className="flex items-center gap-4 sm:gap-6">
-            <nav className="hidden xl:flex items-center gap-6 text-sm font-medium text-[#23170F]/80">
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-medium text-[#23170F]/80">
               <Link
                 href="/about"
                 className="hover:text-[#462F1D] transition-colors hover-editorial-line py-1"
@@ -195,7 +195,7 @@ export function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between hover:text-[#462F1D]"
               >
-                <span>Our Story & Atelier</span>
+                <span>Our Story</span>
                 <ArrowUpRight className="w-4 h-4 opacity-50" />
               </Link>
               <Link
@@ -203,7 +203,7 @@ export function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="py-3 border-b border-[#E5DCD2]/70 flex items-center justify-between hover:text-[#462F1D]"
               >
-                <span>Client Concierge</span>
+                <span>Contact</span>
                 <ArrowUpRight className="w-4 h-4 opacity-50" />
               </Link>
               <Link
@@ -211,7 +211,7 @@ export function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="py-3 flex items-center justify-between hover:text-[#462F1D]"
               >
-                <span>Track Order (COD)</span>
+                <span>Track Order</span>
                 <ArrowUpRight className="w-4 h-4 opacity-50" />
               </Link>
             </nav>

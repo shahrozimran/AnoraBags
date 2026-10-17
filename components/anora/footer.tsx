@@ -12,7 +12,7 @@ export function Footer() {
         <div className="pb-16 border-b border-[#3D291B]/80 grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="space-y-2.5">
             <div className="flex items-center gap-2.5">
-              <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
+              <span className="text-xs font-sans font-semibold text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 01
               </span>
               <h4 className="text-sm sm:text-base font-medium text-white">
@@ -26,7 +26,7 @@ export function Footer() {
 
           <div className="space-y-2.5">
             <div className="flex items-center gap-2.5">
-              <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
+              <span className="text-xs font-sans font-semibold text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 02
               </span>
               <h4 className="text-sm sm:text-base font-medium text-white">
@@ -40,7 +40,7 @@ export function Footer() {
 
           <div className="space-y-2.5">
             <div className="flex items-center gap-2.5">
-              <span className="text-xs font-sans font-semibold tracking-wider text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
+              <span className="text-xs font-sans font-semibold text-[#C5A880] bg-[#2E1E14] px-2.5 py-0.5 rounded-full border border-[#C5A880]/30 shrink-0">
                 03
               </span>
               <h4 className="text-sm sm:text-base font-medium text-white">
@@ -66,7 +66,7 @@ export function Footer() {
             </p>
 
             <div className="pt-2 text-sm text-[#ECE2D8]/90 space-y-1 font-light">
-              <p>Maison Concierge: concierge@anorabags.com</p>
+              <p>Client Concierge: concierge@anorabags.com</p>
               <p>Direct WhatsApp: +92 300 1234567</p>
             </div>
           </div>
@@ -99,7 +99,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/#studio3d" className="hover-editorial-line text-[#ECE2D8] transition">
-                  3D Spatial Atelier
+                  3D Spatial Studio
                 </Link>
               </li>
             </ul>
@@ -118,17 +118,17 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/track-order" className="hover-editorial-line hover:text-white transition">
-                  Track Parcel (COD)
+                  Track Order (COD)
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover-editorial-line hover:text-white transition">
-                  The Maison Story
+                  Our Story
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover-editorial-line hover:text-white transition">
-                  Private Concierge
+                  Client Concierge
                 </Link>
               </li>
               <li>
@@ -155,7 +155,7 @@ export function Footer() {
 
         {/* Bottom Copyright */}
         <div className="pt-8 border-t border-[#3D291B] text-xs font-sans text-[#ECE2D8]/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <p>© {new Date().getFullYear()} Maison Anora Bags. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Anora Bags. All rights reserved.</p>
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2 text-[#ECE2D8]/85 text-xs font-normal">
             <Link href="/refund-policy" className="hover:text-white transition whitespace-nowrap">
               7-Day Privilege

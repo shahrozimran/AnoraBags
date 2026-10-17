@@ -33,7 +33,7 @@ export function BrandStory() {
                       "Quiet luxury is felt in the weight of the brass and the softness of the grain."
                     </p>
                     <p className="text-xs font-sans text-white/80 font-medium">
-                      Maison Anora Atelier
+                      Anora Design Studio
                     </p>
                   </div>
                 </div>
@@ -42,7 +42,7 @@ export function BrandStory() {
               {/* Minimalist Caption Card */}
               <div className="absolute -bottom-6 -right-4 sm:-right-6 p-6 rounded-xl bg-[#FAF6F1] border border-[#E5DCD2] shadow-xl max-w-xs hidden sm:block">
                 <span className="text-xs font-sans font-medium text-[#462F1D] block mb-1.5">
-                  Atelier Philosophy
+                  Design Philosophy
                 </span>
                 <p className="text-sm text-[#3D291B] font-normal leading-relaxed">
                   Crafted for the woman who demands aesthetic restraint without sacrificing daily practical capacity.
@@ -74,7 +74,7 @@ export function BrandStory() {
             <div className="space-y-5 pt-4 border-t border-[#E5DCD2]">
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
+                  <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     01
                   </span>
                   <h4 className="text-sm sm:text-base font-semibold text-[#23170F]">
@@ -88,7 +88,7 @@ export function BrandStory() {
 
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
+                  <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     02
                   </span>
                   <h4 className="text-sm sm:text-base font-semibold text-[#23170F]">
@@ -102,7 +102,7 @@ export function BrandStory() {
 
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-sans font-semibold tracking-wider text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
+                  <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20 shrink-0">
                     03
                   </span>
                   <h4 className="text-sm sm:text-base font-semibold text-[#23170F]">
