@@ -6,6 +6,7 @@ import { canonicalCart, CartValidationError, checkoutSchema } from "@/lib/securi
 import { hashToken, randomToken } from "@/lib/security/crypto"
 import { grantOrderAccess } from "@/lib/security/order-access"
 import { clientKey, consumeLimit } from "@/lib/security/rate-limit"
+import { sendAdminOrderNotification } from "@/lib/email"
 import { ZodError } from "zod"
 
 export interface PlaceOrderResult {
@@ -30,6 +31,12 @@ export async function placeOrderAction(formData: FormData, cartItems: OrderItem[
       subtotal, shippingFee: 0, totalAmount: subtotal, accessTokenHash: hashToken(token),
     })
     await grantOrderAccess(order.orderNumber, token)
+
+    // Fire-and-forget: send admin notification email without blocking the response
+    sendAdminOrderNotification(order).catch((err) =>
+      console.error("[Anora Email] Background notification failed:", err)
+    )
+
     return { success: true, orderNumber: order.orderNumber, orderId: order.id, message: "Order placed successfully via Cash on Delivery!" }
   } catch (error) {
     if (error instanceof CartValidationError) return { success: false, message: error.message }
@@ -37,3 +44,4 @@ export async function placeOrderAction(formData: FormData, cartItems: OrderItem[
     return { success: false, message: "We could not place your order. Please try again or contact us." }
   }
 }
+
