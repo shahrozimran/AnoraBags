@@ -83,21 +83,21 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-[#FAF6F1] flex flex-col justify-between">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 w-full">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-20 w-full">
         {/* Title */}
-        <div className="mb-12 text-center sm:text-left space-y-2">
-          <div className="flex items-center gap-3">
+        <div className="mb-8 sm:mb-12 text-center sm:text-left space-y-2">
+          <div className="flex items-center justify-center sm:justify-start gap-3">
             <span className="h-px w-6 bg-[#462F1D]/40" />
             <span className="text-xs sm:text-sm font-sans font-medium text-[#462F1D]">
               Doorstep Checkout
             </span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.02em] text-[#23170F]">
+          <h1 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.02em] text-[#23170F]">
             Doorstep Concierge <span className="italic font-normal text-[#462F1D]">Order</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-[#462F1D] font-light max-w-xl leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-[#462F1D] font-light max-w-xl leading-relaxed mx-auto sm:mx-0">
             100% Cash On Delivery. Zero advance payment or credit card required. Inspect parcel condition in person before settling with the courier.
           </p>
         </div>
@@ -124,44 +124,44 @@ export default function CheckoutPage() {
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start w-full">
             {/* Mobile Quick Order Summary (Streamlined single-column mobile view) */}
-            <div className="lg:hidden col-span-12 p-4 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs flex items-center justify-between">
+            <div className="lg:hidden col-span-1 w-full p-4 rounded-2xl bg-white border border-[#E5DCD2] shadow-2xs flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#ECE2D8] flex items-center justify-center text-[#462F1D]">
+                <div className="w-10 h-10 rounded-full bg-[#ECE2D8] flex items-center justify-center text-[#462F1D] shrink-0">
                   <ShoppingBag className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs font-sans text-[#462F1D] font-medium">Selected Handbag</span>
+                  <span className="text-xs font-sans text-[#462F1D] font-medium block">Selected Handbag</span>
                   <p className="font-serif text-base font-normal text-[#23170F]">
                     {items.length} silhouette{items.length > 1 ? "s" : ""} • Rs. {total.toLocaleString()}
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/80 px-3 py-1 rounded-full">
+              <span className="text-xs font-sans font-medium text-[#462F1D] bg-[#ECE2D8]/80 px-2.5 sm:px-3 py-1 rounded-full shrink-0">
                 Free Delivery (COD)
               </span>
             </div>
 
             {/* Left 7 Columns: Client Details & Delivery Info */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+            <div className="col-span-1 w-full lg:col-span-7 space-y-6 sm:space-y-8">
               {/* Step I: Client Details */}
-              <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
-                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
+              <div className="bg-white p-4 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
                     <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">I</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Client Particulars
                     </h2>
                   </div>
-                  <span className="text-xs font-sans text-[#462F1D] font-medium self-start xs:self-auto">
+                  <span className="text-xs font-sans text-[#462F1D] font-medium self-start sm:self-auto">
                     * Required for Dispatch
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div className="space-y-1.5 sm:col-span-2">
-                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F]">
+                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F] block">
                       Full Name <span className="text-[#462F1D] font-bold">*</span>
                     </label>
                     <input
@@ -209,22 +209,22 @@ export default function CheckoutPage() {
               </div>
 
               {/* Step II: Delivery Address */}
-              <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
-                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
+              <div className="bg-white p-4 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-5 sm:space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
                     <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">II</span>
                     <h2 className="font-serif text-lg sm:text-xl font-normal text-[#23170F] tracking-wide">
                       Doorstep Shipping Address
                     </h2>
                   </div>
-                  <span className="text-xs font-sans text-[#462F1D] font-medium bg-[#ECE2D8]/80 px-3 py-1 rounded-full whitespace-nowrap self-start xs:self-auto">
+                  <span className="text-xs font-sans text-[#462F1D] font-medium bg-[#ECE2D8]/80 px-3 py-1 rounded-full whitespace-nowrap self-start sm:self-auto">
                     Express Nationwide
                   </span>
                 </div>
 
                 <div className="space-y-4 sm:space-y-5">
                   <div className="space-y-1.5">
-                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F]">
+                    <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F] block">
                       Street Address & Residence / Office <span className="text-[#462F1D] font-bold">*</span>
                     </label>
                     <input
@@ -255,7 +255,7 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F]">
+                      <label className="text-xs sm:text-sm font-sans font-medium text-[#23170F] block">
                         City <span className="text-[#462F1D] font-bold">*</span>
                       </label>
                       <input
@@ -311,7 +311,7 @@ export default function CheckoutPage() {
               </div>
 
               {/* Step III: Payment Method (Cash On Delivery Only) */}
-              <div className="bg-white p-4 xs:p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-4 sm:space-y-5">
+              <div className="bg-white p-4 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-2xs space-y-4 sm:space-y-5">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E5DCD2]/70 pb-3 sm:pb-4">
                   <div className="flex items-center gap-2.5">
                     <span className="text-xs font-sans font-semibold text-[#462F1D] bg-[#ECE2D8] px-2.5 py-0.5 rounded-full border border-[#462F1D]/20">III</span>
@@ -325,7 +325,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="p-4 sm:p-5 rounded-xl border border-[#462F1D]/40 bg-[#ECE2D8]/20 space-y-3">
-                  <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2.5">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                     <div>
                       <h4 className="text-base font-serif font-normal text-[#23170F]">
                         Cash On Delivery (COD)
@@ -334,7 +334,7 @@ export default function CheckoutPage() {
                         Pay exact cash to courier upon doorstep parcel inspection.
                       </p>
                     </div>
-                    <span className="self-start xs:self-auto shrink-0 whitespace-nowrap text-xs font-sans text-[#462F1D] bg-[#ECE2D8] px-3.5 py-1.5 rounded-full font-medium">
+                    <span className="self-start sm:self-auto shrink-0 whitespace-nowrap text-xs font-sans text-[#462F1D] bg-[#ECE2D8] px-3.5 py-1.5 rounded-full font-medium">
                       Zero Advance Fee
                     </span>
                   </div>
@@ -358,10 +358,10 @@ export default function CheckoutPage() {
             </div>
 
             {/* Right 5 Columns: Atelier Order Summary */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-sm space-y-6 sticky top-24">
+            <div className="col-span-1 w-full lg:col-span-5 space-y-6">
+              <div className="bg-white p-4 sm:p-8 rounded-2xl border border-[#E5DCD2] shadow-sm space-y-6 static lg:sticky lg:top-24">
                 <div className="flex items-center justify-between border-b border-[#E5DCD2] pb-4">
-                  <h3 className="font-serif text-xl font-normal text-[#23170F]">Order Summary</h3>
+                  <h3 className="font-serif text-lg sm:text-xl font-normal text-[#23170F]">Order Summary</h3>
                   <span className="text-xs font-sans text-[#462F1D] font-medium">
                     {items.length} item(s)
                   </span>
@@ -370,16 +370,16 @@ export default function CheckoutPage() {
                 {/* Items preview */}
                 <div className="divide-y divide-[#E5DCD2]/60 max-h-64 overflow-y-auto pr-1">
                   {items.map((item) => (
-                    <div key={`${item.id}-${item.color}`} className="py-3.5 flex items-center gap-3.5 first:pt-0">
-                      <div className="relative w-14 h-16 rounded-md overflow-hidden bg-[#FAF6F1] shrink-0 border border-[#E5DCD2]">
+                    <div key={`${item.id}-${item.color}`} className="py-3 flex items-center gap-3 sm:gap-3.5 first:pt-0">
+                      <div className="relative w-12 h-14 sm:w-14 sm:h-16 rounded-md overflow-hidden bg-[#FAF6F1] shrink-0 border border-[#E5DCD2]">
                         <Image src={item.image} alt={item.name} fill className="object-cover" />
                       </div>
-                      <div className="flex-1 text-sm">
-                        <p className="font-serif font-normal text-sm sm:text-base text-[#23170F] line-clamp-1">{item.name}</p>
-                        <p className="text-[#462F1D] text-xs mt-0.5">Shade: {item.color}</p>
+                      <div className="flex-1 min-w-0 text-sm">
+                        <p className="font-serif font-normal text-sm sm:text-base text-[#23170F] truncate">{item.name}</p>
+                        <p className="text-[#462F1D] text-xs mt-0.5 truncate">Shade: {item.color}</p>
                         <p className="text-[#462F1D] text-xs">Qty: {item.quantity}</p>
                       </div>
-                      <span className="text-sm font-sans font-semibold tabular-nums text-[#23170F] whitespace-nowrap">
+                      <span className="text-xs sm:text-sm font-sans font-semibold tabular-nums text-[#23170F] shrink-0 whitespace-nowrap pl-2">
                         Rs. {(item.price * item.quantity).toLocaleString()}
                       </span>
                     </div>
@@ -406,7 +406,7 @@ export default function CheckoutPage() {
                     <span className="font-sans text-sm font-semibold text-[#23170F]">
                       Total Due at Doorstep
                     </span>
-                    <div className="flex items-baseline gap-1.5">
+                    <div className="flex items-baseline gap-1.5 shrink-0">
                       <span className="text-sm font-sans font-medium text-[#462F1D]">Rs.</span>
                       <span className="font-sans text-xl sm:text-2xl font-bold tabular-nums text-[#23170F]">
                         {total.toLocaleString()}
@@ -435,13 +435,13 @@ export default function CheckoutPage() {
                   ) : (
                     <>
                       <span>Confirm Cash On Delivery Order</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
                     </>
                   )}
                 </button>
 
                 {/* Assurance details */}
-                <div className="p-4.5 rounded-xl bg-[#FAF6F1] border border-[#462F1D]/25 space-y-2 text-xs sm:text-sm text-[#3D291B] shadow-2xs">
+                <div className="p-4 sm:p-4.5 rounded-xl bg-[#FAF6F1] border border-[#462F1D]/25 space-y-2 text-xs sm:text-sm text-[#3D291B] shadow-2xs">
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-[#462F1D] shrink-0" />
                     <h4 className="font-serif text-sm font-semibold text-[#23170F]">

@@ -19,9 +19,9 @@ export function CartDrawer() {
         className="absolute inset-0 bg-[#23170F]/50 backdrop-blur-xs transition-opacity duration-300"
       />
 
-      {/* Drawer Panel */}
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-4 sm:pl-12">
-        <div className="w-screen max-w-md bg-[#FAF6F1] border-l border-[#E5DCD2] shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300">
+      {/* Drawer Panel Container */}
+      <div className="fixed inset-y-0 right-0 w-full max-w-full sm:max-w-md lg:max-w-lg flex justify-end pointer-events-none">
+        <div className="w-full h-full bg-[#FAF6F1] border-l border-[#E5DCD2] shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300 overflow-x-hidden pointer-events-auto">
           {/* Header */}
           <div className="p-4 sm:p-6 border-b border-[#E5DCD2] flex items-center justify-between bg-white/60">
             <div>
@@ -49,7 +49,7 @@ export function CartDrawer() {
           </div>
 
           {/* Items List */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 divide-y divide-[#E5DCD2]/70">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 divide-y divide-[#E5DCD2]/70">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-16 px-4 space-y-4">
                 <div className="w-16 h-16 rounded-full bg-[#ECE2D8]/40 border border-[#E5DCD2] flex items-center justify-center text-[#462F1D]">
@@ -94,7 +94,7 @@ export function CartDrawer() {
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
-                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal mt-0.5">
+                      <p className="text-xs sm:text-sm text-[#462F1D] font-normal mt-0.5 truncate">
                         Color: {item.color}
                       </p>
                       <p className="text-sm font-sans font-semibold tabular-nums text-[#23170F] mt-1">
@@ -102,8 +102,8 @@ export function CartDrawer() {
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between mt-2 sm:mt-3">
-                      <div className="flex items-center border border-[#E5DCD2] rounded-lg bg-white">
+                    <div className="flex items-center justify-between mt-2 sm:mt-3 gap-2">
+                      <div className="flex items-center border border-[#E5DCD2] rounded-lg bg-white shrink-0">
                         <button
                           onClick={() => updateQuantity(item.id, item.color, item.quantity - 1)}
                           className="px-2.5 py-1 text-[#462F1D] hover:text-[#23170F] transition"
@@ -123,7 +123,7 @@ export function CartDrawer() {
                         </button>
                       </div>
 
-                      <span className="text-sm sm:text-base font-sans font-semibold tabular-nums text-[#23170F]">
+                      <span className="text-sm sm:text-base font-sans font-semibold tabular-nums text-[#23170F] shrink-0 text-right">
                         {item.currency} {(item.price * item.quantity).toLocaleString()}
                       </span>
                     </div>
