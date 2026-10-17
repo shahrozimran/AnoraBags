@@ -4,7 +4,7 @@ import { headers } from "next/headers"
 import { createOrder, getProductById, type OrderItem } from "@/lib/db"
 import { canonicalCart, CartValidationError, checkoutSchema } from "@/lib/security/validation"
 import { hashToken, randomToken } from "@/lib/security/crypto"
-import { grantOrderAccess } from "@/lib/security/order-access"
+import { grantOrderAccess, storeOrderSnapshot } from "@/lib/security/order-access"
 import { clientKey, consumeLimit } from "@/lib/security/rate-limit"
 import { sendAdminOrderNotification } from "@/lib/email"
 import { ZodError } from "zod"
@@ -31,6 +31,8 @@ export async function placeOrderAction(formData: FormData, cartItems: OrderItem[
       subtotal, shippingFee: 0, totalAmount: subtotal, accessTokenHash: hashToken(token),
     })
     await grantOrderAccess(order.orderNumber, token)
+    // Save a cookie snapshot so the confirmation page works on Vercel cold starts
+    await storeOrderSnapshot(order)
 
     // Fire-and-forget: send admin notification email without blocking the response
     sendAdminOrderNotification(order).catch((err) =>

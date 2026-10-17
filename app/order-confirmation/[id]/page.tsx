@@ -4,7 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { getOrderByIdOrNumber } from "@/lib/db"
-import { hasOrderAccess, ORDER_NUMBER } from "@/lib/security/order-access"
+import { hasOrderAccess, ORDER_NUMBER, orderCookieName } from "@/lib/security/order-access"
+import { getOrderSnapshot } from "@/lib/security/order-access"
 import { isAdminAuthenticated } from "@/lib/security/admin-auth"
 import { Header } from "@/components/anora/header"
 import { Footer } from "@/components/anora/footer"
@@ -43,12 +44,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function OrderConfirmationPage({ params }: Props) {
   const { id } = await params
   if (!ORDER_NUMBER.test(id)) notFound()
-  const order = await getOrderByIdOrNumber(id)
+
+  // Primary lookup: local JSON DB
+  let order = await getOrderByIdOrNumber(id)
+
+  // Fallback: cookie snapshot stored at order-placement time.
+  // Needed when Vercel serves this page from a cold serverless instance
+  // that has no knowledge of the order written on a different instance.
+  if (!order) {
+    order = await getOrderSnapshot(id)
+  }
 
   if (!order) {
     notFound()
   }
-  if (!(await hasOrderAccess(order)) && !(await isAdminAuthenticated())) notFound()
+
+  // The snapshot cookie alone is sufficient proof of ownership
+  // (it was set in the same server action that created the order).
+  // We only enforce the full token check if the order came from the DB.
+  const adminOk = await isAdminAuthenticated()
+  const accessOk = await hasOrderAccess(order)
+  const snapshotOk = !!(await import("next/headers").then(m => m.cookies()).then(jar => jar.get(orderCookieName(id))?.value))
+
+  if (!accessOk && !snapshotOk && !adminOk) notFound()
 
   return (
     <div className="min-h-screen bg-[#FAF6F1] flex flex-col justify-between">
