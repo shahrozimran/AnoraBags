@@ -46,7 +46,7 @@ export default function DeliveryPolicyPage() {
         <p>Delivery typically takes 2–3 working days after dispatch. This is an estimate rather than a guaranteed arrival date. Remote areas, public holidays, weather, and courier disruptions may take longer.</p>
         <p>We may contact you to confirm your order or address before dispatch. Please provide a complete address, city, and a reachable phone number to help avoid delays.</p>
       </> },
-      { id: "tracking", title: "Track your parcel", content: <p>Keep the order number from your confirmation. Visit <Link href="/track-order">Track your order</Link> for the latest available status. If delivery is taking longer than expected, contact us with your order number and we will help you follow up.</p> },
+      { id: "updates", title: "Order updates & dispatch", content: <p>Keep the order number from your confirmation receipt. If you have any questions or delivery is taking longer than expected, message our <a href={STORE_CONTACT.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp concierge</a> with your order number and we will help you follow up immediately.</p> },
       { id: "receiving", title: "Receiving your order", content: <>
         <p>Keep your phone available for the courier and arrange for someone to receive the parcel and pay the COD total. Check the parcel’s outer condition when it arrives. If it appears damaged or tampered with, contact us promptly and keep photos where possible.</p>
         <p>If the bag is damaged, incorrect, or not right for you, contact us within 7 days of delivery. See our <Link href="/return-policy">return policy</Link> for assistance.</p>

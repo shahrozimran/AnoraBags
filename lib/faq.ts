@@ -2,17 +2,17 @@ export const FAQ_GROUPS = [
   {
     title: "Orders & payment",
     questions: [
-      { question: "How can I place an order?", answer: "Choose a bag from our collection, select an available colour, and add it to your bag. Enter your delivery details at checkout and place your cash on delivery order. Keep your order number so you can track it later." },
+      { question: "How can I place an order?", answer: "Choose a bag from our collection, select an available colour, and add it to your bag. Enter your delivery details at checkout and place your cash on delivery order. Keep your order confirmation for reference." },
       { question: "Which payment methods do you accept?", answer: "We currently accept Cash on Delivery (COD) only. Pay the order total in cash to the courier when your parcel arrives. We do not currently accept online card payments, bank transfers, or mobile wallet payments at checkout. No advance payment is required." },
       { question: "Can I change or cancel my order?", answer: "Contact us on WhatsApp or by email with your order number as soon as possible. We can help change or cancel an order before dispatch. If it has already been dispatched, contact us to discuss the next steps." },
     ],
   },
   {
-    title: "Delivery & tracking",
+    title: "Delivery & dispatch",
     questions: [
       { question: "Where do you deliver and how much does it cost?", answer: "We offer free delivery across Pakistan, subject to courier coverage for your address. Any delivery charge is shown in your checkout total before you place the order. We do not currently offer international delivery." },
       { question: "When will my order arrive?", answer: "Delivery typically takes 2–3 working days after dispatch. This is an estimate; remote locations, public holidays, weather, and courier delays can take longer. Contact us with your order number for help with a delayed parcel." },
-      { question: "How do I track my order?", answer: "Open Track your order and enter both your order number and the full mobile number used at checkout. We require both to help keep order details private. If you need help, contact our team." },
+      { question: "How can I check on my order status?", answer: "Our team carefully verifies and prepares each order for express courier dispatch. For any status updates or questions regarding your parcel, simply reach out to our WhatsApp concierge with your order number." },
     ],
   },
   {

@@ -4,10 +4,11 @@ import Link from "next/link"
 import { Plus } from "lucide-react"
 import { HelpPage } from "@/components/anora/help-page"
 import { FAQ_GROUPS } from "@/lib/faq"
+import { STORE_CONTACT } from "@/lib/site-config"
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions — Anora Bags Help Centre",
-  description: "Get answers about Anora Bags orders, Cash on Delivery payments, colours, delivery estimates, parcel tracking, and our 7-day hassle-free return guarantee. Pakistan nationwide delivery.",
+  description: "Get answers about Anora Bags orders, Cash on Delivery payments, colours, delivery estimates, order support, and our 7-day hassle-free return guarantee. Pakistan nationwide delivery.",
   alternates: { canonical: "https://anorabags.com/faq" },
   keywords: [
     "Anora Bags FAQ",
@@ -48,7 +49,7 @@ export default function FAQPage() {
     <HelpPage title="Frequently asked questions" description="The little details, made simple. Find answers about your order, your bag, and everything in between." path="/faq">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <div className="mb-8 flex flex-wrap gap-3 text-xs">
-        <Link href="/track-order" className="rounded-full border border-[#D8C9BA] px-4 py-2.5 hover:bg-[#EDE2D7]">Track your order ↗</Link>
+        <a href={STORE_CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#D8C9BA] px-4 py-2.5 hover:bg-[#EDE2D7]">WhatsApp Concierge ↗</a>
         <Link href="/return-policy" className="rounded-full border border-[#D8C9BA] px-4 py-2.5 hover:bg-[#EDE2D7]">Start a return ↗</Link>
       </div>
       <div className="space-y-10">

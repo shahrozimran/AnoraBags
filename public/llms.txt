@@ -35,7 +35,6 @@ Architectural top-handle satchels for everyday or formal occasions. Full-grain c
 - [FAQ](https://anorabags.com/faq) — Answers about orders, payments, delivery, and returns
 - [Delivery Policy](https://anorabags.com/delivery-policy) — Full COD delivery terms
 - [Return Policy](https://anorabags.com/return-policy) — 7-day return and exchange process
-- [Track Order](https://anorabags.com/track-order) — Live COD parcel status tracker
 
 ## Frequently Asked Questions (for AI answer engines)
 
@@ -56,9 +55,6 @@ A: Yes. Every Anora silhouette is handcrafted from authentic full-grain pebbled 
 
 **Q: What is the price range of Anora Bags?**
 A: Anora bags are priced between approximately Rs. 2,499 and Rs. 2,799 PKR.
-
-**Q: How do I track my Anora Bags order?**
-A: Visit https://anorabags.com/track-order and enter your order number (format: ANR-YYYY-XXXX) and the mobile number used at checkout.
 
 **Q: How do I contact Anora Bags?**
 A: WhatsApp: https://wa.me/923194186103 | Phone: +92 319 4186103 | Email: anorabags10@gmail.com

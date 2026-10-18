@@ -47,7 +47,7 @@ export default function ReturnPolicyPage() {
         <p>As you paid cash on delivery, our team will agree on a bank transfer, EasyPaisa, or JazzCash refund with you. We aim to process an approved refund within 24 hours of collection and verification. Bank or wallet posting times can vary; contact us if your refund has not arrived.</p>
         <p>These are refund channels only. We currently accept <strong>Cash on Delivery only</strong> for purchases. Never share a PIN, password, or one-time verification code with anyone.</p>
       </> },
-      { id: "damaged", title: "Damaged or incorrect items", content: <p>Let us know as soon as you notice a problem. Send your order number, photos of the item, and photos of the parcel packaging to our team. Keep the bag and all packaging so we can arrange the appropriate return or replacement. For order status, visit <Link href="/track-order">Track your order</Link>.</p> },
+      { id: "damaged", title: "Damaged or incorrect items", content: <p>Let us know as soon as you notice a problem. Send your order number, photos of the item, and photos of the parcel packaging to our team. Keep the bag and all packaging so we can arrange the appropriate return or replacement. For order assistance, <a href={STORE_CONTACT.whatsapp} target="_blank" rel="noopener noreferrer">contact our team on WhatsApp</a>.</p> },
     ]} />
   )
 }

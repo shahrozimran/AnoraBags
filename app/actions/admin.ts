@@ -42,7 +42,6 @@ export async function updateOrderStatusAction(
   if (!Number.isSafeInteger(orderId) || orderId < 1 || !orderStatuses.safeParse(status).success) return { success: false, message: "Invalid order status." }
   const updated = await updateOrderStatus(orderId, status)
   revalidatePath("/admin")
-  revalidatePath("/track-order")
   if (updated?.orderNumber) {
     revalidatePath(`/order-confirmation/${updated.orderNumber}`)
   }

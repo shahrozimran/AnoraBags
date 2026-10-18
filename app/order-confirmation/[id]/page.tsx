@@ -90,11 +90,6 @@ export default async function OrderConfirmationPage({ params }: Props) {
             <p className="text-sm sm:text-base text-[#ECE2D8]/90 font-light max-w-lg mx-auto mt-2 leading-relaxed">
               Your handcrafted Anora order has been registered. We are carefully preparing your bag for dispatch.
             </p>
-
-            <div className="mt-6 inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-sm font-mono">
-              <span className="text-[#ECE2D8]/80">Tracking ID:</span>
-              <span className="font-bold text-[#ECE2D8]">{order.orderNumber}</span>
-            </div>
           </div>
 
           {/* COD Notice Box */}
@@ -204,31 +199,22 @@ export default async function OrderConfirmationPage({ params }: Props) {
               </a>
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-                <Link
-                  href="/track-order"
-                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#462F1D] hover:bg-[#23170F] text-[#FAF6F1] text-sm font-sans font-medium transition text-center shadow-xs"
+                <a
+                  href={`${STORE_CONTACT.whatsapp}?text=Hi%20Anora%20Bags,%20I%20have%20an%20order%20inquiry%20for%20order%20${order.orderNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-sm font-sans font-medium transition border border-[#E5DCD2]"
                 >
-                  Track This Order
+                  <MessageCircle className="w-4 h-4 text-[#462F1D]" />
+                  <span>WhatsApp Concierge</span>
+                </a>
+
+                <Link
+                  href="/"
+                  className="w-full sm:w-auto flex-1 px-6 py-4 rounded-full border border-[#E5DCD2] text-[#462F1D] hover:text-[#23170F] hover:bg-[#FAF6F1] text-sm font-sans font-medium transition text-center"
+                >
+                  Continue Browsing
                 </Link>
-
-                <div className="flex items-center gap-3 w-full sm:w-auto">
-                  <a
-                    href={`${STORE_CONTACT.whatsapp}?text=Hi%20Anora%20Bags,%20I%20have%20an%20order%20inquiry%20for%20order%20${order.orderNumber}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#ECE2D8] hover:bg-white text-[#23170F] text-sm font-sans font-medium transition border border-[#E5DCD2]"
-                  >
-                    <MessageCircle className="w-4 h-4 text-[#462F1D]" />
-                    <span>WhatsApp Concierge</span>
-                  </a>
-
-                  <Link
-                    href="/"
-                    className="flex-1 sm:flex-initial px-6 py-4 rounded-full border border-[#E5DCD2] text-[#462F1D] hover:text-[#23170F] hover:bg-[#FAF6F1] text-sm font-sans font-medium transition text-center"
-                  >
-                    Continue Browsing
-                  </Link>
-                </div>
               </div>
             </div>
           </div>

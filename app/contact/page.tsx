@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Contact Us — Anora Bags",
-    description: "Reach Anora Bags on WhatsApp, phone, or email for orders, tracking, and 7-day return requests.",
+    description: "Reach Anora Bags on WhatsApp, phone, or email for orders and 7-day return requests.",
     url: "https://anorabags.com/contact",
     siteName: "Anora Bags",
     locale: "en_PK",
@@ -51,7 +51,7 @@ export default function ContactPage() {
         <div className="rounded-2xl bg-[#EDE2D7] p-6">
           <h2 className="font-serif text-3xl">Have your order number?</h2>
           <p className="mt-3 text-sm leading-6 text-[#74604F]">Include it in your message so we can help you faster. Please never send passwords, PINs, or verification codes.</p>
-          <Link href="/track-order" className="mt-5 inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4">Track your order<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+          <a href={STORE_CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4">Chat on WhatsApp<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
         </div>
       </div>
       <div className="mt-8 rounded-xl border border-[#DECFBF] px-6 py-5 text-sm leading-7 text-[#74604F]">

@@ -39,7 +39,7 @@ export default function robots(): MetadataRoute.Robots {
           "YouBot",
           "Timpibot"
         ],
-        allow: ["/", "/shop", "/product/*", "/return-policy", "/delivery-policy", "/faq", "/terms-and-conditions", "/privacy-policy", "/about", "/contact", "/track-order", "/sitemap.xml"],
+        allow: ["/", "/shop", "/product/*", "/return-policy", "/delivery-policy", "/faq", "/terms-and-conditions", "/privacy-policy", "/about", "/contact", "/sitemap.xml"],
         disallow: ["/admin", "/admin/*", "/checkout", "/order-confirmation/*", "/api/*"]
       }
     ],
